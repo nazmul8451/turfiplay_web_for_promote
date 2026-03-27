@@ -39,7 +39,7 @@ const Navbar = () => {
             <Zap className="text-black fill-black" size={20} />
           </div>
           <span className="text-2xl font-black tracking-tighter text-white">
-            SLOT<span className="text-brand-green">TURF</span>
+            TURFI<span className="text-brand-green">PLAY</span>
           </span>
         </div>
         
@@ -459,7 +459,7 @@ const Solution = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Meet SlotTurf</h2>
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Meet TurfiPlay</h2>
           <p className="text-xl md:text-2xl text-white/60 max-w-4xl mx-auto mb-20 leading-relaxed font-medium">
             Designed for Real Turf Booking Situations. <br />
             <span className="text-brand-green">Built for Sports Turf Owners, Not General Booking Apps.</span>
@@ -572,7 +572,7 @@ const Comparison = () => {
     <section className="py-40 lg:py-60 bg-brand-surface border-y border-white/5">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-24">
         <div className="text-center mb-32">
-          <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter">Excel vs <span className="text-brand-green">SlotTurf</span></h2>
+          <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter">Excel vs <span className="text-brand-green">TurfiPlay</span></h2>
           <p className="text-2xl text-white/40 font-medium leading-relaxed">WhatsApp & Excel Are Fine. A Booking System Is Better.</p>
         </div>
 
@@ -582,7 +582,7 @@ const Comparison = () => {
               <tr className="border-bottom border-white/10 bg-white/5">
                 <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-white/40">Feature</th>
                 <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-white/40">WhatsApp/Excel</th>
-                <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-brand-green">SlotTurf</th>
+                <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-brand-green">TurfiPlay</th>
               </tr>
             </thead>
             <tbody>
@@ -673,7 +673,7 @@ const Story = () => {
               Later, you realize the slot went empty. That's ৳1,500 lost.
             </p>
             <p>
-              SlotTurf was built to end this chaos. No more scrolling through messages. 
+              TurfiPlay was built to end this chaos. No more scrolling through messages. 
               No more double booking stress. Just a clean dashboard that locks slots instantly 
               and tracks every Taka you earn.
             </p>
@@ -867,7 +867,7 @@ const Footer = () => {
                 <Zap className="text-black fill-black" size={28} />
               </div>
               <span className="text-4xl font-black tracking-tighter text-white">
-                SLOT<span className="text-brand-green">TURF</span>
+                TURFI<span className="text-brand-green">PLAY</span>
               </span>
             </div>
             <p className="text-white/40 max-w-lg mb-16 text-2xl leading-relaxed font-medium">
@@ -899,7 +899,7 @@ const Footer = () => {
                 <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
                   <Mail size={26} className="text-brand-green" />
                 </div>
-                hello@slotturf.com
+                hello@turfiplay.com
               </li>
               <li className="flex items-center gap-8">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -912,7 +912,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-white/20 text-xs font-black uppercase tracking-[0.5em]">
-          <div>© {new Date().getFullYear()} SlotTurf. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} TurfiPlay. All rights reserved.</div>
           <div className="flex items-center gap-4">
             MADE WITH <span className="text-red-500 animate-pulse">❤️</span> IN BANGLADESH
           </div>
