@@ -5,16 +5,24 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  MapPin, 
-  Calendar, 
-  Zap, 
-  LayoutDashboard, 
-  Star, 
-  CheckCircle2, 
-  Search, 
-  MousePointerClick, 
-  Smartphone, 
+import mockup1 from './assets/images/mockup1.jpg';
+import mockup2 from './assets/images/mockup2.jpg';
+import mockup3 from './assets/images/mockup3.jpg';
+import footballIcon from './assets/images/sports/football.png';
+import cricketIcon from './assets/images/sports/cricket.png';
+import badmintonIcon from './assets/images/sports/badminton.png';
+// Using football as placeholder for basketball due to quota
+import basketballIcon from './assets/images/sports/football.png';
+import {
+  MapPin,
+  Calendar,
+  Zap,
+  LayoutDashboard,
+  Star,
+  CheckCircle2,
+  Search,
+  MousePointerClick,
+  Smartphone,
   ArrowRight,
   Instagram,
   Facebook,
@@ -23,7 +31,14 @@ import {
   Phone,
   X,
   Menu,
-  ChevronRight
+  ChevronRight,
+  Clock,
+  MessageSquare,
+  BarChart3,
+  ShieldCheck,
+  Bell,
+  Globe,
+  Map
 } from 'lucide-react';
 
 // --- Components ---
@@ -32,22 +47,26 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-6 pt-6 md:pt-8">
+    <div className="fixed top-0 left-0 right-0 z-50 px-6 pt-10 md:pt-14">
       <nav className="max-w-[1440px] mx-auto glass-card px-8 py-4 flex justify-between items-center border border-white/10 shadow-2xl">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0, 168, 89, 0.3)]">
+        <div
+          className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <div className="w-10 h-10 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,168,89,0.3)] group-hover:scale-110 transition-transform duration-500">
             <Zap className="text-black fill-black" size={20} />
           </div>
-          <span className="text-2xl font-black tracking-tighter text-white">
-            TURFI<span className="text-brand-green">PLAY</span>
+          <span className="text-2xl tracking-[-0.05em] text-white select-none">
+            <span className="font-extralight opacity-80">Turfi</span>
+            <span className="font-black text-brand-green italic drop-shadow-[0_0_15px_rgba(0,168,89,0.4)]">Play</span>
           </span>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-12">
-          <a href="#problem" className="text-[10px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Problem</a>
-          <a href="#features" className="text-[10px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
-          <a href="#how-it-works" className="text-[10px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Process</a>
-          <a href="#story" className="text-[10px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Our Story</a>
+          <a href="#problem" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Problem</a>
+          <a href="#features" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
+          <a href="#how-it-works" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Process</a>
+          <a href="#story" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Our Story</a>
         </div>
 
         <div className="hidden md:flex items-center">
@@ -66,7 +85,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -178,7 +197,7 @@ const MockupScreen2 = () => (
       <div className="space-y-6 mb-8">
         <div>
           <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2">Customer Name</p>
-          <input 
+          <input
             disabled
             value="Rimon Ahmed"
             className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-sm font-medium"
@@ -186,7 +205,7 @@ const MockupScreen2 = () => (
         </div>
         <div>
           <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2">Mobile Number</p>
-          <input 
+          <input
             disabled
             value="01712XXXXXX"
             className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-sm font-medium"
@@ -272,66 +291,55 @@ const MockupScreen3 = () => (
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-40 overflow-hidden">
-      {/* Background Decorative Elements */}
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-mesh">
+      {/* Dynamic Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-brand-green/10 blur-[200px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-brand-green/5 blur-[180px] rounded-full" />
-        <div className="absolute top-[20%] right-[-15%] w-[40%] h-[40%] bg-brand-green/5 blur-[150px] rounded-full" />
+        <motion.div
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            rotate: [0, 10, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-green/5 blur-[120px] rounded-full"
+        />
+        <motion.div
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-green/10 blur-[150px] rounded-full"
+        />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-32 lg:gap-80 items-center">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-24 lg:gap-64 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-4 mb-16 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-              <span className="flex h-3 w-3 rounded-full bg-brand-green animate-ping" />
-              <span className="text-[10px] font-black text-brand-green uppercase tracking-[0.4em]">Launching Soon in Bangladesh 🇧🇩</span>
-            </div>
-            
-            <h1 className="hero-heading mb-12 leading-[1.1] text-4xl md:text-6xl lg:text-7xl tracking-tighter">
+            <h1 className="hero-heading mb-14 leading-[1.1] text-5xl md:text-7xl lg:text-8xl tracking-tighter">
               Run Your Turf <br />
               Without <br />
               <span className="text-brand-green neon-glow">Booking Stress.</span>
             </h1>
-            
-            <p className="max-w-xl text-lg md:text-xl text-white/60 mb-16 leading-relaxed font-medium mx-auto lg:mx-0">
-              Avoid Slot Confusion, Double Bookings & Payment Issues. Built for Sports Turf Owners who manage bookings daily, not just a basic free tool.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8 mb-32">
-              <button className="btn-primary w-full sm:w-auto px-12 py-6 flex items-center justify-center gap-4 group text-xl">
-                Get Started Now
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={24} />
-              </button>
-              <button className="btn-secondary w-full sm:w-auto px-12 py-6 flex items-center justify-center gap-4 text-xl">
-                Watch Demo
-              </button>
-            </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-12 justify-center lg:justify-start">
-              <div className="flex -space-x-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-12 h-12 rounded-full border-4 border-brand-dark overflow-hidden bg-white/10 shadow-xl">
-                    <img src={`https://i.pravatar.cc/150?u=${i}`} alt="user" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-                <div className="w-12 h-12 rounded-full border-4 border-brand-dark bg-brand-green flex items-center justify-center text-black font-black text-xs shadow-xl">
-                  +200
-                </div>
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="text-lg text-white font-black tracking-tight">200+ Players Waiting</p>
-                <p className="text-white/40 font-bold text-sm">Join the elite circle today.</p>
+            <p className="max-w-2xl text-xl md:text-2xl text-white/40 mb-20 leading-relaxed font-medium mx-auto lg:mx-0">
+              Manage bookings, prevent double slots, track payments, and run your turf professionally — all from one simple app.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-10 mb-32">
+              <div className="w-full sm:w-auto px-10 py-6 bg-brand-green/10 border border-brand-green/20 backdrop-blur-xl rounded-3xl flex items-center justify-center gap-5 shadow-[0_0_50px_rgba(0,168,89,0.1)]">
+                <span className="flex h-3 w-3 rounded-full bg-brand-green animate-pulse" />
+                <span className="text-sm font-black text-brand-green uppercase tracking-[0.4em]">Launching Soon in Bangladesh 🇧🇩</span>
               </div>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -340,35 +348,35 @@ const Hero = () => {
             {/* App Mockups Container */}
             <div className="relative z-10 flex items-center justify-center py-12">
               {/* Main Phone (Screen 3) */}
-              <motion.div 
+              <motion.div
                 initial={{ y: 0 }}
-                className="relative z-20 w-[280px] md:w-[380px] aspect-[9/19] bg-[#0F172A] rounded-[3.5rem] p-3 shadow-[0_0_100px_rgba(0, 168, 89, 0.1)] border border-white/10"
+                className="relative z-20 w-[260px] md:w-[320px] aspect-[9/19] bg-[#0F172A] rounded-[3.5rem] p-3 shadow-[0_0_100px_rgba(0, 168, 89, 0.1)] border border-white/10"
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#0F172A] rounded-b-3xl z-50 flex justify-center items-start pt-1">
                   <div className="w-12 h-1 bg-black/40 rounded-full" />
                 </div>
                 <div className="w-full h-full rounded-[2.8rem] overflow-hidden bg-black">
-                  <MockupScreen3 />
+                  <img src={mockup2} alt="Mockup 2 Dashboard" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
-              
+
               {/* Secondary Phone Left (Screen 1) */}
-              <motion.div 
+              <motion.div
                 initial={{ rotate: -15, x: 0 }}
-                className="absolute top-10 -left-12 md:-left-16 w-[240px] md:w-[340px] aspect-[9/19] bg-[#0F172A] rounded-[3rem] p-2.5 shadow-xl opacity-40 -z-10 overflow-hidden border border-white/5"
+                className="absolute top-10 -left-16 md:-left-32 w-[220px] md:w-[280px] aspect-[9/19] bg-[#0F172A] rounded-[3rem] p-2.5 shadow-xl opacity-40 -z-10 overflow-hidden border border-white/5"
               >
                 <div className="w-full h-full rounded-[2.4rem] overflow-hidden bg-black">
-                  <MockupScreen1 />
+                  <img src={mockup1} alt="Mockup 1" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
- 
+
               {/* Secondary Phone Right (Screen 2) */}
-              <motion.div 
+              <motion.div
                 initial={{ rotate: 15, x: 0 }}
-                className="absolute top-10 -right-12 md:-right-16 w-[240px] md:w-[340px] aspect-[9/19] bg-[#0F172A] rounded-[3rem] p-2.5 shadow-xl opacity-40 -z-10 overflow-hidden border border-white/5"
+                className="absolute top-10 -right-16 md:-right-32 w-[220px] md:w-[280px] aspect-[9/19] bg-[#0F172A] rounded-[3rem] p-2.5 shadow-xl opacity-40 -z-10 overflow-hidden border border-white/5"
               >
                 <div className="w-full h-full rounded-[2.4rem] overflow-hidden bg-black">
-                  <MockupScreen2 />
+                  <img src={mockup3} alt="Mockup 3" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
             </div>
@@ -381,18 +389,18 @@ const Hero = () => {
 
 const Problem = () => {
   const problems = [
-    { 
-      title: "The WhatsApp Chaos", 
+    {
+      title: "The WhatsApp Chaos",
       desc: "Scrolling through 100 messages just to find who booked the 8 PM slot.",
       icon: Phone
     },
-    { 
-      title: "The Double Booking Nightmare", 
+    {
+      title: "The Double Booking Nightmare",
       desc: "Two teams show up for the same slot because you forgot to write it down.",
       icon: X
     },
-    { 
-      title: "Missing Payment Records", 
+    {
+      title: "Missing Payment Records",
       desc: "Not knowing who paid the advance and who still owes you money.",
       icon: LayoutDashboard
     }
@@ -400,85 +408,195 @@ const Problem = () => {
 
   return (
     <section id="problem" className="py-24 lg:py-40 bg-brand-dark relative overflow-hidden">
+      {/* Abstract background shapes */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-brand-green/5 blur-[100px] rounded-full pointer-events-none" />
+
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="grid lg:grid-cols-2 gap-32 lg:gap-48 items-center">
-          <div>
+        <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">
               Still Using WhatsApp <br />
-              <span className="text-white/40">& Excel?</span>
+              <span className="text-white/20">& Excel?</span>
             </h2>
-            <p className="text-lg md:text-xl text-white/60 mb-12 leading-relaxed max-w-2xl font-medium">
-              WhatsApp and Excel are fine for starting out. But to run a professional turf business, you need a system that works as hard as you do.
+            <p className="text-lg md:text-xl text-white/40 mb-12 leading-relaxed max-w-xl font-medium">
+              WhatsApp and Excel are great for messaging, but they weren't built to run a professional sports facility. Stop wasting time on manual entry.
             </p>
-            <div className="space-y-12">
+            <div className="space-y-8">
               {problems.map((p, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex gap-10 group"
+                  className="flex gap-8 group items-start"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-brand-green/50 transition-colors">
-                    <p.icon className="text-brand-green" size={32} />
+                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:border-brand-green/30 transition-all duration-500 group-hover:scale-110">
+                    <p.icon className="text-brand-green/60 group-hover:text-brand-green" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-2xl font-black text-white mb-3 tracking-tight">{p.title}</h4>
-                    <p className="text-lg text-white/40 leading-relaxed font-medium">{p.desc}</p>
+                    <h4 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-brand-green transition-colors">{p.title}</h4>
+                    <p className="text-base text-white/30 leading-relaxed font-medium group-hover:text-white/50 transition-colors">{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-square rounded-[6rem] bg-gradient-to-br from-brand-green/20 to-transparent p-1.5">
-              <div className="w-full h-full rounded-[5.8rem] bg-brand-surface overflow-hidden flex items-center justify-center p-20">
-                <div className="text-center">
-                  <div className="w-40 h-40 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-12">
-                    <X className="text-red-500" size={80} />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[4rem] bg-gradient-to-br from-white/10 to-transparent p-[1px]">
+              <div className="w-full h-full rounded-[3.9rem] bg-brand-surface/50 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-12 relative group">
+                <div className="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                <div className="text-center relative z-10">
+                  <div className="w-32 h-32 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-red-500/20 shadow-[0_0_40px_rgba(239,68,68,0.1)]">
+                    <X className="text-red-500" size={50} />
                   </div>
-                  <p className="text-4xl font-black text-white mb-8 italic tracking-tight">"Wait, let me check my Excel..."</p>
-                  <p className="text-2xl text-white/40 font-medium">The sound of a business losing professional touch.</p>
+                  <p className="text-3xl font-black text-white mb-6 italic tracking-tight leading-tight">"Wait, let me check my Excel..."</p>
+                  <p className="text-lg text-white/30 font-medium">The sound of a business losing its professional edge.</p>
                 </div>
               </div>
             </div>
-          </div>
+
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
 
-const Solution = () => {
+
+
+
+
+
+const ComingSoonModal = ({ isOpen, onClose, title }: { isOpen: boolean, onClose: () => void, title: string }) => {
+  if (!isOpen) return null;
   return (
-    <section className="py-40 lg:py-60 bg-brand-surface border-y border-white/5">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 text-center">
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-xl"
+        onClick={onClose}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ scale: 0.9, y: 20, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.9, y: 20, opacity: 0 }}
+          className="glass-card max-w-lg w-full !p-12 text-center relative overflow-hidden border-brand-green/20 shadow-[0_0_100px_rgba(0,168,89,0.1)]"
+          onClick={e => e.stopPropagation()}
+        >
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-green to-transparent" />
+
+          <div className="w-20 h-20 rounded-2xl bg-brand-green/10 flex items-center justify-center mx-auto mb-10 border border-brand-green/20">
+            <Zap className="text-brand-green animate-pulse" size={32} />
+          </div>
+
+          <h3 className="text-4xl font-black text-white mb-6 uppercase italic tracking-tighter">
+            {title} <br />
+            <span className="text-brand-green">Coming Soon</span>
+          </h3>
+
+          <p className="text-lg text-white/40 font-medium leading-relaxed mb-12">
+            We are currently in <span className="text-white">Development Mode</span>. Our team is working hard to bring the ultimate TurfiPlay experience to Bangladesh.
+          </p>
+
+          <button
+            onClick={onClose}
+            className="w-full py-6 bg-brand-green text-black font-black rounded-xl hover:scale-[1.02] transition-all uppercase italic tracking-[0.2em] text-sm shadow-[0_0_40px_rgba(0,168,89,0.3)]"
+          >
+            Stay With Us
+          </button>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+const Features = () => {
+  const [modalData, setModalData] = useState<{ isOpen: boolean, title: string }>({ isOpen: false, title: '' });
+
+  const features = [
+    {
+      title: "Dashboard",
+      desc: "Daily slot booking dashboard to see everything at a glance.",
+      icon: LayoutDashboard,
+      isComingSoon: true
+    },
+    {
+      title: "Mobile App",
+      desc: "Full-featured booking companion for both Players and Owners.",
+      icon: Smartphone,
+      isComingSoon: true
+    }
+  ];
+
+  return (
+    <section id="features" className="py-24 lg:py-48 bg-brand-bg relative overflow-hidden">
+      <ComingSoonModal
+        isOpen={modalData.isOpen}
+        onClose={() => setModalData({ ...modalData, isOpen: false })}
+        title={modalData.title}
+      />
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1000px] -z-10 opacity-20 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-green/10 blur-[200px] rounded-full" />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-32"
         >
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Meet TurfiPlay</h2>
-          <p className="text-xl md:text-2xl text-white/60 max-w-4xl mx-auto mb-20 leading-relaxed font-medium">
-            Designed for Real Turf Booking Situations. <br />
+          <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter uppercase italic leading-none">Meet <span className="text-brand-green">TurfiPlay</span></h2>
+          <p className="text-xl md:text-2xl text-white/30 max-w-2xl mx-auto font-medium leading-relaxed uppercase tracking-widest">Designed for Real Turf Booking Situations. <br />
             <span className="text-brand-green">Built for Sports Turf Owners, Not General Booking Apps.</span>
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
-          {[
-            { title: "Dashboard", desc: "Daily slot booking dashboard to see everything at a glance.", icon: LayoutDashboard },
-            { title: "Slot Locking", desc: "Automatic slot locking prevents any double booking issues.", icon: Zap },
-            { title: "Reports", desc: "Daily & monthly earnings reports to track your business growth.", icon: Star }
-          ].map((item, i) => (
-            <div key={i} className="glass-card p-16 border border-white/10 hover:border-brand-green/30 transition-all group">
-              <div className="w-24 h-24 rounded-[2.5rem] bg-brand-green/10 flex items-center justify-center mx-auto mb-12 group-hover:scale-110 transition-transform">
-                <item.icon className="text-brand-green" size={44} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              onClick={() => feature.isComingSoon && setModalData({ isOpen: true, title: feature.title })}
+              className={`glass-card p-10 group transition-all duration-500 relative overflow-hidden ${feature.isComingSoon ? 'cursor-pointer hover:border-brand-green/40 hover:bg-white/[0.03]' : ''}`}
+            >
+              {feature.isComingSoon && (
+                <div className="absolute top-4 right-4 text-[10px] font-black text-brand-green uppercase tracking-[0.3em] bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/20 group-hover:bg-brand-green group-hover:text-black transition-all">
+                  Click to View
+                </div>
+              )}
+
+              <div className="w-16 h-16 rounded-2xl bg-brand-green/10 flex items-center justify-center mb-8 border border-brand-green/20 group-hover:scale-110 transition-transform duration-500">
+                <feature.icon className="text-brand-green" size={28} />
               </div>
-              <h3 className="text-4xl font-black text-white mb-8 uppercase tracking-tighter">{item.title}</h3>
-              <p className="text-xl text-white/40 leading-relaxed font-medium">{item.desc}</p>
-            </div>
+              <h3 className="text-2xl font-black text-white mb-6 uppercase italic tracking-tighter group-hover:text-brand-green transition-colors">{feature.title}</h3>
+              <p className="text-lg text-white/40 font-medium leading-relaxed mb-6">{feature.desc}</p>
+
+              {feature.isComingSoon && (
+                <div className="flex items-center gap-3 text-brand-green/60 group-hover:text-brand-green transition-colors">
+                  <span className="text-xs font-black uppercase tracking-[0.2em]">Preview Dashboard</span>
+                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              )}
+            </motion.div>
           ))}
         </div>
       </div>
@@ -486,7 +604,10 @@ const Solution = () => {
   );
 };
 
-const Features = () => {
+
+
+
+const ManagementFeatures = () => {
   const ownerFeatures = [
     { icon: Smartphone, title: "Mobile Login", desc: "Login with your mobile number. No complex passwords." },
     { icon: Zap, title: "Add Booking in 10s", desc: "Add a new booking in seconds. It's that fast." },
@@ -502,62 +623,80 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 lg:py-40 bg-brand-dark">
+    <section id="features" className="py-24 lg:py-40 bg-brand-navy relative">
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
+
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="text-center mb-40">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">Professional Management</h2>
-          <p className="text-white/40 max-w-2xl mx-auto text-xl font-medium leading-relaxed">Everything you need to run your turf business professionally.</p>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-32"
+        >
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic">Professional Management</h2>
+          <p className="text-white/30 max-w-2xl mx-auto text-xl font-medium leading-relaxed uppercase tracking-[0.2em]">Everything you need to scale your turf business.</p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Booking Side */}
-          <div className="glass-card p-16 lg:p-20 border border-white/10 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-12 lg:p-16 relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-1000">
               <Smartphone size={200} />
             </div>
-            <h3 className="text-5xl font-black text-white mb-20 flex items-center gap-8">
-              <span className="w-16 h-16 rounded-2xl bg-brand-green/20 flex items-center justify-center">
-                <Smartphone className="text-brand-green" size={32} />
-              </span>
+            <h3 className="text-4xl font-black text-white mb-16 flex items-center gap-6">
+              <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center">
+                <Smartphone className="text-brand-green" size={24} />
+              </div>
               Booking Workflow
             </h3>
-            <div className="grid sm:grid-cols-2 gap-16">
+            <div className="grid sm:grid-cols-2 gap-12">
               {ownerFeatures.map((f, i) => (
-                <div key={i}>
-                  <f.icon className="text-brand-green mb-8" size={32} />
-                  <h4 className="text-2xl font-black text-white mb-4 tracking-tight">{f.title}</h4>
-                  <p className="text-white/40 text-lg leading-relaxed font-medium">{f.desc}</p>
+                <div key={i} className="group/item">
+                  <f.icon className="text-brand-green/40 mb-6 group-hover/item:text-brand-green transition-colors" size={28} />
+                  <h4 className="text-xl font-bold text-white mb-3 tracking-tight">{f.title}</h4>
+                  <p className="text-white/30 text-base leading-relaxed font-medium group-hover/item:text-white/50 transition-colors">{f.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Reports Side */}
-          <div className="glass-card p-16 lg:p-20 border border-white/10 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-12 lg:p-16 relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-1000">
               <LayoutDashboard size={200} />
             </div>
-            <h3 className="text-5xl font-black text-white mb-20 flex items-center gap-8">
-              <span className="w-16 h-16 rounded-2xl bg-brand-green/20 flex items-center justify-center">
-                <LayoutDashboard className="text-brand-green" size={32} />
-              </span>
+            <h3 className="text-4xl font-black text-white mb-16 flex items-center gap-6">
+              <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center">
+                <LayoutDashboard className="text-brand-green" size={24} />
+              </div>
               Revenue Tracking
             </h3>
-            <div className="grid sm:grid-cols-2 gap-16">
+            <div className="grid sm:grid-cols-2 gap-12">
               {reportFeatures.map((f, i) => (
-                <div key={i}>
-                  <f.icon className="text-brand-green mb-8" size={32} />
-                  <h4 className="text-2xl font-black text-white mb-4 tracking-tight">{f.title}</h4>
-                  <p className="text-white/40 text-lg leading-relaxed font-medium">{f.desc}</p>
+                <div key={i} className="group/item">
+                  <f.icon className="text-brand-green/40 mb-6 group-hover/item:text-brand-green transition-colors" size={28} />
+                  <h4 className="text-xl font-bold text-white mb-3 tracking-tight">{f.title}</h4>
+                  <p className="text-white/30 text-base leading-relaxed font-medium group-hover/item:text-white/50 transition-colors">{f.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
 
 const Comparison = () => {
   const rows = [
@@ -569,202 +708,270 @@ const Comparison = () => {
   ];
 
   return (
-    <section className="py-40 lg:py-60 bg-brand-surface border-y border-white/5">
+    <section className="py-40 lg:py-60 bg-brand-surface border-y border-white/5 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="text-center mb-32">
-          <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter">Excel vs <span className="text-brand-green">TurfiPlay</span></h2>
-          <p className="text-2xl text-white/40 font-medium leading-relaxed">WhatsApp & Excel Are Fine. A Booking System Is Better.</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-32"
+        >
+          <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic">Excel vs <span className="text-brand-green">TurfiPlay</span></h2>
+          <p className="text-2xl text-white/30 font-medium leading-relaxed uppercase tracking-[0.2em]">The era of digital turf is here.</p>
+        </motion.div>
 
-        <div className="glass-card overflow-hidden border border-white/10 shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass-card overflow-hidden !p-0 border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.5)]"
+        >
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-bottom border-white/10 bg-white/5">
-                <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-white/40">Feature</th>
-                <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-white/40">WhatsApp/Excel</th>
-                <th className="p-10 text-sm font-black uppercase tracking-[0.3em] text-brand-green">TurfiPlay</th>
+              <tr className="border-b border-white/10 bg-white/[0.03]">
+                <th className="p-8 text-xs font-black uppercase tracking-[0.4em] text-white/30">Feature</th>
+                <th className="p-8 text-xs font-black uppercase tracking-[0.4em] text-white/30">WhatsApp/Excel</th>
+                <th className="p-8 text-xs font-black uppercase tracking-[0.4em] text-brand-green">TurfiPlay</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                  <td className="p-10 text-2xl font-black text-white tracking-tight">{row.feature}</td>
-                  <td className="p-10 text-xl text-white/40 font-medium">{row.old}</td>
-                  <td className="p-10 text-2xl text-brand-green font-black tracking-tight">{row.new}</td>
+                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors group">
+                  <td className="p-8 text-xl font-black text-white tracking-tight group-hover:text-brand-green transition-colors">{row.feature}</td>
+                  <td className="p-8 text-lg text-white/30 font-medium">{row.old}</td>
+                  <td className="p-8 text-xl text-brand-green font-black tracking-tight">{row.new}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
+
 const HowItWorks = () => {
-  const steps = [
-    { number: "01", title: "Login", desc: "Login with your mobile number. No complex setup required." },
-    { number: "02", title: "Add Booking", desc: "Enter customer details and pick a slot in seconds." },
-    { number: "03", title: "Track", desc: "Monitor your daily earnings and monthly revenue instantly." }
+  const userSteps = [
+    { title: "Map Discovery", desc: "Find nearby turfs directly on Google Maps integration.", icon: Map },
+    { title: "Select Slot", desc: "View real-time availability and pick your preferred time.", icon: Calendar },
+    { title: "Instant Booking", desc: "Secure your slot with integrated digital payments (Bkash/Nagad).", icon: Zap },
+    { title: "Booking History", desc: "Manage upcoming games and view all past transactions.", icon: LayoutDashboard }
+  ];
+
+  const ownerSteps = [
+    { title: "Turf Profile", desc: "Set up your turf with images, facilities, and dynamic pricing.", icon: MapPin },
+    { title: "Dynamic Slots", desc: "Manage pricing and availability for every single hour.", icon: Clock },
+    { title: "Handle Requests", desc: "Receive and confirm booking requests instantly via dashboard.", icon: MessageSquare },
+    { title: "Revenue Stats", desc: "Complete statistics of daily and monthly business growth.", icon: BarChart3 }
+  ];
+
+  const coreLogics = [
+    { title: "Real-time Sync", desc: "Instant 'Unavailable' status to prevent any double-bookings.", icon: ShieldCheck },
+    { title: "Automated Alerts", desc: "Confirmations and reminders for both User and Owner.", icon: Bell },
+    { title: "Central Control", desc: "Secure data handling and transaction protection.", icon: Globe }
   ];
 
   return (
-    <section id="how-it-works" className="py-24 lg:py-40 bg-brand-dark">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="text-center mb-40">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">How It Works</h2>
-          <p className="text-xl text-white/40 max-w-2xl mx-auto font-medium leading-relaxed">Designed for Real Turf Booking Situations.</p>
+    <section id="how-it-works" className="py-24 lg:py-40 bg-brand-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-green/5 blur-[200px] rounded-full pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 relative">
+        <div className="text-center mb-32">
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic">OUR <span className="text-brand-green">Ecosystem.</span></h2>
+          <p className="text-white/30 max-w-2xl mx-auto text-xl font-medium leading-relaxed uppercase tracking-[0.2em]">One bridge between Players and Turf Owners.</p>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-20 lg:gap-32 relative">
-          {steps.map((s, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="text-center group"
-            >
-              <div className="w-32 h-32 rounded-[3rem] bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-12 text-5xl font-black text-brand-green shadow-[0_0_40px_rgba(0, 168, 89, 0.15)] group-hover:scale-110 transition-transform">
-                {s.number}
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 mb-32">
+          {/* User Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="inline-flex items-center gap-4 bg-brand-green/10 border border-brand-green/20 px-6 py-3 rounded-2xl">
+              <Smartphone className="text-brand-green" size={20} />
+              <span className="text-sm font-black text-brand-green uppercase tracking-[0.2em]">For Players</span>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-8">
+              {userSteps.map((s, i) => (
+                <div key={i} className="glass-card !p-8 group hover:bg-white/[0.05] transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform">
+                    <s.icon className="text-brand-green" size={24} />
+                  </div>
+                  <h4 className="text-lg font-black text-white mb-3 uppercase italic tracking-tight">{s.title}</h4>
+                  <p className="text-sm text-white/40 leading-relaxed font-medium">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Owner Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="inline-flex items-center gap-4 bg-brand-green/10 border border-brand-green/20 px-6 py-3 rounded-2xl">
+              <LayoutDashboard className="text-brand-green" size={20} />
+              <span className="text-sm font-black text-brand-green uppercase tracking-[0.2em]">For Turf Owners</span>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-8">
+              {ownerSteps.map((s, i) => (
+                <div key={i} className="glass-card !p-8 group hover:bg-white/[0.05] transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform">
+                    <s.icon className="text-brand-green" size={24} />
+                  </div>
+                  <h4 className="text-lg font-black text-white mb-3 uppercase italic tracking-tight">{s.title}</h4>
+                  <p className="text-sm text-white/40 leading-relaxed font-medium">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Core Intelligence Footer */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass-card !p-12 border border-brand-green/20 shadow-[0_0_50px_rgba(0,168,89,0.05)]"
+        >
+          <div className="grid md:grid-cols-3 gap-12">
+            {coreLogics.map((log, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <div className="p-3 bg-brand-green/10 rounded-xl border border-brand-green/20">
+                  <log.icon className="text-brand-green" size={24} />
+                </div>
+                <div>
+                  <h5 className="text-white font-black uppercase italic tracking-tight mb-2">{log.title}</h5>
+                  <p className="text-sm text-white/30 font-medium leading-relaxed">{log.desc}</p>
+                </div>
               </div>
-              <h3 className="text-4xl font-black text-white mb-8 uppercase tracking-tighter">{s.title}</h3>
-              <p className="text-xl text-white/40 leading-relaxed font-medium">{s.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
 
 const Story = () => {
   return (
-    <section id="story" className="py-24 lg:py-40 bg-brand-surface relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+    <section id="story" className="py-24 lg:py-48 bg-brand-bg relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-grid" />
       </div>
-      
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 text-center relative z-10">
+
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-center"
         >
           <div className="inline-flex items-center gap-4 mb-16 px-6 py-3 rounded-full bg-brand-green/10 border border-brand-green/20">
-            <Star className="text-brand-green" size={20} />
-            <span className="text-sm font-black text-brand-green uppercase tracking-[0.4em]">A Common Turf Owner Story</span>
+            <Star className="text-brand-green animate-pulse" size={16} />
+            <span className="text-xs font-black text-brand-green uppercase tracking-[0.4em]">Real Stories, Real Challenges</span>
           </div>
-          
-          <h2 className="text-5xl md:text-8xl font-black text-white mb-12 italic leading-none tracking-tighter text-center">
-            "The WhatsApp <br /> Nightmare"
+
+          <h2 className="text-6xl md:text-9xl font-black text-white mb-20 italic leading-none tracking-tighter text-center uppercase">
+            The WhatsApp <br /> <span className="text-brand-green">Nightmare.</span>
           </h2>
-          
-          <div className="space-y-12 text-lg md:text-xl text-white/60 leading-relaxed font-medium max-w-4xl mx-auto text-center">
-            <p>
-              It’s Friday evening. Your phone is buzzing every 2 minutes. 
-              Five different people are asking for the 8 PM slot. 
-              You're scrolling through WhatsApp, trying to remember if you already promised it to someone else.
+
+          <div className="space-y-24 text-2xl md:text-3xl text-white/40 leading-relaxed font-medium max-w-5xl mx-auto text-center">
+            <p className="hover:text-white/60 transition-colors duration-700">
+              It’s Friday evening. Your phone is buzzing every 2 minutes. Five different people are asking for the 8 PM slot. You're scrolling through WhatsApp, trying to remember if you already promised it to someone else.
             </p>
-            <p className="text-white text-xl md:text-2xl font-black tracking-tight">
-              You write it down in a notebook, but then someone calls to cancel. 
-              You forget to cross it out. Another team calls, you tell them it's full. 
-              Later, you realize the slot went empty. That's ৳1,500 lost.
+
+            <motion.p
+              whileInView={{ scale: [0.98, 1], opacity: [0, 1] }}
+              className="text-white text-3xl md:text-5xl font-black tracking-tighter leading-tight italic"
+            >
+              You write it down in a notebook, but then someone calls to cancel. You forget to cross it out. Another team calls, you tell them it's full. <br />
+              <span className="text-white/20">Later, you realize the slot went empty.</span>
+            </motion.p>
+
+            <p className="hover:text-white/60 transition-colors duration-700">
+              "Is the slot free?", "Can I get a discount?", "Where is the location?". The endless phone calls never stop. You're a turf owner, not a call center agent.
             </p>
-            <p>
-              TurfiPlay was built to end this chaos. No more scrolling through messages. 
-              No more double booking stress. Just a clean dashboard that locks slots instantly 
-              and tracks every Taka you earn.
+
+
+            <p className="text-white/80 font-black text-3xl md:text-4xl leading-tight">
+              TurfiPlay was built to end this chaos. No more scrolling through messages. No more endless, distracting calls. Just one dashboard to rule them all.
             </p>
-            <p className="text-brand-green font-black text-2xl md:text-5xl tracking-tighter">
-              Run Your Turf Professionally.
+
+            <p className="text-brand-green font-black text-3xl md:text-6xl tracking-tighter pt-12 animate-pulse-slow">
+              RUN YOUR TURF LIKE A PRO.
             </p>
           </div>
         </motion.div>
-
-        <div className="mt-24 pt-24 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-12">
-          {[
-            { label: "Turf Owners", val: "50+" },
-            { label: "Slots Locked", val: "10k+" },
-            { label: "Revenue Tracked", val: "৳5M+" },
-            { label: "Stress Level", val: "0%" }
-          ].map((stat, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <div className="text-5xl md:text-7xl font-black text-brand-green mb-4 tracking-tighter">{stat.val}</div>
-              <div className="text-sm font-black text-white/40 uppercase tracking-[0.4em]">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
 };
+
 
 const StayTuned = () => {
   return (
-    <section className="py-24 lg:py-40 bg-brand-dark relative overflow-hidden">
+    <section className="py-24 lg:py-48 bg-brand-navy relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-green/5 blur-[150px] rounded-full pointer-events-none" />
+
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-4 mb-16 px-6 py-3 rounded-full bg-brand-green/10 border border-brand-green/20">
-            <Zap className="text-brand-green" size={20} />
-            <span className="text-sm font-black text-brand-green uppercase tracking-[0.4em]">Don't Miss Out</span>
+          <div className="inline-flex items-center gap-4 mb-12 px-6 py-3 rounded-full bg-brand-green/10 border border-brand-green/20">
+            <Zap className="text-brand-green animate-pulse" size={16} />
+            <span className="text-xs font-black text-brand-green uppercase tracking-[0.4em]">Follow the Journey</span>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 italic uppercase tracking-tighter">
-            Stay <span className="text-brand-green neon-glow">Tuned</span>
-          </h2>
-          
-          <p className="text-xl text-white/40 mb-20 max-w-3xl mx-auto font-medium leading-relaxed">
-            We're building something massive. Follow our journey on social media to get exclusive behind-the-scenes, launch dates, and early-bird discounts.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-12 lg:gap-20">
-            <a 
-              href="#" 
-              className="group relative px-16 py-12 bg-white/5 border border-white/10 rounded-[4rem] flex items-center gap-10 hover:border-brand-green/50 transition-all overflow-hidden hover:scale-[1.02]"
-            >
-              <div className="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-24 h-24 rounded-[2.5rem] bg-brand-green/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Facebook size={48} className="text-brand-green" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-black text-white/40 uppercase tracking-[0.3em] mb-3">Join the community</p>
-                <p className="text-4xl font-black text-white tracking-tighter">Facebook</p>
-              </div>
-              <ChevronRight className="text-white/20 group-hover:text-brand-green group-hover:translate-x-3 transition-all" size={40} />
-            </a>
 
-            <a 
-              href="#" 
-              className="group relative px-16 py-12 bg-white/5 border border-white/10 rounded-[4rem] flex items-center gap-10 hover:border-brand-green/50 transition-all overflow-hidden hover:scale-[1.02]"
-            >
-              <div className="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-24 h-24 rounded-[2.5rem] bg-brand-green/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Instagram size={48} className="text-brand-green" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-black text-white/40 uppercase tracking-[0.3em] mb-3">See the action</p>
-                <p className="text-4xl font-black text-white tracking-tighter">Instagram</p>
-              </div>
-              <ChevronRight className="text-white/20 group-hover:text-brand-green group-hover:translate-x-3 transition-all" size={40} />
-            </a>
+          <h2 className="text-5xl md:text-8xl font-black text-white mb-8 italic uppercase tracking-tighter">
+            Stay <span className="text-brand-green">Tuned.</span>
+          </h2>
+
+          <p className="text-xl text-white/30 mb-24 max-w-3xl mx-auto font-medium leading-relaxed uppercase tracking-widest">
+            We're building the future of sports management. Join the inner circle for exclusive updates.
+          </p>
+
+          <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-12">
+            {[
+              { name: "Facebook", icon: Facebook, sub: "Join the community" },
+              { name: "Instagram", icon: Instagram, sub: "See the action" }
+            ].map((social, i) => (
+              <motion.a
+                key={i}
+                href="#"
+                whileHover={{ y: -10 }}
+                className="glass-card flex items-center gap-10 !p-10 group min-w-[320px]"
+              >
+                <div className="w-20 h-20 rounded-2xl bg-brand-green/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-green/20 transition-all duration-500">
+                  <social.icon size={36} className="text-brand-green" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] mb-2">{social.sub}</p>
+                  <p className="text-3xl font-black text-white tracking-tighter group-hover:text-brand-green transition-colors">{social.name}</p>
+                </div>
+                <ChevronRight className="ml-auto text-white/10 group-hover:text-brand-green group-hover:translate-x-2 transition-all" size={24} />
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </div>
     </section>
   );
 };
+
 
 const Waitlist = () => {
   const [email, setEmail] = useState('');
@@ -781,75 +988,70 @@ const Waitlist = () => {
   };
 
   return (
-    <section className="py-24 lg:py-40 relative overflow-hidden bg-brand-dark">
+    <section className="py-24 lg:py-50 relative overflow-hidden bg-brand-bg">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-green/5 blur-[200px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-green/5 blur-[250px] rounded-full" />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24 text-center">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card p-20 lg:p-40 border border-white/10 relative overflow-hidden"
+          transition={{ duration: 1 }}
+          className="glass-card !p-12 lg:!p-20 border-white/10 relative overflow-hidden text-center group max-w-5xl mx-auto"
         >
-          <div className="absolute top-0 left-0 w-full h-3 bg-brand-green shadow-[0_0_30px_rgba(0, 168, 89, 0.6)]" />
-          
-          <h2 className="text-5xl md:text-8xl font-black text-white mb-10 leading-none tracking-tighter">
+          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-brand-green to-transparent shadow-[0_0_30px_rgba(0,168,89,0.5)]" />
+
+          <h2 className="text-4xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
             Ready to Run <br />
-            <span className="text-brand-green">Your Turf?</span>
+            <span className="text-brand-green text-gradient">Your Turf?</span>
           </h2>
-          <p className="text-xl md:text-2xl text-white/60 mb-20 max-w-3xl mx-auto leading-relaxed font-medium">
-            We're launching soon. Be the first to experience a professional booking system built for sports turf owners.
+
+          <p className="text-xl text-white/30 mb-20 max-w-2xl mx-auto font-medium leading-relaxed">
+            The era of manual management is over. Be among the first to experience TurfiPlay in Bangladesh.
           </p>
 
-          <AnimatePresence mode="wait">
-            {!submitted ? (
-              <motion.form 
-                key="form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onSubmit={handleSubmit}
-                className="space-y-12 max-w-2xl mx-auto"
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-6 px-8 text-white focus:outline-none focus:border-brand-green/50 focus:bg-white/[0.05] transition-all placeholder:text-white/20 font-bold"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-6 px-8 text-white focus:outline-none focus:border-brand-green/50 focus:bg-white/[0.05] transition-all placeholder:text-white/20 font-bold"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full btn-primary !py-8 !text-2xl uppercase tracking-widest italic"
               >
-                <div className="space-y-8">
-                  <input 
-                    type="email" 
-                    placeholder="Email Address"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-12 py-8 bg-white/5 border border-white/10 rounded-[2.5rem] focus:outline-none focus:border-brand-green transition-all text-2xl text-white font-medium"
-                  />
-                  <input 
-                    type="tel" 
-                    placeholder="Phone Number (Optional)"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-12 py-8 bg-white/5 border border-white/10 rounded-[2.5rem] focus:outline-none focus:border-brand-green transition-all text-2xl text-white font-medium"
-                  />
-                </div>
-                <button className="w-full py-6 bg-brand-green text-black font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all text-2xl shadow-[0_0_50px_rgba(0, 168, 89, 0.3)] uppercase tracking-tighter">
-                  Notify Me
-                </button>
-                <p className="text-white/20 text-base font-black uppercase tracking-[0.4em]">No spam. Only game updates.</p>
-              </motion.form>
-            ) : (
-              <motion.div 
-                key="success"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-20 bg-brand-green/10 border border-brand-green/20 rounded-[4rem] text-brand-green text-center"
-              >
-                <div className="w-32 h-32 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(0, 168, 89, 0.4)]">
-                  <CheckCircle2 size={64} className="text-black" />
-                </div>
-                <h3 className="text-6xl font-black mb-6 tracking-tighter">You're In!</h3>
-                <p className="text-3xl text-brand-green/60 font-black tracking-tight">We'll notify you the moment we go live.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                Claim Early Access
+              </button>
+            </form>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="py-20"
+            >
+              <div className="w-24 h-24 bg-brand-green/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-brand-green/30">
+                <CheckCircle2 size={48} className="text-brand-green" />
+              </div>
+              <h3 className="text-4xl font-black text-white mb-6 uppercase italic">You're on the list!</h3>
+              <p className="text-xl text-white/40 font-medium">We'll reach out to you as soon as we're ready for Liftoff.</p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>
@@ -858,69 +1060,62 @@ const Waitlist = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-40 lg:py-60 bg-brand-dark border-t border-white/5">
+    <footer className="pt-48 lg:pt-[420px] pb-10 lg:pb-16 bg-brand-bg border-t border-white/5 relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
-        <div className="grid md:grid-cols-4 gap-24 lg:gap-40 mb-40">
-          <div className="col-span-2">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-14 h-14 bg-brand-green rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(0, 168, 89, 0.4)]">
-                <Zap className="text-black fill-black" size={28} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-24">
+          <div className="lg:col-span-2">
+            <div
+              className="flex items-center gap-3 mb-8 cursor-pointer group w-fit"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <div className="w-10 h-10 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,168,89,0.3)] group-hover:scale-110 transition-transform duration-500">
+                <Zap className="text-black fill-black" size={20} />
               </div>
-              <span className="text-4xl font-black tracking-tighter text-white">
-                TURFI<span className="text-brand-green">PLAY</span>
+              <span className="text-2xl tracking-[-0.05em] text-white select-none">
+                <span className="font-extralight opacity-80">Turfi</span>
+                <span className="font-black text-brand-green italic drop-shadow-[0_0_15px_rgba(0,168,89,0.4)]">Play</span>
               </span>
             </div>
-            <p className="text-white/40 max-w-lg mb-16 text-2xl leading-relaxed font-medium">
-              A professional booking & revenue system built for sports turf owners who manage bookings daily.
+            <p className="text-lg text-white/30 max-w-md leading-relaxed font-medium mb-12">
+              The professional management system for sports turf owners. Built for speed, accuracy, and growth.
             </p>
-            <div className="flex gap-10">
+            <div className="flex gap-6">
               {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-16 h-16 rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-black transition-all group">
-                  <Icon size={30} className="text-white/60 group-hover:text-black" />
+                <a key={i} href="#" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-green hover:text-black transition-all group">
+                  <Icon size={20} className="text-white/40 group-hover:text-black" />
                 </a>
               ))}
             </div>
           </div>
-          
+
           <div>
-            <h4 className="text-sm font-black text-white uppercase tracking-[0.4em] mb-12">Platform</h4>
-            <ul className="space-y-8 text-white/40 font-black text-base uppercase tracking-widest">
-              <li><a href="#" className="hover:text-brand-green transition-colors">For Players</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">For Turf Owners</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">Pricing</a></li>
+            <h4 className="text-xs font-black text-white uppercase tracking-[0.4em] mb-10">Platform</h4>
+            <ul className="space-y-6 text-white/30 font-bold uppercase tracking-widest text-[13px]">
+              <li><a href="#" className="hover:text-brand-green transition-colors">Features</a></li>
+              <li><a href="#" className="hover:text-brand-green transition-colors">How It Works</a></li>
               <li><a href="#" className="hover:text-brand-green transition-colors">Waitlist</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-black text-white uppercase tracking-[0.4em] mb-12">Contact</h4>
-            <ul className="space-y-10 text-white/40 font-black text-base">
-              <li className="flex items-center gap-8">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <Mail size={26} className="text-brand-green" />
-                </div>
-                hello@turfiplay.com
+            <h4 className="text-xs font-black text-white uppercase tracking-[0.4em] mb-10">Contact</h4>
+            <ul className="space-y-6 text-white/30 font-bold text-[15px]">
+              <li className="flex items-center gap-4">
+                <Mail size={16} className="text-brand-green" />
+                rimon124567@gmail.com
               </li>
-              <li className="flex items-center gap-8">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                  <MapPin size={26} className="text-brand-green" />
-                </div>
-                Dhaka, Bangladesh
+              <li className="flex items-center gap-4">
+                <MapPin size={16} className="text-brand-green" />
+                DHAKA, BANGLADESH
               </li>
             </ul>
-          </div>
-        </div>
-        
-        <div className="pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-white/20 text-xs font-black uppercase tracking-[0.5em]">
-          <div>© {new Date().getFullYear()} TurfiPlay. All rights reserved.</div>
-          <div className="flex items-center gap-4">
-            MADE WITH <span className="text-red-500 animate-pulse">❤️</span> IN BANGLADESH
           </div>
         </div>
       </div>
     </footer>
   );
 };
+
 
 // --- Main App ---
 
@@ -931,10 +1126,10 @@ export default function App() {
       <main>
         <Hero />
         <Problem />
-        <Solution />
-        <Features />
-        <Comparison />
         <HowItWorks />
+        <Features />
+        <ManagementFeatures />
+        <Comparison />
         <Story />
         <StayTuned />
         <Waitlist />
