@@ -64,15 +64,15 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-12">
           <a href="#problem" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Problem</a>
-          <a href="#features" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
           <a href="#how-it-works" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Process</a>
+          <a href="#features" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
           <a href="#story" className="text-[15px] font-black text-white/60 hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Our Story</a>
         </div>
 
         <div className="hidden md:flex items-center">
-          <button className="px-8 py-3.5 bg-brand-green text-black font-black rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(0, 168, 89, 0.2)] uppercase tracking-tighter text-xs">
+          <a href="#waitlist" className="px-8 py-3.5 bg-brand-green text-black font-black rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(0, 168, 89, 0.2)] uppercase tracking-tighter text-xs inline-block">
             Join Waitlist
-          </button>
+          </a>
         </div>
 
         <div className="md:hidden">
@@ -93,12 +93,12 @@ const Navbar = () => {
           >
             <div className="px-6 py-8 space-y-6">
               <a href="#problem" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white uppercase">Problem</a>
-              <a href="#features" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white uppercase">Features</a>
               <a href="#how-it-works" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white uppercase">Process</a>
+              <a href="#features" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white uppercase">Features</a>
               <a href="#story" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white uppercase">Our Story</a>
-              <button className="w-full py-4 bg-brand-green text-black font-black rounded-2xl uppercase tracking-tighter">
+              <a href="#waitlist" onClick={() => setIsOpen(false)} className="block w-full text-center py-4 bg-brand-green text-black font-black rounded-2xl uppercase tracking-tighter">
                 Join Waitlist
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -623,7 +623,7 @@ const ManagementFeatures = () => {
   ];
 
   return (
-    <section id="features" className="py-24 lg:py-40 bg-brand-navy relative">
+    <section id="management" className="py-24 lg:py-40 bg-brand-navy relative">
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-24">
@@ -988,7 +988,7 @@ const Waitlist = () => {
   };
 
   return (
-    <section className="py-24 lg:py-50 relative overflow-hidden bg-brand-bg">
+    <section id="waitlist" className="py-24 lg:py-50 relative overflow-hidden bg-brand-bg">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-green/5 blur-[250px] rounded-full" />
       </div>
@@ -1091,9 +1091,9 @@ const Footer = () => {
           <div>
             <h4 className="text-xs font-black text-white uppercase tracking-[0.4em] mb-10">Platform</h4>
             <ul className="space-y-6 text-white/30 font-bold uppercase tracking-widest text-[13px]">
-              <li><a href="#" className="hover:text-brand-green transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">How It Works</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">Waitlist</a></li>
+              <li><a href="#how-it-works" className="hover:text-brand-green transition-colors">Process</a></li>
+              <li><a href="#features" className="hover:text-brand-green transition-colors">Features</a></li>
+              <li><a href="#waitlist" className="hover:text-brand-green transition-colors">Waitlist</a></li>
             </ul>
           </div>
 
