@@ -7,32 +7,32 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-20 px-6 pt-1 md:pt-1">
-      <nav className="max-w-[1880px] mx-auto glass-card px-8 py-0.5 flex justify-between items-center border border-white/10 shadow-2xl">
+    <div className="fixed top-0 left-6 right-6 md:left-[10%] md:right-[10%] lg:left-[18%] lg:right-[18%] z-20 pt-4 md:pt-8">
+      <nav className="glass-card px-6 py-0.5 flex justify-between items-center border border-white/10 shadow-2xl">
         <div
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-8 h-8 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,168,89,0.3)] group-hover:scale-110 transition-transform duration-500">
-            <Zap className="text-black fill-black" size={16} />
+          <div className="w-7 h-7 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,168,89,0.3)] group-hover:scale-110 transition-transform duration-500">
+            <Zap className="text-black fill-black" size={14} />
           </div>
-          <span className="text-lg tracking-[-0.05em] text-[var(--text-primary)] select-none">
+          <span className="text-base tracking-[-0.05em] text-[var(--text-primary)] select-none">
             <span className="font-extralight opacity-80">Turfi</span>
             <span className="font-black text-brand-green italic drop-shadow-[0_0_15px_rgba(0,168,89,0.4)]">Play</span>
           </span>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <a href="#about" className="text-[13px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">About</a>
-          <a href="#features" className="text-[13px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
-          <a href="#pricing" className="text-[13px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Pricing</a>
-          <a href="#testimonials" className="text-[13px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Testimonials</a>
-          <a href="#contact" className="text-[13px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Contact</a>
+          <a href="#about" className="text-[12px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">About</a>
+          <a href="#features" className="text-[12px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Features</a>
+          <a href="#pricing" className="text-[12px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Pricing</a>
+          <a href="#testimonials" className="text-[12px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Testimonials</a>
+          <a href="#contact" className="text-[12px] font-black text-[var(--text-secondary)] hover:text-brand-green transition-colors uppercase tracking-[0.3em]">Contact</a>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
-          <a href="#waitlist" className="px-5 py-1.5 bg-brand-green text-black font-black rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(0, 168, 89, 0.2)] uppercase tracking-tighter text-xs inline-block">
+          <a href="#waitlist" className="px-4 py-1.5 bg-brand-green text-black font-black rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(0, 168, 89, 0.2)] uppercase tracking-tighter text-[10px] inline-block">
             Join Waitlist
           </a>
         </div>
