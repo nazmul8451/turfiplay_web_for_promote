@@ -79,21 +79,13 @@
 }
 
 .neon-glow {
-  @apply relative;
+  @apply relative inline-block;
+  text-shadow: 0 0 20px rgba(0, 168, 89, 0.4), 0 0 40px rgba(0, 168, 89, 0.15);
 }
 
 .neon-glow::after {
   content: '';
-  @apply absolute -inset-1 bg-brand-green/20 blur-2xl rounded-full -z-10 opacity-0 transition-opacity duration-500;
-}
-
-.neon-glow:hover::after {
-  @apply opacity-100;
-}
-
-
-.neon-glow {
-  box-shadow: 0 0 20px rgba(0, 168, 89, 0.2);
+  @apply absolute -inset-10 bg-brand-green/10 blur-[80px] rounded-full -z-10 opacity-70 pointer-events-none;
 }
 
 .no-scrollbar::-webkit-scrollbar {

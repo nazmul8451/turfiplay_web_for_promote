@@ -36,9 +36,9 @@ export const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <h1 className="hero-heading mb-12 leading-[1.05] text-6xl md:text-8xl lg:text-[110px] tracking-tighter">
-              Run Your Turf <br />
-              Without <br />
+            <h1 className="hero-heading mb-12 leading-[1.1] text-4xl sm:text-6xl md:text-8xl lg:text-[105px] tracking-tight">
+              Run Your Turf <br className="hidden sm:inline" />
+              Without <br className="hidden md:inline" />
               <span className="text-brand-green neon-glow">Booking Stress.</span>
             </h1>
 
