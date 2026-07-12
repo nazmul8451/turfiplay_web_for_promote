@@ -5,20 +5,14 @@ import { Sun, Moon } from 'lucide-react';
 export const ThemeContext = createContext<{ theme: string, toggleTheme: () => void }>({ theme: 'dark', toggleTheme: () => { } });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark';
-    }
-    return 'dark';
-  });
+  const theme = 'dark';
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    // Toggling is disabled
   };
 
   return (

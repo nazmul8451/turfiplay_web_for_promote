@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Zap, ArrowRight } from 'lucide-react';
-import { ThemeToggle } from '../Theme/ThemeContext';
+import { ArrowRight } from 'lucide-react';
+import logoImg from '../../assets/images/sports/Layer_1.png';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,16 +81,15 @@ export const Navbar = () => {
       }`}>
         {/* Logo */}
         <div
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center cursor-pointer group"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-8 h-8 bg-brand-green rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,168,89,0.3)] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,168,89,0.5)] transition-all duration-500">
-            <Zap className="text-black fill-black" size={14} />
-          </div>
-          <span className="text-base tracking-[-0.05em] text-[var(--text-primary)] select-none">
-            <span className="font-extralight opacity-80">Turfi</span>
-            <span className="font-black text-brand-green italic drop-shadow-[0_0_15px_rgba(0,168,89,0.4)]">Play</span>
-          </span>
+          <img
+            src={logoImg}
+            alt="TurfiPlay Logo"
+            className="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            style={{ mixBlendMode: 'multiply' }}
+          />
         </div>
 
         {/* Desktop Links */}
@@ -148,7 +147,6 @@ export const Navbar = () => {
 
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
           <a
             href="#waitlist"
             className="group relative overflow-hidden px-5 py-2 bg-brand-green text-black font-black rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(0,168,89,0.2)] hover:shadow-[0_0_30px_rgba(0,168,89,0.4)] hover:scale-[1.03] uppercase tracking-wider text-[10px] flex items-center gap-1.5"
@@ -160,7 +158,6 @@ export const Navbar = () => {
 
         {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-4">
-          <ThemeToggle />
           {/* Custom morphing hamburger menu icon */}
           <button
             onClick={() => setIsOpen(!isOpen)}
