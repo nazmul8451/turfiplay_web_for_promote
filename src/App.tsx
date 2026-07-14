@@ -29,8 +29,8 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <About />
-          <Problem />
+          {/* <About /> */}
+          {/* <Problem /> */}
           <HowItWorks />
           <Features />
           <ManagementFeatures />
