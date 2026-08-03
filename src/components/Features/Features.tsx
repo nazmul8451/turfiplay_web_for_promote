@@ -4,7 +4,7 @@ import { Star, LayoutDashboard, Zap, ShieldCheck, MapPin, CreditCard, BarChart3,
 import { ComingSoonModal } from '../Modals/ComingSoonModal';
 
 export const Features = () => {
-  const [modalData, setModalData] = useState<{ isOpen: boolean, title: string }>({ isOpen: false, title: '' });
+  const [modalData, setModalData] = useState<{ isOpen: boolean; title: string }>({ isOpen: false, title: '' });
 
   const features = [
     {
@@ -13,7 +13,7 @@ export const Features = () => {
       icon: LayoutDashboard,
       delay: 0.1,
       gridClass: "md:col-span-2 md:row-span-2",
-      gradient: "from-brand-green/20 via-transparent to-transparent",
+      gradient: "from-[#00A859]/15 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -22,7 +22,7 @@ export const Features = () => {
       icon: Zap,
       delay: 0.2,
       gridClass: "md:col-span-1 md:row-span-1",
-      gradient: "from-blue-500/10 via-transparent to-transparent",
+      gradient: "from-[#00A859]/10 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -31,7 +31,7 @@ export const Features = () => {
       icon: ShieldCheck,
       delay: 0.3,
       gridClass: "md:col-span-1 md:row-span-1",
-      gradient: "from-purple-500/10 via-transparent to-transparent",
+      gradient: "from-[#00A859]/10 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -40,7 +40,7 @@ export const Features = () => {
       icon: MapPin,
       delay: 0.4,
       gridClass: "md:col-span-1 md:row-span-2",
-      gradient: "from-orange-500/10 via-transparent to-transparent",
+      gradient: "from-[#00A859]/10 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -49,7 +49,7 @@ export const Features = () => {
       icon: CreditCard,
       delay: 0.5,
       gridClass: "md:col-span-1 md:row-span-1",
-      gradient: "from-brand-green/10 via-transparent to-transparent",
+      gradient: "from-[#00A859]/10 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -58,7 +58,7 @@ export const Features = () => {
       icon: BarChart3,
       delay: 0.6,
       gridClass: "md:col-span-2 md:row-span-1",
-      gradient: "from-brand-green/20 via-transparent to-transparent",
+      gradient: "from-[#00A859]/15 via-transparent to-transparent",
       isComingSoon: true
     },
     {
@@ -67,40 +67,34 @@ export const Features = () => {
       icon: Bell,
       delay: 0.7,
       gridClass: "md:col-span-1 md:row-span-1",
-      gradient: "from-yellow-500/10 via-transparent to-transparent",
+      gradient: "from-[#00A859]/10 via-transparent to-transparent",
       isComingSoon: true
     }
   ];
 
   return (
-    <section id="features" className="py-24 lg:py-48 bg-brand-bg relative overflow-hidden">
+    <section id="features" className="py-20 lg:py-32 bg-[#F8FAFC] relative overflow-hidden">
       <ComingSoonModal
         isOpen={modalData.isOpen}
         onClose={() => setModalData({ ...modalData, isOpen: false })}
         title={modalData.title}
       />
 
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-green/5 blur-[250px] rounded-full" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-brand-green/5 blur-[250px] rounded-full" />
-      </div>
-
-      <div className="max-w-[1880px] mx-auto px-10 md:px-[10%] lg:px-[12%]">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20 lg:mb-32">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-4 mb-8 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/20">
-              <Star className="text-brand-green animate-pulse" size={14} />
-              <span className="text-[10px] font-black text-brand-green uppercase tracking-[0.4em]">Feature Ecosystem</span>
+            <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-[#00A859]/10 border border-[#00A859]/20">
+              <Star className="text-[#00A859] animate-pulse" size={14} />
+              <span className="text-xs font-extrabold text-[#00A859] uppercase tracking-[0.2em]">Feature Ecosystem</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-black text-[var(--text-primary)] tracking-tighter uppercase italic leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight uppercase leading-[0.95]">
               Everything <br />
-              <span className="text-brand-green neon-glow">to Win.</span>
+              <span className="font-serif italic text-[#00A859] lowercase font-normal">to win.</span>
             </h2>
           </motion.div>
 
@@ -108,15 +102,15 @@ export const Features = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:text-right max-w-lg"
+            className="lg:text-right max-w-md"
           >
-            <p className="text-lg md:text-xl text-[var(--text-secondary)] font-medium leading-relaxed uppercase tracking-widest">
+            <p className="text-base text-slate-600 font-medium leading-relaxed">
               Stop surviving in chaos. Start thriving with Bangladesh's most advanced turf management infrastructure.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {features.map((feature, i) => (
             <motion.div
               key={i}
@@ -125,33 +119,30 @@ export const Features = () => {
               viewport={{ once: true }}
               transition={{ delay: feature.delay, duration: 0.5 }}
               onClick={() => feature.isComingSoon && setModalData({ isOpen: true, title: feature.title })}
-              className={`glass-card !p-0 group transition-all duration-700 relative overflow-hidden flex flex-col ${feature.gridClass} ${feature.isComingSoon ? 'cursor-pointer' : ''}`}
+              className={`glass-card !p-0 group transition-all duration-500 relative overflow-hidden flex flex-col bg-white border-[#00A859]/18 shadow-sm hover:shadow-lg hover:border-[#00A859]/40 ${feature.gridClass} ${feature.isComingSoon ? 'cursor-pointer' : ''}`}
             >
-              {/* Mesh Gradient Effect */}
-              <div className={`absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-bl ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10`} />
+              <div className={`absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-bl ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10`} />
               
-              <div className="p-10 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:border-brand-green/40 group-hover:scale-110 group-hover:bg-brand-green/5 transition-all duration-500 shadow-xl group-hover:shadow-brand-green/10">
-                    <feature.icon className="text-brand-green" size={28} />
+              <div className="p-8 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-14 h-14 bg-[#00A859]/10 border border-[#00A859]/20 rounded-2xl flex items-center justify-center group-hover:border-[#00A859] group-hover:bg-[#00A859] group-hover:text-white transition-all duration-300 shadow-sm">
+                    <feature.icon className="text-[#00A859] group-hover:text-white transition-colors" size={24} />
                   </div>
                   {feature.isComingSoon && (
-                    <div className="text-[9px] font-black text-brand-green/40 uppercase tracking-[0.2em] group-hover:text-brand-green transition-colors">
-                      Reserved
+                    <div className="text-[10px] font-extrabold text-[#00A859] uppercase tracking-wider bg-[#00A859]/10 px-3 py-1 rounded-full border border-[#00A859]/20">
+                      Coming Soon
                     </div>
                   )}
                 </div>
 
                 <div className="mt-auto">
-                  <h3 className="text-2xl font-black text-[var(--text-primary)] mb-4 tracking-tighter uppercase italic group-hover:text-brand-green transition-colors">
+                  <h3 className="text-xl font-extrabold text-slate-900 mb-2 uppercase tracking-tight group-hover:text-[#00A859] transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-[15px] text-[var(--text-secondary)] font-medium leading-[1.6] group-hover:text-[var(--text-primary)] transition-colors duration-500">
+                  <p className="text-xs text-slate-600 font-medium leading-relaxed">
                     {feature.desc}
                   </p>
                 </div>
-
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-green to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
             </motion.div>
           ))}

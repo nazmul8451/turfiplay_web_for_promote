@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
-import mockup2 from '../../assets/images/mockup2.jpg';
-import exploreImg from '../../assets/images/sports/explore.png';
-import ownSiteImg from '../../assets/images/sports/own_site.png';
-import bgImage from '../../assets/images/sports/bg.png';
+import { ChevronDown, ArrowRight } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import homeMockImg from '../../assets/homemock.png';
 import appstoreImg from '../../assets/images/sports/appstore.png';
 import playstoreImg from '../../assets/images/sports/palystore.png';
+import { AppStoreModal } from '../Modals/AppStoreModal';
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* ── tiny canvas particle system ── */
 const ParticleCanvas = () => {
@@ -26,13 +28,13 @@ const ParticleCanvas = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    const particles = Array.from({ length: 60 }, () => ({
+    const particles = Array.from({ length: 45 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.3,
-      dx: (Math.random() - 0.5) * 0.4,
-      dy: -Math.random() * 0.5 - 0.1,
-      opacity: Math.random() * 0.4 + 0.1,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: -Math.random() * 0.4 - 0.1,
+      opacity: Math.random() * 0.35 + 0.1,
     }));
 
     const draw = () => {
@@ -57,61 +59,8 @@ const ParticleCanvas = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />;
 };
-
-/* ── phone mockup component ── */
-const Phone = ({
-  src, alt, rotate, scale, zIndex, delay, x, y, opacity = 1
-}: {
-  src: string; alt: string; rotate: number; scale: number;
-  zIndex: number; delay: number; x: number; y: number; opacity?: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 60, rotate: rotate * 0.5 }}
-    animate={{ opacity, y: 0, rotate }}
-    transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
-    style={{
-      scale,
-      zIndex,
-      x,
-      y,
-      transformStyle: 'preserve-3d',
-      backfaceVisibility: 'hidden',
-      willChange: 'transform',
-    }}
-    className="absolute"
-  >
-    <div
-      className="w-[230px] sm:w-[260px] md:w-[295px] aspect-[9/19.5] bg-[#0A0A0A] rounded-[3rem] p-[10px] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
-      style={{
-        transform: 'translate3d(0, 0, 0)',
-        backfaceVisibility: 'hidden',
-      }}
-    >
-      {/* Screen */}
-      <div
-        className="w-full h-full rounded-[2.4rem] overflow-hidden bg-black relative"
-        style={{
-          transform: 'translate3d(0, 0, 0)',
-          WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-        }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover"
-          style={{
-            imageRendering: '-webkit-optimize-contrast',
-            transform: 'translate3d(0, 0, 0)',
-          }}
-        />
-      </div>
-      {/* Glow under phone */}
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-brand-green/25 blur-xl rounded-full" />
-    </div>
-  </motion.div>
-);
 
 /* ── stat item ── */
 const Stat = ({ value, label, delay }: { value: string; label: string; delay: number }) => (
@@ -121,78 +70,82 @@ const Stat = ({ value, label, delay }: { value: string; label: string; delay: nu
     transition={{ duration: 0.6, delay }}
     className="flex flex-col"
   >
-    <span className="text-3xl md:text-4xl font-black text-white tracking-tighter">{value}</span>
-    <span className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] mt-1">{label}</span>
+    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">{value}</span>
+    <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em] mt-1">{label}</span>
   </motion.div>
 );
 
 /* ══════════════════════════════════════════════
-   HERO
+   HERO (Clean Main Home Mockup Display)
 ══════════════════════════════════════════════ */
 export const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+  const containerRef = useRef<HTMLDivElement>(null);
+  const centerPhoneRef = useRef<HTMLDivElement>(null);
+  const [isAppStoreModalOpen, setIsAppStoreModalOpen] = useState(false);
 
-      {/* ── BACKGROUND IMAGE ── */}
-      <div className="absolute inset-0 z-0">
-        {/* The turf image */}
-        <img
-          src={bgImage}
-          alt="Turf background"
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Strong dark overlay so text is readable */}
-        <div className="absolute inset-0 bg-black/70" />
-        {/* Green tint from bottom (turf glow) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-green/15 via-transparent to-black/40" />
-        {/* Left side darkening for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
-        {/* Particles on top */}
+  useEffect(() => {
+    if (!containerRef.current || !centerPhoneRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Center main phone ScrollTrigger elevation & scale
+      gsap.to(centerPhoneRef.current, {
+        scale: 1.08,
+        y: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F6FBF8] to-[#FFFFFF] pt-20">
+
+      {/* ── LIGHT AMBIENT BACKGROUND GLOW ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[550px] bg-gradient-to-tr from-[#00A859]/10 via-[#00A859]/5 to-transparent blur-[120px] rounded-full" />
+        <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#00A859]/8 blur-[100px] rounded-full" />
         <ParticleCanvas />
       </div>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-32 pb-24 w-full">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-28 pb-20 w-full">
         <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0">
 
           {/* ── LEFT: TEXT ── */}
           <div className="flex-1 lg:max-w-[55%]">
 
+            {/* Launching soon badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-6"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse" />
+              <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
+                Bangladesh's #1 Turf SaaS Platform 🇧🇩
+              </span>
+            </motion.div>
 
             {/* Main heading */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="font-black uppercase tracking-tighter leading-[0.9] mb-8">
-                <span
-                  className="block text-[clamp(2rem,5vw,3.8rem)] text-white"
-                  style={{ textShadow: '0 2px 30px rgba(0,0,0,0.8)' }}
-                >
-                  Run Your
+              <h1 className="tracking-tight leading-[0.95] mb-8">
+                <span className="block text-[clamp(2.4rem,5.5vw,4.4rem)] font-black uppercase text-slate-900">
+                  Run Your Turf
                 </span>
-                <span
-                  className="block text-[clamp(2rem,5vw,3.8rem)] text-white"
-                  style={{ textShadow: '0 2px 30px rgba(0,0,0,0.8)' }}
-                >
-                  Turf
-                </span>
-                <span
-                  className="block text-[clamp(2rem,5vw,3.8rem)] text-brand-green italic"
-                  style={{
-                    textShadow: '0 2px 30px rgba(0,0,0,0.8)',
-                  }}
-                >
-                  Without
-                </span>
-                <span
-                  className="block text-[clamp(2rem,5vw,3.8rem)] text-brand-green italic"
-                  style={{
-                    textShadow: '0 2px 30px rgba(0,0,0,0.8)',
-                  }}
-                >
-                  Stress.
+                <span className="block text-[clamp(2.6rem,6vw,4.8rem)] font-serif italic text-[#00A859] font-normal mt-1">
+                  Without Stress.
                 </span>
               </h1>
             </motion.div>
@@ -202,21 +155,30 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-base md:text-lg text-white/55 font-medium leading-relaxed max-w-md mb-12"
+              className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-lg mb-10"
             >
               Ditch the messy spreadsheets and WhatsApp group chaos. Automate bookings, track payments in real time, and keep your slots full with Bangladesh's most powerful turf management platform.
             </motion.p>
 
-            {/* Download Buttons */}
+            {/* Download Buttons & CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-row items-center gap-4 mb-16"
+              className="flex flex-wrap items-center gap-4 mb-14"
             >
               <a
-                href="#download-appstore"
-                className="flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 hover:border-brand-green/30 hover:bg-brand-green/5 hover:scale-[1.03] transition-all duration-300 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                href="#waitlist"
+                className="group relative overflow-hidden px-8 py-4 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-sm flex items-center gap-2.5"
+              >
+                <span>Claim Early Access</span>
+                <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setIsAppStoreModalOpen(true)}
+                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm text-left cursor-pointer"
               >
                 <img 
                   src={appstoreImg} 
@@ -224,14 +186,16 @@ export const Hero = () => {
                   className="w-6 h-6 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-white/40 font-semibold uppercase tracking-wider mb-1">Download on the</span>
-                  <span className="text-sm text-white font-black tracking-tight">App Store</span>
+                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Download on the</span>
+                  <span className="text-sm text-slate-900 font-black tracking-tight">App Store</span>
                 </div>
-              </a>
+              </button>
 
               <a
-                href="#download-playstore"
-                className="flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 hover:border-brand-green/30 hover:bg-brand-green/5 hover:scale-[1.03] transition-all duration-300 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm"
               >
                 <img 
                   src={playstoreImg} 
@@ -239,62 +203,57 @@ export const Hero = () => {
                   className="w-6 h-6 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-white/40 font-semibold uppercase tracking-wider mb-1">Get it on</span>
-                  <span className="text-sm text-white font-black tracking-tight">Google Play</span>
+                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Get it on</span>
+                  <span className="text-sm text-slate-900 font-black tracking-tight">Google Play</span>
                 </div>
               </a>
             </motion.div>
+
+            <AppStoreModal
+              isOpen={isAppStoreModalOpen}
+              onClose={() => setIsAppStoreModalOpen(false)}
+            />
 
             {/* Stats row */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center gap-10"
+              className="flex items-center gap-8 md:gap-12"
             >
               <Stat value="500+" label="Turfs Ready" delay={0.65} />
-              <div className="w-px h-10 bg-white/15" />
+              <div className="w-px h-10 bg-slate-200" />
               <Stat value="10K+" label="Bookings/Month" delay={0.75} />
-              <div className="w-px h-10 bg-white/15" />
-              <Stat value="99%" label="Uptime" delay={0.85} />
+              <div className="w-px h-10 bg-slate-200" />
+              <Stat value="99.9%" label="Uptime" delay={0.85} />
             </motion.div>
           </div>
 
-          {/* ── RIGHT: PHONES ── */}
-          <div className="flex-1 relative hidden lg:flex items-center justify-center" style={{ minHeight: '640px' }}>
-            {/* Glow rings */}
+          {/* ── RIGHT: MAIN HOME MOCKUP ── */}
+          <div className="flex-1 relative hidden lg:flex items-center justify-center" style={{ minHeight: '520px' }}>
+            {/* Ambient Glow rings */}
             <motion.div
-              animate={{ scale: [1, 1.08, 1], opacity: [0.2, 0.4, 0.2] }}
+              animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute w-[340px] h-[340px] rounded-full border border-brand-green/25 bg-brand-green/5 blur-sm"
+              className="absolute w-[280px] h-[280px] rounded-full border border-[#00A859]/20 bg-[#00A859]/5 blur-md"
             />
             <motion.div
-              animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.2, 0.1] }}
+              animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.3, 0.15] }}
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="absolute w-[500px] h-[500px] rounded-full border border-brand-green/10"
+              className="absolute w-[400px] h-[400px] rounded-full border border-[#00A859]/10"
             />
 
-            {/* Left phone */}
-            <Phone
-              src={exploreImg} alt="TurfiPlay Explore Screen"
-              rotate={-12} scale={0.92} zIndex={10} delay={0.3}
-              x={-190} y={20} opacity={1}
-            />
-            {/* Center phone (main) */}
-            <Phone
-              src={mockup2} alt="TurfiPlay Dashboard"
-              rotate={0} scale={1.05} zIndex={20} delay={0.15}
-              x={0} y={-20}
-              opacity={1}
-            />
-            {/* Right phone */}
-            <Phone
-              src={ownSiteImg} alt="TurfiPlay Own Site Screen"
-              rotate={12} scale={0.92} zIndex={10} delay={0.45}
-              x={190} y={20} opacity={1}
-            />
+            {/* Center Main Home Mockup */}
+            <div ref={centerPhoneRef} className="relative z-20 transition-transform duration-300 flex items-center justify-center">
+              <img
+                src={homeMockImg}
+                alt="TurfPlay Home App Mockup"
+                className="w-full max-w-[260px] sm:max-w-[290px] lg:max-w-[310px] xl:max-w-[330px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,168,89,0.18)]"
+              />
+            </div>
 
           </div>
+
         </div>
       </div>
 
@@ -303,19 +262,16 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em]">Scroll</span>
+        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ChevronDown size={16} className="text-white/30" />
+          <ChevronDown size={16} className="text-[#00A859]" />
         </motion.div>
       </motion.div>
-
-      {/* ── Bottom fade into next section ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-brand-bg to-transparent z-10 pointer-events-none" />
     </section>
   );
 };

@@ -5,10 +5,9 @@
 
 import React from 'react';
 import { ThemeProvider } from './components/Theme/ThemeContext';
+import { SmoothScroll } from './components/Scroll/SmoothScroll';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
-import { About } from './components/About/About';
-import { Problem } from './components/Problem/Problem';
 import { HowItWorks } from './components/HowItWorks/HowItWorks';
 import { Features } from './components/Features/Features';
 import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
@@ -25,26 +24,26 @@ import { Footer } from './components/Footer/Footer';
 export default function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-brand-bg text-[var(--text-primary)] selection:bg-brand-green selection:text-black bg-grid">
-        <Navbar />
-        <main>
-          <Hero />
-          {/* <About /> */}
-          {/* <Problem /> */}
-          <HowItWorks />
-          <Features />
-          <ManagementFeatures />
-          <Comparison />
-          <Testimonials />
-          <Pricing />
-          <Story />
-          <FAQ />
-          <StayTuned />
-          <Contact />
-          <Waitlist />
-        </main>
-        <Footer />
-      </div>
+      <SmoothScroll>
+        <div className="min-h-screen bg-white text-slate-900 selection:bg-[#00A859] selection:text-white bg-grid">
+          <Navbar />
+          <main>
+            <Hero />
+            <HowItWorks />
+            <Features />
+            <ManagementFeatures />
+            <Comparison />
+            <Testimonials />
+            <Pricing />
+            <Story />
+            <FAQ />
+            <StayTuned />
+            <Contact />
+            <Waitlist />
+          </main>
+          <Footer />
+        </div>
+      </SmoothScroll>
     </ThemeProvider>
   );
 }

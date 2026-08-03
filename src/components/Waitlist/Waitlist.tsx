@@ -36,41 +36,41 @@ export const Waitlist = () => {
   };
 
   return (
-    <section id="waitlist" className="py-24 lg:py-50 relative overflow-hidden bg-brand-bg">
+    <section id="waitlist" className="py-20 lg:py-32 relative overflow-hidden bg-[#F8FAFC]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-green/5 blur-[250px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#00A859]/8 blur-[200px] rounded-full" />
       </div>
 
-      <div className="max-w-[1880px] mx-auto px-10 md:px-[10%] lg:px-[12%]">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="glass-card !p-12 lg:!p-20 border-white/10 relative overflow-hidden text-center group max-w-5xl mx-auto"
+          transition={{ duration: 0.8 }}
+          className="glass-card !p-8 md:!p-16 border-[#00A859]/25 bg-white shadow-xl relative overflow-hidden text-center max-w-4xl mx-auto"
         >
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-brand-green to-transparent shadow-[0_0_30px_rgba(0,168,89,0.5)]" />
+          <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#00A859] to-transparent shadow-sm" />
 
-          <h2 className="text-4xl md:text-8xl font-black text-[var(--text-primary)] mb-8 leading-tight tracking-tighter uppercase italic">
+          <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight uppercase">
             Ready to Run <br />
-            <span className="text-brand-green text-gradient">Your Turf?</span>
+            <span className="font-serif italic text-[#00A859] lowercase font-normal">your turf?</span>
           </h2>
 
-          <p className="text-xl text-[var(--text-secondary)] mb-20 max-w-2xl mx-auto font-medium leading-relaxed">
-            The era of manual management is over. Be among the first to experience TurfiPlay in Bangladesh.
+          <p className="text-base md:text-lg text-slate-600 mb-12 max-w-xl mx-auto font-medium leading-relaxed">
+            The era of manual spreadsheets is over. Be among the first to experience TurfPlay in Bangladesh.
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
+            <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
                   <div className="relative">
-                    <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]" size={20} />
+                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="email"
                       placeholder="Email Address"
-                      className={`w-full bg-[var(--bg-surface)] border rounded-2xl py-6 pl-14 pr-8 text-[var(--text-primary)] focus:outline-none transition-all placeholder:text-[var(--text-secondary)] font-bold ${
-                        errors.email ? 'border-red-500' : 'border-[var(--border-color)] focus:border-brand-green/50'
+                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                        errors.email ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={email}
                       onChange={(e) => {
@@ -83,23 +83,23 @@ export const Waitlist = () => {
                   </div>
                   {errors.email && (
                     <motion.p 
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-red-500 text-sm font-bold text-left pl-2"
+                      className="text-red-500 text-xs font-bold text-left pl-2"
                     >
                       {errors.email}
                     </motion.p>
                   )}
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <div className="relative">
-                    <Phone className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]" size={20} />
+                    <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="tel"
                       placeholder="01XXXXXXXXX"
-                      className={`w-full bg-[var(--bg-surface)] border rounded-2xl py-6 pl-14 pr-8 text-[var(--text-primary)] focus:outline-none transition-all placeholder:text-[var(--text-secondary)] font-bold ${
-                        errors.phone ? 'border-red-500' : 'border-[var(--border-color)] focus:border-brand-green/50'
+                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                        errors.phone ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={phone}
                       onChange={(e) => {
@@ -112,9 +112,9 @@ export const Waitlist = () => {
                   </div>
                   {errors.phone && (
                     <motion.p 
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-red-500 text-sm font-bold text-left pl-2"
+                      className="text-red-500 text-xs font-bold text-left pl-2"
                     >
                       {errors.phone}
                     </motion.p>
@@ -124,14 +124,14 @@ export const Waitlist = () => {
 
               <button
                 type="submit"
-                className="group relative overflow-hidden w-full btn-primary !py-8 !text-2xl uppercase tracking-widest italic flex items-center justify-center gap-3"
+                className="group relative overflow-hidden w-full btn-primary !py-5 !text-lg uppercase tracking-wider font-extrabold flex items-center justify-center gap-2"
               >
                 <span>Claim Early Access</span>
                 <motion.div
-                  animate={{ x: [0, 5, 0] }}
+                  animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </motion.div>
               </button>
             </form>
@@ -139,18 +139,18 @@ export const Waitlist = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-20"
+              className="py-12"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-                className="w-24 h-24 bg-brand-green/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-brand-green/30"
+                className="w-20 h-20 bg-[#00A859]/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#00A859]/30"
               >
-                <CheckCircle2 size={48} className="text-brand-green" />
+                <CheckCircle2 size={40} className="text-[#00A859]" />
               </motion.div>
-              <h3 className="text-4xl font-black text-[var(--text-primary)] mb-6 uppercase italic">You're on the list!</h3>
-              <p className="text-xl text-[var(--text-secondary)] font-medium">We'll reach out to you as soon as we're ready for Liftoff.</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 mb-3 uppercase">You're on the list!</h3>
+              <p className="text-base text-slate-600 font-medium">We'll reach out to you as soon as we're ready for Liftoff.</p>
             </motion.div>
           )}
         </motion.div>

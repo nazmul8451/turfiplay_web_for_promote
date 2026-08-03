@@ -18,43 +18,40 @@ export const ManagementFeatures = () => {
   ];
 
   return (
-    <section id="management" className="py-20 lg:py-32 bg-brand-navy relative">
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-[1880px] mx-auto px-10 md:px-[10%] lg:px-[12%]">
+    <section id="management" className="py-20 lg:py-32 bg-[#FFFFFF] relative">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mb-16 lg:mb-24"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-5 tracking-tighter uppercase italic">Professional Management</h2>
-          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg font-medium leading-relaxed uppercase tracking-[0.2em]">Everything you need to scale your turf business.</p>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
+            Professional <span className="font-serif italic text-[#00A859] lowercase font-normal">management.</span>
+          </h2>
+          <p className="text-slate-600 max-w-xl mx-auto text-sm md:text-base font-bold leading-relaxed uppercase tracking-[0.2em]">Everything you need to scale your turf business.</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Booking Side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-10 lg:p-12 relative overflow-hidden group"
+            className="glass-card p-8 lg:p-10 relative overflow-hidden bg-white border-[#00A859]/20 shadow-sm"
           >
-            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-1000">
-              <Smartphone size={160} />
-            </div>
-            <h3 className="text-3xl font-black text-[var(--text-primary)] mb-10 flex items-center gap-5">
-              <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center">
-                <Smartphone className="text-brand-green" size={20} />
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-8 flex items-center gap-4 uppercase tracking-tight">
+              <div className="w-10 h-10 rounded-xl bg-[#00A859]/10 flex items-center justify-center">
+                <Smartphone className="text-[#00A859]" size={20} />
               </div>
               Booking Workflow
             </h3>
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 gap-6">
               {ownerFeatures.map((f, i) => (
-                <div key={i} className="group/item">
-                  <f.icon className="text-brand-green/40 mb-6 group-hover/item:text-brand-green transition-colors" size={28} />
-                  <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3 tracking-tight">{f.title}</h4>
-                  <p className="text-[var(--text-secondary)] text-base leading-relaxed font-medium group-hover/item:text-[var(--text-secondary)]/80 transition-colors">{f.desc}</p>
+                <div key={i} className="group">
+                  <f.icon className="text-[#00A859]/50 mb-3 group-hover:text-[#00A859] transition-colors" size={24} />
+                  <h4 className="text-base font-extrabold text-slate-900 mb-1.5 tracking-tight uppercase">{f.title}</h4>
+                  <p className="text-slate-600 text-xs leading-relaxed font-medium">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -65,23 +62,20 @@ export const ManagementFeatures = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-12 lg:p-16 relative overflow-hidden group"
+            className="glass-card p-8 lg:p-10 relative overflow-hidden bg-white border-[#00A859]/20 shadow-sm"
           >
-            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-1000">
-              <LayoutDashboard size={200} />
-            </div>
-            <h3 className="text-4xl font-black text-[var(--text-primary)] mb-16 flex items-center gap-6">
-              <div className="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center">
-                <LayoutDashboard className="text-brand-green" size={24} />
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-8 flex items-center gap-4 uppercase tracking-tight">
+              <div className="w-10 h-10 rounded-xl bg-[#00A859]/10 flex items-center justify-center">
+                <LayoutDashboard className="text-[#00A859]" size={20} />
               </div>
               Revenue Tracking
             </h3>
-            <div className="grid sm:grid-cols-2 gap-12">
+            <div className="grid sm:grid-cols-2 gap-6">
               {reportFeatures.map((f, i) => (
-                <div key={i} className="group/item">
-                  <f.icon className="text-brand-green/40 mb-6 group-hover/item:text-brand-green transition-colors" size={28} />
-                  <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3 tracking-tight">{f.title}</h4>
-                  <p className="text-[var(--text-secondary)] text-base leading-relaxed font-medium group-hover/item:text-[var(--text-secondary)]/80 transition-colors">{f.desc}</p>
+                <div key={i} className="group">
+                  <f.icon className="text-[#00A859]/50 mb-3 group-hover:text-[#00A859] transition-colors" size={24} />
+                  <h4 className="text-base font-extrabold text-slate-900 mb-1.5 tracking-tight uppercase">{f.title}</h4>
+                  <p className="text-slate-600 text-xs leading-relaxed font-medium">{f.desc}</p>
                 </div>
               ))}
             </div>
