@@ -36,7 +36,7 @@ export const Features = () => {
     },
     {
       title: "Player Discovery",
-      desc: "Connect with the largest community of sports enthusiasts in Bangladesh. Our map integration brings players straight to your door with seamless navigation and slot discovery.",
+      desc: "Connect with the largest community of sports enthusiasts in your area. Our map integration brings players straight to your door with seamless navigation and slot discovery.",
       icon: MapPin,
       delay: 0.4,
       gridClass: "md:col-span-1 md:row-span-2",

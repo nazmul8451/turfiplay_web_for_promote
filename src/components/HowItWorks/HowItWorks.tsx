@@ -1,121 +1,101 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { LayoutDashboard, ShieldCheck, Bell, Globe } from 'lucide-react';
+import { 
+  Play, Pause, Smartphone, LayoutDashboard, Sparkles, Volume2, VolumeX, Maximize,
+  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, ShieldCheck, Clock 
+} from 'lucide-react';
 
 export const HowItWorks = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
+  const handleFullscreen = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.requestFullscreen) {
+      videoRef.current.requestFullscreen();
+    }
+  };
+
   const userSteps = [
     { 
-      title: "Map Discovery", 
-      desc: "Find nearby turfs directly on Google Maps integration.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 6L9 3L15 6L21 3V18L15 21L9 18L3 21V6Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60" />
-          <path d="M9 3V18" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M15 6V21" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M12 14C14.2091 14 16 12.2091 16 10C16 7.79086 14.2091 6 12 6C9.79086 6 8 7.79086 8 10C8 12.2091 9.79086 14 12 14Z" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
-          <path d="M12 10V10.01" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      )
-    },
-    { 
-      title: "Select Slot", 
-      desc: "View real-time availability and pick your preferred time.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M3 10H21" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M8 2V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <path d="M16 2V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <rect x="6" y="13" width="4" height="4" rx="1" fill="currentColor" fillOpacity="0.2" />
-          <circle cx="15.5" cy="14.5" r="4.5" fill="#F8FAFC" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M15.5 12.5V14.5L17 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-      )
+      title: "Discover Nearby Turfs", 
+      desc: "Find the best turfs near you with maps, filters, and real-time availability.",
+      icon: MapPin 
     },
     { 
       title: "Instant Booking", 
-      desc: "Secure your slot with integrated digital payments (Bkash/Nagad).", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M3 10H21" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" className="opacity-60" />
-          <path d="M13 2L6 12H12L11 20L18 10H12L13 2Z" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        </svg>
-      )
+      desc: "Book your favorite slot in seconds with secure online payments.",
+      icon: Zap 
     },
     { 
-      title: "Booking History", 
-      desc: "Manage upcoming games and view all past transactions.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 3H17C18.1046 3 19 3.89543 19 5V17" stroke="currentColor" strokeWidth="1.5" className="opacity-40" />
-          <rect x="4" y="6" width="12" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M7 10H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <path d="M7 13H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <circle cx="16" cy="15" r="5" fill="currentColor" fillOpacity="0.2" />
-          <path d="M14 15L15.5 16.5L18 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "Manage Your Games", 
+      desc: "View upcoming matches, booking history, and digital tickets in one place.",
+      icon: Calendar 
+    },
+    { 
+      title: "Join & Build Teams", 
+      desc: "Find teammates, join matches, or create your own football community.",
+      icon: Users 
     }
   ];
 
   const ownerSteps = [
     { 
-      title: "Turf Profile", 
-      desc: "Set up your turf with images, facilities, and dynamic pricing.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M12 4V20" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-        </svg>
-      )
+      title: "Smart Turf Dashboard", 
+      desc: "Manage your turf profile, pricing, facilities, and availability effortlessly.",
+      icon: LayoutDashboard 
     },
     { 
-      title: "Dynamic Slots", 
-      desc: "Manage pricing and availability for every single hour.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M12 3V5" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M12 19V21" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M3 12H5" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M19 12H21" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
-          <path d="M12 8V16M9.5 10H14.5M9.5 14H14.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      )
+      title: "Booking Management", 
+      desc: "Accept bookings, prevent conflicts, and keep every slot perfectly organized.",
+      icon: CalendarCheck 
     },
     { 
-      title: "Handle Requests", 
-      desc: "Receive and confirm booking requests instantly via dashboard.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 11.5C21 15.6421 16.9706 19 12 19C10.4578 19 9.0145 18.6603 7.7471 18.0622L3 19.5L4.5422 15.1118C3.5709 14.108 3 12.8687 3 11.5C3 7.35786 7.02944 4 12 4C16.9706 4 21 7.35786 21 11.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60" />
-          <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "Payments & Revenue", 
+      desc: "Track earnings, receive payments securely, and monitor business performance.",
+      icon: CreditCard 
     },
     { 
-      title: "Revenue Stats", 
-      desc: "Complete statistics of daily and monthly business growth.", 
-      icon: () => (
-        <svg className="w-7 h-7 text-[#00A859] group-hover:text-white transition-colors duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 20H21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <path d="M3 4V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-          <rect x="6" y="13" width="3" height="7" rx="0.75" fill="currentColor" fillOpacity="0.2" />
-          <rect x="11" y="9" width="3" height="11" rx="0.75" fill="currentColor" fillOpacity="0.2" />
-          <rect x="16" y="6" width="3" height="14" rx="0.75" fill="currentColor" fillOpacity="0.2" />
-          <path d="M6 15L11 11L16 7L20 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "Business Analytics", 
+      desc: "Understand bookings, peak hours, customer trends, and revenue growth.",
+      icon: BarChart3 
     }
   ];
 
   const coreLogics = [
-    { title: "Real-time Sync", desc: "Instant 'Unavailable' status to prevent any double-bookings.", icon: ShieldCheck },
-    { title: "Automated Alerts", desc: "Confirmations and reminders for both User and Owner.", icon: Bell },
-    { title: "Central Control", desc: "Secure data handling and transaction protection.", icon: Globe }
+    { 
+      title: "Secure Payments", 
+      desc: "Fast, trusted, and secure online transactions.", 
+      icon: CreditCard 
+    },
+    { 
+      title: "Cloud Sync", 
+      desc: "Your bookings stay updated across every device instantly.", 
+      icon: Cloud 
+    },
+    { 
+      title: "24/7 Reliability", 
+      desc: "Built to keep your turf business running without interruption.", 
+      icon: Clock 
+    }
   ];
 
   return (
@@ -123,15 +103,98 @@ export const HowItWorks = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A859]/5 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative">
+        {/* Header */}
         <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 text-[#00A859] font-extrabold text-xs uppercase tracking-widest mb-4"
+          >
+            <Sparkles size={14} />
+            <span>App Preview & Walkthrough</span>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
-            OUR <span className="font-serif italic text-[#00A859] lowercase font-normal">ecosystem.</span>
+            SEE <span className="font-serif italic text-[#00A859] lowercase font-normal">TurfPlay</span> IN ACTION.
           </h2>
           <p className="text-slate-600 max-w-xl mx-auto text-sm md:text-base font-bold leading-relaxed uppercase tracking-[0.2em]">
-            Connecting <span className="text-[#00A859] italic">Players</span> and <span className="text-slate-900 font-extrabold">Turf Owners</span>
+            CONNECTING <span className="text-[#00A859] italic">PLAYERS</span> AND <span className="text-slate-900 font-extrabold">TURF OWNERS</span>
           </p>
         </div>
 
+        {/* Demo Video Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative max-w-5xl mx-auto mb-20 group"
+        >
+          {/* Ambient Glow */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-[#00A859]/30 via-[#00A859]/10 to-[#00A859]/30 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition duration-700 pointer-events-none" />
+
+          {/* Video Container */}
+          <div className="relative rounded-3xl overflow-hidden bg-slate-950 border border-slate-800/80 shadow-2xl aspect-video flex items-center justify-center">
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              poster="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80"
+              loop
+              muted={isMuted}
+              playsInline
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            >
+              <source
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+
+            {/* Dark Overlay when paused */}
+            {!isPlaying && (
+              <div 
+                onClick={togglePlay}
+                className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-all duration-300"
+              >
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#00A859] text-white flex items-center justify-center shadow-xl shadow-[#00A859]/40 hover:scale-110 hover:bg-[#008746] transition-all duration-300 group-hover:shadow-2xl">
+                  <Play size={36} className="ml-1 fill-white" />
+                </div>
+                <span className="mt-4 text-xs md:text-sm font-extrabold text-white uppercase tracking-widest bg-slate-900/80 backdrop-blur-md px-5 py-2 rounded-full border border-white/10">
+                  Click to Watch Demo Video
+                </span>
+              </div>
+            )}
+
+            {/* Video Controls Bar */}
+            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-4 md:p-6 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button
+                onClick={togglePlay}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#00A859] backdrop-blur-md flex items-center justify-center text-white transition-all"
+              >
+                {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+              </button>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={toggleMute}
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-all"
+                >
+                  {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                </button>
+                <button
+                  onClick={handleFullscreen}
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-all"
+                >
+                  <Maximize size={18} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Feature Grid: Players & Turf Owners */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
           {/* User Side */}
           <motion.div
@@ -151,14 +214,15 @@ export const HowItWorks = () => {
                 return (
                   <div 
                     key={i} 
-                    className="relative glass-card !p-6 cursor-pointer group hover:border-[#00A859]/40 hover:shadow-lg hover:shadow-[#00A859]/10 transition-all duration-300 overflow-hidden bg-white"
+                    className="relative glass-card !p-6 cursor-pointer group hover:border-[#00A859]/40 hover:shadow-lg hover:shadow-[#00A859]/10 transition-all duration-300 overflow-hidden bg-white flex flex-col justify-between"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 flex items-center justify-center mb-5 border border-[#00A859]/20 group-hover:bg-[#00A859] group-hover:shadow-md transition-all duration-300">
-                      <IconComponent />
+                    <div>
+                      <div className="w-10 h-10 rounded-xl bg-[#00A859]/10 flex items-center justify-center mb-4 border border-[#00A859]/20 group-hover:bg-[#00A859] transition-all duration-300">
+                        <IconComponent className="w-5 h-5 text-[#00A859] group-hover:text-white transition-colors" />
+                      </div>
+                      <h4 className="text-base font-extrabold text-slate-900 mb-2 uppercase tracking-tight group-hover:text-[#00A859] transition-colors">{s.title}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{s.desc}</p>
                     </div>
-                    
-                    <h4 className="text-base font-extrabold text-slate-900 mb-2 uppercase tracking-tight group-hover:text-[#00A859] transition-colors">{s.title}</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">{s.desc}</p>
                   </div>
                 );
               })}
@@ -183,14 +247,15 @@ export const HowItWorks = () => {
                 return (
                   <div 
                     key={i} 
-                    className="relative glass-card !p-6 cursor-pointer group hover:border-[#00A859]/40 hover:shadow-lg hover:shadow-[#00A859]/10 transition-all duration-300 overflow-hidden bg-white"
+                    className="relative glass-card !p-6 cursor-pointer group hover:border-[#00A859]/40 hover:shadow-lg hover:shadow-[#00A859]/10 transition-all duration-300 overflow-hidden bg-white flex flex-col justify-between"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 flex items-center justify-center mb-5 border border-[#00A859]/20 group-hover:bg-[#00A859] group-hover:shadow-md transition-all duration-300">
-                      <IconComponent />
+                    <div>
+                      <div className="w-10 h-10 rounded-xl bg-[#00A859]/10 flex items-center justify-center mb-4 border border-[#00A859]/20 group-hover:bg-[#00A859] transition-all duration-300">
+                        <IconComponent className="w-5 h-5 text-[#00A859] group-hover:text-white transition-colors" />
+                      </div>
+                      <h4 className="text-base font-extrabold text-slate-900 mb-2 uppercase tracking-tight group-hover:text-[#00A859] transition-colors">{s.title}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{s.desc}</p>
                     </div>
-                    
-                    <h4 className="text-base font-extrabold text-slate-900 mb-2 uppercase tracking-tight group-hover:text-[#00A859] transition-colors">{s.title}</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">{s.desc}</p>
                   </div>
                 );
               })}
@@ -198,7 +263,7 @@ export const HowItWorks = () => {
           </motion.div>
         </div>
 
-        {/* Core Intelligence Footer */}
+        {/* Core Intelligence Footer / Ecosystem Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -206,17 +271,20 @@ export const HowItWorks = () => {
           className="glass-card !p-8 border border-[#00A859]/20 shadow-sm bg-white"
         >
           <div className="grid md:grid-cols-3 gap-8">
-            {coreLogics.map((log, i) => (
-              <div key={i} className="flex gap-4 items-start group">
-                <div className="p-3 bg-[#00A859]/10 rounded-xl border border-[#00A859]/20 flex-shrink-0 group-hover:bg-[#00A859] transition-all">
-                  <log.icon className="text-[#00A859] group-hover:text-white transition-colors" size={20} />
+            {coreLogics.map((log, i) => {
+              const IconComponent = log.icon;
+              return (
+                <div key={i} className="flex gap-4 items-start group">
+                  <div className="p-3 bg-[#00A859]/10 rounded-xl border border-[#00A859]/20 flex-shrink-0 group-hover:bg-[#00A859] transition-all">
+                    <IconComponent className="text-[#00A859] group-hover:text-white transition-colors" size={20} />
+                  </div>
+                  <div>
+                    <h5 className="text-base font-extrabold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-[#00A859] transition-colors">{log.title}</h5>
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="text-base font-extrabold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-[#00A859] transition-colors">{log.title}</h5>
-                  <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       </div>
@@ -224,20 +292,4 @@ export const HowItWorks = () => {
   );
 };
 
-const Smartphone = ({ size, className }: { size: number, className: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-    <path d="M12 18h.01" />
-  </svg>
-);
+

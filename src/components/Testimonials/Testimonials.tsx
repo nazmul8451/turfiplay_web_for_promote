@@ -17,7 +17,7 @@ export const Testimonials = () => {
             What owners <span className="font-serif italic text-[#00A859] lowercase font-normal">say.</span>
           </h2>
           <p className="text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
-            Real feedback from Bangladesh's pioneering turf facility managers.
+            Real feedback from pioneering turf facility managers.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">

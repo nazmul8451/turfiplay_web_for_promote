@@ -87,16 +87,16 @@ export const Hero = () => {
     if (!containerRef.current || !centerPhoneRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Center main phone ScrollTrigger elevation & scale
+      // Keep main phone mockup stable during scroll
       gsap.to(centerPhoneRef.current, {
-        scale: 1.08,
-        y: -40,
+        scale: 1.01,
+        y: -5,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 0.5,
         },
       });
     }, containerRef);
@@ -130,7 +130,7 @@ export const Hero = () => {
             >
               <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse" />
               <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-                Bangladesh's #1 Turf SaaS Platform 🇧🇩
+                Complete Digital Infrastructure for Sports Turfs
               </span>
             </motion.div>
 
@@ -155,9 +155,9 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-lg mb-10"
+              className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-10"
             >
-              Ditch the messy spreadsheets and WhatsApp group chaos. Automate bookings, track payments in real time, and keep your slots full with Bangladesh's most powerful turf management platform.
+              Whether you're booking a game or managing a turf, TurfPlay brings everything together. Manage bookings, accept payments, organize schedules, and enjoy a seamless experience—all in one place.
             </motion.p>
 
             {/* Download Buttons & CTA */}

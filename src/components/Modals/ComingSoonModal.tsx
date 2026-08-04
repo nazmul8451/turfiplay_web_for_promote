@@ -32,7 +32,7 @@ export const ComingSoonModal = ({ isOpen, onClose, title }: { isOpen: boolean, o
           </h3>
 
           <p className="text-lg text-[var(--text-secondary)] font-medium leading-relaxed mb-12">
-            We are currently in <span className="text-[var(--text-primary)]">Development Mode</span>. Our team is working hard to bring the ultimate TurfiPlay experience to Bangladesh.
+            We are currently in <span className="text-[var(--text-primary)]">Development Mode</span>. Our team is working hard to bring the ultimate TurfiPlay experience to you.
           </p>
 
           <button

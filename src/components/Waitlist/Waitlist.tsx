@@ -11,14 +11,14 @@ export const Waitlist = () => {
   const validateForm = () => {
     const newErrors: { email?: string; phone?: string } = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
+    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
 
     if (!email || !emailRegex.test(email)) {
       newErrors.email = 'Please enter a valid email address';
     }
 
     if (!phone || !phoneRegex.test(phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Please enter a valid Bangladeshi phone number';
+      newErrors.phone = 'Please enter a valid phone number';
     }
 
     setErrors(newErrors);
@@ -57,7 +57,7 @@ export const Waitlist = () => {
           </h2>
 
           <p className="text-base md:text-lg text-slate-600 mb-12 max-w-xl mx-auto font-medium leading-relaxed">
-            The era of manual spreadsheets is over. Be among the first to experience TurfPlay in Bangladesh.
+            The era of manual spreadsheets is over. Be among the first to experience TurfPlay.
           </p>
 
           {!submitted ? (
