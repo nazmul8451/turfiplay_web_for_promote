@@ -9,7 +9,6 @@ import { SmoothScroll } from './components/Scroll/SmoothScroll';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
 import { HowItWorks } from './components/HowItWorks/HowItWorks';
-import { Features } from './components/Features/Features';
 import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
 import { PartnerJourney } from './components/Partner/PartnerJourney';
 import { Comparison } from './components/Comparison/Comparison';
@@ -31,7 +30,6 @@ export default function App() {
           <main>
             <Hero />
             <HowItWorks />
-            <Features />
             <ManagementFeatures />
             <PartnerJourney />
             <Comparison />

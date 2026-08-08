@@ -12,12 +12,11 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'Ecosystem', href: 'how-it-works' },
-    { name: 'Features', href: 'features' },
-    { name: 'Partner', href: 'partner' },
-    { name: 'Pricing', href: 'pricing' },
-    { name: 'Testimonials', href: 'testimonials' },
-    { name: 'Contact', href: 'contact' },
+    { name: 'ইকোসিস্টেম', href: 'how-it-works' },
+    { name: 'পার্টনার হোন', href: 'partner' },
+    { name: 'প্রাইসিং', href: 'pricing' },
+    { name: 'মতামত', href: 'testimonials' },
+    { name: 'যোগাযোগ', href: 'contact' },
   ];
 
   useEffect(() => {
@@ -74,7 +73,7 @@ export const Navbar = () => {
       }}
       className="fixed top-0 left-4 right-4 md:left-[8%] md:right-[8%] lg:left-[15%] lg:right-[15%] z-50 pt-4 md:pt-6"
     >
-      <nav className={`px-6 py-3 flex justify-between items-center rounded-full border border-brand-green/20 bg-white/90 backdrop-blur-xl shadow-lg transition-all duration-500 ${
+      <nav className={`px-4 sm:px-6 py-3 flex justify-between items-center rounded-full border border-brand-green/20 bg-white/90 backdrop-blur-xl shadow-lg transition-all duration-500 ${
         isScrolled ? 'shadow-xl shadow-brand-green/10 border-brand-green/35 bg-white/95' : ''
       }`}>
         {/* Logo */}
@@ -85,9 +84,9 @@ export const Navbar = () => {
           <img
             src={logoImg}
             alt="TurfiPlay Logo"
-            className="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
           />
-          <span className="font-serif text-xl tracking-tight text-slate-900 group-hover:text-[#00A859] transition-colors">
+          <span className="font-serif text-lg sm:text-xl tracking-tight text-slate-900 group-hover:text-[#00A859] transition-colors">
             Turf<span className="italic text-[#00A859]">Play</span>
           </span>
         </div>
@@ -104,7 +103,7 @@ export const Navbar = () => {
                 href={`#${item.href}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="relative px-4 py-2 text-[12px] font-bold tracking-wider text-slate-600 hover:text-[#00A859] transition-colors duration-300 uppercase select-none"
+                className="relative px-3.5 lg:px-4 py-2 text-[12px] font-bold tracking-wide text-slate-600 hover:text-[#00A859] transition-colors duration-300 select-none"
               >
                 {/* Sliding background capsule */}
                 <AnimatePresence>
@@ -149,9 +148,9 @@ export const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#waitlist"
-            className="group relative overflow-hidden px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-[11px] flex items-center gap-2"
+            className="group relative overflow-hidden px-5 lg:px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] text-[11px] sm:text-xs flex items-center gap-2"
           >
-            <span>Join Waitlist</span>
+            <span>আর্লি অ্যাক্সেস</span>
             <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </div>
@@ -214,7 +213,7 @@ export const Navbar = () => {
                   <a
                     href={`#${item.href}`}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-base font-bold uppercase tracking-wider transition-colors ${
+                    className={`block text-base font-bold tracking-wide transition-colors ${
                       activeSection === item.href ? 'text-[#00A859]' : 'text-slate-700 hover:text-[#00A859]'
                     }`}
                   >
@@ -232,9 +231,9 @@ export const Navbar = () => {
                 <a
                   href="#waitlist"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-center py-3 bg-[#00A859] text-white font-extrabold rounded-full uppercase tracking-wider text-xs shadow-md shadow-[#00A859]/25 hover:scale-[1.02] transition-transform"
+                  className="block w-full text-center py-3 bg-[#00A859] text-white font-extrabold rounded-full tracking-wider text-xs shadow-md shadow-[#00A859]/25 hover:scale-[1.02] transition-transform"
                 >
-                  Join Waitlist
+                  আর্লি অ্যাক্সেস নিন
                 </a>
               </motion.div>
             </motion.div>

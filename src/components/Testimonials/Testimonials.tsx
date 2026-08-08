@@ -4,20 +4,20 @@ import { MessageSquareQuote } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
-    { name: "Rafat Hasan", role: "Owner, Pitch 56", quote: "Before TurfPlay, I was losing sleep over double bookings. Now, everything stays locked and synced. It's a game changer." },
-    { name: "Imtiaz Ahmed", role: "Manager, Kickoff Arena", quote: "The revenue reports are incredible. I can see my growth day-by-day. Very easy to use even for my staff." },
-    { name: "Tanvir Hossain", role: "Owner, GoalLine Turf", quote: "The waitlist interface is so simple. My customers love how professional the booking process looks now." }
+    { name: "রাফাত হাসান", role: "মালিক, পিচ ৫৬", quote: "TurfPlay আসার আগে ডাবল বুকিংয়ের চিন্তায় রাতে ঘুম হতো না। এখন সব কিছু অটো লক হয়ে যায়, একটুও চিন্তা নেই।" },
+    { name: "ইমতিয়াজ আহমেদ", role: "ম্যানেজার, কিকঅফ অ্যারেনা", quote: "প্রতিদিনের আয়ের রিপোর্ট দেখে নিজেই অবাক হই। আমার স্টাফও সহজেই ব্যবহার করতে পারছে। দারুণ একটা অ্যাপ।" },
+    { name: "তানভীর হোসেন", role: "মালিক, গোললাইন টার্ফ", quote: "বুকিং প্রক্রিয়াটা এত সহজ ও প্রফেশনাল যে আমার ক্লায়েন্টরাও খুব খুশি। ব্যবসার মান এখন অন্যরকম।" }
   ];
 
   return (
     <section id="testimonials" className="py-20 lg:py-32 bg-[#F8FAFC] relative">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
-            What owners <span className="font-serif italic text-[#00A859] lowercase font-normal">say.</span>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+            টার্ফ মালিকরা <span className="font-serif italic text-[#00A859] font-normal">কী বলছেন।</span>
           </h2>
-          <p className="text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
-            Real feedback from pioneering turf facility managers.
+          <p className="text-xs sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
+            বাংলাদেশের প্রথম সারির টার্ফ পরিচালকদের সত্যিকারের অভিজ্ঞতা।
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -41,7 +41,7 @@ export const Testimonials = () => {
                   {t.name[0]}
                 </div>
                 <div>
-                  <h4 className="font-extrabold text-slate-900 text-sm uppercase mb-0.5">{t.name}</h4>
+                  <h4 className="font-extrabold text-slate-900 text-sm mb-0.5">{t.name}</h4>
                   <p className="text-[10px] text-[#00A859] font-extrabold uppercase tracking-wider">{t.role}</p>
                 </div>
               </div>

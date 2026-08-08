@@ -115,8 +115,8 @@ export const Hero = () => {
       </div>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-28 pb-20 w-full">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 lg:px-20 pt-24 sm:pt-28 pb-16 sm:pb-20 w-full">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-12">
 
           {/* ── LEFT: TEXT ── */}
           <div className="flex-1 lg:max-w-[55%]">
@@ -126,11 +126,11 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-5 sm:mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse" />
-              <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-                Complete Digital Infrastructure for Sports Turfs
+              <span className="text-[10px] sm:text-xs font-bold text-[#00A859] uppercase tracking-wider">
+                স্পোর্টস টার্ফের সম্পূর্ণ ডিজিটাল ম্যানেজমেন্ট সিস্টেম
               </span>
             </motion.div>
 
@@ -140,12 +140,12 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="tracking-tight leading-[0.95] mb-8">
-                <span className="block text-[clamp(2.4rem,5.5vw,4.4rem)] font-black uppercase text-slate-900">
-                  Run Your Turf
+              <h1 className="tracking-tight leading-[1.08] mb-6 sm:mb-8">
+                <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900">
+                  আপনার টার্ফ চালান
                 </span>
-                <span className="block text-[clamp(2.6rem,6vw,4.8rem)] font-serif italic text-[#00A859] font-normal mt-1">
-                  Without Stress.
+                <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif italic text-[#00A859] font-normal mt-1">
+                  কোনো ঝামেলা ছাড়াই।
                 </span>
               </h1>
             </motion.div>
@@ -155,9 +155,9 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-10"
+              className="text-sm sm:text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-8 sm:mb-10"
             >
-              Whether you're booking a game or managing a turf, TurfPlay brings everything together. Manage bookings, accept payments, organize schedules, and enjoy a seamless experience—all in one place.
+              খেলা বুকিং করা হোক কিংবা সম্পূর্ণ টার্ফ ব্যবসা পরিচালনা—TurfPlay নিয়ে এসেছে সব সমাধান এক প্ল্যাটফর্মে। বুকিং নেওয়া, পেমেন্ট গ্রহণ এবং শিডিউল নিয়ন্ত্রণ করুন একদম সহজে।
             </motion.p>
 
             {/* Download Buttons & CTA */}
@@ -165,48 +165,50 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-4 mb-14"
+              className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-14"
             >
               <a
                 href="#waitlist"
-                className="group relative overflow-hidden px-8 py-4 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-sm flex items-center gap-2.5"
+                className="group relative overflow-hidden px-7 py-3.5 sm:py-4 bg-[#00A859] text-white font-extrabold rounded-2xl sm:rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.02] tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2.5 text-center"
               >
-                <span>Claim Early Access</span>
+                <span>আর্লি অ্যাক্সেস নিন</span>
                 <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <button
-                type="button"
-                onClick={() => setIsAppStoreModalOpen(true)}
-                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm text-left cursor-pointer"
-              >
-                <img 
-                  src={appstoreImg} 
-                  alt="App Store Logo" 
-                  className="w-6 h-6 object-contain" 
-                />
-                <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Download on the</span>
-                  <span className="text-sm text-slate-900 font-black tracking-tight">App Store</span>
-                </div>
-              </button>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => setIsAppStoreModalOpen(true)}
+                  className="flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 sm:gap-3 px-4 py-2.5 sm:py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm text-left cursor-pointer"
+                >
+                  <img 
+                    src={appstoreImg} 
+                    alt="App Store Logo" 
+                    className="w-5 h-5 sm:w-6 sm:h-6 object-contain" 
+                  />
+                  <div className="flex flex-col items-start leading-none pr-1">
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Download on</span>
+                    <span className="text-xs sm:text-sm text-slate-900 font-black tracking-tight">App Store</span>
+                  </div>
+                </button>
 
-              <a
-                href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm"
-              >
-                <img 
-                  src={playstoreImg} 
-                  alt="Google Play Logo" 
-                  className="w-6 h-6 object-contain" 
-                />
-                <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Get it on</span>
-                  <span className="text-sm text-slate-900 font-black tracking-tight">Google Play</span>
-                </div>
-              </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 sm:gap-3 px-4 py-2.5 sm:py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm"
+                >
+                  <img 
+                    src={playstoreImg} 
+                    alt="Google Play Logo" 
+                    className="w-5 h-5 sm:w-6 sm:h-6 object-contain" 
+                  />
+                  <div className="flex flex-col items-start leading-none pr-1">
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Get it on</span>
+                    <span className="text-xs sm:text-sm text-slate-900 font-black tracking-tight">Google Play</span>
+                  </div>
+                </a>
+              </div>
             </motion.div>
 
             <AppStoreModal
@@ -219,28 +221,28 @@ export const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center gap-8 md:gap-12"
+              className="grid grid-cols-3 sm:flex items-center gap-4 sm:gap-8 md:gap-12 pt-4 border-t border-slate-100 sm:border-0"
             >
-              <Stat value="500+" label="Turfs Ready" delay={0.65} />
-              <div className="w-px h-10 bg-slate-200" />
-              <Stat value="10K+" label="Bookings/Month" delay={0.75} />
-              <div className="w-px h-10 bg-slate-200" />
-              <Stat value="99.9%" label="Uptime" delay={0.85} />
+              <Stat value="৫০০+" label="প্রস্তুত টার্ফ" delay={0.65} />
+              <div className="hidden sm:block w-px h-10 bg-slate-200" />
+              <Stat value="১০K+" label="বুকিং/মাস" delay={0.75} />
+              <div className="hidden sm:block w-px h-10 bg-slate-200" />
+              <Stat value="৯৯.৯%" label="সার্ভিস আপটাইম" delay={0.85} />
             </motion.div>
           </div>
 
-          {/* ── RIGHT: MAIN HOME MOCKUP ── */}
-          <div className="flex-1 relative hidden lg:flex items-center justify-center" style={{ minHeight: '520px' }}>
+          {/* ── RIGHT: MAIN HOME MOCKUP (Visible on ALL screens, beautifully centered on mobile) ── */}
+          <div className="flex-1 relative flex items-center justify-center mt-6 lg:mt-0" style={{ minHeight: '380px' }}>
             {/* Ambient Glow rings */}
             <motion.div
               animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute w-[280px] h-[280px] rounded-full border border-[#00A859]/20 bg-[#00A859]/5 blur-md"
+              className="absolute w-[220px] sm:w-[280px] h-[220px] sm:h-[280px] rounded-full border border-[#00A859]/20 bg-[#00A859]/5 blur-md"
             />
             <motion.div
               animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.3, 0.15] }}
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="absolute w-[400px] h-[400px] rounded-full border border-[#00A859]/10"
+              className="absolute w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] rounded-full border border-[#00A859]/10"
             />
 
             {/* Center Main Home Mockup */}
@@ -248,7 +250,7 @@ export const Hero = () => {
               <img
                 src={homeMockImg}
                 alt="TurfPlay Home App Mockup"
-                className="w-full max-w-[260px] sm:max-w-[290px] lg:max-w-[310px] xl:max-w-[330px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,168,89,0.18)]"
+                className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[310px] xl:max-w-[330px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,168,89,0.18)]"
               />
             </div>
 

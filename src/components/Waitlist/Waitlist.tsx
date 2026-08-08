@@ -14,11 +14,11 @@ export const Waitlist = () => {
     const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
 
     if (!email || !emailRegex.test(email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = 'সঠিক ইমেইল অ্যাড্রেস দিন';
     }
 
     if (!phone || !phoneRegex.test(phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Please enter a valid phone number';
+      newErrors.phone = 'সঠিক মোবাইল নম্বর দিন';
     }
 
     setErrors(newErrors);
@@ -41,35 +41,35 @@ export const Waitlist = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#00A859]/8 blur-[200px] rounded-full" />
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-card !p-8 md:!p-16 border-[#00A859]/25 bg-white shadow-xl relative overflow-hidden text-center max-w-4xl mx-auto"
+          className="glass-card !p-6 sm:!p-10 md:!p-16 border-[#00A859]/25 bg-white shadow-xl relative overflow-hidden text-center max-w-4xl mx-auto"
         >
           <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#00A859] to-transparent shadow-sm" />
 
-          <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight uppercase">
-            Ready to Run <br />
-            <span className="font-serif italic text-[#00A859] lowercase font-normal">your turf?</span>
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-black text-slate-900 mb-4 sm:mb-6 leading-tight tracking-tight">
+            প্রস্তুত আছেন কি <br />
+            <span className="font-serif italic text-[#00A859] font-normal">টার্ফ চালাতে?</span>
           </h2>
 
-          <p className="text-base md:text-lg text-slate-600 mb-12 max-w-xl mx-auto font-medium leading-relaxed">
-            The era of manual spreadsheets is over. Be among the first to experience TurfPlay.
+          <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-8 sm:mb-12 max-w-xl mx-auto font-medium leading-relaxed">
+            হাতে লেখা খাতা ও এক্সেলের যুগ শেষ। TurfPlay-এ আর্লি অ্যাক্সেস নিন এবং প্রথমদের মধ্যে থাকুন।
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 sm:space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-1.5">
                   <div className="relative">
-                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                    <Mail className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                     <input
                       type="email"
-                      placeholder="Email Address"
-                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                      placeholder="ইমেইল অ্যাড্রেস"
+                      className={`w-full bg-[#F8FAFC] border rounded-xl sm:rounded-2xl py-3.5 sm:py-4 pl-10 sm:pl-12 pr-4 sm:pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-xs sm:text-sm ${
                         errors.email ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={email}
@@ -94,11 +94,11 @@ export const Waitlist = () => {
 
                 <div className="space-y-1.5">
                   <div className="relative">
-                    <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                    <Phone className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                     <input
                       type="tel"
                       placeholder="01XXXXXXXXX"
-                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                      className={`w-full bg-[#F8FAFC] border rounded-xl sm:rounded-2xl py-3.5 sm:py-4 pl-10 sm:pl-12 pr-4 sm:pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-xs sm:text-sm ${
                         errors.phone ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={phone}
@@ -124,14 +124,14 @@ export const Waitlist = () => {
 
               <button
                 type="submit"
-                className="group relative overflow-hidden w-full btn-primary !py-5 !text-lg uppercase tracking-wider font-extrabold flex items-center justify-center gap-2"
+                className="group relative overflow-hidden w-full btn-primary !py-3.5 sm:!py-4.5 !text-xs sm:!text-base uppercase tracking-wider font-extrabold flex items-center justify-center gap-2"
               >
-                <span>Claim Early Access</span>
+                <span>আর্লি অ্যাক্সেস নিন</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </motion.div>
               </button>
             </form>
@@ -149,8 +149,8 @@ export const Waitlist = () => {
               >
                 <CheckCircle2 size={40} className="text-[#00A859]" />
               </motion.div>
-              <h3 className="text-3xl font-extrabold text-slate-900 mb-3 uppercase">You're on the list!</h3>
-              <p className="text-base text-slate-600 font-medium">We'll reach out to you as soon as we're ready for Liftoff.</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 mb-3">আপনি তালিকায় যুক্ত হয়েছেন!</h3>
+              <p className="text-base text-slate-600 font-medium">আমরা প্রস্তুত হওয়ামাত্র আপনার সাথে যোগাযোগ করব।</p>
             </motion.div>
           )}
         </motion.div>
