@@ -1,38 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
-  Play, Pause, Smartphone, LayoutDashboard, Sparkles, Volume2, VolumeX, Maximize,
-  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, ShieldCheck, Clock 
+  Play, Smartphone, LayoutDashboard, Sparkles, ExternalLink,
+  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, Clock 
 } from 'lucide-react';
 
 export const HowItWorks = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState('https://img.youtube.com/vi/GTT7HWXtGRg/maxresdefault.jpg');
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
-  const handleFullscreen = () => {
-    if (!videoRef.current) return;
-    if (videoRef.current.requestFullscreen) {
-      videoRef.current.requestFullscreen();
-    }
-  };
+  const YOUTUBE_SHORT_ID = 'GTT7HWXtGRg';
+  const YOUTUBE_SHORT_URL = 'https://youtube.com/shorts/GTT7HWXtGRg?feature=share';
+  const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_SHORT_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
 
   const userSteps = [
     { 
@@ -56,7 +35,7 @@ export const HowItWorks = () => {
       icon: Users 
     }
   ];
-
+  // const userSteps =[];
   const ownerSteps = [
     { 
       title: "Smart Turf Dashboard", 
@@ -135,61 +114,60 @@ export const HowItWorks = () => {
 
           {/* Video Container */}
           <div className="relative rounded-3xl overflow-hidden bg-slate-950 border border-slate-800/80 shadow-2xl aspect-video flex items-center justify-center">
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              poster="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80"
-              loop
-              muted={isMuted}
-              playsInline
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            >
-              <source
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                type="video/mp4"
+            {isPlaying ? (
+              <iframe
+                className="w-full h-full border-0"
+                src={YOUTUBE_EMBED_URL}
+                title="TurfPlay Demo Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
-              Your browser does not support the video tag.
-            </video>
+            ) : (
+              <>
+                {/* Video Thumbnail */}
+                <img
+                  src={thumbnailUrl}
+                  alt="TurfPlay Video Thumbnail"
+                  onError={() => setThumbnailUrl('https://img.youtube.com/vi/GTT7HWXtGRg/hqdefault.jpg')}
+                  className="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                />
 
-            {/* Dark Overlay when paused */}
-            {!isPlaying && (
-              <div 
-                onClick={togglePlay}
-                className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-all duration-300"
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#00A859] text-white flex items-center justify-center shadow-xl shadow-[#00A859]/40 hover:scale-110 hover:bg-[#008746] transition-all duration-300 group-hover:shadow-2xl">
-                  <Play size={36} className="ml-1 fill-white" />
+                {/* Dark & Brand Gradient Overlay */}
+                <div 
+                  onClick={() => setIsPlaying(true)}
+                  className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-all duration-300 group-hover:backdrop-blur-0"
+                >
+                  {/* Glowing Animated Play Button */}
+                  <div className="relative">
+                    <div className="absolute -inset-4 rounded-full bg-[#00A859]/40 blur-xl animate-pulse" />
+                    <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#00A859] text-white flex items-center justify-center shadow-xl shadow-[#00A859]/40 hover:scale-110 hover:bg-[#008746] transition-all duration-300 group-hover:shadow-2xl">
+                      <Play size={36} className="ml-1 fill-white" />
+                    </div>
+                  </div>
+
+                  <div className="mt-5 flex flex-col items-center gap-2">
+                    <span className="text-xs md:text-sm font-extrabold text-white uppercase tracking-widest bg-slate-900/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 shadow-lg">
+                      Click to Watch Demo Video
+                    </span>
+                    <span className="text-[11px] font-semibold text-slate-300 tracking-wider">
+                      YouTube Short Preview • TurfPlay Official
+                    </span>
+                  </div>
                 </div>
-                <span className="mt-4 text-xs md:text-sm font-extrabold text-white uppercase tracking-widest bg-slate-900/80 backdrop-blur-md px-5 py-2 rounded-full border border-white/10">
-                  Click to Watch Demo Video
-                </span>
-              </div>
+              </>
             )}
 
-            {/* Video Controls Bar */}
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-4 md:p-6 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button
-                onClick={togglePlay}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#00A859] backdrop-blur-md flex items-center justify-center text-white transition-all"
+            {/* Quick Action Link to YouTube Shorts */}
+            <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+              <a
+                href={YOUTUBE_SHORT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 hover:bg-[#00A859] text-white text-xs font-bold backdrop-blur-md border border-white/10 shadow-md hover:scale-105 transition-all duration-200"
               >
-                {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
-              </button>
-
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={toggleMute}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-all"
-                >
-                  {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                </button>
-                <button
-                  onClick={handleFullscreen}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-all"
-                >
-                  <Maximize size={18} />
-                </button>
-              </div>
+                <span>YouTube Shorts</span>
+                <ExternalLink size={12} />
+              </a>
             </div>
           </div>
         </motion.div>
