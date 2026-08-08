@@ -14,6 +14,7 @@ export const Navbar = () => {
   const navItems = [
     { name: 'Ecosystem', href: 'how-it-works' },
     { name: 'Features', href: 'features' },
+    { name: 'Partner', href: 'partner' },
     { name: 'Pricing', href: 'pricing' },
     { name: 'Testimonials', href: 'testimonials' },
     { name: 'Contact', href: 'contact' },

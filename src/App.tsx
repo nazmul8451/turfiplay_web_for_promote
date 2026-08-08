@@ -11,6 +11,7 @@ import { Hero } from './components/Hero/Hero';
 import { HowItWorks } from './components/HowItWorks/HowItWorks';
 import { Features } from './components/Features/Features';
 import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
+import { PartnerJourney } from './components/Partner/PartnerJourney';
 import { Comparison } from './components/Comparison/Comparison';
 import { Testimonials } from './components/Testimonials/Testimonials';
 import { Pricing } from './components/Pricing/Pricing';
@@ -32,6 +33,7 @@ export default function App() {
             <HowItWorks />
             <Features />
             <ManagementFeatures />
+            <PartnerJourney />
             <Comparison />
             <Testimonials />
             <Pricing />
