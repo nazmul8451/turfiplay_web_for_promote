@@ -115,7 +115,7 @@ export const PartnerJourney = () => {
             className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#00A859]/10 border border-[#00A859]/30 text-[#00A859] font-black text-xs uppercase tracking-[0.25em] mb-6 shadow-lg shadow-[#00A859]/10 backdrop-blur-md"
           >
             <Sparkles size={14} className="animate-pulse" />
-            <span>Turf Owner Onboarding</span>
+            <span>টার্ফ মালিক অনবোর্ডিং</span>
           </motion.div>
 
           <motion.h2
@@ -125,7 +125,7 @@ export const PartnerJourney = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase mb-5 leading-[1.1]"
           >
-            🤝 Become a <span className="text-[#00A859] font-serif italic lowercase font-normal">TurfPlay</span> Partner
+            🤝 হয়ে উঠুন একজন <span className="text-[#00A859] font-serif italic lowercase font-normal">TurfPlay</span> পার্টনার
           </motion.h2>
 
           <motion.p
@@ -251,7 +251,7 @@ export const PartnerJourney = () => {
                       <div className="flex items-center gap-2 mb-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#00A859]" />
                         <span className="text-[10px] font-bold text-[#00A859] uppercase tracking-widest">
-                          Milestone {m.stepNumber}
+                          মাইলস্টোন {m.stepNumber}
                         </span>
                       </div>
 
@@ -317,12 +317,12 @@ export const PartnerJourney = () => {
 
             {/* Success Heading */}
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">
-              🎉 You're All Set!
+              🎉 সব প্রস্তুত!
             </h3>
 
             {/* Primary Review Text */}
             <p className="text-lg sm:text-xl font-bold text-[#00FF87] tracking-wide mb-4">
-              Our Team will review your application.
+              আমাদের টিম আপনার আবেদন পর্যালোচনা করবে।
             </p>
 
             {/* Secondary Bengali Explanation Text */}
@@ -334,15 +334,15 @@ export const PartnerJourney = () => {
             <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-300">
                 <CheckCircle2 size={14} className="text-[#00A859]" />
-                <span>Slot Management</span>
+                <span>স্লট ম্যানেজমেন্ট</span>
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-300">
                 <CheckCircle2 size={14} className="text-[#00A859]" />
-                <span>Instant Digital Payments</span>
+                <span>তাৎক্ষণিক ডিজিটাল পেমেন্ট</span>
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-300">
                 <CheckCircle2 size={14} className="text-[#00A859]" />
-                <span>Owner Dashboard Analytics</span>
+                <span>মালিকের ড্যাশবোর্ড অ্যানালিটিক্স</span>
               </div>
             </div>
 
@@ -352,14 +352,14 @@ export const PartnerJourney = () => {
                 href="#waitlist"
                 className="group relative inline-flex items-center justify-center gap-3 px-10 py-4.5 bg-[#00A859] hover:bg-[#008746] text-white font-extrabold text-sm sm:text-base uppercase tracking-wider rounded-full shadow-xl shadow-[#00A859]/30 hover:shadow-2xl hover:shadow-[#00A859]/50 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
               >
-                <span>Become a TurfPlay Partner →</span>
+                <span>TurfPlay পার্টনার হোন →</span>
               </a>
             </div>
 
             {/* Trust Footer Note */}
             <div className="mt-8 pt-6 border-t border-slate-800/60 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
               <ShieldCheck size={14} className="text-[#00A859]" />
-              <span>Verified Sports Turf Infrastructure • 100% Secure & Reliable</span>
+              <span>যাচাইকৃত স্পোর্টস টার্ফ ইনফ্রাস্ট্রাকচার • ১০০% নিরাপদ ও নির্ভরযোগ্য</span>
             </div>
           </div>
         </motion.div>

@@ -14,7 +14,7 @@ import { PartnerJourney } from './components/Partner/PartnerJourney';
 import { Comparison } from './components/Comparison/Comparison';
 import { Testimonials } from './components/Testimonials/Testimonials';
 import { Pricing } from './components/Pricing/Pricing';
-import { Story } from './components/Story/Story';
+
 import { FAQ } from './components/FAQ/FAQ';
 import { StayTuned } from './components/StayTuned/StayTuned';
 import { Contact } from './components/Contact/Contact';
@@ -35,7 +35,7 @@ export default function App() {
             <Comparison />
             <Testimonials />
             <Pricing />
-            <Story />
+
             <FAQ />
             <StayTuned />
             <Contact />
