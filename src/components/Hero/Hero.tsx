@@ -4,6 +4,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import homeMockImg from '../../assets/homemock.png';
+import handMockImg from '../../assets/hand_mockup.jpg';
 import appstoreImg from '../../assets/images/sports/appstore.png';
 import playstoreImg from '../../assets/images/sports/palystore.png';
 import { AppStoreModal } from '../Modals/AppStoreModal';
@@ -130,7 +131,7 @@ export const Hero = () => {
             >
               <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse" />
               <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-                Complete Digital Infrastructure for Sports Turfs
+                স্পোর্টস টার্ফের ডিজিটাল সিস্টেম
               </span>
             </motion.div>
 
@@ -141,11 +142,11 @@ export const Hero = () => {
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <h1 className="tracking-tight leading-[0.95] mb-8">
-                <span className="block text-[clamp(2.4rem,5.5vw,4.4rem)] font-black uppercase text-slate-900">
-                  Run Your Turf
+                <span className="block text-[clamp(2.2rem,5vw,4.2rem)] font-black uppercase text-slate-900">
+                  আপনার টার্ফ পরিচালনা করুন
                 </span>
-                <span className="block text-[clamp(2.6rem,6vw,4.8rem)] font-serif italic text-[#00A859] font-normal mt-1">
-                  Without Stress.
+                <span className="block text-[clamp(2.4rem,5.5vw,4.6rem)] font-serif italic text-[#00A859] font-normal mt-1">
+                  কোনো ঝামেলা ছাড়াই।
                 </span>
               </h1>
             </motion.div>
@@ -157,7 +158,7 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-10"
             >
-              Whether you're booking a game or managing a turf, TurfPlay brings everything together. Manage bookings, accept payments, organize schedules, and enjoy a seamless experience—all in one place.
+              খেলা বুক করা হোক বা টার্ফ পরিচালনা, TurfPlay নিয়ে এসেছে এক সহজ সমাধান। বুকিং ম্যানেজমেন্ট, পেমেন্ট গ্রহণ, সিডিউল নিয়ন্ত্রণ এবং নির্বিঘ্ন অভিজ্ঞতা—সবকিছু এক জায়গায়।
             </motion.p>
 
             {/* Download Buttons & CTA */}
@@ -171,7 +172,7 @@ export const Hero = () => {
                 href="#waitlist"
                 className="group relative overflow-hidden px-8 py-4 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-sm flex items-center gap-2.5"
               >
-                <span>Claim Early Access</span>
+                <span>আগাম অ্যাক্সেস পান</span>
                 <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
               </a>
 
@@ -186,7 +187,7 @@ export const Hero = () => {
                   className="w-6 h-6 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Download on the</span>
+                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">ডাউনলোড করুন</span>
                   <span className="text-sm text-slate-900 font-black tracking-tight">App Store</span>
                 </div>
               </button>
@@ -203,7 +204,7 @@ export const Hero = () => {
                   className="w-6 h-6 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Get it on</span>
+                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">ডাউনলোড করুন</span>
                   <span className="text-sm text-slate-900 font-black tracking-tight">Google Play</span>
                 </div>
               </a>
@@ -221,11 +222,11 @@ export const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex items-center gap-8 md:gap-12"
             >
-              <Stat value="500+" label="Turfs Ready" delay={0.65} />
+              <Stat value="৫০০+" label="টার্ফ প্রস্তুত" delay={0.65} />
               <div className="w-px h-10 bg-slate-200" />
-              <Stat value="10K+" label="Bookings/Month" delay={0.75} />
+              <Stat value="১০কে+" label="বুকিং/মাস" delay={0.75} />
               <div className="w-px h-10 bg-slate-200" />
-              <Stat value="99.9%" label="Uptime" delay={0.85} />
+              <Stat value="৯৯.৯%" label="আপটাইম" delay={0.85} />
             </motion.div>
           </div>
 
@@ -246,9 +247,9 @@ export const Hero = () => {
             {/* Center Main Home Mockup */}
             <div ref={centerPhoneRef} className="relative z-20 transition-transform duration-300 flex items-center justify-center">
               <img
-                src={homeMockImg}
-                alt="TurfPlay Home App Mockup"
-                className="w-full max-w-[260px] sm:max-w-[290px] lg:max-w-[310px] xl:max-w-[330px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,168,89,0.18)]"
+                src={handMockImg}
+                alt="TurfPlay Hand-held App Mockup"
+                className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px] xl:max-w-[420px] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,168,89,0.25)] rounded-[2rem]"
               />
             </div>
 

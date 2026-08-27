@@ -8,25 +8,25 @@ export interface SportCategory {
 export const browseSportsData: SportCategory[] = [
   {
     id: 'football',
-    name: 'Football',
+    name: 'ফুটবল',
     fieldsCount: 12,
     imagePath: '/assets/images/sports/football.png', // Replace with your actual image path
   },
   {
     id: 'cricket',
-    name: 'Cricket',
+    name: 'ক্রিকেট',
     fieldsCount: 8,
     imagePath: '/assets/images/sports/cricket.png', // Replace with your actual image path
   },
   {
     id: 'badminton',
-    name: 'Badminton',
+    name: 'ব্যাডমিন্টন',
     fieldsCount: 5,
     imagePath: '/assets/images/sports/badminton.png', // Replace with your actual image path
   },
   {
     id: 'basketball',
-    name: 'Basketball',
+    name: 'বাস্কেটবল',
     fieldsCount: 3,
     imagePath: '/assets/images/sports/basketball.png', // Replace with your actual image path
   },

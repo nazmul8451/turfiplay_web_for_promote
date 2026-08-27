@@ -5,24 +5,24 @@ import { CheckCircle2 } from 'lucide-react';
 export const Pricing = () => {
   const plans = [
     {
-      name: "Starter",
-      price: "2,500",
-      desc: "Perfect for single turf owners starting their digital journey.",
-      features: ["Daily Slot Dashboard", "WhatsApp Integration", "Basic Revenue Tracking", "Mobile-First Access"],
+      name: "স্টার্টার",
+      price: "২,৫০০",
+      desc: "ডিজিটাল যাত্রা শুরু করতে চান এমন একক টার্ফ মালিকদের জন্য উপযুক্ত।",
+      features: ["দৈনিক স্লট ড্যাশবোর্ড", "হোয়াটসঅ্যাপ ইন্টিগ্রেশন", "মৌলিক আয় ট্র্যাকিং", "মোবাইল অ্যাক্সেস"],
       isPopular: false
     },
     {
-      name: "Professional",
-      price: "5,000",
-      desc: "For growing facilities with high booking volumes.",
-      features: ["Everything in Starter", "Automated SMS Alerts", "Customer Analytics", "Advanced Reports", "Digital Payment Integration"],
+      name: "প্রফেশনাল",
+      price: "৫,০০০",
+      desc: "বেশি বুকিং হওয়া বিকাশমান টার্ফ সেন্টারের জন্য।",
+      features: ["স্টার্টারের সব ফিচার", "স্বয়ংক্রিয় এসএমএস অ্যালার্ট", "কাস্টমার অ্যানালিটিক্স", "উন্নত রিপোর্টসমূহ", "ডিজিটাল পেমেন্ট সাপোর্ট"],
       isPopular: true
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      desc: "Full-scale solution for multi-turf chains and sports complexes.",
-      features: ["All Pro Features", "Multi-Location Support", "Dedicated Account Manager", "White-label Option", "Custom Integrations"],
+      name: "এন্টারপ্রাইজ",
+      price: "কাস্টম",
+      desc: "মাল্টি-টার্ফ চেইন এবং বড় স্পোর্টস কমপ্লেক্সের জন্য সম্পূর্ণ সমাধান।",
+      features: ["প্রো প্ল্যানের সব ফিচার", "মাল্টি-লোকেশন সাপোর্ট", "ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার", "হোয়াইট-লেবেল অপশন", "কাস্টম ইন্টিগ্রেশন"],
       isPopular: false
     }
   ];
@@ -32,10 +32,10 @@ export const Pricing = () => {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
-            Transparent <span className="font-serif italic text-[#00A859] lowercase font-normal">pricing.</span>
+            স্বচ্ছ <span className="font-serif italic text-[#00A859] lowercase font-normal">মূল্য তালিকা।</span>
           </h2>
           <p className="text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
-            Choose the plan that fits your facility's scale and scale seamlessly as your bookings grow.
+            আপনার টার্ফের আকার অনুযায়ী সেরা প্ল্যানটি বেছে নিন এবং ব্যবসা বৃদ্ধির সাথে সাথে পরিবর্ধন করুন।
           </p>
         </div>
         <div className="grid lg:grid-cols-3 gap-8 items-stretch">
@@ -50,16 +50,16 @@ export const Pricing = () => {
             >
               {plan.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00A859] text-white px-5 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-md">
-                  Most Recommended
+                  সবচেয়ে জনপ্রিয়
                 </div>
               )}
               <div className="mb-8">
                 <h3 className="text-xl font-extrabold text-slate-900 mb-2 uppercase tracking-tight">{plan.name}</h3>
                 <p className="text-xs text-slate-500 font-medium mb-6">{plan.desc}</p>
                 <div className="flex items-baseline gap-1.5 mb-6">
-                  <span className="text-slate-500 text-xs font-bold uppercase">BDT</span>
+                  <span className="text-slate-500 text-xs font-bold uppercase">৳</span>
                   <span className="text-4xl font-black text-slate-900 tracking-tight">{plan.price}</span>
-                  <span className="text-slate-500 text-xs font-medium">/mo</span>
+                  <span className="text-slate-500 text-xs font-medium">/মাস</span>
                 </div>
                 <div className="space-y-3 mb-8">
                   {plan.features.map((f, fi) => (
@@ -73,7 +73,7 @@ export const Pricing = () => {
                 </div>
               </div>
               <button className={`w-full py-4 rounded-full font-extrabold uppercase tracking-wider text-xs transition-all ${plan.isPopular ? 'bg-[#00A859] text-white hover:bg-[#008746] shadow-md shadow-[#00A859]/25' : 'bg-slate-100 text-slate-900 hover:bg-slate-200'}`}>
-                Get Started Now
+                এখনই শুরু করুন
               </button>
             </motion.div>
           ))}

@@ -5,18 +5,18 @@ import { Phone, LayoutDashboard, X } from 'lucide-react';
 export const Problem = () => {
   const problems = [
     {
-      title: "The WhatsApp Chaos",
-      desc: "Scrolling through 100 messages just to find who booked the 8 PM slot.",
+      title: "হোয়াটসঅ্যাপের বিশৃঙ্খলা",
+      desc: "রাত ৮টার স্লট কে বুক করেছিল তা দেখতে ১০০টি মেসেজ স্ক্রোল করার ঝামেলা।",
       icon: Phone
     },
     {
-      title: "The Double Booking Nightmare",
-      desc: "Two teams show up for the same slot because you forgot to write it down.",
+      title: "ডাবল-বুকিংয়ের দুশ্চিন্তা",
+      desc: "লিখে রাখতে ভুলে যাওয়ার কারণে একই সময়ে ২টি দল টার্ফে খেলতে চলে আসা।",
       icon: X
     },
     {
-      title: "Missing Payment Records",
-      desc: "Not knowing who paid the advance and who still owes you money.",
+      title: "পেমেন্ট রেকর্ডের অভাব",
+      desc: "কে অগ্রিম দিয়েছে আর কার কাছে টাকা বাকি তা ম্যানুয়ালি হিসাব করা কঠিন।",
       icon: LayoutDashboard
     }
   ];
@@ -35,11 +35,11 @@ export const Problem = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-8 leading-tight tracking-tighter">
-              Still Using WhatsApp <br />
-              <span className="text-[var(--text-secondary)] opacity-50">& Excel?</span>
+              এখনও হোয়াটসঅ্যাপ <br />
+              <span className="text-[var(--text-secondary)] opacity-50">ও এক্সেল ব্যবহার করছেন?</span>
             </h2>
             <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-12 leading-relaxed max-w-xl font-medium">
-              WhatsApp and Excel are great for messaging, but they weren't built to run a professional sports facility. Stop wasting time on manual entry.
+              হোয়াটসঅ্যাপ বা এক্সেল মেসেজ পাঠানোর জন্য ভালো হলেও প্রফেশনাল স্পোর্টস টার্ফ চালানোর জন্য তৈরি নয়। ম্যানুয়াল হিসাব কষে সময় নষ্ট বন্ধ করুন।
             </p>
             <div className="space-y-8">
               {problems.map((p, i) => (
@@ -76,8 +76,8 @@ export const Problem = () => {
                   <div className="w-32 h-32 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-red-500/20 shadow-[0_0_40px_rgba(239,68,68,0.1)]">
                     <X className="text-red-500" size={50} />
                   </div>
-                  <p className="text-3xl font-black text-white mb-6 italic tracking-tight leading-tight">"Wait, let me check my Excel..."</p>
-                  <p className="text-lg text-white/30 font-medium">The sound of a business losing its professional edge.</p>
+                  <p className="text-3xl font-black text-white mb-6 italic tracking-tight leading-tight">"একটু দাঁড়ান, আমি এক্সেল শিট দেখে বলছি..."</p>
+                  <p className="text-lg text-white/30 font-medium">ব্যবসায় প্রফেশনালিজম হারানোর চিত্র।</p>
                 </div>
               </div>
             </div>

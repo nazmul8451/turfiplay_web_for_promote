@@ -4,9 +4,9 @@ import { MapPin, Calendar, Zap, Users } from 'lucide-react';
 
 export const About = () => {
   const values = [
-    { title: "Nearby Turfs", desc: "Discover high-quality sports arenas in your area instantly. Filter by distance, ratings, and available amenities.", icon: MapPin },
-    { title: "Live Slot Booking", desc: "View real-time slot availability directly from the homepage. Book your match time without any phone call hassles.", icon: Calendar },
-    { title: "Split & Pay", desc: "Securely pay with Bkash, Nagad, or cards. Get instant confirmations and split the turf cost with your friends.", icon: Zap }
+    { title: "কাছের টার্ফসমূহ", desc: "আপনার এলাকায় মানসম্পন্ন স্পোর্টস টার্ফ খুঁজুন। দূরত্ব, রেটিং এবং সুযোগ-সুবিধা দেখে বেছে নিন।", icon: MapPin },
+    { title: "লাইভ স্লট বুকিং", desc: "হোমপেজ থেকেই রিয়েল-টাইম স্লট বুকিংয়ের তথ্য দেখুন। কল করার ঝামেলা ছাড়াই ম্যাচ বুক করুন।", icon: Calendar },
+    { title: "সহজে পেমেন্ট", desc: "বিকাশ, নগদ বা কার্ডের মাধ্যমে নিরাপদে পেমেন্ট করুন। তাৎক্ষণিক নিশ্চিতকরণ পান।", icon: Zap }
   ];
 
   return (
@@ -19,11 +19,11 @@ export const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-black text-[var(--text-primary)] mb-6 tracking-tighter uppercase italic leading-[1.1]">
-              PLAY MORE. <br />
-              <span className="text-brand-green">STRESS LESS.</span>
+              খেলাধুলা বেশি। <br />
+              <span className="text-brand-green">চাপ কম।</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] mb-10 font-medium leading-relaxed">
-              Explore turf locations around you, check live slot availability, and finalize bookings in under a minute. Our user dashboard gets you from search to the field faster than ever before.
+              আপনার চারপাশের টার্ফ খুঁজুন, রিয়েল-টাইম স্লট চেক করুন এবং এক মিনিটের কম সময়ে বুকিং সম্পন্ন করুন।
             </p>
             <div className="space-y-6">
               {values.map((v, i) => (
@@ -52,14 +52,14 @@ export const About = () => {
                   <div className="w-10 h-10 rounded-full bg-brand-green/20 border border-brand-green/30 flex items-center justify-center">
                     <Users size={20} className="text-brand-green" />
                   </div>
-                  <span className="text-brand-green font-black uppercase text-[10px] tracking-widest">Player Feedback</span>
+                  <span className="text-brand-green font-black uppercase text-[10px] tracking-widest">খেলোয়াড়দের মতামত</span>
                 </div>
-                <p className="text-3xl font-black text-[var(--text-primary)] italic tracking-tighter mb-6 leading-none">"Finding a turf and collecting money from everyone used to be a headache. Now we just check nearby grounds on the homepage and book instantly!"</p>
+                <p className="text-3xl font-black text-[var(--text-primary)] italic tracking-tighter mb-6 leading-none">"টার্ফ খুঁজে পাওয়া আর সবার কাছ থেকে টাকা তোলা আগে খুব ঝামেলার ছিল। এখন হোমপেজে কাছের গ্রাউন্ড দেখেই ঝটপট বুক করে ফেলি!"</p>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-brand-green/40 border border-brand-green/50 animate-pulse" />
                   <div>
-                    <p className="text-[var(--text-primary)] font-bold uppercase text-xs tracking-widest">Nafis Fuad</p>
-                    <p className="text-[var(--text-secondary)] text-[10px] font-bold uppercase tracking-[0.2em]">Captain, FC Phoenix</p>
+                    <p className="text-[var(--text-primary)] font-bold uppercase text-xs tracking-widest">নাফিস ফুয়াদ</p>
+                    <p className="text-[var(--text-secondary)] text-[10px] font-bold uppercase tracking-[0.2em]">অধিনায়ক, এফসি ফিনিক্স</p>
                   </div>
                 </div>
               </div>

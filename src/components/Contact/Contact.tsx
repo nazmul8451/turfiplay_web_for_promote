@@ -27,8 +27,8 @@ export const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-7xl font-black text-[var(--text-primary)] mb-8 tracking-tighter uppercase italic leading-none">LET'S <span className="text-brand-green">TALK.</span></h2>
-            <p className="text-lg text-[var(--text-secondary)] mb-10 font-medium leading-relaxed uppercase tracking-widest">Whether you have a question or are ready to transform your turf, our team is here to help.</p>
+            <h2 className="text-4xl md:text-7xl font-black text-[var(--text-primary)] mb-8 tracking-tighter uppercase italic leading-none">যোগাযোগ <span className="text-brand-green">করুন।</span></h2>
+            <p className="text-lg text-[var(--text-secondary)] mb-10 font-medium leading-relaxed uppercase tracking-widest">আপনার কোনো প্রশ্ন থাকলে বা টার্ফ পরিচালনায় পরিবর্তন আনতে চাইলে আমাদের সাথে নির্দ্বিধায় যোগাযোগ করুন।</p>
 
             <div className="space-y-8">
               <div className="flex gap-8 items-center group">
@@ -36,7 +36,7 @@ export const Contact = () => {
                   <Mail className="text-brand-green" size={22} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.4em] mb-1">Email Us</p>
+                  <p className="text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.4em] mb-1">ইমেইল করুন</p>
                   <p className="text-xl font-black text-[var(--text-primary)] tracking-tight">rimon124567@gmail.com</p>
                 </div>
               </div>
@@ -45,7 +45,7 @@ export const Contact = () => {
                   <Phone className="text-brand-green" size={24} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.4em] mb-2">Call Support</p>
+                  <p className="text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.4em] mb-2">সাপোর্ট নম্বর</p>
                   <p className="text-2xl font-black text-[var(--text-primary)] tracking-tight">+880 1712-XXXXXX</p>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export const Contact = () => {
                     <input
                       required
                       type="text"
-                      placeholder="Your Full Name"
+                      placeholder="আপনার পূর্ণ নাম"
                       className="w-full bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-2xl py-6 px-8 text-[var(--text-primary)] focus:outline-none focus:border-brand-green/50 placeholder:text-[var(--text-secondary)] font-bold transition-all"
                       value={formState.name}
                       onChange={e => setFormState({ ...formState, name: e.target.value })}
@@ -75,7 +75,7 @@ export const Contact = () => {
                     <input
                       required
                       type="email"
-                      placeholder="Email Address"
+                      placeholder="ইমেইল অ্যাড্রেস"
                       className="w-full bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-2xl py-6 px-8 text-[var(--text-primary)] focus:outline-none focus:border-brand-green/50 placeholder:text-[var(--text-secondary)] font-bold transition-all"
                       value={formState.email}
                       onChange={e => setFormState({ ...formState, email: e.target.value })}
@@ -85,7 +85,7 @@ export const Contact = () => {
                     <textarea
                       required
                       rows={5}
-                      placeholder="Your Message..."
+                      placeholder="আপনার বার্তা লিখুন..."
                       className="w-full bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-2xl py-6 px-8 text-[var(--text-primary)] focus:outline-none focus:border-brand-green/50 placeholder:text-[var(--text-secondary)] font-bold transition-all resize-none"
                       value={formState.message}
                       onChange={e => setFormState({ ...formState, message: e.target.value })}
@@ -101,7 +101,7 @@ export const Contact = () => {
                     <div className="w-6 h-6 border-4 border-black/20 border-t-black rounded-full animate-spin" />
                   ) : (
                     <>
-                      Send Message
+                      বার্তা পাঠান
                       <Send size={20} />
                     </>
                   )}
@@ -116,13 +116,13 @@ export const Contact = () => {
                 <div className="w-24 h-24 bg-brand-green/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-brand-green/30">
                   <CheckCircle2 size={48} className="text-brand-green" />
                 </div>
-                <h3 className="text-4xl font-black text-[var(--text-primary)] mb-6 uppercase italic">Message Sent!</h3>
-                <p className="text-xl text-[var(--text-secondary)] font-medium leading-relaxed">We've received your inquiry and will <br /> get back to you within 24 hours.</p>
+                <h3 className="text-4xl font-black text-[var(--text-primary)] mb-6 uppercase italic">বার্তা পাঠানো হয়েছে!</h3>
+                <p className="text-xl text-[var(--text-secondary)] font-medium leading-relaxed">আমরা আপনার প্রস্তাব পেয়েছি এবং <br /> ২৪ ঘণ্টার মধ্যে যোগাযোগ করবো।</p>
                 <button
                   onClick={() => setIsSuccess(false)}
                   className="mt-12 text-brand-green font-black uppercase italic tracking-widest text-sm hover:underline"
                 >
-                  Send another message
+                  অন্য একটি বার্তা পাঠান
                 </button>
               </motion.div>
             )}

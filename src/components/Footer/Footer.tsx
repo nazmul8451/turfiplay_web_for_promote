@@ -22,7 +22,7 @@ export const Footer = () => {
               </span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed font-medium mb-6">
-              The professional management system for sports turf owners. Built for speed, accuracy, and growth.
+              স্পোর্টস টার্ফ মালিকদের জন্য আধুনিক ডিজিটাল সিস্টেম। গতি, নির্ভুলতা ও প্রবৃদ্ধির নিশ্চয়তা।
             </p>
             <div className="flex gap-3">
               {[Instagram, Facebook, Twitter].map((Icon, i) => (
@@ -34,28 +34,28 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">Platform</h4>
+            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">প্ল্যাটফর্ম</h4>
             <ul className="space-y-4 text-slate-600 font-bold uppercase tracking-wider text-xs">
-              <li><a href="#how-it-works" className="hover:text-[#00A859] transition-colors">Ecosystem</a></li>
-              <li><a href="#features" className="hover:text-[#00A859] transition-colors">Features</a></li>
-              <li><a href="#pricing" className="hover:text-[#00A859] transition-colors">Pricing</a></li>
-              <li><a href="#testimonials" className="hover:text-[#00A859] transition-colors">Testimonials</a></li>
-              <li><a href="#faq" className="hover:text-[#00A859] transition-colors">FAQ</a></li>
+              <li><a href="#how-it-works" className="hover:text-[#00A859] transition-colors">ইকোসিস্টেম</a></li>
+              <li><a href="#features" className="hover:text-[#00A859] transition-colors">ফিচারসমূহ</a></li>
+              <li><a href="#pricing" className="hover:text-[#00A859] transition-colors">মূল্য তালিকা</a></li>
+              <li><a href="#testimonials" className="hover:text-[#00A859] transition-colors">গ্রাহক মতামত</a></li>
+              <li><a href="#faq" className="hover:text-[#00A859] transition-colors">প্রশ্নোত্তর</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">Support</h4>
+            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">সাপোর্ট</h4>
             <ul className="space-y-4 text-slate-600 font-bold uppercase tracking-wider text-xs">
-              <li><a href="#contact" className="hover:text-[#00A859] transition-colors">Contact</a></li>
-              <li><a href="#waitlist" className="hover:text-[#00A859] transition-colors">Waitlist</a></li>
-              <li><a href="#" className="hover:text-[#00A859] transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[#00A859] transition-colors">Terms of Service</a></li>
+              <li><a href="#contact" className="hover:text-[#00A859] transition-colors">যোগাযোগ</a></li>
+              <li><a href="#waitlist" className="hover:text-[#00A859] transition-colors">ওয়েটলিস্ট</a></li>
+              <li><a href="#" className="hover:text-[#00A859] transition-colors">প্রাইভেসি পলিসি</a></li>
+              <li><a href="#" className="hover:text-[#00A859] transition-colors">শর্তাবলী</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">Location</h4>
+            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-6">ঠিকানা</h4>
             <ul className="space-y-4 text-slate-600 font-medium text-xs">
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#00A859]" />
@@ -63,17 +63,17 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <MapPin size={16} className="text-[#00A859]" />
-                DHAKA, BANGLADESH
+                ঢাকা, বাংলাদেশ
               </li>
             </ul>
           </div>
         </div>
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">
-            © {new Date().getFullYear()} TurfPlay. All Rights Reserved.
+            © {new Date().getFullYear()} TurfPlay। সর্বস্বত্ব সংরক্ষিত।
           </p>
           <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-            Made with <Zap size={12} className="text-[#00A859]" /> by TurfPlay Team
+            TurfPlay টিম দ্বারা <Zap size={12} className="text-[#00A859]" /> নির্মিত
           </p>
         </div>
       </div>

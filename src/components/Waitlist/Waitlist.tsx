@@ -14,11 +14,11 @@ export const Waitlist = () => {
     const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
 
     if (!email || !emailRegex.test(email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = 'সঠিক ইমেইল অ্যাড্রেস প্রদান করুন';
     }
 
     if (!phone || !phoneRegex.test(phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Please enter a valid phone number';
+      newErrors.phone = 'সঠিক ফোন নম্বর প্রদান করুন';
     }
 
     setErrors(newErrors);
@@ -52,12 +52,12 @@ export const Waitlist = () => {
           <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#00A859] to-transparent shadow-sm" />
 
           <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight uppercase">
-            Ready to Run <br />
-            <span className="font-serif italic text-[#00A859] lowercase font-normal">your turf?</span>
+            আপনার টার্ফ ডিজিটাল করতে <br />
+            <span className="font-serif italic text-[#00A859] lowercase font-normal">প্রস্তুত?</span>
           </h2>
 
           <p className="text-base md:text-lg text-slate-600 mb-12 max-w-xl mx-auto font-medium leading-relaxed">
-            The era of manual spreadsheets is over. Be among the first to experience TurfPlay.
+            ম্যানুয়াল খাতার দিন শেষ। সবার আগে TurfPlay ব্যবহারের অভিজ্ঞতা নিতে ওয়েটলিস্টে নাম দিন।
           </p>
 
           {!submitted ? (
@@ -68,7 +68,7 @@ export const Waitlist = () => {
                     <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="email"
-                      placeholder="Email Address"
+                      placeholder="ইমেইল অ্যাড্রেস"
                       className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
                         errors.email ? 'border-red-500' : 'border-slate-200'
                       }`}
@@ -97,7 +97,7 @@ export const Waitlist = () => {
                     <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="tel"
-                      placeholder="01XXXXXXXXX"
+                      placeholder="০১XXXXXXXXX"
                       className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
                         errors.phone ? 'border-red-500' : 'border-slate-200'
                       }`}
@@ -126,7 +126,7 @@ export const Waitlist = () => {
                 type="submit"
                 className="group relative overflow-hidden w-full btn-primary !py-5 !text-lg uppercase tracking-wider font-extrabold flex items-center justify-center gap-2"
               >
-                <span>Claim Early Access</span>
+                <span>আগাম অ্যাক্সেস নিন</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -149,8 +149,8 @@ export const Waitlist = () => {
               >
                 <CheckCircle2 size={40} className="text-[#00A859]" />
               </motion.div>
-              <h3 className="text-3xl font-extrabold text-slate-900 mb-3 uppercase">You're on the list!</h3>
-              <p className="text-base text-slate-600 font-medium">We'll reach out to you as soon as we're ready for Liftoff.</p>
+              <h3 className="text-3xl font-extrabold text-slate-900 mb-3 uppercase">আপনি ওয়েটলিস্টে যুক্ত হয়েছেন!</h3>
+              <p className="text-base text-slate-600 font-medium">অ্যাপটি পুরোদমে চালু হওয়া মাত্রই আমরা আপনার সাথে যোগাযোগ করবো।</p>
             </motion.div>
           )}
         </motion.div>

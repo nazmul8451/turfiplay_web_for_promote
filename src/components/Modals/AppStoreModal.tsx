@@ -44,26 +44,26 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 mb-4">
             <Clock size={14} className="text-[#00A859] animate-pulse" />
             <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-              Publishing Progress
+              পাবলিশিং প্রক্রিয়া চলছে
             </span>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tight">
-            App Store Version Coming Soon!
+            অ্যাপ স্টোর ভার্সন শীঘ্রই আসছে!
           </h3>
 
           <p className="text-xs text-slate-600 font-medium leading-relaxed mb-6">
-            We are currently finalizing the Apple App Store review and publishing process. <strong className="text-slate-900">TurfPlay for iOS</strong> will be live very soon!
+            অ্যাপল অ্যাপ স্টোর রিভিউ এবং পাবলিশিং কাজ চলছে। অতি শীঘ্রই <strong className="text-slate-900">আইওএস (iOS)-এর জন্য TurfPlay</strong> পাওয়া যাবে!
           </p>
 
           <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200 mb-6 text-left space-y-2 text-xs font-medium text-slate-700">
             <div className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-[#00A859] flex-shrink-0" />
-              <span>Android version available now on Google Play</span>
+              <span>অ্যান্ড্রয়েড অ্যাপ গুগল প্লে স্টোরে এভেলেবল</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-[#00A859] flex-shrink-0" />
-              <span>Full Web Platform accessible on any browser</span>
+              <span>যেকোনো ব্রাউজারে ফুল ওয়েব প্ল্যাটফর্ম ব্যবহার করতে পারবেন</span>
             </div>
           </div>
 
@@ -74,14 +74,14 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
               rel="noopener noreferrer"
               className="w-full py-3.5 bg-[#00A859] text-white font-extrabold rounded-full uppercase tracking-wider text-xs shadow-md hover:bg-[#008746] transition-colors flex items-center justify-center gap-2"
             >
-              <span>Get Android App on Google Play</span>
+              <span>গুগল প্লে স্টোর থেকে অ্যাপ নিন</span>
             </a>
 
             <button
               onClick={onClose}
               className="w-full py-3 bg-slate-100 text-slate-700 font-bold rounded-full text-xs hover:bg-slate-200 transition-colors"
             >
-              Got it
+              ঠিক আছে
             </button>
           </div>
         </motion.div>

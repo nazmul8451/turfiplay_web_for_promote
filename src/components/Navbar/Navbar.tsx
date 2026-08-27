@@ -12,11 +12,11 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'Ecosystem', href: 'how-it-works' },
-    { name: 'Features', href: 'features' },
-    { name: 'Pricing', href: 'pricing' },
-    { name: 'Testimonials', href: 'testimonials' },
-    { name: 'Contact', href: 'contact' },
+    { name: 'ইকোসিস্টেম', href: 'how-it-works' },
+    { name: 'ফিচারসমূহ', href: 'features' },
+    { name: 'মূল্য তালিকা', href: 'pricing' },
+    { name: 'মতামত', href: 'testimonials' },
+    { name: 'যোগাযোগ', href: 'contact' },
   ];
 
   useEffect(() => {
@@ -150,7 +150,7 @@ export const Navbar = () => {
             href="#waitlist"
             className="group relative overflow-hidden px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-[11px] flex items-center gap-2"
           >
-            <span>Join Waitlist</span>
+            <span>ওয়েটলিস্টে যোগ দিন</span>
             <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </div>
@@ -233,7 +233,7 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center py-3 bg-[#00A859] text-white font-extrabold rounded-full uppercase tracking-wider text-xs shadow-md shadow-[#00A859]/25 hover:scale-[1.02] transition-transform"
                 >
-                  Join Waitlist
+                  ওয়েটলিস্টে যোগ দিন
                 </a>
               </motion.div>
             </motion.div>

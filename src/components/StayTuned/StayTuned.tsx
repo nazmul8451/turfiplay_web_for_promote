@@ -16,21 +16,21 @@ export const StayTuned = () => {
         >
           <div className="inline-flex items-center gap-4 mb-12 px-6 py-3 rounded-full bg-brand-green/10 border border-brand-green/20">
             <Zap className="text-brand-green animate-pulse" size={16} />
-            <span className="text-xs font-black text-brand-green uppercase tracking-[0.4em]">Follow the Journey</span>
+            <span className="text-xs font-black text-brand-green uppercase tracking-[0.4em]">আমাদের সাথে যুক্ত থাকুন</span>
           </div>
 
           <h2 className="text-5xl md:text-8xl font-black text-[var(--text-primary)] mb-8 italic uppercase tracking-tighter">
-            Stay <span className="text-brand-green">Tuned.</span>
+            সাথে <span className="text-brand-green">থাকুন।</span>
           </h2>
 
           <p className="text-xl text-[var(--text-secondary)] mb-24 max-w-3xl mx-auto font-medium leading-relaxed uppercase tracking-widest">
-            We're building the future of sports management. Join the inner circle for exclusive updates.
+            আমরা তৈরি করছি স্পোর্টস ম্যানেজমেন্টের নতুন ভবিষ্যৎ। বিশেষ আপডেট পেতে আমাদের সাথে যুক্ত হোন।
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-12">
             {[
-              { name: "Facebook", icon: Facebook, sub: "Join the community" },
-              { name: "Instagram", icon: Instagram, sub: "See the action" }
+              { name: "Facebook", icon: Facebook, sub: "কমিউনিটিতে যুক্ত হন" },
+              { name: "Instagram", icon: Instagram, sub: "আপডেটসমূহ দেখুন" }
             ].map((social, i) => (
               <motion.a
                 key={i}

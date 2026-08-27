@@ -4,9 +4,9 @@ import { MessageSquareQuote } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
-    { name: "Rafat Hasan", role: "Owner, Pitch 56", quote: "Before TurfPlay, I was losing sleep over double bookings. Now, everything stays locked and synced. It's a game changer." },
-    { name: "Imtiaz Ahmed", role: "Manager, Kickoff Arena", quote: "The revenue reports are incredible. I can see my growth day-by-day. Very easy to use even for my staff." },
-    { name: "Tanvir Hossain", role: "Owner, GoalLine Turf", quote: "The waitlist interface is so simple. My customers love how professional the booking process looks now." }
+    { name: "রাফাত হাসান", role: "মালিক, পিচ ৫৬", quote: "TurfPlay ব্যবহারের আগে ডাবল-বুকিং নিয়ে খুব দুশ্চিন্তায় থাকতে হতো। এখন সব স্লট অটো লক ও সিঙ্ক থাকে। এটি সত্যিই অসাধারণ।" },
+    { name: "ইমতিয়াজ আহমেদ", role: "ম্যানেজার, কিকঅফ অ্যারেনা", quote: "রেভিনিউ রিপোর্টগুলো দারুণ। প্রতিদিনই ব্যবসার উন্নতি দেখতে পাই। এমনকি আমার স্টাফদের জন্যও এটি ব্যবহার করা অত্যন্ত সহজ।" },
+    { name: "তানভীর হোসেন", role: "মালিক, গোললাইন টার্ফ", quote: "ওয়েটলিস্ট ইন্টারফেসটি খুবই সহজ। আমার কাস্টমাররা এখন বুকিং প্রসেসটি অত্যন্ত প্রফেশনাল মনে করে।" }
   ];
 
   return (
@@ -14,10 +14,10 @@ export const Testimonials = () => {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight uppercase">
-            What owners <span className="font-serif italic text-[#00A859] lowercase font-normal">say.</span>
+            টার্ফ মালিকদের <span className="font-serif italic text-[#00A859] lowercase font-normal">অভিজ্ঞতা।</span>
           </h2>
           <p className="text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
-            Real feedback from pioneering turf facility managers.
+            আমাদের টার্ফ ম্যানেজার ও মালিকদের বাস্তব মতামত।
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
