@@ -245,13 +245,21 @@ export const Hero = () => {
             />
 
             {/* Center Main Home Mockup */}
-            <div ref={centerPhoneRef} className="relative z-20 transition-transform duration-300 flex items-center justify-center">
-              <img
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              ref={centerPhoneRef} 
+              className="relative z-20 transition-transform duration-300 flex items-center justify-center"
+            >
+              <motion.img
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                 src={handMockImg}
                 alt="TurfPlay Hand-held App Mockup"
-                className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px] xl:max-w-[420px] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,168,89,0.25)] rounded-[2rem]"
+                className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[390px] xl:max-w-[430px] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,168,89,0.22)] rounded-[2.5rem]"
               />
-            </div>
+            </motion.div>
 
           </div>
 
