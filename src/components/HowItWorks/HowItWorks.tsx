@@ -2,51 +2,112 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Smartphone, LayoutDashboard, Sparkles, CheckCircle2,
-  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, Clock, ShieldCheck 
+  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, Clock, ShieldCheck, X, ZoomIn, Info
 } from 'lucide-react';
 import { 
   MockupScreen1, MockupScreen2, MockupScreen3, 
-  PlayerMockupScreen1, PlayerMockupScreen2, PlayerMockupScreen3 
+  PlayerMockupScreen1, PlayerMockupScreen2, PlayerMockupScreen3,
+  PlayerMockupScreen4, PlayerMockupScreen5, PlayerMockupScreen6
 } from '../Mockups/MockupScreens';
+
+import playerHome1Img from '../../assets/images/homepage1.png';
+import playerHome2Img from '../../assets/images/homepage2.png';
+import playerMapImg from '../../assets/images/mapscreen.png';
+import playerMock1Img from '../../assets/images/mockup1.jpg';
+import playerMock2Img from '../../assets/images/mockup2.jpg';
+import playerMock3Img from '../../assets/images/mockup3.jpg';
 
 export const HowItWorks = () => {
   // Role switcher state: 'player' or 'owner'
   const [activeRole, setActiveRole] = useState<'player' | 'owner'>('player');
   const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [activeZoomImage, setActiveZoomImage] = useState<{ src: string; title: string } | null>(null);
 
-  // Player Steps Data
+  // Player Steps Data (Real App Screenshots & Explicit Clear Details)
   const playerFeatures = [
     {
       num: "০১",
-      title: "কাছের টার্ফ ও লাইভ স্লট খুঁজুন",
-      desc: "ম্যাপ এবং লাইভ ফিল্টারের মাধ্যমে আপনার কাছের সেরা ফুটবল ও ক্রিকেট টার্ফের খালি স্লট এক ক্লিকে খুঁজুন।",
-      badge: "ম্যাপ ও ফিল্টার",
-      icon: MapPin,
-      screen: <PlayerMockupScreen1 />
+      title: "হোমপেজ ও স্পোর্টস ব্রাউজিং",
+      desc: "ফুটবল, ক্রিকেট, ব্যাডমিন্টন ও বাস্কেটবল—আপনার পছন্দের খেলার সেরা টার্ফ সহজেই খুঁজুন।",
+      badge: "হোমপেজ ইউআই",
+      icon: Smartphone,
+      screenImage: playerHome1Img,
+      screen: <PlayerMockupScreen1 onZoom={() => setActiveZoomImage({ src: playerHome1Img, title: "হোমপেজ ও স্পোর্টস ব্রাউজিং" })} />,
+      details: [
+        { label: "প্রবেশ অবস্থান", val: "মহাখালী, ঢাকা" },
+        { label: "খেলার ধরন", val: "ফুটবল, ক্রিকেট, ব্যাডমিন্টন, বাস্কেটবল" },
+        { label: "লাইভ ম্যাচ কার্ড", val: "Dhaka Turf Express (০৬:০০ PM - ১২:০০ AM)" }
+      ]
     },
     {
       num: "০২",
-      title: "ঝটপট অনলাইন স্লট বুকিং",
-      desc: "বিকাশ, নগদ বা কার্ড দিয়ে পেমেন্ট করে সেকেন্ডের মধ্যে নিশ্চিত করুন আপনার পছন্দের সময়।",
-      badge: "ইনস্ট্যান্ট কনফার্মেশন",
-      icon: Zap,
-      screen: <PlayerMockupScreen2 />
+      title: "লাইভ ম্যাপে টার্ফ খুঁজুন",
+      desc: "ঢাকা সহ আশেপাশের সমস্ত টার্ফ গুগল ম্যাপে পিন পয়েন্ট করে সরাসরি রেট ও লোকেশন দেখুন।",
+      badge: "লাইভ ম্যাপ",
+      icon: MapPin,
+      screenImage: playerMapImg,
+      screen: <PlayerMockupScreen2 onZoom={() => setActiveZoomImage({ src: playerMapImg, title: "লাইভ ম্যাপে টার্ফ খুঁজুন" })} />,
+      details: [
+        { label: "টার্ফ এলাকা", val: "ঢাকা গুলশান ২" },
+        { label: "প্রতি ঘণ্টার রেট", val: "৳৫০০ / ঘণ্টা" },
+        { label: "ইউজার রেটিং", val: "৪.৭ ★ (ভেরিফাইড)" }
+      ]
     },
     {
       num: "০৩",
-      title: "ডিজিটাল ম্যাচ পাস ও টিকেট",
-      desc: "বুকিং নিশ্চিত হওয়ার পর কিউআর কোড যুক্ত ডিজিটাল ম্যাচ টিকিট পান যা সরাসরি টার্ফে স্ক্যান করা যায়।",
-      badge: "QR ডিজিটাল পাস",
-      icon: Calendar,
-      screen: <PlayerMockupScreen2 />
+      title: "কাছের টার্ফ ও ট্রেন্ডিং গ্রাউন্ড",
+      desc: "আপনার লোকেশন থেকে দূরত্ব, ফিল্ড কন্ডিশন ও পারকিং সুবিধাসহ সকল টার্ফের তালিকা।",
+      badge: "নিয়্যারবাই ফিল্টার",
+      icon: Zap,
+      screenImage: playerHome2Img,
+      screen: <PlayerMockupScreen3 onZoom={() => setActiveZoomImage({ src: playerHome2Img, title: "কাছের টার্ফ ও ট্রেন্ডিং গ্রাউন্ড" })} />,
+      details: [
+        { label: "নিকটস্থ গ্রাউন্ড", val: "ধানমন্ডি টার্ফ অ্যারেনা (৩.৬ কিমি)" },
+        { label: "বিশেষ সুবিধা", val: "পারকিং, ফ্রি ওয়াইফাই, স্পেকটেটর জোন" },
+        { label: "বুকিং স্টার্ট", val: "৳৫০০ - ৳১২০০ / ঘণ্টা" }
+      ]
     },
     {
       num: "০৪",
-      title: "টিম তৈরি ও প্লেয়ার স্কোয়াড",
-      desc: "সহখেলোয়াড় খুঁজুন, ফ্রেন্ডলি ম্যাচের জন্য প্রতিপক্ষ টিম চ্যালেঞ্জ করুন অথবা নতুন কমিউনিটিতে যুক্ত হোন।",
-      badge: "প্লেয়ার কমিউনিটি",
+      title: "ফিল্ড অপশন ও ইনস্ট্যান্ট বুকিং",
+      desc: "টার্ফের ছবি, মেইন ফুটবল ফিল্ড, ফ্লাডলাইট ও প্রতি ঘণ্টার রেট দেখে সরাসরি বুক করুন।",
+      badge: "ইনস্ট্যান্ট বুকিং",
+      icon: Calendar,
+      screenImage: playerMock1Img,
+      screen: <PlayerMockupScreen4 onZoom={() => setActiveZoomImage({ src: playerMock1Img, title: "ফিল্ড অপশন ও ইনস্ট্যান্ট বুকিং" })} />,
+      details: [
+        { label: "টার্ফ নাম", val: "অ্যারেনা ৭১ (বনানী)" },
+        { label: "মাঠের সাইজ", val: "৬০x৪০ মিটার (১০v১০ ফুটবল)" },
+        { label: "সুবিধা ও রেট", val: "ফ্লাডলাইট, HD সারফেস, ৳১৫০০/ঘণ্টা" }
+      ]
+    },
+    {
+      num: "০৫",
+      title: "খেলোয়াড় প্রোফাইল ও বুকিং হিস্ট্রি",
+      desc: "আপনার পূর্বের খেলা, গড় রেটিং ও অ্যাক্টিভ বুকিং ট্র্যাক করুন খুব সহজে।",
+      badge: "প্লেয়ার প্রোফাইল",
       icon: Users,
-      screen: <PlayerMockupScreen3 />
+      screenImage: playerMock2Img,
+      screen: <PlayerMockupScreen5 onZoom={() => setActiveZoomImage({ src: playerMock2Img, title: "খেলোয়াড় প্রোফাইল ও বুকিং হিস্ট্রি" })} />,
+      details: [
+        { label: "প্লেয়ার প্রোফাইল", val: "রিমন আহমেদ (বনানী, ঢাকা)" },
+        { label: "বুকিং স্ট্যাটস", val: "৬টি কাছের টার্ফ, ১২টি সাকসেস বুকিং" },
+        { label: "প্লেয়ার রেটিং", val: "৪.৮ / ৫.০ স্টার" }
+      ]
+    },
+    {
+      num: "০৬",
+      title: "টার্ফ রিভিউ ও ভেরিফাইড রেটিং",
+      desc: "অন্যান্য খেলোয়াড়দের রিভিউ এবং রেটিং দেখে সঠিক টার্ফ বেছে নিন নিশ্চিন্তে।",
+      badge: "স্টার রেটিং",
+      icon: ShieldCheck,
+      screenImage: playerMock3Img,
+      screen: <PlayerMockupScreen6 onZoom={() => setActiveZoomImage({ src: playerMock3Img, title: "টার্ফ রিভিউ ও ভেরিফাইড রেটিং" })} />,
+      details: [
+        { label: "মোট রিভিউ", val: "১২৮টি ভেরিফাইড প্লেয়ার রিভিউ" },
+        { label: "গড় স্কোর", val: "৪.৮ ★ ★ ★ ★ ★" },
+        { label: "প্লেয়ার কমেন্ট", val: "রফিক, তানভীর ও সাকিবের ইতিবাচক মতামত" }
+      ]
     }
   ];
 
@@ -92,6 +153,15 @@ export const HowItWorks = () => {
   const handleRoleChange = (role: 'player' | 'owner') => {
     setActiveRole(role);
     setActiveStepIndex(0);
+  };
+
+  const handleOpenZoom = () => {
+    if (activeRole === 'player' && 'screenImage' in currentFeatures[activeStepIndex]) {
+      setActiveZoomImage({
+        src: (currentFeatures[activeStepIndex] as any).screenImage,
+        title: currentFeatures[activeStepIndex].title
+      });
+    }
   };
 
   const coreLogics = [
@@ -172,7 +242,7 @@ export const HowItWorks = () => {
         <div className="glass-card !p-8 md:!p-12 bg-white border border-[#00A859]/20 shadow-xl mb-16">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             
-            {/* LEFT: STEP SELECTOR CARDS (4 STEPS) */}
+            {/* LEFT: STEP SELECTOR CARDS */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-3 h-3 rounded-full bg-[#00A859] animate-pulse" />
@@ -181,9 +251,8 @@ export const HowItWorks = () => {
                 </h3>
               </div>
 
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 {currentFeatures.map((feat, idx) => {
-                  const IconComp = feat.icon;
                   const isSelected = activeStepIndex === idx;
 
                   return (
@@ -191,15 +260,15 @@ export const HowItWorks = () => {
                       key={`${activeRole}-${idx}`}
                       onClick={() => setActiveStepIndex(idx)}
                       onMouseEnter={() => setActiveStepIndex(idx)}
-                      whileHover={{ scale: 1.01 }}
-                      className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex gap-4 items-start ${
+                      whileHover={{ scale: 1.008 }}
+                      className={`p-4 md:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex gap-4 items-start ${
                         isSelected
-                          ? 'bg-gradient-to-r from-[#00A859]/10 via-[#00A859]/5 to-transparent border-[#00A859] shadow-md shadow-[#00A859]/10'
+                          ? 'bg-gradient-to-r from-[#00A859]/12 via-[#00A859]/6 to-transparent border-[#00A859] shadow-md shadow-[#00A859]/10'
                           : 'bg-[#F8FAFC] border-slate-200 hover:border-[#00A859]/40'
                       }`}
                     >
                       {/* Step Number Badge */}
-                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center font-black text-sm flex-shrink-0 transition-colors ${
+                      <div className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center font-black text-sm flex-shrink-0 transition-colors ${
                         isSelected
                           ? 'bg-[#00A859] text-white shadow-md'
                           : 'bg-white border border-slate-200 text-slate-700'
@@ -232,36 +301,82 @@ export const HowItWorks = () => {
               </div>
             </div>
 
-            {/* RIGHT: INTERACTIVE PHONE MOCKUP PREVIEW */}
+            {/* RIGHT: DYNAMICALLY UPDATING IPHONE DEVICE MOCKUP PREVIEW */}
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] h-[540px] bg-slate-950 rounded-[44px] p-3 border-4 border-slate-800 shadow-2xl overflow-hidden flex flex-col justify-between">
+              
+              {/* iPhone 16 Pro Max Device Frame Container */}
+              <div className="relative w-full max-w-[310px] sm:max-w-[330px] lg:max-w-[350px] aspect-[9/19] bg-slate-950 rounded-[48px] p-3 border-[5px] border-slate-700 shadow-[0_25px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(0,168,89,0.18)] overflow-hidden flex flex-col justify-between group transition-transform duration-500 hover:scale-[1.015]">
                 
-                {/* Top Notch Cutout */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-950 rounded-b-xl z-30 flex items-center justify-center">
-                  <div className="w-10 h-1.5 bg-slate-800 rounded-full" />
+                {/* Side Button Simulators */}
+                <div className="absolute top-24 -left-[6px] w-[3px] h-7 bg-slate-600 rounded-l-md" />
+                <div className="absolute top-36 -left-[6px] w-[3px] h-10 bg-slate-600 rounded-l-md" />
+                <div className="absolute top-48 -left-[6px] w-[3px] h-10 bg-slate-600 rounded-l-md" />
+                <div className="absolute top-32 -right-[6px] w-[3px] h-14 bg-slate-600 rounded-r-md" />
+
+                {/* Top Dynamic Island Pill Notch Cutout */}
+                <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-24 h-5.5 bg-black rounded-full border border-white/10 z-30 flex items-center justify-between px-2.5 shadow-inner">
+                  <div className="w-3 h-3 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                    <div className="w-1 h-1 rounded-full bg-blue-900/60" />
+                  </div>
+                  <div className="w-2 h-2 rounded-full bg-slate-900 border border-slate-800" />
                 </div>
 
-                {/* Animated Screen Content */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${activeRole}-${activeStepIndex}`}
-                    initial={{ opacity: 0, scale: 0.94 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.94 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full rounded-[32px] overflow-hidden bg-[#0A0F0D]"
-                  >
-                    {currentFeatures[activeStepIndex].screen}
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Screen Caption Badge */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 bg-slate-900/90 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full text-center shadow-lg">
-                  <span className="text-[10px] font-black text-brand-green uppercase tracking-wider">
-                    {activeRole === 'player' ? 'খেলোয়াড় অ্যাপ ডেমো' : 'মালিক ড্যাশবোর্ড ডেমো'} • {currentFeatures[activeStepIndex].num}
-                  </span>
+                {/* Dynamic Screen Content Container (Swaps immediately when clicking steps) */}
+                <div 
+                  className="w-full h-full rounded-[38px] overflow-hidden bg-[#0A0F0D] relative z-10 cursor-pointer"
+                  onClick={handleOpenZoom}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${activeRole}-${activeStepIndex}`}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.25 }}
+                      className="w-full h-full relative"
+                    >
+                      {currentFeatures[activeStepIndex].screen}
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
+
+                {/* Floating HD Zoom Button Outside Phone top-right */}
+                <button
+                  type="button"
+                  onClick={handleOpenZoom}
+                  className="absolute -top-3 -right-3 z-40 bg-slate-900/95 hover:bg-[#00A859] text-white p-2 rounded-full border border-white/20 shadow-xl transition-all transform hover:scale-110 flex items-center gap-1.5 text-[10px] font-black uppercase px-3.5 cursor-pointer"
+                  title="ফুল এইচডি জুম করুন"
+                >
+                  <ZoomIn size={14} />
+                  <span>HD জুম</span>
+                </button>
               </div>
+
+              {/* EXPLICIT CLEAR TEXT DETAILS CARD BELOW PHONE */}
+              {activeRole === 'player' && 'details' in currentFeatures[activeStepIndex] && (
+                <motion.div
+                  key={`details-${activeStepIndex}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-5 w-full max-w-[350px] bg-slate-900 text-white p-4 rounded-2xl border border-[#00A859]/30 shadow-lg text-left"
+                >
+                  <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
+                    <Info size={14} className="text-[#00A859]" />
+                    <span className="text-[11px] font-black uppercase text-[#00A859] tracking-wider">
+                      পর্দায় কী তথ্য রয়েছে (স্পস্ট বিবরণ):
+                    </span>
+                  </div>
+                  <div className="space-y-1.5">
+                    {(currentFeatures[activeStepIndex] as any).details.map((d: { label: string; val: string }, i: number) => (
+                      <div key={i} className="flex justify-between items-center text-xs">
+                        <span className="text-slate-400 font-bold text-[11px]">{d.label}:</span>
+                        <span className="text-white font-extrabold text-[11px] text-right ml-2">{d.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
             </div>
 
           </div>
@@ -293,9 +408,62 @@ export const HowItWorks = () => {
         </motion.div>
 
       </div>
+
+      {/* FULL HD LIGHTBOX ZOOM MODAL */}
+      <AnimatePresence>
+        {activeZoomImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveZoomImage(null)}
+            className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-2xl w-full bg-slate-900 rounded-3xl p-6 border border-white/20 shadow-2xl flex flex-col items-center max-h-[92vh] overflow-y-auto"
+            >
+              {/* Header Bar */}
+              <div className="w-full flex justify-between items-center mb-4 pb-3 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00A859]" />
+                  <h3 className="text-lg font-black text-white uppercase tracking-tight">
+                    {activeZoomImage.title} - (ফুল এইচডি ক্লিয়ার ভিউ)
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveZoomImage(null)}
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Clear Screen Preview */}
+              <div className="relative w-full max-w-[340px] rounded-[36px] border-4 border-slate-800 overflow-hidden shadow-2xl bg-black my-2">
+                <img
+                  src={activeZoomImage.src}
+                  alt={activeZoomImage.title}
+                  className="w-full h-auto object-contain [image-rendering:-webkit-optimize-contrast] contrast-[1.05]"
+                />
+              </div>
+
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setActiveZoomImage(null)}
+                className="mt-4 px-8 py-2.5 bg-[#00A859] text-white font-black text-xs rounded-full shadow-lg hover:bg-[#008746] transition-colors uppercase tracking-wider"
+              >
+                বন্ধ করুন
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
-
-
-

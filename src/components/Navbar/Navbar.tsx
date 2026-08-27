@@ -13,6 +13,7 @@ export const Navbar = () => {
 
   const navItems = [
     { name: 'ইকোসিস্টেম', href: 'how-it-works' },
+    { name: 'প্লেয়ার অ্যাপ', href: 'player-screens' },
     { name: 'ফিচারসমূহ', href: 'features' },
     { name: 'মূল্য তালিকা', href: 'pricing' },
     { name: 'মতামত', href: 'testimonials' },
