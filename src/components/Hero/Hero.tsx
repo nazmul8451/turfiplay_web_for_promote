@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import homeMockImg from '../../assets/homemock.png';
-import handMockImg from '../../assets/hand_mockup.jpg';
+import { ArrowRight, Download, Calendar, ShieldCheck, Bell, BarChart3, Users, Trophy } from 'lucide-react';
+import mockupHomeImg from '../../assets/images/iphone17_home.png';
+import mockupDetailImg from '../../assets/images/iphone17_detail.png';
+import mockupMapImg from '../../assets/images/iphone17_map.png';
 import appstoreImg from '../../assets/images/sports/appstore.png';
 import playstoreImg from '../../assets/images/sports/palystore.png';
 import { AppStoreModal } from '../Modals/AppStoreModal';
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* ── tiny canvas particle system ── */
 const ParticleCanvas = () => {
@@ -63,149 +60,116 @@ const ParticleCanvas = () => {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />;
 };
 
-/* ── stat item ── */
-const Stat = ({ value, label, delay }: { value: string; label: string; delay: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay }}
-    className="flex flex-col"
-  >
-    <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">{value}</span>
-    <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em] mt-1">{label}</span>
-  </motion.div>
-);
-
 /* ══════════════════════════════════════════════
-   HERO (Clean Main Home Mockup Display)
+   HERO (Match Exact Reference UI System)
 ══════════════════════════════════════════════ */
 export const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const centerPhoneRef = useRef<HTMLDivElement>(null);
   const [isAppStoreModalOpen, setIsAppStoreModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (!containerRef.current || !centerPhoneRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Keep main phone mockup stable during scroll
-      gsap.to(centerPhoneRef.current, {
-        scale: 1.01,
-        y: -5,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.5,
-        },
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F6FBF8] to-[#FFFFFF] pt-20">
+    <section id="home" className="relative pt-24 sm:pt-28 pb-16 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F4FAF6] to-[#FFFFFF]">
 
       {/* ── LIGHT AMBIENT BACKGROUND GLOW ── */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[550px] bg-gradient-to-tr from-[#00A859]/10 via-[#00A859]/5 to-transparent blur-[120px] rounded-full" />
-        <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#00A859]/8 blur-[100px] rounded-full" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[600px] bg-gradient-to-tr from-[#00A859]/12 via-[#00A859]/5 to-transparent blur-[130px] rounded-full" />
+        <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#00A859]/8 blur-[110px] rounded-full" />
         <ParticleCanvas />
       </div>
 
-      {/* ── MAIN CONTENT ── */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-28 pb-20 w-full">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0">
+      {/* ── MAIN HERO CONTENT ── */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-8 pb-12 w-full">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-8">
 
-          {/* ── LEFT: TEXT ── */}
-          <div className="flex-1 lg:max-w-[55%]">
+          {/* ── LEFT: TEXT & CTA ── */}
+          <div className="flex-1 lg:max-w-[50%]">
 
-            {/* Launching soon badge */}
+            {/* Smart Turf Pill Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A859]/10 border border-[#00A859]/20 rounded-full mb-6 shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse" />
-              <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-                স্পোর্টস টার্ফের ডিজিটাল সিস্টেম
+              <span className="text-sm">⚡</span>
+              <span className="text-xs font-black text-[#00A859] tracking-wide">
+                এক প্ল্যাটফর্মে—Book. Play. Connect. Manage.
               </span>
             </motion.div>
 
-            {/* Main heading */}
+            {/* Main Heading */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="tracking-tight leading-[0.95] mb-8">
-                <span className="block text-[clamp(2.2rem,5vw,4.2rem)] font-black uppercase text-slate-900">
-                  আপনার টার্ফ পরিচালনা করুন
+              <h1 className="tracking-tight leading-[1.05] mb-6">
+                <span className="block text-[clamp(2.4rem,5.2vw,4.4rem)] font-black text-slate-900">
+                  খেলা হোক আরও স্মার্ট,
                 </span>
-                <span className="block text-[clamp(2.4rem,5.5vw,4.6rem)] font-serif italic text-[#00A859] font-normal mt-1">
-                  কোনো ঝামেলা ছাড়াই।
+                <span className="block text-[clamp(2.6rem,5.5vw,4.8rem)] font-serif italic text-[#00A859] font-normal mt-1">
+                  টার্ফ হোক আরও সহজ!
                 </span>
               </h1>
             </motion.div>
 
-            {/* Subtext */}
+            {/* Description Subtext */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-10"
+              className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-8"
             >
-              খেলা বুক করা হোক বা টার্ফ পরিচালনা, TurfPlay নিয়ে এসেছে এক সহজ সমাধান। বুকিং ম্যানেজমেন্ট, পেমেন্ট গ্রহণ, সিডিউল নিয়ন্ত্রণ এবং নির্বিঘ্ন অভিজ্ঞতা—সবকিছু এক জায়গায়।
+              TurfPlay-এর সাথে খুঁজে নিন আপনার পছন্দের টার্ফ, বুক করুন আপনার স্লট, ম্যানেজ করুন আপনার টার্ফ এবং কানেক্ট করুন আপনার স্পোর্টস কমিউনিটির সাথে।
             </motion.p>
 
-            {/* Download Buttons & CTA */}
+            {/* Action Buttons Row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-4 mb-14"
+              className="flex flex-wrap items-center gap-3.5 mb-10"
             >
+              {/* Primary Green Download CTA */}
               <a
                 href="#waitlist"
-                className="group relative overflow-hidden px-8 py-4 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-sm flex items-center gap-2.5"
+                className="group relative overflow-hidden px-7 py-3.5 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] text-sm flex items-center gap-2.5"
               >
-                <span>আগাম অ্যাক্সেস পান</span>
-                <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                <span>এখনই ডাউনলোড করুন</span>
+                <Download size={16} className="transform group-hover:translate-y-0.5 transition-transform" />
               </a>
 
+              {/* App Store Button */}
               <button
                 type="button"
                 onClick={() => setIsAppStoreModalOpen(true)}
-                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm text-left cursor-pointer"
+                className="flex items-center gap-3 px-4 py-2.5 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm text-left cursor-pointer"
               >
                 <img 
                   src={appstoreImg} 
                   alt="App Store Logo" 
-                  className="w-6 h-6 object-contain" 
+                  className="w-5 h-5 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">ডাউনলোড করুন</span>
-                  <span className="text-sm text-slate-900 font-black tracking-tight">App Store</span>
+                  <span className="text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Download on the</span>
+                  <span className="text-xs text-slate-900 font-black tracking-tight">App Store</span>
                 </div>
               </button>
 
+              {/* Google Play Button */}
               <a
                 href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm"
+                className="flex items-center gap-3 px-4 py-2.5 bg-white border border-slate-200 hover:border-[#00A859]/40 hover:bg-[#00A859]/5 hover:scale-[1.02] transition-all duration-300 rounded-2xl shadow-sm"
               >
                 <img 
                   src={playstoreImg} 
                   alt="Google Play Logo" 
-                  className="w-6 h-6 object-contain" 
+                  className="w-5 h-5 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mb-1">ডাউনলোড করুন</span>
-                  <span className="text-sm text-slate-900 font-black tracking-tight">Google Play</span>
+                  <span className="text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">GET IT ON</span>
+                  <span className="text-xs text-slate-900 font-black tracking-tight">Google Play</span>
                 </div>
               </a>
             </motion.div>
@@ -215,72 +179,154 @@ export const Hero = () => {
               onClose={() => setIsAppStoreModalOpen(false)}
             />
 
-            {/* Stats row */}
+            {/* Trust Badges / Stats Bar */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center gap-8 md:gap-12"
+              className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2"
             >
-              <Stat value="৫০০+" label="টার্ফ প্রস্তুত" delay={0.65} />
-              <div className="w-px h-10 bg-slate-200" />
-              <Stat value="১০কে+" label="বুকিং/মাস" delay={0.75} />
-              <div className="w-px h-10 bg-slate-200" />
-              <Stat value="৯৯.৯%" label="আপটাইম" delay={0.85} />
+              <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <span className="w-8 h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-sm font-black">⚽</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-slate-900 leading-tight">৫০০+</span>
+                  <span className="text-[10px] font-bold text-slate-500">টার্ফ এর সাথে</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <span className="w-8 h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-sm font-black">👥</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-slate-900 leading-tight">১০০K+</span>
+                  <span className="text-[10px] font-bold text-slate-500">সন্তুষ্ট ব্যবহারকারী</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <span className="w-8 h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-sm font-black">🛡️</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-slate-900 leading-tight">৯৯.৯%</span>
+                  <span className="text-[10px] font-bold text-slate-500">সফল বুকিং</span>
+                </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* ── RIGHT: MAIN HOME MOCKUP ── */}
-          <div className="flex-1 relative hidden lg:flex items-center justify-center" style={{ minHeight: '520px' }}>
-            {/* Ambient Glow rings */}
-            <motion.div
-              animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute w-[280px] h-[280px] rounded-full border border-[#00A859]/20 bg-[#00A859]/5 blur-md"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.3, 0.15] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="absolute w-[400px] h-[400px] rounded-full border border-[#00A859]/10"
-            />
+          {/* ── RIGHT: TRIPLE IPHONE 17 MOCKUP SHOWCASE ── */}
+          <div className="flex-1 relative flex items-center justify-center min-h-[480px] sm:min-h-[540px] lg:min-h-[600px] py-4">
+            
+            {/* Soft Ambient Background Glow Spheres */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] sm:w-[520px] h-[440px] sm:h-[520px] rounded-full bg-gradient-to-tr from-[#00A859]/15 via-[#00A859]/6 to-transparent blur-3xl pointer-events-none" />
 
-            {/* Center Main Home Mockup */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              ref={centerPhoneRef} 
-              className="relative z-20 transition-transform duration-300 flex items-center justify-center"
-            >
-              <motion.img
-                animate={{ y: [-8, 8, -8] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                src={handMockImg}
-                alt="TurfPlay Hand-held App Mockup"
-                className="w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[390px] xl:max-w-[430px] h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,168,89,0.22)] rounded-[2.5rem]"
-              />
-            </motion.div>
+            {/* Clear 3D Phone Mockups Fan Layout */}
+            <div className="relative w-full max-w-[640px] h-[470px] sm:h-[530px] flex items-center justify-center z-10">
+
+              {/* Left Phone Mockup (Map Screen - High Clarity) */}
+              <motion.div
+                initial={{ opacity: 0, x: -40, scale: 0.9 }}
+                animate={{ opacity: 1, x: -92, rotate: -4, scale: 0.95 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute z-10 top-2 sm:top-4 left-4 sm:left-8 md:left-12 lg:left-8 xl:left-12"
+              >
+                <img
+                  src={mockupMapImg}
+                  alt="TurfPlay Map Screen Mockup"
+                  className="w-[210px] sm:w-[255px] xl:w-[280px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.16)] hover:scale-105 hover:z-30 transition-all duration-300 cursor-pointer"
+                />
+              </motion.div>
+
+              {/* Right Phone Mockup (Turf Detail Screen - High Clarity) */}
+              <motion.div
+                initial={{ opacity: 0, x: 40, scale: 0.9 }}
+                animate={{ opacity: 1, x: 92, rotate: 4, scale: 0.95 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute z-10 top-2 sm:top-4 right-4 sm:right-8 md:right-12 lg:right-8 xl:right-12"
+              >
+                <img
+                  src={mockupDetailImg}
+                  alt="TurfPlay Turf Details Screen Mockup"
+                  className="w-[210px] sm:w-[255px] xl:w-[280px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.16)] hover:scale-105 hover:z-30 transition-all duration-300 cursor-pointer"
+                />
+              </motion.div>
+
+              {/* Center Phone Mockup (Home Screen - Main) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative z-20"
+              >
+                <img
+                  src={mockupHomeImg}
+                  alt="TurfPlay App Home Screen Mockup"
+                  className="w-[225px] sm:w-[275px] xl:w-[300px] h-auto object-contain drop-shadow-[0_30px_55px_rgba(0,168,89,0.25)] hover:scale-[1.03] transition-transform duration-300"
+                />
+              </motion.div>
+
+            </div>
 
           </div>
 
         </div>
-      </div>
 
-      {/* ── Scroll indicator ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.4em]">Scroll</span>
+        {/* ── FLOATING 4-CARD FEATURES SYSTEM BAR (Match Reference Image) ── */}
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-[#00A859]/8 border border-slate-100"
         >
-          <ChevronDown size={16} className="text-[#00A859]" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {/* Feature 1 */}
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
+                <Calendar size={22} />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-slate-900 mb-0.5">স্মার্ট বুকিং সিস্টেম</h4>
+                <p className="text-xs text-slate-500 font-medium">সহজে স্লট বুকিং এবং ম্যানেজ করুন</p>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="flex items-center gap-4 sm:border-l sm:border-slate-100 sm:pl-6">
+              <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
+                <ShieldCheck size={22} />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-slate-900 mb-0.5">সুরক্ষিত পেমেন্ট</h4>
+                <p className="text-xs text-slate-500 font-medium">বিকাশ, নগদ, রকেট সহ একাধিক অপশন</p>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="flex items-center gap-4 lg:border-l lg:border-slate-100 lg:pl-6">
+              <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
+                <Bell size={22} />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-slate-900 mb-0.5">রিয়েল টাইম নোটিফিকেশন</h4>
+                <p className="text-xs text-slate-500 font-medium">বুকিং এবং পেমেন্ট আপডেট সাথে সাথে পান</p>
+              </div>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="flex items-center gap-4 lg:border-l lg:border-slate-100 lg:pl-6">
+              <div className="w-12 h-12 rounded-2xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
+                <BarChart3 size={22} />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-slate-900 mb-0.5">রিপোর্ট ও অ্যানালিটিক্স</h4>
+                <p className="text-xs text-slate-500 font-medium">আপনার টার্ফ-এর পারফরম্যান্স ট্র্যাক করুন</p>
+              </div>
+            </div>
+
+          </div>
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   );
 };
+
