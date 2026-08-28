@@ -31,17 +31,6 @@ export default function App() {
           <main>
             <Hero />
             <HowItWorks />
-            <PlayerShowcase />
-            <ManagementFeatures />
-            <PartnerJourney />
-            <Comparison />
-            <Testimonials />
-            <Pricing />
-
-            <FAQ />
-            <StayTuned />
-            <Contact />
-            <Waitlist />
           </main>
           <Footer />
         </div>

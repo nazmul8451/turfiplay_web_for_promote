@@ -12,12 +12,8 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'ইকোসিস্টেম', href: 'how-it-works' },
-    { name: 'প্লেয়ার অ্যাপ', href: 'player-screens' },
-    { name: 'ফিচারসমূহ', href: 'features' },
-    { name: 'মূল্য তালিকা', href: 'pricing' },
-    { name: 'মতামত', href: 'testimonials' },
-    { name: 'যোগাযোগ', href: 'contact' },
+    { name: 'হোম', href: 'home' },
+    { name: 'কীভাবে কাজ করে', href: 'how-it-works' },
   ];
 
   useEffect(() => {
@@ -149,9 +145,9 @@ export const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#waitlist"
-            className="group relative overflow-hidden px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] uppercase tracking-wider text-[11px] flex items-center gap-2"
+            className="group relative overflow-hidden px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] text-xs flex items-center gap-2"
           >
-            <span>ওয়েটলিস্টে যোগ দিন</span>
+            <span>টার্ফ মালিকদের জন্য</span>
             <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </div>
