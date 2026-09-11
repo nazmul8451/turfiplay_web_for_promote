@@ -9,13 +9,11 @@ import { SmoothScroll } from './components/Scroll/SmoothScroll';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
 import { HowItWorks } from './components/HowItWorks/HowItWorks';
-import { PlayerShowcase } from './components/PlayerShowcase/PlayerShowcase';
-import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
 import { PartnerJourney } from './components/Partner/PartnerJourney';
+import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
 import { Comparison } from './components/Comparison/Comparison';
 import { Testimonials } from './components/Testimonials/Testimonials';
 import { Pricing } from './components/Pricing/Pricing';
-
 import { FAQ } from './components/FAQ/FAQ';
 import { StayTuned } from './components/StayTuned/StayTuned';
 import { Contact } from './components/Contact/Contact';
@@ -31,6 +29,15 @@ export default function App() {
           <main>
             <Hero />
             <HowItWorks />
+            <PartnerJourney />
+            <ManagementFeatures />
+            <Comparison />
+            <Testimonials />
+            <Pricing />
+            <FAQ />
+            <StayTuned />
+            <Contact />
+            <Waitlist />
           </main>
           <Footer />
         </div>
