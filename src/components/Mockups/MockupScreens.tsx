@@ -1,8 +1,8 @@
 import React from 'react';
 import { LayoutDashboard, Smartphone, CheckCircle2, ChevronRight, Star, Zap } from 'lucide-react';
-import playerHome1Img from '../../assets/images/homepage1.png';
-import playerHome2Img from '../../assets/images/homepage2.png';
-import playerMapImg from '../../assets/images/mapscreen.png';
+import playerHome1Img from '../../assets/images/homepage1.webp';
+import playerHome2Img from '../../assets/images/homepage2.webp';
+import playerMapImg from '../../assets/images/mapscreen.webp';
 import playerMock1Img from '../../assets/images/mockup1.jpg';
 import playerMock2Img from '../../assets/images/mockup2.jpg';
 import playerMock3Img from '../../assets/images/mockup3.jpg';

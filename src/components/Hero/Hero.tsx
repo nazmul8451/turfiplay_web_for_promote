@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Download, Calendar, ShieldCheck, Bell, BarChart3, Users, Trophy } from 'lucide-react';
-import mockupHomeImg from '../../assets/images/iphone17_home.png';
-import mockupDetailImg from '../../assets/images/iphone17_detail.png';
-import mockupMapImg from '../../assets/images/iphone17_map.png';
+import mockupHomeImg from '../../assets/images/iphone17_home.webp';
+import mockupDetailImg from '../../assets/images/iphone17_detail.webp';
+import mockupMapImg from '../../assets/images/iphone17_map.webp';
 import appstoreImg from '../../assets/images/sports/appstore.png';
 import playstoreImg from '../../assets/images/sports/palystore.png';
 import { AppStoreModal } from '../Modals/AppStoreModal';

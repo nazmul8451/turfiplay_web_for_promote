@@ -1,466 +1,594 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Smartphone, LayoutDashboard, Sparkles, CheckCircle2,
-  MapPin, Zap, Calendar, Users, CalendarCheck, CreditCard, BarChart3, Cloud, Clock, ShieldCheck, X, ZoomIn, Info
+  Smartphone, 
+  LayoutDashboard, 
+  Sparkles, 
+  MapPin, 
+  Zap, 
+  CreditCard, 
+  ShieldCheck, 
+  ArrowRight, 
+  Bell, 
+  BarChart3, 
+  QrCode, 
+  CalendarCheck, 
+  ChevronRight,
+  Maximize2,
+  X
 } from 'lucide-react';
-import { 
-  MockupScreen1, MockupScreen2, MockupScreen3, 
-  PlayerMockupScreen1, PlayerMockupScreen2, PlayerMockupScreen3,
-  PlayerMockupScreen4, PlayerMockupScreen5, PlayerMockupScreen6
-} from '../Mockups/MockupScreens';
 
-import playerHome1Img from '../../assets/images/homepage1.png';
-import playerHome2Img from '../../assets/images/homepage2.png';
-import playerMapImg from '../../assets/images/mapscreen.png';
-import playerMock1Img from '../../assets/images/mockup1.jpg';
-import playerMock2Img from '../../assets/images/mockup2.jpg';
-import playerMock3Img from '../../assets/images/mockup3.jpg';
+import mockupMapImg from '../../assets/images/iphone17_map.webp';
+import mockupHomeImg from '../../assets/images/iphone17_home.webp';
+import mockupDetailImg from '../../assets/images/iphone17_detail.webp';
+import mockupCalendarImg from '../../assets/images/iphone17_calendar.webp';
+
+interface FeatureNode {
+  id: string;
+  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  title: string;
+  desc: string;
+  badge: string;
+  ctaText: string;
+  stats: Array<{ value: string; label: string }>;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  associatedScreen: 'map' | 'home' | 'detail' | 'calendar';
+}
+
+interface FeatureCardProps {
+  node: FeatureNode;
+  delay?: number;
+  xOffset?: number;
+  onHover: () => void;
+}
+
+const FeatureCard = ({ node, delay = 0, xOffset = -20, onHover }: FeatureCardProps) => {
+  const IconComp = node.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: xOffset }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      onMouseEnter={onHover}
+      className="group relative bg-white hover:bg-slate-50/90 border border-slate-200 hover:border-[#00A859] rounded-2xl p-4 sm:p-4.5 transition-all duration-300 shadow-md shadow-slate-200/40 hover:shadow-xl hover:shadow-[#00A859]/10"
+    >
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-7 h-7 rounded-lg bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
+          <IconComp size={15} />
+        </div>
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A859]">
+          {node.badge}
+        </span>
+      </div>
+
+      <h3 className="text-sm sm:text-base font-black text-slate-900 mb-1 tracking-tight">
+        {node.title}
+      </h3>
+
+      <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed mb-2.5 font-medium line-clamp-3">
+        {node.desc}
+      </p>
+
+      {/* Compact Pill CTA Button */}
+      <button
+        onClick={onHover}
+        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00A859] hover:bg-[#008f4c] text-white font-bold text-[10px] sm:text-[11px] transition-all duration-200 shadow-sm shadow-[#00A859]/20 hover:scale-[1.02] active:scale-95 mb-2.5 cursor-pointer"
+      >
+        <span>{node.ctaText}</span>
+        <ArrowRight size={12} />
+      </button>
+
+      {/* Compact Percentage Metric Stats Grid */}
+      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+        {node.stats.map((s, idx) => (
+          <div key={idx}>
+            <div className="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-none mb-0.5">
+              {s.value}
+            </div>
+            <div className="text-[9px] sm:text-[10px] text-slate-500 font-semibold leading-tight">
+              {s.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 export const HowItWorks = () => {
-  // Role switcher state: 'player' or 'owner'
   const [activeRole, setActiveRole] = useState<'player' | 'owner'>('player');
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [activeZoomImage, setActiveZoomImage] = useState<{ src: string; title: string } | null>(null);
+  const [activeScreen, setActiveScreen] = useState<'map' | 'home' | 'detail' | 'calendar'>('map');
+  const [activeModalImg, setActiveModalImg] = useState<string | null>(null);
 
-  // Player Steps Data (Real App Screenshots & Explicit Clear Details)
-  const playerFeatures = [
+  // Player role feature nodes
+  const playerNodes: FeatureNode[] = [
     {
-      num: "০১",
-      title: "হোমপেজ ও স্পোর্টস ব্রাউজিং",
-      desc: "ফুটবল, ক্রিকেট, ব্যাডমিন্টন ও বাস্কেটবল—আপনার পছন্দের খেলার সেরা টার্ফ সহজেই খুঁজুন।",
-      badge: "হোমপেজ ইউআই",
-      icon: Smartphone,
-      screenImage: playerHome1Img,
-      screen: <PlayerMockupScreen1 onZoom={() => setActiveZoomImage({ src: playerHome1Img, title: "হোমপেজ ও স্পোর্টস ব্রাউজিং" })} />,
-      details: [
-        { label: "প্রবেশ অবস্থান", val: "মহাখালী, ঢাকা" },
-        { label: "খেলার ধরন", val: "ফুটবল, ক্রিকেট, ব্যাডমিন্টন, বাস্কেটবল" },
-        { label: "লাইভ ম্যাচ কার্ড", val: "Dhaka Turf Express (০৬:০০ PM - ১২:০০ AM)" }
-      ]
-    },
-    {
-      num: "০২",
-      title: "লাইভ ম্যাপে টার্ফ খুঁজুন",
-      desc: "ঢাকা সহ আশেপাশের সমস্ত টার্ফ গুগল ম্যাপে পিন পয়েন্ট করে সরাসরি রেট ও লোকেশন দেখুন।",
-      badge: "লাইভ ম্যাপ",
+      id: 'p-1',
+      position: 'top-left',
+      title: 'লাইভ ম্যাপে টার্ফ ডিসকভারি',
+      desc: 'আপনার নিকটস্থ সকল ফুটবল ও ক্রিকেট টার্ফ রিয়েল-টাইম জিপিএস ম্যাপে সরাসরি দূরত্ব, রেট ও পিচ সাইজ সহ এক নজরে খুঁজে নিন।',
+      badge: 'Find My Turf',
+      ctaText: 'ম্যাপ ট্র্যাকিং দেখুন',
+      associatedScreen: 'map',
       icon: MapPin,
-      screenImage: playerMapImg,
-      screen: <PlayerMockupScreen2 onZoom={() => setActiveZoomImage({ src: playerMapImg, title: "লাইভ ম্যাপে টার্ফ খুঁজুন" })} />,
-      details: [
-        { label: "টার্ফ এলাকা", val: "ঢাকা গুলশান ২" },
-        { label: "প্রতি ঘণ্টার রেট", val: "৳৫০০ / ঘণ্টা" },
-        { label: "ইউজার রেটিং", val: "৪.৭ ★ (ভেরিফাইড)" }
+      stats: [
+        { value: '৯৮%', label: '৫ মিনিটে পছন্দের মাঠ নির্বাচন' },
+        { value: '১০০+', label: 'ভেরিফাইড টার্ফ লোকেশন' }
       ]
     },
     {
-      num: "০৩",
-      title: "কাছের টার্ফ ও ট্রেন্ডিং গ্রাউন্ড",
-      desc: "আপনার লোকেশন থেকে দূরত্ব, ফিল্ড কন্ডিশন ও পারকিং সুবিধাসহ সকল টার্ফের তালিকা।",
-      badge: "নিয়্যারবাই ফিল্টার",
+      id: 'p-2',
+      position: 'top-right',
+      title: 'জিরো ডাবল-বুকিং ও ইনস্ট্যান্ট লক',
+      desc: 'স্লট নির্বাচন করামাত্রই তা ১০ সেকেন্ডে সেন্ট্রাল ক্লাউডে অটো-লক হয়ে যায়। ফলে কোনো কল কনফ্লিক্ট বা ডাবল বুকিংয়ের সুযোগ নেই।',
+      badge: 'Instant Slot Lock',
+      ctaText: 'স্লট লকিং প্রযুক্তি',
+      associatedScreen: 'detail',
       icon: Zap,
-      screenImage: playerHome2Img,
-      screen: <PlayerMockupScreen3 onZoom={() => setActiveZoomImage({ src: playerHome2Img, title: "কাছের টার্ফ ও ট্রেন্ডিং গ্রাউন্ড" })} />,
-      details: [
-        { label: "নিকটস্থ গ্রাউন্ড", val: "ধানমন্ডি টার্ফ অ্যারেনা (৩.৬ কিমি)" },
-        { label: "বিশেষ সুবিধা", val: "পারকিং, ফ্রি ওয়াইফাই, স্পেকটেটর জোন" },
-        { label: "বুকিং স্টার্ট", val: "৳৫০০ - ৳১২০০ / ঘণ্টা" }
+      stats: [
+        { value: '৯৯.৯%', label: 'রিয়েল-টাইম ক্লাউড সিঙ্ক' },
+        { value: '০%', label: 'ডাবল-বুকিং এর ঝুঁকি' }
       ]
     },
     {
-      num: "০৪",
-      title: "ফিল্ড অপশন ও ইনস্ট্যান্ট বুকিং",
-      desc: "টার্ফের ছবি, মেইন ফুটবল ফিল্ড, ফ্লাডলাইট ও প্রতি ঘণ্টার রেট দেখে সরাসরি বুক করুন।",
-      badge: "ইনস্ট্যান্ট বুকিং",
-      icon: Calendar,
-      screenImage: playerMock1Img,
-      screen: <PlayerMockupScreen4 onZoom={() => setActiveZoomImage({ src: playerMock1Img, title: "ফিল্ড অপশন ও ইনস্ট্যান্ট বুকিং" })} />,
-      details: [
-        { label: "টার্ফ নাম", val: "অ্যারেনা ৭১ (বনানী)" },
-        { label: "মাঠের সাইজ", val: "৬০x৪০ মিটার (১০v১০ ফুটবল)" },
-        { label: "সুবিধা ও রেট", val: "ফ্লাডলাইট, HD সারফেস, ৳১৫০০/ঘণ্টা" }
-      ]
-    },
-    {
-      num: "০৫",
-      title: "খেলোয়াড় প্রোফাইল ও বুকিং হিস্ট্রি",
-      desc: "আপনার পূর্বের খেলা, গড় রেটিং ও অ্যাক্টিভ বুকিং ট্র্যাক করুন খুব সহজে।",
-      badge: "প্লেয়ার প্রোফাইল",
-      icon: Users,
-      screenImage: playerMock2Img,
-      screen: <PlayerMockupScreen5 onZoom={() => setActiveZoomImage({ src: playerMock2Img, title: "খেলোয়াড় প্রোফাইল ও বুকিং হিস্ট্রি" })} />,
-      details: [
-        { label: "প্লেয়ার প্রোফাইল", val: "রিমন আহমেদ (বনানী, ঢাকা)" },
-        { label: "বুকিং স্ট্যাটস", val: "৬টি কাছের টার্ফ, ১২টি সাকসেস বুকিং" },
-        { label: "প্লেয়ার রেটিং", val: "৪.৮ / ৫.০ স্টার" }
-      ]
-    },
-    {
-      num: "০৬",
-      title: "টার্ফ রিভিউ ও ভেরিফাইড রেটিং",
-      desc: "অন্যান্য খেলোয়াড়দের রিভিউ এবং রেটিং দেখে সঠিক টার্ফ বেছে নিন নিশ্চিন্তে।",
-      badge: "স্টার রেটিং",
-      icon: ShieldCheck,
-      screenImage: playerMock3Img,
-      screen: <PlayerMockupScreen6 onZoom={() => setActiveZoomImage({ src: playerMock3Img, title: "টার্ফ রিভিউ ও ভেরিফাইড রেটিং" })} />,
-      details: [
-        { label: "মোট রিভিউ", val: "১২৮টি ভেরিফাইড প্লেয়ার রিভিউ" },
-        { label: "গড় স্কোর", val: "৪.৮ ★ ★ ★ ★ ★" },
-        { label: "প্লেয়ার কমেন্ট", val: "রফিক, তানভীর ও সাকিবের ইতিবাচক মতামত" }
-      ]
-    }
-  ];
-
-  // Owner Steps Data
-  const ownerFeatures = [
-    {
-      num: "০১",
-      title: "স্মার্ট টার্ফ ড্যাশবোর্ড",
-      desc: "আপনার টার্ফ প্রোফাইল, স্লটের সময়সূচী, সুযোগ-সুবিধা ও রেটিং সহজে নিয়ন্ত্রণ করার সেন্ট্রাল ড্যাশবোর্ড।",
-      badge: "সেন্ট্রাল কন্ট্রোল",
-      icon: LayoutDashboard,
-      screen: <MockupScreen1 />
-    },
-    {
-      num: "০২",
-      title: "১০ সেকেন্ডে স্লট লক ও জিরো ডাবল-বুকিং",
-      desc: "হোয়াটসঅ্যাপ বা ফোনে বুকিং আসলে নাম ও নম্বর দিয়ে ১০ সেকেন্ডে স্লট অটো-লক করে ফেলুন।",
-      badge: "অটো-লকিং প্রযুক্তি",
-      icon: CalendarCheck,
-      screen: <MockupScreen2 />
-    },
-    {
-      num: "০৩",
-      title: "দৈনিক ও মাসের মোট আয় ট্র্যাকিং",
-      desc: "আজকে কত আয় হলো এবং মাসিক লক্ষ্যমাত্রার প্রবৃদ্ধি ড্যাশবোর্ডে স্পষ্ট গ্রাফের মাধ্যমে দেখতে পাবেন।",
-      badge: "আয় অ্যানালিটিক্স",
+      id: 'p-3',
+      position: 'bottom-left',
+      title: 'ডিজিটাল পেমেন্ট ও ইনস্ট্যান্ট টিকেট',
+      desc: 'বিকাশ বা নগদে সরাসরি পেমেন্ট করুন এবং পেমেন্ট সম্পন্ন হলেই আপনার ডিজিটাল টিকেট অটোমেটিকভাবে পেয়ে যান। টিকেটটি টার্ফে গিয়ে সহজেই দেখিয়ে প্রবেশ করুন।',
+      badge: 'Seamless Payment',
+      ctaText: 'পেমেন্ট সুবিধা জানুন',
+      associatedScreen: 'home',
       icon: CreditCard,
-      screen: <MockupScreen3 />
+      stats: [
+        { value: '১০ সে.', label: 'গড় পেমেন্ট ও বুকিং কনফার্মেশন' },
+        { value: '১০০%', label: 'সিকিউর পেমেন্ট গেটওয়ে' }
+      ]
     },
     {
-      num: "০৪",
-      title: "বিজনেস রিপোর্ট ও গ্রাহক ডাটাবেস",
-      desc: "আপনার টার্ফের নিয়মিত গ্রাহকদের তালিকা ও ফোন নম্বর গুছিয়ে রাখুন যা ভবিষ্যতের প্রচারণায় কাজে লাগবে।",
-      badge: "গ্রাহক বৃদ্ধি",
+      id: 'p-4',
+      position: 'bottom-right',
+      title: 'ঝামেলামুক্ত টার্ফ বুকিং',
+      desc: 'আপনার টার্ফ বুকিং ঝামেলামুক্ত করুন! আমাদের TurfPlay-এর মাধ্যমে আপনি সহজেই আপনার কাছাকাছি পছন্দের টার্ফ খুব সহজেই বুক করে ফেলতে পারেন।',
+      badge: 'Hassle-free Booking',
+      ctaText: 'সহজ বুকিং দেখুন',
+      associatedScreen: 'detail',
+      icon: QrCode,
+      stats: [
+        { value: '৪.৮★', label: 'ভেরিফাইড প্লেয়ার সন্তুষ্টি' },
+        { value: '৫০k+', label: 'সফল খেলা সম্পন্ন' }
+      ]
+    }
+  ];
+
+  // Turf Owner role feature nodes
+  const ownerNodes: FeatureNode[] = [
+    {
+      id: 'o-1',
+      position: 'top-left',
+      title: 'স্মার্ট টার্ফ ক্যালেন্ডার ও স্লট কন্ট্রোল',
+      desc: 'সব পিচ ও টাইমিং এক সেন্ট্রাল স্ক্রিনে নিয়ন্ত্রণ করুন। ফোন বা হোয়াটসঅ্যাপে আসা বুকিং ১০ সেকেন্ডে স্লট লক করে ফেলুন।',
+      badge: 'Central Calendar',
+      ctaText: 'ক্যালেন্ডার ড্যাশবোর্ড',
+      associatedScreen: 'calendar',
+      icon: CalendarCheck,
+      stats: [
+        { value: '১০ সে.', label: 'অফলাইন বুকিং অ্যাড টাইম' },
+        { value: '২৪/৭', label: 'অটো স্লট মনিটরিং' }
+      ]
+    },
+    {
+      id: 'o-2',
+      position: 'top-right',
+      title: 'তাত্ক্ষণিক নোটিফিকেশন ও সতর্কতা',
+      desc: 'প্লেয়ার কোনো স্লট বুক বা পেমেন্ট করামাত্রই ম্যানেজারের ফোনে রিয়েল-টাইম এসএমএস ও পুশ অ্যালার্ট পৌঁছে যায়।',
+      badge: 'Real-time Alerts',
+      ctaText: 'অ্যালার্ট সিস্টেম দেখুন',
+      associatedScreen: 'detail',
+      icon: Bell,
+      stats: [
+        { value: '১০০%', label: 'ইনস্ট্যান্ট বুকিং নোটিফিকেশন' },
+        { value: '০ লেটেন্সি', label: 'সরাসরি অ্যাডমিনে সিঙ্ক' }
+      ]
+    },
+    {
+      id: 'o-3',
+      position: 'bottom-left',
+      title: 'দৈনিক আয় ও রেভিনিউ অ্যানালিটিক্স',
+      desc: 'আজকের মোট আয়, ক্যাশ ও অনলাইন পেমেন্টের আলাদা নিখুঁত হিসাব এবং মাসিক প্রবৃদ্ধি স্পষ্ট ইন্টারেক্টিভ গ্রাফে দেখতে পাবেন।',
+      badge: 'Revenue Tracker',
+      ctaText: 'অ্যানালিটিক্স রিপোর্ট',
+      associatedScreen: 'home',
       icon: BarChart3,
-      screen: <MockupScreen3 />
+      stats: [
+        { value: '৩৫%', label: 'গড় রাজস্ব বৃদ্ধি' },
+        { value: '১ ক্লিক', label: 'দৈনিক এক্সেল রিপোর্ট' }
+      ]
+    },
+    {
+      id: 'o-4',
+      position: 'bottom-right',
+      title: 'ভেরিফাইড টার্ফ প্রোফাইল ও প্রচার',
+      desc: 'হাজারো স্থানীয় খেলোয়াড়ের কাছে আপনার মাঠকে প্রোমোট করুন। ভেরিফাইড রিভিউয়ের মাধ্যমে নিয়মিত ম্যাচ বুকিং নিশ্চিত করুন।',
+      badge: 'Growth & Reach',
+      ctaText: 'পার্টনার সুবিধা',
+      associatedScreen: 'map',
+      icon: ShieldCheck,
+      stats: [
+        { value: '৩x', label: 'অফ-পিক স্লট বুকিং বৃদ্ধি' },
+        { value: '১০০+', label: 'বিশ্বস্ত টার্ফ পার্টনার' }
+      ]
     }
   ];
 
-  const currentFeatures = activeRole === 'player' ? playerFeatures : ownerFeatures;
+  const currentNodes = activeRole === 'player' ? playerNodes : ownerNodes;
 
-  // Handle role change safely
-  const handleRoleChange = (role: 'player' | 'owner') => {
-    setActiveRole(role);
-    setActiveStepIndex(0);
-  };
-
-  const handleOpenZoom = () => {
-    if (activeRole === 'player' && 'screenImage' in currentFeatures[activeStepIndex]) {
-      setActiveZoomImage({
-        src: (currentFeatures[activeStepIndex] as any).screenImage,
-        title: currentFeatures[activeStepIndex].title
-      });
+  // Selected phone image based on active screen
+  const getScreenImage = () => {
+    switch (activeScreen) {
+      case 'calendar':
+        return mockupCalendarImg;
+      case 'map':
+        return mockupMapImg;
+      case 'detail':
+        return mockupDetailImg;
+      case 'home':
+      default:
+        return mockupHomeImg;
     }
   };
-
-  const coreLogics = [
-    { 
-      title: "নিরাপদ পেমেন্ট", 
-      desc: "বিকাশ, নগদ ও কার্ডের মাধ্যমে দ্রুত ও সুরক্ষিত লেনদেন।", 
-      icon: CreditCard 
-    },
-    { 
-      title: "ক্লাউড সিঙ্ক", 
-      desc: "মোবাইল ও কম্পিউটারে বুকিং সাথে সাথে আপডেট হয়।", 
-      icon: Cloud 
-    },
-    { 
-      title: "২৪/৭ নির্ভরযোগ্যতা", 
-      desc: "নিরবচ্ছিন্নভাবে আপনার টার্ফ পরিচালনা সহজ করে।", 
-      icon: Clock 
-    }
-  ];
 
   return (
-    <section id="how-it-works" className="py-20 lg:py-32 bg-[#FFFFFF] relative overflow-hidden">
-      {/* Background ambient light */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#00A859]/6 blur-[160px] rounded-full pointer-events-none" />
+    <section 
+      id="how-it-works" 
+      className="relative py-12 lg:py-16 bg-white text-slate-900 overflow-hidden selection:bg-[#00A859] selection:text-white bg-grid"
+    >
+      {/* ── BACKGROUND AMBIENT GLOWS ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Center ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00A859]/5 blur-[140px] rounded-full" />
+      </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
+      <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-8 md:px-10 lg:px-12">
+
+        {/* ── COMPACT SECTION HEADER ── */}
+        <div className="text-center max-w-2xl mx-auto mb-6 lg:mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 text-[#00A859] font-extrabold text-xs uppercase tracking-widest mb-4"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 text-[#00A859] font-extrabold text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 shadow-sm"
           >
-            <Sparkles size={14} />
-            <span>দ্বিমুখী ইকোসিস্টেম</span>
+            <Sparkles size={12} className="animate-pulse" />
+            <span>HOW TURFPLAY WORKS</span>
           </motion.div>
-          
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight uppercase">
-            <span className="font-serif italic text-[#00A859] lowercase font-normal">TurfPlay</span> কীভাবে কাজ করে?
-          </h2>
-          <p className="text-slate-600 max-w-xl mx-auto text-sm md:text-base font-bold leading-relaxed uppercase tracking-[0.2em]">
-            খেলোয়াড় এবং টার্ফ মালিক দুজনের জন্যই সেরা অভিজ্ঞতা
-          </p>
-        </div>
 
-        {/* ── ROLE SWITCHER SEGMENTED TOGGLE BUTTONS ── */}
-        <div className="flex justify-center mb-16">
-          <div className="bg-slate-100 p-1.5 rounded-full border border-slate-200 shadow-inner flex items-center gap-2 relative">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mb-2 leading-tight"
+          >
+            <span className="text-[#00A859] font-serif italic lowercase font-normal">TurfPlay</span> কীভাবে কাজ করে?
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-lg mx-auto line-clamp-2"
+          >
+            সহজ বুকিং, রিয়েল-টাইম অটোমেশন এবং জিরো ডাবল-বুকিং নিশ্চয়তার আধুনিক স্পোর্টস প্ল্যাটফর্ম।
+          </motion.p>
+
+          {/* ── COMPACT ROLE SWITCHER ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="mt-4 inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200 shadow-inner"
+          >
             <button
-              onClick={() => handleRoleChange('player')}
-              className={`relative z-10 flex items-center gap-2.5 px-6 md:px-8 py-3.5 rounded-full font-black text-xs md:text-sm uppercase tracking-wider transition-all duration-300 ${
+              onClick={() => {
+                setActiveRole('player');
+                setActiveScreen('map');
+              }}
+              className={`flex items-center gap-2 px-5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 cursor-pointer ${
                 activeRole === 'player'
-                  ? 'bg-[#00A859] text-white shadow-lg shadow-[#00A859]/30 scale-[1.02]'
+                  ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Smartphone size={16} />
-              <span>খেলোয়াড়দের অভিজ্ঞতা</span>
+              <Smartphone size={14} />
+              <span>খেলোয়াড়দের জার্নি</span>
             </button>
 
             <button
-              onClick={() => handleRoleChange('owner')}
-              className={`relative z-10 flex items-center gap-2.5 px-6 md:px-8 py-3.5 rounded-full font-black text-xs md:text-sm uppercase tracking-wider transition-all duration-300 ${
+              onClick={() => {
+                setActiveRole('owner');
+                setActiveScreen('calendar');
+              }}
+              className={`flex items-center gap-2 px-5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 cursor-pointer ${
                 activeRole === 'owner'
-                  ? 'bg-[#00A859] text-white shadow-lg shadow-[#00A859]/30 scale-[1.02]'
+                  ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <LayoutDashboard size={16} />
-              <span>টার্ফ মালিকদের ড্যাশবোর্ড</span>
+              <LayoutDashboard size={14} />
+              <span>টার্ফ ওনারদের জার্নি</span>
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* ── DYNAMIC ROLE SHOWCASE CONTAINER ── */}
-        <div className="glass-card !p-8 md:!p-12 bg-white border border-[#00A859]/20 shadow-xl mb-16">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            
-            {/* LEFT: STEP SELECTOR CARDS */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-3 h-3 rounded-full bg-[#00A859] animate-pulse" />
-                <h3 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">
-                  {activeRole === 'player' ? 'খেলোয়াড়দের ব্যবহার নির্দেশিকা' : 'টার্ফ পরিচালনা ফিচারসমূহ'}
-                </h3>
-              </div>
+        {/* ── MAIN SHOWCASE CONTAINER (COMPACT HEIGHT TO FIT SCREEN) ── */}
+        <div className="relative">
 
-              <div className="space-y-3">
-                {currentFeatures.map((feat, idx) => {
-                  const isSelected = activeStepIndex === idx;
+          {/* ── SVG GLOWING CURVED PATH (SCALED FOR COMPACT HEIGHT) ── */}
+          <div className="hidden lg:block absolute inset-0 pointer-events-none -z-0">
+            <svg 
+              className="w-full h-full overflow-visible" 
+              viewBox="0 0 1360 680" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <filter id="green-path-glow-compact" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur1" />
+                  <feGaussianBlur stdDeviation="12" result="blur2" />
+                  <feMerge>
+                    <feMergeNode in="blur2" />
+                    <feMergeNode in="blur1" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
 
-                  return (
-                    <motion.div
-                      key={`${activeRole}-${idx}`}
-                      onClick={() => setActiveStepIndex(idx)}
-                      onMouseEnter={() => setActiveStepIndex(idx)}
-                      whileHover={{ scale: 1.008 }}
-                      className={`p-4 md:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex gap-4 items-start ${
-                        isSelected
-                          ? 'bg-gradient-to-r from-[#00A859]/12 via-[#00A859]/6 to-transparent border-[#00A859] shadow-md shadow-[#00A859]/10'
-                          : 'bg-[#F8FAFC] border-slate-200 hover:border-[#00A859]/40'
-                      }`}
-                    >
-                      {/* Step Number Badge */}
-                      <div className={`w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center font-black text-sm flex-shrink-0 transition-colors ${
-                        isSelected
-                          ? 'bg-[#00A859] text-white shadow-md'
-                          : 'bg-white border border-slate-200 text-slate-700'
-                      }`}>
-                        {feat.num}
-                      </div>
+                <linearGradient id="brand-green-gradient-compact" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.35" />
+                  <stop offset="30%" stopColor="#00A859" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#00C853" stopOpacity="0.9" />
+                  <stop offset="70%" stopColor="#00A859" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.4" />
+                </linearGradient>
+              </defs>
 
-                      <div className="flex-1">
-                        <div className="flex justify-between items-center mb-1">
-                          <h4 className={`font-black text-sm md:text-base uppercase tracking-tight ${
-                            isSelected ? 'text-[#00A859]' : 'text-slate-900'
-                          }`}>
-                            {feat.title}
-                          </h4>
-                          <span className={`text-[9px] font-extrabold uppercase px-2.5 py-0.5 rounded-full border ${
-                            isSelected
-                              ? 'bg-[#00A859]/15 border-[#00A859]/30 text-[#00A859]'
-                              : 'bg-slate-200/60 border-slate-300/60 text-slate-600'
-                          }`}>
-                            {feat.badge}
-                          </span>
-                        </div>
-                        <p className="text-xs md:text-sm text-slate-600 font-medium leading-relaxed">
-                          {feat.desc}
-                        </p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              {/* Background ambient blur track */}
+              <path
+                d="M 120 640 C 140 520, 320 490, 520 480 C 600 470, 680 430, 700 330 C 720 230, 670 190, 650 130 C 630 60, 760 80, 890 110 C 980 130, 1080 230, 1040 330 C 1000 430, 920 480, 800 520 C 700 560, 800 640, 900 660"
+                stroke="#00A859"
+                strokeWidth="10"
+                strokeOpacity="0.12"
+                strokeLinecap="round"
+                filter="url(#green-path-glow-compact)"
+              />
+
+              {/* Main crisp glowing curved path */}
+              <motion.path
+                d="M 120 640 C 140 520, 320 490, 520 480 C 600 470, 680 430, 700 330 C 720 230, 670 190, 650 130 C 630 60, 760 80, 890 110 C 980 130, 1080 230, 1040 330 C 1000 430, 920 480, 800 520 C 700 560, 800 640, 900 660"
+                stroke="url(#brand-green-gradient-compact)"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+              />
+            </svg>
+          </div>
+
+          {/* ── 3-COLUMN COMPACT GRID ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-center relative z-10">
+
+            {/* ── LEFT COLUMN (COMPACT SPACING) ── */}
+            <div className="lg:col-span-4 flex flex-col justify-center space-y-4 lg:space-y-5">
+              
+              {/* NODE 1: TOP LEFT */}
+              {currentNodes[0] && (
+                <FeatureCard
+                  node={currentNodes[0]}
+                  delay={0}
+                  xOffset={-20}
+                  onHover={() => setActiveScreen(currentNodes[0].associatedScreen)}
+                />
+              )}
+
+              {/* NODE 3: BOTTOM LEFT */}
+              {currentNodes[2] && (
+                <FeatureCard
+                  node={currentNodes[2]}
+                  delay={0.15}
+                  xOffset={-20}
+                  onHover={() => setActiveScreen(currentNodes[2].associatedScreen)}
+                />
+              )}
+
             </div>
 
-            {/* RIGHT: DYNAMICALLY UPDATING IPHONE DEVICE MOCKUP PREVIEW */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center">
+            {/* ── CENTER COLUMN: COMPACT PHONE FRAME (FOCAL POINT) ── */}
+            <div className="lg:col-span-4 flex flex-col items-center justify-center relative py-2">
               
-              {/* iPhone 16 Pro Max Device Frame Container */}
-              <div className="relative w-full max-w-[310px] sm:max-w-[330px] lg:max-w-[350px] aspect-[9/19] bg-slate-950 rounded-[48px] p-3 border-[5px] border-slate-700 shadow-[0_25px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(0,168,89,0.18)] overflow-hidden flex flex-col justify-between group transition-transform duration-500 hover:scale-[1.015]">
-                
-                {/* Side Button Simulators */}
-                <div className="absolute top-24 -left-[6px] w-[3px] h-7 bg-slate-600 rounded-l-md" />
-                <div className="absolute top-36 -left-[6px] w-[3px] h-10 bg-slate-600 rounded-l-md" />
-                <div className="absolute top-48 -left-[6px] w-[3px] h-10 bg-slate-600 rounded-l-md" />
-                <div className="absolute top-32 -right-[6px] w-[3px] h-14 bg-slate-600 rounded-r-md" />
+              {/* Outer halo glow ring behind phone */}
+              <div className="absolute w-[220px] sm:w-[250px] h-[480px] rounded-[44px] bg-gradient-to-b from-[#00A859]/15 via-[#00A859]/5 to-transparent blur-2xl pointer-events-none -z-0" />
 
-                {/* Top Dynamic Island Pill Notch Cutout */}
-                <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-24 h-5.5 bg-black rounded-full border border-white/10 z-30 flex items-center justify-between px-2.5 shadow-inner">
-                  <div className="w-3 h-3 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
-                    <div className="w-1 h-1 rounded-full bg-blue-900/60" />
+              {/* Floating Animated Phone Wrapper */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10 flex flex-col items-center"
+              >
+                {/* Compact Phone Frame */}
+                <div className="relative group cursor-pointer" onClick={() => setActiveModalImg(getScreenImage())}>
+                  <img
+                    src={getScreenImage()}
+                    alt="TurfPlay App Screen"
+                    className="w-[210px] sm:w-[235px] lg:w-[250px] h-auto object-contain drop-shadow-[0_20px_45px_rgba(0,168,89,0.18)] drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+
+                  {/* Hover Zoom Prompt Badge */}
+                  <div className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-[#00A859] p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-sm">
+                    <Maximize2 size={13} />
                   </div>
-                  <div className="w-2 h-2 rounded-full bg-slate-900 border border-slate-800" />
                 </div>
 
-                {/* Dynamic Screen Content Container (Swaps immediately when clicking steps) */}
-                <div 
-                  className="w-full h-full rounded-[38px] overflow-hidden bg-[#0A0F0D] relative z-10 cursor-pointer"
-                  onClick={handleOpenZoom}
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`${activeRole}-${activeStepIndex}`}
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      transition={{ duration: 0.25 }}
-                      className="w-full h-full relative"
-                    >
-                      {currentFeatures[activeStepIndex].screen}
-                    </motion.div>
-                  </AnimatePresence>
+                {/* ── COMPACT TABS UNDER PHONE ── */}
+                <div className="mt-3 flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 shadow-inner">
+                  {activeRole === 'player' ? (
+                    <>
+                      <button
+                        onClick={() => setActiveScreen('map')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'map'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        লাইভ ম্যাপ
+                      </button>
+                      <button
+                        onClick={() => setActiveScreen('home')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'home'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        হোম স্ক্রিন
+                      </button>
+                      <button
+                        onClick={() => setActiveScreen('detail')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'detail'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        টার্ফ ডিটেইলস
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => setActiveScreen('calendar')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'calendar'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        স্মার্ট ক্যালেন্ডার
+                      </button>
+                      <button
+                        onClick={() => setActiveScreen('home')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'home'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        টার্ফ ড্যাশবোর্ড
+                      </button>
+                      <button
+                        onClick={() => setActiveScreen('detail')}
+                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                          activeScreen === 'detail'
+                            ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        স্লট ডিটেইলস
+                      </button>
+                    </>
+                  )}
                 </div>
+              </motion.div>
+            </div>
 
-                {/* Floating HD Zoom Button Outside Phone top-right */}
-                <button
-                  type="button"
-                  onClick={handleOpenZoom}
-                  className="absolute -top-3 -right-3 z-40 bg-slate-900/95 hover:bg-[#00A859] text-white p-2 rounded-full border border-white/20 shadow-xl transition-all transform hover:scale-110 flex items-center gap-1.5 text-[10px] font-black uppercase px-3.5 cursor-pointer"
-                  title="ফুল এইচডি জুম করুন"
-                >
-                  <ZoomIn size={14} />
-                  <span>HD জুম</span>
-                </button>
-              </div>
+            {/* ── RIGHT COLUMN (COMPACT SPACING) ── */}
+            <div className="lg:col-span-4 flex flex-col justify-center space-y-4 lg:space-y-5">
+              
+              {/* NODE 2: TOP RIGHT */}
+              {currentNodes[1] && (
+                <FeatureCard
+                  node={currentNodes[1]}
+                  delay={0.1}
+                  xOffset={20}
+                  onHover={() => setActiveScreen(currentNodes[1].associatedScreen)}
+                />
+              )}
 
-              {/* EXPLICIT CLEAR TEXT DETAILS CARD BELOW PHONE */}
-              {activeRole === 'player' && 'details' in currentFeatures[activeStepIndex] && (
-                <motion.div
-                  key={`details-${activeStepIndex}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-5 w-full max-w-[350px] bg-slate-900 text-white p-4 rounded-2xl border border-[#00A859]/30 shadow-lg text-left"
-                >
-                  <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
-                    <Info size={14} className="text-[#00A859]" />
-                    <span className="text-[11px] font-black uppercase text-[#00A859] tracking-wider">
-                      পর্দায় কী তথ্য রয়েছে (স্পস্ট বিবরণ):
-                    </span>
-                  </div>
-                  <div className="space-y-1.5">
-                    {(currentFeatures[activeStepIndex] as any).details.map((d: { label: string; val: string }, i: number) => (
-                      <div key={i} className="flex justify-between items-center text-xs">
-                        <span className="text-slate-400 font-bold text-[11px]">{d.label}:</span>
-                        <span className="text-white font-extrabold text-[11px] text-right ml-2">{d.val}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
+              {/* NODE 4: BOTTOM RIGHT */}
+              {currentNodes[3] && (
+                <FeatureCard
+                  node={currentNodes[3]}
+                  delay={0.25}
+                  xOffset={20}
+                  onHover={() => setActiveScreen(currentNodes[3].associatedScreen)}
+                />
               )}
 
             </div>
 
           </div>
+
         </div>
 
-        {/* ── CORE ECOSYSTEM HIGHLIGHTS ── */}
+        {/* ── COMPACT BOTTOM BANNER ── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card !p-8 border border-[#00A859]/20 shadow-sm bg-white"
+          transition={{ duration: 0.6 }}
+          className="mt-10 lg:mt-12 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#00A859]/10 via-[#00A859]/5 to-white border border-[#00A859]/25 shadow-md flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <div className="grid md:grid-cols-3 gap-8">
-            {coreLogics.map((log, i) => {
-              const IconComponent = log.icon;
-              return (
-                <div key={i} className="flex gap-4 items-start group">
-                  <div className="p-3 bg-[#00A859]/10 rounded-xl border border-[#00A859]/20 flex-shrink-0 group-hover:bg-[#00A859] transition-all">
-                    <IconComponent className="text-[#00A859] group-hover:text-white transition-colors" size={20} />
-                  </div>
-                  <div>
-                    <h5 className="text-base font-extrabold text-slate-900 uppercase tracking-tight mb-1 group-hover:text-[#00A859] transition-colors">{log.title}</h5>
-                    <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+          <div>
+            <span className="text-[#00A859] font-mono text-[10px] font-bold uppercase tracking-widest block mb-0.5">
+              TURFPLAY PARTNERSHIP
+            </span>
+            <h4 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+              আপনার কি নিজস্ব টার্ফ বা স্পোর্টস গ্রাউন্ড আছে?
+            </h4>
+            <p className="text-slate-600 text-xs mt-0.5 font-medium">
+              মাত্র ৪টি ধাপে আপনার টার্ফ রেজিস্টার করুন এবং জিরো ডাবল-বুকিং নিশ্চয়তাসহ আয় বৃদ্ধি করুন।
+            </p>
           </div>
+
+          <a
+            href="#partner"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#00A859] hover:bg-[#008f4c] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#00A859]/20 hover:scale-105 active:scale-95"
+          >
+            <span>টার্ফ পার্টনার হন</span>
+            <ChevronRight size={15} className="stroke-[3]" />
+          </a>
         </motion.div>
 
       </div>
 
-      {/* FULL HD LIGHTBOX ZOOM MODAL */}
+      {/* ── IMAGE ZOOM FULLSCREEN MODAL ── */}
       <AnimatePresence>
-        {activeZoomImage && (
+        {activeModalImg && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setActiveZoomImage(null)}
-            className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+            onClick={() => setActiveModalImg(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 cursor-pointer"
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full bg-slate-900 rounded-3xl p-6 border border-white/20 shadow-2xl flex flex-col items-center max-h-[92vh] overflow-y-auto"
+            <button
+              onClick={() => setActiveModalImg(null)}
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
             >
-              {/* Header Bar */}
-              <div className="w-full flex justify-between items-center mb-4 pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#00A859]" />
-                  <h3 className="text-lg font-black text-white uppercase tracking-tight">
-                    {activeZoomImage.title} - (ফুল এইচডি ক্লিয়ার ভিউ)
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveZoomImage(null)}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {/* Clear Screen Preview */}
-              <div className="relative w-full max-w-[340px] rounded-[36px] border-4 border-slate-800 overflow-hidden shadow-2xl bg-black my-2">
-                <img
-                  src={activeZoomImage.src}
-                  alt={activeZoomImage.title}
-                  className="w-full h-auto object-contain [image-rendering:-webkit-optimize-contrast] contrast-[1.05]"
-                />
-              </div>
-
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setActiveZoomImage(null)}
-                className="mt-4 px-8 py-2.5 bg-[#00A859] text-white font-black text-xs rounded-full shadow-lg hover:bg-[#008746] transition-colors uppercase tracking-wider"
-              >
-                বন্ধ করুন
-              </button>
-            </motion.div>
+              <X size={20} />
+            </button>
+            <motion.img
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              src={activeModalImg}
+              alt="Zoomed Screen"
+              className="max-h-[85vh] max-w-[90vw] object-contain drop-shadow-[0_20px_50px_rgba(0,168,89,0.3)]"
+            />
           </motion.div>
         )}
       </AnimatePresence>
