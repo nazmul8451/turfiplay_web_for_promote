@@ -18,10 +18,10 @@ import {
   X
 } from 'lucide-react';
 
-import mockupMapImg from '../../assets/images/iphone17_map.png';
-import mockupHomeImg from '../../assets/images/iphone17_home.png';
-import mockupDetailImg from '../../assets/images/iphone17_detail.png';
-import mockupCalendarImg from '../../assets/images/iphone17_calendar.png';
+import mockupMapImg from '../../assets/images/iphone17_map.webp';
+import mockupHomeImg from '../../assets/images/iphone17_home.webp';
+import mockupDetailImg from '../../assets/images/iphone17_detail.webp';
+import mockupCalendarImg from '../../assets/images/iphone17_calendar.webp';
 
 interface FeatureNode {
   id: string;
