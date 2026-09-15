@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Smartphone, Building2, HelpCircle, Home, Sparkles } from 'lucide-react';
 import logoImg from '../../assets/images/sports/Layer_1.png';
 
 export const Navbar = () => {
@@ -12,8 +12,10 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'হোম', href: 'home' },
-    { name: 'কীভাবে কাজ করে', href: 'how-it-works' },
+    { name: 'হোম', href: 'home', icon: Home, badge: null },
+    { name: 'খেলোয়াড়দের জন্য', href: 'how-it-works', icon: Smartphone, badge: 'Player' },
+    { name: 'টার্ফ মালিকদের জন্য', href: 'partner', icon: Building2, badge: 'Owner' },
+    { name: 'প্রশ্নোত্তর', href: 'faq', icon: HelpCircle, badge: null },
   ];
 
   useEffect(() => {
@@ -68,31 +70,32 @@ export const Navbar = () => {
         duration: 0.4,
         ease: [0.16, 1, 0.3, 1]
       }}
-      className="fixed top-0 left-4 right-4 md:left-[8%] md:right-[8%] lg:left-[15%] lg:right-[15%] z-50 pt-4 md:pt-6"
+      className="fixed top-0 left-3 right-3 md:left-[4%] md:right-[4%] lg:left-[8%] lg:right-[8%] z-50 pt-3 md:pt-5"
     >
-      <nav className={`px-6 py-3 flex justify-between items-center rounded-full border border-brand-green/20 bg-white/90 backdrop-blur-xl shadow-lg transition-all duration-500 ${
+      <nav className={`px-4 sm:px-6 py-2.5 flex justify-between items-center rounded-full border border-brand-green/20 bg-white/90 backdrop-blur-xl shadow-lg transition-all duration-500 ${
         isScrolled ? 'shadow-xl shadow-brand-green/10 border-brand-green/35 bg-white/95' : ''
       }`}>
         {/* Logo */}
         <div
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center gap-2.5 cursor-pointer group"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <img
             src={logoImg}
             alt="TurfiPlay Logo"
-            className="h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
           />
-          <span className="font-serif text-xl tracking-tight text-slate-900 group-hover:text-[#00A859] transition-colors">
+          <span className="font-serif text-lg sm:text-xl tracking-tight text-slate-900 group-hover:text-[#00A859] transition-colors">
             Turf<span className="italic text-[#00A859]">Play</span>
           </span>
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           {navItems.map((item, index) => {
             const isActive = activeSection === item.href;
             const isHovered = hoveredIndex === index;
+            const IconComponent = item.icon;
 
             return (
               <a
@@ -100,7 +103,7 @@ export const Navbar = () => {
                 href={`#${item.href}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="relative px-4 py-2 text-[12px] font-bold tracking-wider text-slate-600 hover:text-[#00A859] transition-colors duration-300 uppercase select-none"
+                className="relative px-3.5 py-2 text-[11px] xl:text-[12px] font-extrabold tracking-wider text-slate-700 hover:text-[#00A859] transition-colors duration-300 uppercase select-none flex items-center gap-1.5"
               >
                 {/* Sliding background capsule */}
                 <AnimatePresence>
@@ -133,27 +136,47 @@ export const Navbar = () => {
                   />
                 )}
 
+                <IconComponent size={14} className={isActive ? "text-[#00A859]" : "text-slate-400 group-hover:text-[#00A859]"} />
+
                 <span className={isActive ? "text-[#00A859] font-black" : ""}>
                   {item.name}
                 </span>
+
+                {item.badge && (
+                  <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-black uppercase tracking-tighter ${
+                    item.badge === 'Player' 
+                      ? 'bg-blue-100 text-blue-700 border border-blue-200' 
+                      : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                  }`}>
+                    {item.badge}
+                  </span>
+                )}
               </a>
             );
           })}
         </div>
 
         {/* Action Button */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href="#waitlist"
-            className="group relative overflow-hidden px-6 py-2.5 bg-[#00A859] text-white font-bold rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] text-xs flex items-center gap-2"
+            className="group relative overflow-hidden px-5 py-2 bg-[#00A859] text-white font-black rounded-full transition-all duration-300 shadow-md shadow-[#00A859]/20 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.03] text-xs flex items-center gap-1.5 uppercase tracking-wider"
           >
-            <span>টার্ফ মালিকদের জন্য</span>
-            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
+            <Sparkles size={13} className="animate-pulse" />
+            <span>ওয়েটলিস্টে যোগ দিন</span>
+            <ArrowRight size={13} className="transform group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </div>
 
         {/* Mobile controls */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="lg:hidden flex items-center gap-3">
+          <a
+            href="#waitlist"
+            className="px-3.5 py-1.5 bg-[#00A859] text-white font-extrabold rounded-full text-[11px] uppercase tracking-wider shadow-sm"
+          >
+            ওয়েটলিস্ট
+          </a>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="relative w-8 h-8 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 text-slate-900"
@@ -186,7 +209,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.95 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden mt-3 bg-white/95 backdrop-blur-xl rounded-3xl border border-[#00A859]/20 shadow-xl overflow-hidden"
+            className="lg:hidden mt-3 bg-white/95 backdrop-blur-xl rounded-3xl border border-[#00A859]/20 shadow-xl overflow-hidden"
           >
             <motion.div
               initial="closed"
@@ -198,26 +221,41 @@ export const Navbar = () => {
               }}
               className="px-6 py-6 space-y-4"
             >
-              {navItems.map((item) => (
-                <motion.div
-                  key={item.href}
-                  variants={{
-                    open: { y: 0, opacity: 1 },
-                    closed: { y: -10, opacity: 0 }
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <a
-                    href={`#${item.href}`}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-base font-bold uppercase tracking-wider transition-colors ${
-                      activeSection === item.href ? 'text-[#00A859]' : 'text-slate-700 hover:text-[#00A859]'
-                    }`}
+              {navItems.map((item) => {
+                const IconComp = item.icon;
+                return (
+                  <motion.div
+                    key={item.href}
+                    variants={{
+                      open: { y: 0, opacity: 1 },
+                      closed: { y: -10, opacity: 0 }
+                    }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {item.name}
-                  </a>
-                </motion.div>
-              ))}
+                    <a
+                      href={`#${item.href}`}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center justify-between py-2 text-sm font-extrabold uppercase tracking-wider transition-colors ${
+                        activeSection === item.href ? 'text-[#00A859]' : 'text-slate-700 hover:text-[#00A859]'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <IconComp size={16} className={activeSection === item.href ? "text-[#00A859]" : "text-slate-400"} />
+                        <span>{item.name}</span>
+                      </div>
+                      {item.badge && (
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-tighter ${
+                          item.badge === 'Player' 
+                            ? 'bg-blue-100 text-blue-700 border border-blue-200' 
+                            : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                        }`}>
+                          {item.badge}
+                        </span>
+                      )}
+                    </a>
+                  </motion.div>
+                );
+              })}
               <motion.div
                 variants={{
                   open: { y: 0, opacity: 1 },
