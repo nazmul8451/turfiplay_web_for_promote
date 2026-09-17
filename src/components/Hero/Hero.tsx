@@ -117,10 +117,54 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-sm sm:text-base md:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-6 sm:mb-8"
+              className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-6 sm:mb-8"
             >
               TurfPlay-এর সাথে খুঁজে নিন আপনার পছন্দের টার্ফ, বুক করুন আপনার স্লট, ম্যানেজ করুন আপনার টার্ফ এবং কানেক্ট করুন আপনার স্পোর্টস কমিউনিটির সাথে।
             </motion.p>
+
+            {/* Dual Player & Owner Quick Focus Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-xl"
+            >
+              <a
+                href="#how-it-works"
+                className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200/80 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
+              >
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-blue-500/30">
+                  ⚽
+                </div>
+                <div>
+                  <div className="text-xs font-black text-blue-950 flex items-center gap-1.5">
+                    <span>খেলোয়াড়দের অ্যাপ</span>
+                    <ArrowRight size={12} className="text-blue-600 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <div className="text-[11px] text-blue-700 font-medium leading-snug">
+                    লাইভ ম্যাপে টার্ফ বুকিং ও ইনস্ট্যান্ট লক
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="#partner"
+                className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 hover:border-emerald-400 hover:bg-emerald-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#00A859] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-[#00A859]/30">
+                  🏟️
+                </div>
+                <div>
+                  <div className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
+                    <span>টার্ফ মালিকদের পোর্টাল</span>
+                    <ArrowRight size={12} className="text-emerald-600 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <div className="text-[11px] text-emerald-700 font-medium leading-snug">
+                    অটোমেটেড স্লট ও ইনকাম রিপোর্ট
+                  </div>
+                </div>
+              </a>
+            </motion.div>
 
             {/* Action Buttons Row */}
             <motion.div
