@@ -13,19 +13,23 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 lg:py-32 bg-brand-bg">
-      <div className="max-w-[1100px] mx-auto px-10">
-        <h2 className="text-3xl md:text-5xl font-black text-[var(--text-primary)] mb-12 tracking-tighter text-center uppercase italic">সাধারণ <span className="text-brand-green">জিজ্ঞাসাসমূহ ?</span></h2>
-        <div className="space-y-4">
+    <section id="faq" className="py-16 sm:py-20 lg:py-32 bg-white">
+      <div className="container-narrow">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-8 sm:mb-12 tracking-tight text-center uppercase italic">
+          সাধারণ <span className="text-[#00A859]">জিজ্ঞাসাসমূহ ?</span>
+        </h2>
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="glass-card !p-0 overflow-hidden border-white/5">
+            <div key={i} className="glass-card !p-0 overflow-hidden border border-slate-200 bg-white shadow-sm rounded-2xl">
               <button
                 onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-                className="w-full py-8 px-10 flex items-center justify-between text-left group"
+                className="w-full py-4 px-4 sm:py-6 sm:px-8 flex items-center justify-between text-left group cursor-pointer gap-4"
               >
-                <span className="text-xl font-black text-[var(--text-primary)] uppercase italic tracking-tight group-hover:text-brand-green transition-colors">{faq.q}</span>
-                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 ${activeIndex === i ? 'border-brand-green bg-brand-green text-black rotate-90' : 'border-[var(--border-color)] text-[var(--text-secondary)]'}`}>
-                  <ChevronRight size={18} />
+                <span className="text-sm sm:text-lg md:text-xl font-black text-slate-900 uppercase italic tracking-tight group-hover:text-[#00A859] transition-colors leading-snug">
+                  {faq.q}
+                </span>
+                <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${activeIndex === i ? 'border-[#00A859] bg-[#00A859] text-white rotate-90' : 'border-slate-200 text-slate-500'}`}>
+                  <ChevronRight size={16} />
                 </div>
               </button>
               <AnimatePresence>
@@ -36,8 +40,8 @@ export const FAQ = () => {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-10 pb-10">
-                      <p className="text-lg text-[var(--text-secondary)] font-medium leading-relaxed border-l-4 border-brand-green/30 pl-6">
+                    <div className="px-4 pb-5 sm:px-8 sm:pb-8">
+                      <p className="text-xs sm:text-base text-slate-600 font-medium leading-relaxed border-l-3 sm:border-l-4 border-[#00A859]/30 pl-4 sm:pl-6">
                         {faq.a}
                       </p>
                     </div>

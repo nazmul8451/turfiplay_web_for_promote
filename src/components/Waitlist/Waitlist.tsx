@@ -36,40 +36,40 @@ export const Waitlist = () => {
   };
 
   return (
-    <section id="waitlist" className="py-20 lg:py-32 relative overflow-hidden bg-[#F8FAFC]">
+    <section id="waitlist" className="py-16 sm:py-20 lg:py-32 relative overflow-hidden bg-[#F8FAFC]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#00A859]/8 blur-[200px] rounded-full" />
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+      <div className="container-fluid">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass-card !p-8 md:!p-16 border-[#00A859]/25 bg-white shadow-xl relative overflow-hidden text-center max-w-4xl mx-auto"
+          className="glass-card !p-6 sm:!p-10 md:!p-16 border-[#00A859]/25 bg-white shadow-xl relative overflow-hidden text-center max-w-4xl mx-auto rounded-2xl sm:rounded-3xl"
         >
           <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#00A859] to-transparent shadow-sm" />
 
-          <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight uppercase">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-4 sm:mb-6 leading-tight tracking-tight uppercase">
             আপনার টার্ফ ডিজিটাল করতে <br />
             <span className="font-serif italic text-[#00A859] lowercase font-normal">প্রস্তুত?</span>
           </h2>
 
-          <p className="text-base md:text-lg text-slate-600 mb-12 max-w-xl mx-auto font-medium leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-8 sm:mb-12 max-w-xl mx-auto font-medium leading-relaxed">
             ম্যানুয়াল খাতার দিন শেষ। সবার আগে TurfPlay ব্যবহারের অভিজ্ঞতা নিতে ওয়েটলিস্টে নাম দিন।
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 sm:space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-1.5">
                   <div className="relative">
-                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                    <Mail className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="email"
                       placeholder="ইমেইল অ্যাড্রেস"
-                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-3.5 pl-11 pr-4 sm:py-4 sm:pl-12 sm:pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-xs sm:text-sm ${
                         errors.email ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={email}
@@ -94,11 +94,11 @@ export const Waitlist = () => {
 
                 <div className="space-y-1.5">
                   <div className="relative">
-                    <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                    <Phone className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     <input
                       type="tel"
                       placeholder="০১XXXXXXXXX"
-                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-4 pl-12 pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-sm ${
+                      className={`w-full bg-[#F8FAFC] border rounded-2xl py-3.5 pl-11 pr-4 sm:py-4 sm:pl-12 sm:pr-6 text-slate-900 focus:outline-none focus:border-[#00A859] transition-all placeholder:text-slate-400 font-medium text-xs sm:text-sm ${
                         errors.phone ? 'border-red-500' : 'border-slate-200'
                       }`}
                       value={phone}
@@ -124,14 +124,14 @@ export const Waitlist = () => {
 
               <button
                 type="submit"
-                className="group relative overflow-hidden w-full btn-primary !py-5 !text-lg uppercase tracking-wider font-extrabold flex items-center justify-center gap-2"
+                className="group relative overflow-hidden w-full btn-primary !py-4 sm:!py-5 !text-sm sm:!text-lg uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-[#00A859]/25 hover:scale-[1.01] active:scale-[0.99] transition-all"
               >
                 <span>আগাম অ্যাক্সেস নিন</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </motion.div>
               </button>
             </form>

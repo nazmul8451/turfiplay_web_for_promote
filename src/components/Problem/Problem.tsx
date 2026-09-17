@@ -22,26 +22,26 @@ export const Problem = () => {
   ];
 
   return (
-    <section id="problem" className="py-24 lg:py-48 bg-brand-bg relative overflow-hidden">
+    <section id="problem" className="py-16 sm:py-24 lg:py-36 bg-white relative overflow-hidden">
       {/* Abstract background shapes */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-brand-green/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#00A859]/5 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="max-w-[1880px] mx-auto px-10 md:px-[10%] lg:px-[12%]">
-        <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 items-center">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-8 leading-tight tracking-tighter">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-4 sm:mb-8 leading-tight tracking-tight">
               এখনও হোয়াটসঅ্যাপ <br />
-              <span className="text-[var(--text-secondary)] opacity-50">ও এক্সেল ব্যবহার করছেন?</span>
+              <span className="text-slate-400">ও এক্সেল ব্যবহার করছেন?</span>
             </h2>
-            <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-12 leading-relaxed max-w-xl font-medium">
+            <p className="text-sm sm:text-base md:text-xl text-slate-600 mb-8 sm:mb-12 leading-relaxed max-w-xl font-medium">
               হোয়াটসঅ্যাপ বা এক্সেল মেসেজ পাঠানোর জন্য ভালো হলেও প্রফেশনাল স্পোর্টস টার্ফ চালানোর জন্য তৈরি নয়। ম্যানুয়াল হিসাব কষে সময় নষ্ট বন্ধ করুন।
             </p>
-            <div className="space-y-8">
+            <div className="space-y-5 sm:space-y-8">
               {problems.map((p, i) => (
                 <motion.div
                   key={i}
@@ -49,14 +49,14 @@ export const Problem = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex gap-8 group items-start"
+                  className="flex gap-4 sm:gap-6 group items-start"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-[var(--border-color)] flex items-center justify-center flex-shrink-0 group-hover:border-brand-green/30 transition-all duration-500 group-hover:scale-110">
-                    <p.icon className="text-brand-green/60 group-hover:text-brand-green" size={24} />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#00A859]/10 border border-[#00A859]/20 flex items-center justify-center shrink-0 group-hover:border-[#00A859]/40 transition-all duration-300 group-hover:scale-105">
+                    <p.icon className="text-[#00A859]" size={22} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-[var(--text-primary)] mb-2 tracking-tight group-hover:text-brand-green transition-colors">{p.title}</h4>
-                    <p className="text-base text-[var(--text-secondary)] leading-relaxed font-medium group-hover:text-[var(--text-primary)] transition-colors">{p.desc}</p>
+                    <h4 className="text-base sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2 tracking-tight group-hover:text-[#00A859] transition-colors">{p.title}</h4>
+                    <p className="text-xs sm:text-base text-slate-600 leading-relaxed font-medium transition-colors">{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -69,15 +69,17 @@ export const Problem = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-square rounded-[4rem] bg-gradient-to-br from-white/10 to-transparent p-[1px]">
-              <div className="w-full h-full rounded-[3.9rem] bg-brand-surface/50 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-12 relative group">
-                <div className="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="aspect-square max-w-[480px] mx-auto rounded-3xl sm:rounded-[3rem] bg-gradient-to-br from-slate-100 to-slate-50 p-[1px] border border-slate-200 shadow-xl">
+              <div className="w-full h-full rounded-[1.4rem] sm:rounded-[2.9rem] bg-white overflow-hidden flex items-center justify-center p-6 sm:p-12 relative group">
+                <div className="absolute inset-0 bg-[#00A859]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="text-center relative z-10">
-                  <div className="w-32 h-32 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-red-500/20 shadow-[0_0_40px_rgba(239,68,68,0.1)]">
-                    <X className="text-red-500" size={50} />
+                  <div className="w-20 h-20 sm:w-28 sm:h-28 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 border border-red-500/20 shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+                    <X className="text-red-500" size={40} />
                   </div>
-                  <p className="text-3xl font-black text-white mb-6 italic tracking-tight leading-tight">"একটু দাঁড়ান, আমি এক্সেল শিট দেখে বলছি..."</p>
-                  <p className="text-lg text-white/30 font-medium">ব্যবসায় প্রফেশনালিজম হারানোর চিত্র।</p>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 mb-3 sm:mb-4 italic tracking-tight leading-tight">
+                    "একটু দাঁড়ান, আমি এক্সেল শিট দেখে বলছি..."
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-500 font-medium">ব্যবসায় প্রফেশনালিজম হারানোর চিত্র।</p>
                 </div>
               </div>
             </div>

@@ -39,10 +39,12 @@ interface FeatureCardProps {
   node: FeatureNode;
   delay?: number;
   xOffset?: number;
+  isHovered?: boolean;
   onHover: () => void;
+  onLeave?: () => void;
 }
 
-const FeatureCard = ({ node, delay = 0, xOffset = -20, onHover }: FeatureCardProps) => {
+const FeatureCard = ({ node, delay = 0, xOffset = -20, isHovered = false, onHover, onLeave }: FeatureCardProps) => {
   const IconComp = node.icon;
   return (
     <motion.div
@@ -51,15 +53,31 @@ const FeatureCard = ({ node, delay = 0, xOffset = -20, onHover }: FeatureCardPro
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       onMouseEnter={onHover}
-      className="group relative bg-white hover:bg-slate-50/90 border border-slate-200 hover:border-[#00A859] rounded-2xl p-4 sm:p-4.5 transition-all duration-300 shadow-md shadow-slate-200/40 hover:shadow-xl hover:shadow-[#00A859]/10"
+      onMouseLeave={onLeave}
+      className={`group relative bg-white rounded-2xl p-4 sm:p-4.5 transition-all duration-300 shadow-md ${
+        isHovered
+          ? 'border-2 border-[#00A859] shadow-xl shadow-[#00A859]/20 -translate-y-1 bg-gradient-to-br from-white via-white to-[#00A859]/5 ring-4 ring-[#00A859]/10'
+          : 'border border-slate-200 hover:border-[#00A859]/60 shadow-slate-200/40 hover:shadow-lg'
+      }`}
     >
-      <div className="flex items-center gap-2 mb-2">
-        <div className="w-7 h-7 rounded-lg bg-[#00A859]/10 text-[#00A859] flex items-center justify-center shrink-0">
-          <IconComp size={15} />
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+            isHovered ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-105' : 'bg-[#00A859]/10 text-[#00A859]'
+          }`}>
+            <IconComp size={15} />
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A859]">
+            {node.badge}
+          </span>
         </div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A859]">
-          {node.badge}
-        </span>
+        {/* Active Pulse Pill */}
+        {isHovered && (
+          <span className="inline-flex items-center gap-1 text-[9px] font-extrabold text-[#00A859] bg-[#00A859]/10 px-2 py-0.5 rounded-full border border-[#00A859]/20 animate-pulse">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00A859]" />
+            LIVE LINK
+          </span>
+        )}
       </div>
 
       <h3 className="text-sm sm:text-base font-black text-slate-900 mb-1 tracking-tight">
@@ -73,7 +91,11 @@ const FeatureCard = ({ node, delay = 0, xOffset = -20, onHover }: FeatureCardPro
       {/* Compact Pill CTA Button */}
       <button
         onClick={onHover}
-        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00A859] hover:bg-[#008f4c] text-white font-bold text-[10px] sm:text-[11px] transition-all duration-200 shadow-sm shadow-[#00A859]/20 hover:scale-[1.02] active:scale-95 mb-2.5 cursor-pointer"
+        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold text-[10px] sm:text-[11px] transition-all duration-200 shadow-sm mb-2.5 cursor-pointer ${
+          isHovered 
+            ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]' 
+            : 'bg-[#00A859] hover:bg-[#008f4c] text-white shadow-[#00A859]/20 hover:scale-[1.02]'
+        } active:scale-95`}
       >
         <span>{node.ctaText}</span>
         <ArrowRight size={12} />
@@ -83,7 +105,9 @@ const FeatureCard = ({ node, delay = 0, xOffset = -20, onHover }: FeatureCardPro
       <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
         {node.stats.map((s, idx) => (
           <div key={idx}>
-            <div className="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-none mb-0.5">
+            <div className={`text-base sm:text-lg font-black tracking-tight leading-none mb-0.5 transition-colors duration-200 ${
+              isHovered ? 'text-[#00A859]' : 'text-slate-900'
+            }`}>
               {s.value}
             </div>
             <div className="text-[9px] sm:text-[10px] text-slate-500 font-semibold leading-tight">
@@ -100,6 +124,7 @@ export const HowItWorks = () => {
   const [activeRole, setActiveRole] = useState<'player' | 'owner'>('player');
   const [activeScreen, setActiveScreen] = useState<'map' | 'home' | 'detail' | 'calendar'>('map');
   const [activeModalImg, setActiveModalImg] = useState<string | null>(null);
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
 
   // Player role feature nodes
   const playerNodes: FeatureNode[] = [
@@ -223,6 +248,16 @@ export const HowItWorks = () => {
 
   const currentNodes = activeRole === 'player' ? playerNodes : ownerNodes;
 
+  // Active node determination based on hover or current active screen
+  const activeNodePos = (hoveredCardId ? currentNodes.find(n => n.id === hoveredCardId)?.position : null) ||
+    (currentNodes.find(n => n.associatedScreen === activeScreen)?.position) ||
+    'top-left';
+
+  const isTLActive = activeNodePos === 'top-left';
+  const isTRActive = activeNodePos === 'top-right';
+  const isBLActive = activeNodePos === 'bottom-left';
+  const isBRActive = activeNodePos === 'bottom-right';
+
   // Selected phone image based on active screen
   const getScreenImage = () => {
     switch (activeScreen) {
@@ -249,7 +284,7 @@ export const HowItWorks = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00A859]/5 blur-[140px] rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-8 md:px-10 lg:px-12">
+      <div className="relative z-10 container-fluid">
 
         {/* ── COMPACT SECTION HEADER ── */}
         <div className="text-center max-w-2xl mx-auto mb-6 lg:mb-8">
@@ -289,20 +324,20 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="mt-4 inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200 shadow-inner"
+            className="mt-4 inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200 shadow-inner max-w-full overflow-x-auto"
           >
             <button
               onClick={() => {
                 setActiveRole('player');
                 setActiveScreen('map');
               }}
-              className={`flex items-center gap-2 px-5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 rounded-full font-bold text-[11px] sm:text-xs transition-all duration-200 cursor-pointer shrink-0 ${
                 activeRole === 'player'
                   ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Smartphone size={14} />
+              <Smartphone size={13} className="shrink-0" />
               <span>খেলোয়াড়দের জার্নি</span>
             </button>
 
@@ -311,13 +346,13 @@ export const HowItWorks = () => {
                 setActiveRole('owner');
                 setActiveScreen('calendar');
               }}
-              className={`flex items-center gap-2 px-5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 rounded-full font-bold text-[11px] sm:text-xs transition-all duration-200 cursor-pointer shrink-0 ${
                 activeRole === 'owner'
                   ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <LayoutDashboard size={14} />
+              <LayoutDashboard size={13} className="shrink-0" />
               <span>টার্ফ ওনারদের জার্নি</span>
             </button>
           </motion.div>
@@ -326,7 +361,7 @@ export const HowItWorks = () => {
         {/* ── MAIN SHOWCASE CONTAINER (COMPACT HEIGHT TO FIT SCREEN) ── */}
         <div className="relative">
 
-          {/* ── SVG GLOWING CURVED PATH (SCALED FOR COMPACT HEIGHT) ── */}
+          {/* ── ADVANCED INTERACTIVE CYBER-CIRCUIT & POLYLINE NETWORK ── */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none -z-0">
             <svg 
               className="w-full h-full overflow-visible" 
@@ -335,8 +370,9 @@ export const HowItWorks = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <filter id="green-path-glow-compact" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="6" result="blur1" />
+                {/* High-intensity Ambient Glow Filter */}
+                <filter id="circuit-neon-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="4" result="blur1" />
                   <feGaussianBlur stdDeviation="12" result="blur2" />
                   <feMerge>
                     <feMergeNode in="blur2" />
@@ -345,36 +381,286 @@ export const HowItWorks = () => {
                   </feMerge>
                 </filter>
 
-                <linearGradient id="brand-green-gradient-compact" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.35" />
-                  <stop offset="30%" stopColor="#00A859" stopOpacity="1" />
-                  <stop offset="50%" stopColor="#00C853" stopOpacity="0.9" />
-                  <stop offset="70%" stopColor="#00A859" stopOpacity="1" />
+                {/* Active Beam High-Energy Glow Filter */}
+                <filter id="active-beam-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="5" result="blur1" />
+                  <feGaussianBlur stdDeviation="14" result="blur2" />
+                  <feMerge>
+                    <feMergeNode in="blur2" />
+                    <feMergeNode in="blur1" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                {/* Data Packet Core Glow Filter */}
+                <filter id="packet-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                {/* Futuristic Emerald Laser Gradient */}
+                <linearGradient id="cyber-green-stream" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.25" />
+                  <stop offset="25%" stopColor="#00A859" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#00FF88" stopOpacity="1" />
+                  <stop offset="75%" stopColor="#00C853" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.3" />
+                </linearGradient>
+
+                {/* Supercharged Active Laser Gradient */}
+                <linearGradient id="active-laser-stream" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.4" />
+                  <stop offset="30%" stopColor="#00FF88" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="1" />
+                  <stop offset="70%" stopColor="#00FF88" stopOpacity="1" />
                   <stop offset="100%" stopColor="#00A859" stopOpacity="0.4" />
+                </linearGradient>
+
+                <linearGradient id="stream-pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.1" />
+                  <stop offset="40%" stopColor="#00FF88" stopOpacity="0.9" />
+                  <stop offset="60%" stopColor="#FFFFFF" stopOpacity="1" />
+                  <stop offset="80%" stopColor="#00FF88" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.1" />
                 </linearGradient>
               </defs>
 
-              {/* Background ambient blur track */}
+              {/* ── BACKGROUND TECH TELEMETRY LABELS ── */}
+              <text x="680" y="45" textAnchor="middle" fill="#00A859" fillOpacity="0.35" fontSize="8.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.25em">
+                [ TURFPLAY HYPER-SYNC ENGINE v2.4 // REAL-TIME MESH ]
+              </text>
+              <text x="680" y="635" textAnchor="middle" fill="#00A859" fillOpacity="0.3" fontSize="8" fontFamily="monospace" fontWeight="bold" letterSpacing="0.18em">
+                LATENCY: &lt;10MS • 256-BIT ENCRYPTION • 0% CONFLICT GUARANTEE
+              </text>
+
+              {/* ── 1. MAIN BACKGROUND AMBIENT GLOW HIGHWAY ── */}
               <path
-                d="M 120 640 C 140 520, 320 490, 520 480 C 600 470, 680 430, 700 330 C 720 230, 670 190, 650 130 C 630 60, 760 80, 890 110 C 980 130, 1080 230, 1040 330 C 1000 430, 920 480, 800 520 C 700 560, 800 640, 900 660"
+                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
                 stroke="#00A859"
-                strokeWidth="10"
-                strokeOpacity="0.12"
+                strokeWidth="16"
+                strokeOpacity="0.08"
                 strokeLinecap="round"
-                filter="url(#green-path-glow-compact)"
+                filter="url(#circuit-neon-glow)"
               />
 
-              {/* Main crisp glowing curved path */}
+              {/* ── 2. PARALLEL CYBER MICRO-TRACE TRACK ── */}
+              <path
+                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
+                stroke="#00A859"
+                strokeWidth="1"
+                strokeOpacity="0.25"
+                strokeDasharray="4 6"
+              />
+
+              {/* ── 3. BASELINE HIGHWAY GUIDE RAIL ── */}
+              <path
+                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
+                stroke="#00A859"
+                strokeWidth="2.5"
+                strokeOpacity="0.3"
+                strokeLinecap="round"
+              />
+
+              {/* ── 4. PRIMARY CONTINUOUS PULSING LASER STREAM ── */}
               <motion.path
-                d="M 120 640 C 140 520, 320 490, 520 480 C 600 470, 680 430, 700 330 C 720 230, 670 190, 650 130 C 630 60, 760 80, 890 110 C 980 130, 1080 230, 1040 330 C 1000 430, 920 480, 800 520 C 700 560, 800 640, 900 660"
-                stroke="url(#brand-green-gradient-compact)"
+                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
+                stroke="url(#cyber-green-stream)"
                 strokeWidth="3.5"
                 strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                strokeDasharray="45 220"
+                animate={{ strokeDashoffset: [0, -530] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
+                filter="url(#circuit-neon-glow)"
               />
+
+              {/* ── 5. SECONDARY HIGH-SPEED PACKET STREAM ── */}
+              <motion.path
+                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
+                stroke="url(#active-laser-stream)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray="16 180"
+                animate={{ strokeDashoffset: [0, -392] }}
+                transition={{ duration: 3.2, repeat: Infinity, ease: "linear", delay: 1 }}
+                filter="url(#packet-glow)"
+              />
+
+              {/* ── 6. DYNAMIC REACTIVE CARD-TO-PHONE INTERCONNECT TRACES ── */}
+              
+              {/* TOP-LEFT BRANCH (Map / Calendar Node) */}
+              <g className="transition-all duration-300">
+                {/* Base guide rail */}
+                <path
+                  d="M 445 160 C 510 160, 535 230, 565 230"
+                  stroke="#00A859"
+                  strokeWidth={isTLActive ? 2 : 1.2}
+                  strokeOpacity={isTLActive ? 0.6 : 0.25}
+                  strokeDasharray="3 4"
+                />
+                {/* High-speed Laser Stream */}
+                <motion.path
+                  d="M 445 160 C 510 160, 535 230, 565 230"
+                  stroke={isTLActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
+                  strokeWidth={isTLActive ? 3.5 : 2}
+                  strokeLinecap="round"
+                  strokeDasharray={isTLActive ? "24 70" : "16 120"}
+                  animate={{ strokeDashoffset: [0, isTLActive ? -94 : -136] }}
+                  transition={{ duration: isTLActive ? 0.9 : 2.4, repeat: Infinity, ease: "linear" }}
+                  filter={isTLActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
+                />
+                {/* Terminal Reticle Anchor at Card */}
+                <line x1="439" y1="160" x2="451" y2="160" stroke="#00A859" strokeWidth="1" />
+                <line x1="445" y1="154" x2="445" y2="166" stroke="#00A859" strokeWidth="1" />
+                <circle cx="445" cy="160" r={isTLActive ? 5 : 3.5} fill="#00FF88" />
+                <circle cx="445" cy="160" r={isTLActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isTLActive ? 0.8 : 0.4} className="animate-ping" />
+                
+                {/* HUD Mini Tag */}
+                <g className={`transition-opacity duration-300 ${isTLActive ? 'opacity-100' : 'opacity-40'}`}>
+                  <rect x="454" y="145" width="66" height="14" rx="3" fill="#00A859" fillOpacity={isTLActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
+                  <text x="458" y="155" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">GPS MESH // 10ms</text>
+                </g>
+
+                {/* Docking Receptor on Phone Bezel */}
+                <circle cx="565" cy="230" r={isTLActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
+              </g>
+
+              {/* BOTTOM-LEFT BRANCH (Payment / Revenue Node) */}
+              <g className="transition-all duration-300">
+                <path
+                  d="M 445 475 C 510 475, 535 410, 565 410"
+                  stroke="#00A859"
+                  strokeWidth={isBLActive ? 2 : 1.2}
+                  strokeOpacity={isBLActive ? 0.6 : 0.25}
+                  strokeDasharray="3 4"
+                />
+                <motion.path
+                  d="M 445 475 C 510 475, 535 410, 565 410"
+                  stroke={isBLActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
+                  strokeWidth={isBLActive ? 3.5 : 2}
+                  strokeLinecap="round"
+                  strokeDasharray={isBLActive ? "24 70" : "16 120"}
+                  animate={{ strokeDashoffset: [0, isBLActive ? -94 : -136] }}
+                  transition={{ duration: isBLActive ? 0.9 : 2.5, repeat: Infinity, ease: "linear", delay: 0.3 }}
+                  filter={isBLActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
+                />
+                <line x1="439" y1="475" x2="451" y2="475" stroke="#00A859" strokeWidth="1" />
+                <line x1="445" y1="469" x2="445" y2="481" stroke="#00A859" strokeWidth="1" />
+                <circle cx="445" cy="475" r={isBLActive ? 5 : 3.5} fill="#00FF88" />
+                <circle cx="445" cy="475" r={isBLActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isBLActive ? 0.8 : 0.4} className="animate-ping" />
+                
+                {/* HUD Mini Tag */}
+                <g className={`transition-opacity duration-300 ${isBLActive ? 'opacity-100' : 'opacity-40'}`}>
+                  <rect x="454" y="460" width="66" height="14" rx="3" fill="#00A859" fillOpacity={isBLActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
+                  <text x="458" y="470" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">PAY // 100% OK</text>
+                </g>
+
+                <circle cx="565" cy="410" r={isBLActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
+              </g>
+
+              {/* TOP-RIGHT BRANCH (Lock / Alert Node) */}
+              <g className="transition-all duration-300">
+                <path
+                  d="M 915 160 C 850 160, 825 230, 795 230"
+                  stroke="#00A859"
+                  strokeWidth={isTRActive ? 2 : 1.2}
+                  strokeOpacity={isTRActive ? 0.6 : 0.25}
+                  strokeDasharray="3 4"
+                />
+                <motion.path
+                  d="M 915 160 C 850 160, 825 230, 795 230"
+                  stroke={isTRActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
+                  strokeWidth={isTRActive ? 3.5 : 2}
+                  strokeLinecap="round"
+                  strokeDasharray={isTRActive ? "24 70" : "16 120"}
+                  animate={{ strokeDashoffset: [0, isTRActive ? -94 : -136] }}
+                  transition={{ duration: isTRActive ? 0.9 : 2.3, repeat: Infinity, ease: "linear", delay: 0.2 }}
+                  filter={isTRActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
+                />
+                <line x1="909" y1="160" x2="921" y2="160" stroke="#00A859" strokeWidth="1" />
+                <line x1="915" y1="154" x2="915" y2="166" stroke="#00A859" strokeWidth="1" />
+                <circle cx="915" cy="160" r={isTRActive ? 5 : 3.5} fill="#00FF88" />
+                <circle cx="915" cy="160" r={isTRActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isTRActive ? 0.8 : 0.4} className="animate-ping" />
+                
+                {/* HUD Mini Tag */}
+                <g className={`transition-opacity duration-300 ${isTRActive ? 'opacity-100' : 'opacity-40'}`}>
+                  <rect x="835" y="145" width="72" height="14" rx="3" fill="#00A859" fillOpacity={isTRActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
+                  <text x="839" y="155" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">CLOUD // ZERO LOCK</text>
+                </g>
+
+                <circle cx="795" cy="230" r={isTRActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
+              </g>
+
+              {/* BOTTOM-RIGHT BRANCH (Booking / Growth Node) */}
+              <g className="transition-all duration-300">
+                <path
+                  d="M 915 475 C 850 475, 825 410, 795 410"
+                  stroke="#00A859"
+                  strokeWidth={isBRActive ? 2 : 1.2}
+                  strokeOpacity={isBRActive ? 0.6 : 0.25}
+                  strokeDasharray="3 4"
+                />
+                <motion.path
+                  d="M 915 475 C 850 475, 825 410, 795 410"
+                  stroke={isBRActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
+                  strokeWidth={isBRActive ? 3.5 : 2}
+                  strokeLinecap="round"
+                  strokeDasharray={isBRActive ? "24 70" : "16 120"}
+                  animate={{ strokeDashoffset: [0, isBRActive ? -94 : -136] }}
+                  transition={{ duration: isBRActive ? 0.9 : 2.6, repeat: Infinity, ease: "linear", delay: 0.5 }}
+                  filter={isBRActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
+                />
+                <line x1="909" y1="475" x2="921" y2="475" stroke="#00A859" strokeWidth="1" />
+                <line x1="915" y1="469" x2="915" y2="481" stroke="#00A859" strokeWidth="1" />
+                <circle cx="915" cy="475" r={isBRActive ? 5 : 3.5} fill="#00FF88" />
+                <circle cx="915" cy="475" r={isBRActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isBRActive ? 0.8 : 0.4} className="animate-ping" />
+                
+                {/* HUD Mini Tag */}
+                <g className={`transition-opacity duration-300 ${isBRActive ? 'opacity-100' : 'opacity-40'}`}>
+                  <rect x="835" y="460" width="72" height="14" rx="3" fill="#00A859" fillOpacity={isBRActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
+                  <text x="839" y="470" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">VERIFIED // 50K+</text>
+                </g>
+
+                <circle cx="795" cy="410" r={isBRActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
+              </g>
+
+              {/* ── 7. CENTRAL FUTURISTIC HOLOGRAPHIC ORBITS AROUND PHONE ── */}
+              <g transform="translate(680, 320)">
+                {/* Outer Radar Orbit Ring */}
+                <motion.ellipse
+                  rx="162"
+                  ry="265"
+                  fill="none"
+                  stroke="#00A859"
+                  strokeWidth="1.2"
+                  strokeOpacity="0.28"
+                  strokeDasharray="8 12"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
+                />
+                {/* Inner Counter-Rotating Orbit Ring */}
+                <motion.ellipse
+                  rx="148"
+                  ry="245"
+                  fill="none"
+                  stroke="#00FF88"
+                  strokeWidth="1"
+                  strokeOpacity="0.2"
+                  strokeDasharray="40 20 4 20"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
+                />
+                {/* Cardinal Target Crosshairs */}
+                <line x1="-165" y1="0" x2="-155" y2="0" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
+                <line x1="155" y1="0" x2="165" y2="0" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
+                <line x1="0" y1="-268" x2="0" y2="-258" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
+                <line x1="0" y1="258" x2="0" y2="268" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
+                {/* Polar Pulse Nodes */}
+                <circle cx="0" cy="-263" r="3" fill="#00FF88" filter="url(#packet-glow)" />
+                <circle cx="0" cy="263" r="3" fill="#00FF88" filter="url(#packet-glow)" />
+              </g>
             </svg>
           </div>
 
@@ -390,7 +676,12 @@ export const HowItWorks = () => {
                   node={currentNodes[0]}
                   delay={0}
                   xOffset={-20}
-                  onHover={() => setActiveScreen(currentNodes[0].associatedScreen)}
+                  isHovered={isTLActive}
+                  onHover={() => {
+                    setActiveScreen(currentNodes[0].associatedScreen);
+                    setHoveredCardId(currentNodes[0].id);
+                  }}
+                  onLeave={() => setHoveredCardId(null)}
                 />
               )}
 
@@ -400,7 +691,12 @@ export const HowItWorks = () => {
                   node={currentNodes[2]}
                   delay={0.15}
                   xOffset={-20}
-                  onHover={() => setActiveScreen(currentNodes[2].associatedScreen)}
+                  isHovered={isBLActive}
+                  onHover={() => {
+                    setActiveScreen(currentNodes[2].associatedScreen);
+                    setHoveredCardId(currentNodes[2].id);
+                  }}
+                  onLeave={() => setHoveredCardId(null)}
                 />
               )}
 
@@ -514,7 +810,12 @@ export const HowItWorks = () => {
                   node={currentNodes[1]}
                   delay={0.1}
                   xOffset={20}
-                  onHover={() => setActiveScreen(currentNodes[1].associatedScreen)}
+                  isHovered={isTRActive}
+                  onHover={() => {
+                    setActiveScreen(currentNodes[1].associatedScreen);
+                    setHoveredCardId(currentNodes[1].id);
+                  }}
+                  onLeave={() => setHoveredCardId(null)}
                 />
               )}
 
@@ -524,7 +825,12 @@ export const HowItWorks = () => {
                   node={currentNodes[3]}
                   delay={0.25}
                   xOffset={20}
-                  onHover={() => setActiveScreen(currentNodes[3].associatedScreen)}
+                  isHovered={isBRActive}
+                  onHover={() => {
+                    setActiveScreen(currentNodes[3].associatedScreen);
+                    setHoveredCardId(currentNodes[3].id);
+                  }}
+                  onLeave={() => setHoveredCardId(null)}
                 />
               )}
 

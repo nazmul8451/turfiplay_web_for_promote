@@ -22,7 +22,7 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: "spring", duration: 0.5 }}
-          className="relative max-w-md w-full bg-white rounded-3xl p-8 border border-[#00A859]/30 shadow-2xl text-center overflow-hidden"
+          className="relative max-w-md w-full max-h-[90vh] overflow-y-auto bg-white rounded-3xl p-6 sm:p-8 border border-[#00A859]/30 shadow-2xl text-center"
           onClick={e => e.stopPropagation()}
         >
           {/* Top accent bar */}
