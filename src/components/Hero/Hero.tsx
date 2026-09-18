@@ -148,7 +148,7 @@ export const Hero = () => {
               </a>
 
               <a
-                href="#partner"
+                href="#how-it-works"
                 className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 hover:border-emerald-400 hover:bg-emerald-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#00A859] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-[#00A859]/30">
@@ -156,11 +156,11 @@ export const Hero = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
-                    <span>টার্ফ মালিকদের পোর্টাল</span>
+                    <span>টার্ফ মালিকদের মোড (মোবাইলেই)</span>
                     <ArrowRight size={12} className="text-emerald-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                   <div className="text-[11px] text-emerald-700 font-medium leading-snug">
-                    অটোমেটেড স্লট ও ইনকাম রিপোর্ট
+                    ফোন বুকিং লক ও ক্যাশ অডিট রিপোর্ট
                   </div>
                 </div>
               </a>

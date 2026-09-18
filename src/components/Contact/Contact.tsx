@@ -49,8 +49,10 @@ export const Contact = () => {
                   <Phone className="text-[#00A859]" size={20} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-0.5">সাপোর্ট নম্বর</p>
-                  <p className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">+880 1712-XXXXXX</p>
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-0.5">সাপোর্ট নম্বর ও হোয়াটসঅ্যাপ</p>
+                  <a href="tel:+8801892979324" className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight hover:text-[#00A859] transition-colors block">
+                    +880 1892-979324
+                  </a>
                 </div>
               </div>
             </div>

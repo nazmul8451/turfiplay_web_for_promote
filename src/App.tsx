@@ -10,7 +10,6 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
 import { HowItWorks } from './components/HowItWorks/HowItWorks';
 import { PartnerJourney } from './components/Partner/PartnerJourney';
-import { ManagementFeatures } from './components/ManagementFeatures/ManagementFeatures';
 import { Testimonials } from './components/Testimonials/Testimonials';
 import { Pricing } from './components/Pricing/Pricing';
 import { FAQ } from './components/FAQ/FAQ';
@@ -29,7 +28,6 @@ export default function App() {
             <Hero />
             <HowItWorks />
             <PartnerJourney />
-            <ManagementFeatures />
             <Testimonials />
             <Pricing />
             <FAQ />

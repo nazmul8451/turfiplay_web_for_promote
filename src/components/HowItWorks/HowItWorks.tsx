@@ -54,63 +54,63 @@ const FeatureCard = ({ node, delay = 0, xOffset = -20, isHovered = false, onHove
       transition={{ duration: 0.5, delay }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      className={`group relative bg-white rounded-2xl p-4 sm:p-4.5 transition-all duration-300 shadow-md ${
+      className={`group relative bg-white rounded-2xl p-5 sm:p-5.5 transition-all duration-300 shadow-sm ${
         isHovered
-          ? 'border-2 border-[#00A859] shadow-xl shadow-[#00A859]/20 -translate-y-1 bg-gradient-to-br from-white via-white to-[#00A859]/5 ring-4 ring-[#00A859]/10'
-          : 'border border-slate-200 hover:border-[#00A859]/60 shadow-slate-200/40 hover:shadow-lg'
+          ? 'border-2 border-[#00A859] shadow-xl shadow-[#00A859]/15 -translate-y-1 bg-emerald-50/10'
+          : 'border border-slate-200 hover:border-[#00A859]/60 hover:shadow-md'
       }`}
     >
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="flex items-center gap-2">
-          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
             isHovered ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-105' : 'bg-[#00A859]/10 text-[#00A859]'
           }`}>
-            <IconComp size={15} />
+            <IconComp size={17} />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A859]">
+          <span className="text-xs font-black uppercase tracking-wider text-[#00A859]">
             {node.badge}
           </span>
         </div>
         {/* Active Pulse Pill */}
         {isHovered && (
-          <span className="inline-flex items-center gap-1 text-[9px] font-extrabold text-[#00A859] bg-[#00A859]/10 px-2 py-0.5 rounded-full border border-[#00A859]/20 animate-pulse">
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-black text-[#00A859] bg-[#00A859]/10 px-2.5 py-0.5 rounded-full border border-[#00A859]/25 animate-pulse">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00A859]" />
-            LIVE LINK
+            সক্রিয়
           </span>
         )}
       </div>
 
-      <h3 className="text-sm sm:text-base font-black text-slate-900 mb-1 tracking-tight">
+      <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 tracking-tight leading-snug">
         {node.title}
       </h3>
 
-      <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed mb-2.5 font-medium line-clamp-3">
+      <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-3 font-normal">
         {node.desc}
       </p>
 
-      {/* Compact Pill CTA Button */}
+      {/* Pill CTA Button */}
       <button
         onClick={onHover}
-        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold text-[10px] sm:text-[11px] transition-all duration-200 shadow-sm mb-2.5 cursor-pointer ${
+        className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 shadow-sm mb-3.5 cursor-pointer ${
           isHovered 
             ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]' 
             : 'bg-[#00A859] hover:bg-[#008f4c] text-white shadow-[#00A859]/20 hover:scale-[1.02]'
         } active:scale-95`}
       >
         <span>{node.ctaText}</span>
-        <ArrowRight size={12} />
+        <ArrowRight size={13} />
       </button>
 
-      {/* Compact Percentage Metric Stats Grid */}
-      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+      {/* Percentage Metric Stats Grid */}
+      <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100">
         {node.stats.map((s, idx) => (
           <div key={idx}>
-            <div className={`text-base sm:text-lg font-black tracking-tight leading-none mb-0.5 transition-colors duration-200 ${
+            <div className={`text-base sm:text-xl font-black tracking-tight leading-none mb-1 transition-colors duration-200 ${
               isHovered ? 'text-[#00A859]' : 'text-slate-900'
             }`}>
               {s.value}
             </div>
-            <div className="text-[9px] sm:text-[10px] text-slate-500 font-semibold leading-tight">
+            <div className="text-xs text-slate-600 font-medium leading-snug">
               {s.label}
             </div>
           </div>
@@ -121,8 +121,8 @@ const FeatureCard = ({ node, delay = 0, xOffset = -20, isHovered = false, onHove
 };
 
 export const HowItWorks = () => {
-  const [activeRole, setActiveRole] = useState<'player' | 'owner'>('player');
-  const [activeScreen, setActiveScreen] = useState<'map' | 'home' | 'detail' | 'calendar'>('map');
+  const [activeRole, setActiveRole] = useState<'player' | 'owner'>('owner');
+  const [activeScreen, setActiveScreen] = useState<'map' | 'home' | 'detail' | 'calendar'>('calendar');
   const [activeModalImg, setActiveModalImg] = useState<string | null>(null);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
 
@@ -191,52 +191,52 @@ export const HowItWorks = () => {
     {
       id: 'o-1',
       position: 'top-left',
-      title: 'স্মার্ট টার্ফ ক্যালেন্ডার ও স্লট কন্ট্রোল',
-      desc: 'সব পিচ ও টাইমিং এক সেন্ট্রাল স্ক্রিনে নিয়ন্ত্রণ করুন। ফোন বা হোয়াটসঅ্যাপে আসা বুকিং ১০ সেকেন্ডে স্লট লক করে ফেলুন।',
-      badge: 'Central Calendar',
-      ctaText: 'ক্যালেন্ডার ড্যাশবোর্ড',
+      title: 'ফোন কল ও অফলাইন বুকিং ৫ সেকেন্ডে লক',
+      desc: 'ফোন বা হোয়াটসঅ্যাপে আসা বুকিং মাত্র ৫ সেকেন্ডে অফলাইন/ক্যাশ স্লটে লক করুন — খাতার চেয়েও দ্রুত এবং জিরো ডাবল-বুকিং নিশ্চয়তা!',
+      badge: 'Instant Offline Lock',
+      ctaText: 'ক্যালেন্ডার ও অফলাইন লক',
       associatedScreen: 'calendar',
       icon: CalendarCheck,
       stats: [
-        { value: '১০ সে.', label: 'অফলাইন বুকিং অ্যাড টাইম' },
-        { value: '২৪/৭', label: 'অটো স্লট মনিটরিং' }
+        { value: '৫ সে.', label: 'খাতার চেয়ে দ্রুত ক্যাশ স্লট লক' },
+        { value: '০%', label: 'ডাবল-বুকিং বা কল কনফ্লিক্ট' }
       ]
     },
     {
       id: 'o-2',
       position: 'top-right',
-      title: 'তাত্ক্ষণিক নোটিফিকেশন ও সতর্কতা',
-      desc: 'প্লেয়ার কোনো স্লট বুক বা পেমেন্ট করামাত্রই ম্যানেজারের ফোনে রিয়েল-টাইম এসএমএস ও পুশ অ্যালার্ট পৌঁছে যায়।',
-      badge: 'Real-time Alerts',
-      ctaText: 'অ্যালার্ট সিস্টেম দেখুন',
+      title: 'কম্পিউটার লাগবে না—১০০% মোবাইলেই ওনার মোড',
+      desc: 'কোনো কম্পিউটার বা ল্যাপটপের প্রয়োজন নেই! আপনার হাতের সাধারণ স্মার্টফোনের TurfPlay অ্যাপ থেকেই এক ক্লিকে ওনার মোডে সম্পূর্ণ টার্ফ পরিচালনা করুন।',
+      badge: '100% Smartphone Friendly',
+      ctaText: 'মোবাইল ওনার মোড',
       associatedScreen: 'detail',
-      icon: Bell,
+      icon: Smartphone,
       stats: [
-        { value: '১০০%', label: 'ইনস্ট্যান্ট বুকিং নোটিফিকেশন' },
-        { value: '০ লেটেন্সি', label: 'সরাসরি অ্যাডমিনে সিঙ্ক' }
+        { value: '১০০%', label: 'স্মার্টফোনে ওনার কন্ট্রোল' },
+        { value: '০ টাকা', label: 'আলাদা কম্পিউটার খরচ' }
       ]
     },
     {
       id: 'o-3',
       position: 'bottom-left',
-      title: 'দৈনিক আয় ও রেভিনিউ অ্যানালিটিক্স',
-      desc: 'আজকের মোট আয়, ক্যাশ ও অনলাইন পেমেন্টের আলাদা নিখুঁত হিসাব এবং মাসিক প্রবৃদ্ধি স্পষ্ট ইন্টারেক্টিভ গ্রাফে দেখতে পাবেন।',
-      badge: 'Revenue Tracker',
-      ctaText: 'অ্যানালিটিক্স রিপোর্ট',
+      title: 'সরাসরি নিজস্ব একাউন্টে টাকা ও স্বচ্ছ দৈনিক অডিট',
+      desc: 'অনলাইন পেমেন্টের টাকা সরাসরি আপনার নিজস্ব বিকাশ, নগদ বা ব্যাংক একাউন্টে জমা হয়। দিনশেষে ক্যাশ ও অনলাইনের নিখুঁত হিসাব রাত ১২টায় ক্লিয়ার পান।',
+      badge: 'Direct Settlement & Audit',
+      ctaText: 'স্বচ্ছ পেমেন্ট ব্যবস্থা',
       associatedScreen: 'home',
       icon: BarChart3,
       stats: [
-        { value: '৩৫%', label: 'গড় রাজস্ব বৃদ্ধি' },
-        { value: '১ ক্লিক', label: 'দৈনিক এক্সেল রিপোর্ট' }
+        { value: '১০০%', label: 'স্বচ্ছ হিসাব ও কোনো লুকানো চার্জ নেই' },
+        { value: '১ ক্লিক', label: 'দৈনিক ক্যাশ ও অনলাইন অডিট' }
       ]
     },
     {
       id: 'o-4',
       position: 'bottom-right',
-      title: 'ভেরিফাইড টার্ফ প্রোফাইল ও প্রচার',
-      desc: 'হাজারো স্থানীয় খেলোয়াড়ের কাছে আপনার মাঠকে প্রোমোট করুন। ভেরিফাইড রিভিউয়ের মাধ্যমে নিয়মিত ম্যাচ বুকিং নিশ্চিত করুন।',
-      badge: 'Growth & Reach',
-      ctaText: 'পার্টনার সুবিধা',
+      title: 'অফ-পিক স্লট বুকিং বৃদ্ধি ও নতুন কাস্টমার',
+      desc: 'দিনের ফাঁকা সময়ে মাঠ অলস পড়ে থাকে? TurfPlay ডিসকভারি ফিচারে হাজারো স্থানীয় প্লেয়ারের কাছে আপনার মাঠকে প্রোমোট করে নিয়মিত ম্যাচ বুকিং ও আয় বাড়ান।',
+      badge: 'More Bookings & Reach',
+      ctaText: 'টার্ফ প্রবৃদ্ধি দেখুন',
       associatedScreen: 'map',
       icon: ShieldCheck,
       stats: [
@@ -276,25 +276,24 @@ export const HowItWorks = () => {
   return (
     <section 
       id="how-it-works" 
-      className="relative py-12 lg:py-16 bg-white text-slate-900 overflow-hidden selection:bg-[#00A859] selection:text-white bg-grid"
+      className="relative py-14 lg:py-20 bg-[#F9FBFA] text-slate-900 overflow-hidden selection:bg-[#00A859] selection:text-white border-y border-slate-100"
     >
-      {/* ── BACKGROUND AMBIENT GLOWS ── */}
+      {/* ── CLEAN SOFT BACKGROUND ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Center ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00A859]/5 blur-[140px] rounded-full" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-500/5 blur-[160px] rounded-full" />
       </div>
 
       <div className="relative z-10 container-fluid">
 
-        {/* ── COMPACT SECTION HEADER ── */}
-        <div className="text-center max-w-2xl mx-auto mb-6 lg:mb-8">
+        {/* ── SECTION HEADER ── */}
+        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 text-[#00A859] font-extrabold text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 text-[#00A859] font-extrabold text-xs uppercase tracking-[0.2em] mb-3 shadow-sm"
           >
-            <Sparkles size={12} className="animate-pulse" />
+            <Sparkles size={13} className="animate-pulse" />
             <span>HOW TURFPLAY WORKS</span>
           </motion.div>
 
@@ -303,7 +302,7 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mb-2 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-3 leading-tight"
           >
             <span className="text-[#00A859] font-serif italic lowercase font-normal">TurfPlay</span> কীভাবে কাজ করে?
           </motion.h2>
@@ -313,358 +312,83 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-lg mx-auto line-clamp-2"
+            className="text-slate-700 text-sm sm:text-base font-medium leading-relaxed max-w-xl mx-auto"
           >
             সহজ বুকিং, রিয়েল-টাইম অটোমেশন এবং জিরো ডাবল-বুকিং নিশ্চয়তার আধুনিক স্পোর্টস প্ল্যাটফর্ম।
           </motion.p>
 
-          {/* ── COMPACT ROLE SWITCHER ── */}
+          {/* ── ROLE SWITCHER ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="mt-4 inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200 shadow-inner max-w-full overflow-x-auto"
+            className="mt-5 inline-flex items-center p-1.5 rounded-full bg-white border border-slate-200 shadow-sm max-w-full overflow-x-auto gap-1"
           >
-            <button
-              onClick={() => {
-                setActiveRole('player');
-                setActiveScreen('map');
-              }}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 rounded-full font-bold text-[11px] sm:text-xs transition-all duration-200 cursor-pointer shrink-0 ${
-                activeRole === 'player'
-                  ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Smartphone size={13} className="shrink-0" />
-              <span>খেলোয়াড়দের জার্নি</span>
-            </button>
-
             <button
               onClick={() => {
                 setActiveRole('owner');
                 setActiveScreen('calendar');
               }}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 rounded-full font-bold text-[11px] sm:text-xs transition-all duration-200 cursor-pointer shrink-0 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-black text-xs sm:text-sm transition-all duration-200 cursor-pointer shrink-0 ${
                 activeRole === 'owner'
                   ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
-                  : 'text-slate-600 hover:text-slate-900'
+                  : 'text-slate-700 hover:text-slate-950 font-bold'
               }`}
             >
-              <LayoutDashboard size={13} className="shrink-0" />
-              <span>টার্ফ ওনারদের জার্নি</span>
+              <LayoutDashboard size={15} className="shrink-0" />
+              <span>Turf Owner</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveRole('player');
+                setActiveScreen('map');
+              }}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-black text-xs sm:text-sm transition-all duration-200 cursor-pointer shrink-0 ${
+                activeRole === 'player'
+                  ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/30 scale-[1.02]'
+                  : 'text-slate-700 hover:text-slate-950 font-bold'
+              }`}
+            >
+              <Smartphone size={15} className="shrink-0" />
+              <span>Player</span>
             </button>
           </motion.div>
+
+          {/* ── REASSURANCE BANNER FOR TURF OWNERS (NO COMPUTER NEEDED) ── */}
+          <AnimatePresence mode="wait">
+            {activeRole === 'owner' && (
+              <motion.div
+                initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+                className="mt-5 max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#00A859]/30 text-slate-800 shadow-md flex items-center gap-3.5 text-left"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#00A859] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#00A859]/25 text-2xl">
+                  📱
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
+                    <span className="text-sm sm:text-base font-black text-slate-900">
+                      টার্ফ চালাতে কোনো কম্পিউটার বা ল্যাপটপের প্রয়োজন নেই!
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#00A859] text-white text-[10px] font-black uppercase tracking-wider shadow-xs">
+                      ১০০% মোবাইলে মালিক মোড
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                    আপনার হাতের সাধারণ স্মার্টফোনের <strong>TurfPlay অ্যাপ</strong> থেকেই এক ক্লিকে <em>'মালিক মোড'</em>-এ সুইচ করে মাঠের স্লট, অফলাইন ক্যাশ বুকিং ও আয়-ব্যয় পরিচালনা করুন।
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* ── MAIN SHOWCASE CONTAINER (COMPACT HEIGHT TO FIT SCREEN) ── */}
+        {/* ── MAIN SHOWCASE CONTAINER ── */}
         <div className="relative">
-
-          {/* ── ADVANCED INTERACTIVE CYBER-CIRCUIT & POLYLINE NETWORK ── */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none -z-0">
-            <svg 
-              className="w-full h-full overflow-visible" 
-              viewBox="0 0 1360 680" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                {/* High-intensity Ambient Glow Filter */}
-                <filter id="circuit-neon-glow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="4" result="blur1" />
-                  <feGaussianBlur stdDeviation="12" result="blur2" />
-                  <feMerge>
-                    <feMergeNode in="blur2" />
-                    <feMergeNode in="blur1" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-
-                {/* Active Beam High-Energy Glow Filter */}
-                <filter id="active-beam-glow" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur stdDeviation="5" result="blur1" />
-                  <feGaussianBlur stdDeviation="14" result="blur2" />
-                  <feMerge>
-                    <feMergeNode in="blur2" />
-                    <feMergeNode in="blur1" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-
-                {/* Data Packet Core Glow Filter */}
-                <filter id="packet-glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-
-                {/* Futuristic Emerald Laser Gradient */}
-                <linearGradient id="cyber-green-stream" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.25" />
-                  <stop offset="25%" stopColor="#00A859" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#00FF88" stopOpacity="1" />
-                  <stop offset="75%" stopColor="#00C853" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.3" />
-                </linearGradient>
-
-                {/* Supercharged Active Laser Gradient */}
-                <linearGradient id="active-laser-stream" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.4" />
-                  <stop offset="30%" stopColor="#00FF88" stopOpacity="1" />
-                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="1" />
-                  <stop offset="70%" stopColor="#00FF88" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.4" />
-                </linearGradient>
-
-                <linearGradient id="stream-pulse" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#00A859" stopOpacity="0.1" />
-                  <stop offset="40%" stopColor="#00FF88" stopOpacity="0.9" />
-                  <stop offset="60%" stopColor="#FFFFFF" stopOpacity="1" />
-                  <stop offset="80%" stopColor="#00FF88" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#00A859" stopOpacity="0.1" />
-                </linearGradient>
-              </defs>
-
-              {/* ── BACKGROUND TECH TELEMETRY LABELS ── */}
-              <text x="680" y="45" textAnchor="middle" fill="#00A859" fillOpacity="0.35" fontSize="8.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.25em">
-                [ TURFPLAY HYPER-SYNC ENGINE v2.4 // REAL-TIME MESH ]
-              </text>
-              <text x="680" y="635" textAnchor="middle" fill="#00A859" fillOpacity="0.3" fontSize="8" fontFamily="monospace" fontWeight="bold" letterSpacing="0.18em">
-                LATENCY: &lt;10MS • 256-BIT ENCRYPTION • 0% CONFLICT GUARANTEE
-              </text>
-
-              {/* ── 1. MAIN BACKGROUND AMBIENT GLOW HIGHWAY ── */}
-              <path
-                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
-                stroke="#00A859"
-                strokeWidth="16"
-                strokeOpacity="0.08"
-                strokeLinecap="round"
-                filter="url(#circuit-neon-glow)"
-              />
-
-              {/* ── 2. PARALLEL CYBER MICRO-TRACE TRACK ── */}
-              <path
-                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
-                stroke="#00A859"
-                strokeWidth="1"
-                strokeOpacity="0.25"
-                strokeDasharray="4 6"
-              />
-
-              {/* ── 3. BASELINE HIGHWAY GUIDE RAIL ── */}
-              <path
-                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
-                stroke="#00A859"
-                strokeWidth="2.5"
-                strokeOpacity="0.3"
-                strokeLinecap="round"
-              />
-
-              {/* ── 4. PRIMARY CONTINUOUS PULSING LASER STREAM ── */}
-              <motion.path
-                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
-                stroke="url(#cyber-green-stream)"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                strokeDasharray="45 220"
-                animate={{ strokeDashoffset: [0, -530] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
-                filter="url(#circuit-neon-glow)"
-              />
-
-              {/* ── 5. SECONDARY HIGH-SPEED PACKET STREAM ── */}
-              <motion.path
-                d="M 100 650 C 140 520, 320 490, 500 470 C 600 460, 680 410, 700 320 C 720 220, 660 170, 640 120 C 620 50, 760 70, 890 100 C 1000 130, 1090 230, 1050 340 C 1010 440, 910 490, 790 520 C 690 550, 780 630, 900 660"
-                stroke="url(#active-laser-stream)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeDasharray="16 180"
-                animate={{ strokeDashoffset: [0, -392] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: "linear", delay: 1 }}
-                filter="url(#packet-glow)"
-              />
-
-              {/* ── 6. DYNAMIC REACTIVE CARD-TO-PHONE INTERCONNECT TRACES ── */}
-              
-              {/* TOP-LEFT BRANCH (Map / Calendar Node) */}
-              <g className="transition-all duration-300">
-                {/* Base guide rail */}
-                <path
-                  d="M 445 160 C 510 160, 535 230, 565 230"
-                  stroke="#00A859"
-                  strokeWidth={isTLActive ? 2 : 1.2}
-                  strokeOpacity={isTLActive ? 0.6 : 0.25}
-                  strokeDasharray="3 4"
-                />
-                {/* High-speed Laser Stream */}
-                <motion.path
-                  d="M 445 160 C 510 160, 535 230, 565 230"
-                  stroke={isTLActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
-                  strokeWidth={isTLActive ? 3.5 : 2}
-                  strokeLinecap="round"
-                  strokeDasharray={isTLActive ? "24 70" : "16 120"}
-                  animate={{ strokeDashoffset: [0, isTLActive ? -94 : -136] }}
-                  transition={{ duration: isTLActive ? 0.9 : 2.4, repeat: Infinity, ease: "linear" }}
-                  filter={isTLActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
-                />
-                {/* Terminal Reticle Anchor at Card */}
-                <line x1="439" y1="160" x2="451" y2="160" stroke="#00A859" strokeWidth="1" />
-                <line x1="445" y1="154" x2="445" y2="166" stroke="#00A859" strokeWidth="1" />
-                <circle cx="445" cy="160" r={isTLActive ? 5 : 3.5} fill="#00FF88" />
-                <circle cx="445" cy="160" r={isTLActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isTLActive ? 0.8 : 0.4} className="animate-ping" />
-                
-                {/* HUD Mini Tag */}
-                <g className={`transition-opacity duration-300 ${isTLActive ? 'opacity-100' : 'opacity-40'}`}>
-                  <rect x="454" y="145" width="66" height="14" rx="3" fill="#00A859" fillOpacity={isTLActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
-                  <text x="458" y="155" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">GPS MESH // 10ms</text>
-                </g>
-
-                {/* Docking Receptor on Phone Bezel */}
-                <circle cx="565" cy="230" r={isTLActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
-              </g>
-
-              {/* BOTTOM-LEFT BRANCH (Payment / Revenue Node) */}
-              <g className="transition-all duration-300">
-                <path
-                  d="M 445 475 C 510 475, 535 410, 565 410"
-                  stroke="#00A859"
-                  strokeWidth={isBLActive ? 2 : 1.2}
-                  strokeOpacity={isBLActive ? 0.6 : 0.25}
-                  strokeDasharray="3 4"
-                />
-                <motion.path
-                  d="M 445 475 C 510 475, 535 410, 565 410"
-                  stroke={isBLActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
-                  strokeWidth={isBLActive ? 3.5 : 2}
-                  strokeLinecap="round"
-                  strokeDasharray={isBLActive ? "24 70" : "16 120"}
-                  animate={{ strokeDashoffset: [0, isBLActive ? -94 : -136] }}
-                  transition={{ duration: isBLActive ? 0.9 : 2.5, repeat: Infinity, ease: "linear", delay: 0.3 }}
-                  filter={isBLActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
-                />
-                <line x1="439" y1="475" x2="451" y2="475" stroke="#00A859" strokeWidth="1" />
-                <line x1="445" y1="469" x2="445" y2="481" stroke="#00A859" strokeWidth="1" />
-                <circle cx="445" cy="475" r={isBLActive ? 5 : 3.5} fill="#00FF88" />
-                <circle cx="445" cy="475" r={isBLActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isBLActive ? 0.8 : 0.4} className="animate-ping" />
-                
-                {/* HUD Mini Tag */}
-                <g className={`transition-opacity duration-300 ${isBLActive ? 'opacity-100' : 'opacity-40'}`}>
-                  <rect x="454" y="460" width="66" height="14" rx="3" fill="#00A859" fillOpacity={isBLActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
-                  <text x="458" y="470" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">PAY // 100% OK</text>
-                </g>
-
-                <circle cx="565" cy="410" r={isBLActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
-              </g>
-
-              {/* TOP-RIGHT BRANCH (Lock / Alert Node) */}
-              <g className="transition-all duration-300">
-                <path
-                  d="M 915 160 C 850 160, 825 230, 795 230"
-                  stroke="#00A859"
-                  strokeWidth={isTRActive ? 2 : 1.2}
-                  strokeOpacity={isTRActive ? 0.6 : 0.25}
-                  strokeDasharray="3 4"
-                />
-                <motion.path
-                  d="M 915 160 C 850 160, 825 230, 795 230"
-                  stroke={isTRActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
-                  strokeWidth={isTRActive ? 3.5 : 2}
-                  strokeLinecap="round"
-                  strokeDasharray={isTRActive ? "24 70" : "16 120"}
-                  animate={{ strokeDashoffset: [0, isTRActive ? -94 : -136] }}
-                  transition={{ duration: isTRActive ? 0.9 : 2.3, repeat: Infinity, ease: "linear", delay: 0.2 }}
-                  filter={isTRActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
-                />
-                <line x1="909" y1="160" x2="921" y2="160" stroke="#00A859" strokeWidth="1" />
-                <line x1="915" y1="154" x2="915" y2="166" stroke="#00A859" strokeWidth="1" />
-                <circle cx="915" cy="160" r={isTRActive ? 5 : 3.5} fill="#00FF88" />
-                <circle cx="915" cy="160" r={isTRActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isTRActive ? 0.8 : 0.4} className="animate-ping" />
-                
-                {/* HUD Mini Tag */}
-                <g className={`transition-opacity duration-300 ${isTRActive ? 'opacity-100' : 'opacity-40'}`}>
-                  <rect x="835" y="145" width="72" height="14" rx="3" fill="#00A859" fillOpacity={isTRActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
-                  <text x="839" y="155" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">CLOUD // ZERO LOCK</text>
-                </g>
-
-                <circle cx="795" cy="230" r={isTRActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
-              </g>
-
-              {/* BOTTOM-RIGHT BRANCH (Booking / Growth Node) */}
-              <g className="transition-all duration-300">
-                <path
-                  d="M 915 475 C 850 475, 825 410, 795 410"
-                  stroke="#00A859"
-                  strokeWidth={isBRActive ? 2 : 1.2}
-                  strokeOpacity={isBRActive ? 0.6 : 0.25}
-                  strokeDasharray="3 4"
-                />
-                <motion.path
-                  d="M 915 475 C 850 475, 825 410, 795 410"
-                  stroke={isBRActive ? "url(#active-laser-stream)" : "url(#cyber-green-stream)"}
-                  strokeWidth={isBRActive ? 3.5 : 2}
-                  strokeLinecap="round"
-                  strokeDasharray={isBRActive ? "24 70" : "16 120"}
-                  animate={{ strokeDashoffset: [0, isBRActive ? -94 : -136] }}
-                  transition={{ duration: isBRActive ? 0.9 : 2.6, repeat: Infinity, ease: "linear", delay: 0.5 }}
-                  filter={isBRActive ? "url(#active-beam-glow)" : "url(#packet-glow)"}
-                />
-                <line x1="909" y1="475" x2="921" y2="475" stroke="#00A859" strokeWidth="1" />
-                <line x1="915" y1="469" x2="915" y2="481" stroke="#00A859" strokeWidth="1" />
-                <circle cx="915" cy="475" r={isBRActive ? 5 : 3.5} fill="#00FF88" />
-                <circle cx="915" cy="475" r={isBRActive ? 14 : 9} fill="none" stroke="#00A859" strokeOpacity={isBRActive ? 0.8 : 0.4} className="animate-ping" />
-                
-                {/* HUD Mini Tag */}
-                <g className={`transition-opacity duration-300 ${isBRActive ? 'opacity-100' : 'opacity-40'}`}>
-                  <rect x="835" y="460" width="72" height="14" rx="3" fill="#00A859" fillOpacity={isBRActive ? 0.2 : 0.08} stroke="#00A859" strokeWidth="0.8" />
-                  <text x="839" y="470" fill="#00A859" fontSize="7.5" fontFamily="monospace" fontWeight="bold">VERIFIED // 50K+</text>
-                </g>
-
-                <circle cx="795" cy="410" r={isBRActive ? 4.5 : 3} fill="#00FF88" filter="url(#packet-glow)" />
-              </g>
-
-              {/* ── 7. CENTRAL FUTURISTIC HOLOGRAPHIC ORBITS AROUND PHONE ── */}
-              <g transform="translate(680, 320)">
-                {/* Outer Radar Orbit Ring */}
-                <motion.ellipse
-                  rx="162"
-                  ry="265"
-                  fill="none"
-                  stroke="#00A859"
-                  strokeWidth="1.2"
-                  strokeOpacity="0.28"
-                  strokeDasharray="8 12"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-                />
-                {/* Inner Counter-Rotating Orbit Ring */}
-                <motion.ellipse
-                  rx="148"
-                  ry="245"
-                  fill="none"
-                  stroke="#00FF88"
-                  strokeWidth="1"
-                  strokeOpacity="0.2"
-                  strokeDasharray="40 20 4 20"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
-                />
-                {/* Cardinal Target Crosshairs */}
-                <line x1="-165" y1="0" x2="-155" y2="0" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
-                <line x1="155" y1="0" x2="165" y2="0" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
-                <line x1="0" y1="-268" x2="0" y2="-258" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
-                <line x1="0" y1="258" x2="0" y2="268" stroke="#00A859" strokeWidth="2" strokeOpacity="0.5" />
-                {/* Polar Pulse Nodes */}
-                <circle cx="0" cy="-263" r="3" fill="#00FF88" filter="url(#packet-glow)" />
-                <circle cx="0" cy="263" r="3" fill="#00FF88" filter="url(#packet-glow)" />
-              </g>
-            </svg>
-          </div>
-
-          {/* ── 3-COLUMN COMPACT GRID ── */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-center relative z-10">
 
             {/* ── LEFT COLUMN (COMPACT SPACING) ── */}
@@ -728,36 +452,36 @@ export const HowItWorks = () => {
                   </div>
                 </div>
 
-                {/* ── COMPACT TABS UNDER PHONE ── */}
-                <div className="mt-3 flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 shadow-inner">
+                {/* ── TABS UNDER PHONE ── */}
+                <div className="mt-4 flex items-center gap-1.5 bg-white p-1.5 rounded-full border border-slate-200 shadow-sm">
                   {activeRole === 'player' ? (
                     <>
                       <button
                         onClick={() => setActiveScreen('map')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'map'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         লাইভ ম্যাপ
                       </button>
                       <button
                         onClick={() => setActiveScreen('home')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'home'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         হোম স্ক্রিন
                       </button>
                       <button
                         onClick={() => setActiveScreen('detail')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'detail'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         টার্ফ ডিটেইলস
@@ -767,30 +491,30 @@ export const HowItWorks = () => {
                     <>
                       <button
                         onClick={() => setActiveScreen('calendar')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'calendar'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         স্মার্ট ক্যালেন্ডার
                       </button>
                       <button
                         onClick={() => setActiveScreen('home')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'home'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         টার্ফ ড্যাশবোর্ড
                       </button>
                       <button
                         onClick={() => setActiveScreen('detail')}
-                        className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                        className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                           activeScreen === 'detail'
                             ? 'bg-[#00A859] text-white shadow-sm shadow-[#00A859]/30'
-                            : 'text-slate-600 hover:text-slate-900'
+                            : 'text-slate-700 hover:text-slate-900'
                         }`}
                       >
                         স্লট ডিটেইলস
@@ -840,34 +564,109 @@ export const HowItWorks = () => {
 
         </div>
 
-        {/* ── COMPACT BOTTOM BANNER ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-10 lg:mt-12 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#00A859]/10 via-[#00A859]/5 to-white border border-[#00A859]/25 shadow-md flex flex-col md:flex-row items-center justify-between gap-4"
-        >
-          <div>
-            <span className="text-[#00A859] font-mono text-[10px] font-bold uppercase tracking-widest block mb-0.5">
-              TURFPLAY PARTNERSHIP
-            </span>
-            <h4 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-              আপনার কি নিজস্ব টার্ফ বা স্পোর্টস গ্রাউন্ড আছে?
-            </h4>
-            <p className="text-slate-600 text-xs mt-0.5 font-medium">
-              মাত্র ৪টি ধাপে আপনার টার্ফ রেজিস্টার করুন এবং জিরো ডাবল-বুকিং নিশ্চয়তাসহ আয় বৃদ্ধি করুন।
-            </p>
-          </div>
+        {/* ── VISUAL COMPARISON: KHATA-KOLOM VS TURFPLAY (TURF OWNER FOCUS) ── */}
+        <AnimatePresence>
+          {activeRole === 'owner' && (
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5 }}
+              className="mt-8 sm:mt-10 bg-white rounded-3xl p-5 sm:p-7 md:p-8 border border-slate-200 shadow-xl relative overflow-hidden"
+            >
+              {/* Top accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-rose-500 via-amber-400 to-[#00A859]" />
 
-          <a
-            href="#partner"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#00A859] hover:bg-[#008f4c] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#00A859]/20 hover:scale-105 active:scale-95"
-          >
-            <span>টার্ফ পার্টনার হন</span>
-            <ChevronRight size={15} className="stroke-[3]" />
-          </a>
-        </motion.div>
+              <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[10px] font-extrabold uppercase tracking-widest border border-slate-200 mb-2">
+                  বাস্তব তুলনা
+                </span>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
+                  সনাতন খাতা-কলম পদ্ধতি <span className="text-slate-400 font-normal">বনাম</span> <span className="text-[#00A859] font-serif italic">TurfPlay স্মার্ট সিস্টেম</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
+                  কেন আধুনিক টার্ফ মালিকরা খাতা ছেড়ে TurfPlay অ্যাপে সুইচ করছেন
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {/* ❌ Old Khata Method */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-rose-50/70 border border-rose-200 space-y-3.5">
+                  <div className="flex items-center justify-between pb-3 border-b border-rose-200/80">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-8 h-8 rounded-xl bg-rose-500 text-white flex items-center justify-center font-black text-sm shadow-sm">
+                        ✕
+                      </span>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-black text-rose-950">আগের খাতা-কলম পদ্ধতি</h4>
+                        <p className="text-[11px] text-rose-700 font-semibold">ঝামেলা, ভুল ও ডাবল-বুকিংয়ের ভয়</p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-black uppercase text-rose-700 bg-rose-200/80 px-2.5 py-0.5 rounded-full">
+                      ঝুঁকিপূর্ণ
+                    </span>
+                  </div>
+
+                  <ul className="space-y-3 text-xs sm:text-sm text-rose-950 font-medium">
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-rose-500 mt-0.5 shrink-0 font-black">❌</span>
+                      <span><strong>ফোন কল মিস হওয়া:</strong> খেলা চলাকালীন বা ব্যস্ততায় কল ধরতে না পারলে কাস্টমার অন্য টার্ফে চলে যায়।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-rose-500 mt-0.5 shrink-0 font-black">❌</span>
+                      <span><strong>ডাবল-বুকিংয়ের অপ্রীতিকর ঝগড়া:</strong> খাতায় লিখে রাখতে ভুলে গেলে একই সময়ে মাঠে ২ দল চলে আসার চরম বিড়ম্বনা।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-rose-500 mt-0.5 shrink-0 font-black">❌</span>
+                      <span><strong>ক্যাশ ও বাকির গরমিল:</strong> কে কত টাকা দিল বা কার বাকি আছে তা ছেঁড়া পাতায় গুলিয়ে ক্যাশ মেলানো অসম্ভব হয়ে ওঠে।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-rose-500 mt-0.5 shrink-0 font-black">❌</span>
+                      <span><strong>রাতে হিসাব মেলানোর ক্লান্তি:</strong> দিনশেষে খাতা আর ক্যালকুলেটর নিয়ে বসে ঘণ্টার পর ঘণ্টা হিসাব মেলানোর টেনশন।</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* ✅ TurfPlay Smart Method */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-emerald-50/80 border-2 border-[#00A859] space-y-3.5 shadow-md shadow-[#00A859]/10 relative">
+                  <div className="flex items-center justify-between pb-3 border-b border-emerald-200">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-8 h-8 rounded-xl bg-[#00A859] text-white flex items-center justify-center font-black text-sm shadow-sm shadow-[#00A859]/30">
+                        ✓
+                      </span>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-black text-emerald-950">TurfPlay স্মার্ট ডিজিটাল পদ্ধতি</h4>
+                        <p className="text-[11px] text-[#00A859] font-bold">১০০% অটোমেটেড ও টেনশনমুক্ত</p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-black uppercase text-white bg-[#00A859] px-2.5 py-0.5 rounded-full shadow-xs">
+                      ১০০% নির্ভরযোগ্য
+                    </span>
+                  </div>
+
+                  <ul className="space-y-3 text-xs sm:text-sm text-emerald-950 font-medium">
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-[#00A859] mt-0.5 shrink-0 font-black">✅</span>
+                      <span><strong>৫ সেকেন্ডে অফলাইন স্লট লক:</strong> ফোনে বা হোয়াটসঅ্যাপে আসা অফলাইন বুকিং খাতার চেয়ে দ্রুত ৫ সেকেন্ডে ক্যাশ স্লটে লক করুন।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-[#00A859] mt-0.5 shrink-0 font-black">✅</span>
+                      <span><strong>জিরো ডাবল-বুকিং গ্যারান্টি:</strong> স্লট সিলেক্ট করামাত্র সেন্ট্রাল ক্লাউডে অটো-লক, ফলে একই সময়ে দুজন বুক করার কোনো সুযোগ নেই।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-[#00A859] mt-0.5 shrink-0 font-black">✅</span>
+                      <span><strong>সরাসরি নিজস্ব একাউন্টে টাকা:</strong> অনলাইন পেমেন্টের টাকা সরাসরি আপনার নিজস্ব বিকাশ/নগদে জমা, সম্পূর্ণ স্বচ্ছ হিসাব।</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-[#00A859] mt-0.5 shrink-0 font-black">✅</span>
+                      <span><strong>মোবাইলেই দৈনিক স্বয়ংক্রিয় অডিট:</strong> কোনো কম্পিউটার লাগবে না, স্মার্টফোনেই ১ ক্লিকে লাভ-লোকসান ও দৈনিক ক্যাশ রিপোর্ট।</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
 

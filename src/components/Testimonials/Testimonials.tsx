@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 import { 
-  Play, 
   Star, 
   ShieldCheck, 
   MapPin, 
   TrendingUp, 
   Zap, 
   Quote, 
-  Trophy, 
-  X, 
   Sparkles, 
   CheckCircle2, 
   Users, 
-  Building2, 
-  Clock 
+  Building2 
 } from 'lucide-react';
 
-interface VideoStory {
+interface CaseStudy {
   id: string;
   title: string;
   speaker: string;
   role: string;
   location: string;
-  duration: string;
   category: string;
-  highlight: string;
-  gradient: string;
+  metric: string;
+  metricLabel: string;
   quoteSnippet: string;
+  initials: string;
+  badge: string;
+  rating: number;
 }
 
 interface TurfPartner {
@@ -55,33 +53,35 @@ interface PlayerStory {
 }
 
 export const Testimonials = () => {
-  const [activeStory, setActiveStory] = useState<VideoStory | null>(null);
-
-  // ── 1. TOP VIDEO STORY SHOWCASE (PHITRON STYLE) ──
-  const videoStories: VideoStory[] = [
+  // ── 1. TOP FEATURED CASE STUDIES & IMPACT STORIES ──
+  const caseStudies: CaseStudy[] = [
     {
       id: 'story-1',
       title: 'কীভাবে ডাবল-বুকিং সমস্যা ০% এ নামিয়ে আনল পিচ ৫৬?',
       speaker: 'রাফাত হাসান',
-      role: 'মালিক, পিচ ৫৬ অ্যারেনা',
+      role: 'টার্ফ ওনার, পিচ ৫৬ অ্যারেনা',
       location: 'ধানমন্ডি, ঢাকা',
-      duration: '০২:১৫ মিনিট',
-      category: 'কেস স্টাডি',
-      highlight: '+৩৮% রেভিনিউ বৃদ্ধি',
-      gradient: 'from-emerald-900 via-slate-900 to-slate-950',
-      quoteSnippet: 'কাগজের খাতার ডাবল বুকিং নিয়ে প্রতিদিন কাস্টমারদের সাথে কথা কাটাকাটি হতো। TurfPlay আসার পর শতভাগ অটোমেশন পেয়েছি।'
+      category: 'টার্ফ কেস স্টাডি',
+      metric: '+৩৮%',
+      metricLabel: 'রেভিনিউ বৃদ্ধি',
+      quoteSnippet: 'কাগজের খাতার ডাবল বুকিং নিয়ে প্রতিদিন কাস্টমারদের সাথে কথা কাটাকাটি হতো। TurfPlay আসার পর শতভাগ অটোমেশন পেয়েছি।',
+      initials: 'রা',
+      badge: 'ভেরিফাইড পার্টনার',
+      rating: 5
     },
     {
       id: 'story-2',
       title: 'রাত ১২টায় মাত্র ১০ সেকেন্ডে স্লট লক করার বাস্তব অভিজ্ঞতা',
       speaker: 'আবরার ফাইয়াজ',
-      role: 'ক্যাপ্টেন, ব্ল্যাক হকস',
+      role: 'টিম ক্যাপ্টেন, ব্ল্যাক হকস',
       location: 'মিরপুর-১, ঢাকা',
-      duration: '০১:৪৫ মিনিট',
-      category: 'লাইভ ডেমো',
-      highlight: '১০০% ইনস্ট্যান্ট টিকেট',
-      gradient: 'from-slate-900 via-emerald-950 to-slate-950',
-      quoteSnippet: 'রাতে ফ্রেন্ডরা খেলতে চাইলে আগে কাউকে ফোনে পেতাম না। এখন ম্যাপে স্লট দেখে এক ক্লিকে বুকিং আর ডিজিটাল টিকেট পেয়ে যাই।'
+      category: 'প্লেয়ার রিভিউ',
+      metric: '১০ সে.',
+      metricLabel: 'ইনস্ট্যান্ট স্লট লক',
+      quoteSnippet: 'রাতে ফ্রেন্ডরা খেলতে চাইলে আগে কাউকে ফোনে পেতাম না। এখন ম্যাপে স্লট দেখে এক ক্লিকে বুকিং আর ডিজিটাল টিকেট পেয়ে যাই।',
+      initials: 'আ',
+      badge: 'ভেরিফাইড ক্যাপ্টেন',
+      rating: 5
     },
     {
       id: 'story-3',
@@ -89,11 +89,13 @@ export const Testimonials = () => {
       speaker: 'ইমতিয়াজ আহমেদ',
       role: 'ম্যানেজার, কিকঅফ অ্যারেনা',
       location: 'উত্তরা সেক্টর ৭',
-      duration: '০৩:১০ মিনিট',
       category: 'টার্ফ অপারেশনস',
-      highlight: '১০ সেকেন্ডে বুকিং অ্যাড',
-      gradient: 'from-teal-950 via-slate-900 to-slate-950',
-      quoteSnippet: 'আজকে মোট কত আয় হলো, কত ক্যাশ আর কত অনলাইনে আসল—সবকিছু রাতারাতি ক্লিয়ার হয়ে যায়। এটি ম্যানেজমেন্টের সেরা সঙ্গী।'
+      metric: '১ ক্লিক',
+      metricLabel: 'দৈনিক সেলস অডিট',
+      quoteSnippet: 'আজকে মোট কত আয় হলো, কত ক্যাশ আর কত অনলাইনে আসল—সবকিছু রাতারাতি ক্লিয়ার হয়ে যায়। এটি ম্যানেজমেন্টের সেরা সঙ্গী।',
+      initials: 'ই',
+      badge: 'ভেরিফাইড ম্যানেজার',
+      rating: 5
     }
   ];
 
@@ -283,70 +285,100 @@ export const Testimonials = () => {
           </motion.p>
         </div>
 
-        {/* ── 1. TOP VIDEO STORIES CAROUSEL / REELS (PHITRON STYLE) ── */}
+        {/* ── 1. TOP FEATURED CASE STUDIES & IMPACT SHOWCASE ── */}
         <div className="mb-14 sm:mb-18">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-[#00A859] animate-ping" />
               <h3 className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
-                <span>ভিডিও সাকসেস স্টোরিজ</span>
-                <span className="text-[10px] font-bold text-[#00A859] bg-[#00A859]/10 px-2 py-0.5 rounded-full border border-[#00A859]/20">
-                  লাইভ অভিজ্ঞতা
+                <span>বাস্তব কেস স্টাডি ও সাফল্যের গল্প</span>
+                <span className="text-[10px] font-bold text-[#00A859] bg-[#00A859]/10 px-2.5 py-0.5 rounded-full border border-[#00A859]/20">
+                  ভেরিফাইড ইমপ্যাক্ট
                 </span>
               </h3>
             </div>
             <span className="text-[11px] text-slate-500 font-semibold hidden sm:inline">
-              প্লে করে বাস্তব মতামত শুনুন
+              টার্ফ ওনার ও প্লেয়ারদের বাস্তব অভিজ্ঞতা
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {videoStories.map((story, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            {caseStudies.map((story, idx) => (
               <motion.div
                 key={story.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                onClick={() => setActiveStory(story)}
-                className="group relative bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 overflow-hidden border border-slate-800 hover:border-[#00A859] shadow-lg shadow-slate-950/20 hover:shadow-2xl hover:shadow-[#00A859]/20 transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[220px]"
+                className="group relative bg-gradient-to-b from-slate-900 via-slate-900/98 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 overflow-hidden border border-slate-800/90 hover:border-[#00A859]/60 shadow-xl shadow-slate-950/20 hover:shadow-2xl hover:shadow-[#00A859]/15 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Background Tech Pattern */}
+                {/* Background Tech Mesh & Radial Accent Glow */}
                 <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-                <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#00A859]/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="absolute -top-16 -right-16 w-40 h-40 bg-[#00A859]/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
+                
+                {/* Giant subtle watermark Quote mark */}
+                <Quote size={80} className="absolute -bottom-4 -right-2 text-white/[0.03] group-hover:text-[#00A859]/[0.08] transition-colors pointer-events-none stroke-1" />
 
-                {/* Top Badge & Duration */}
-                <div className="relative z-10 flex items-center justify-between gap-2 mb-3">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#00A859]/20 text-[#00FF88] border border-[#00A859]/30">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00FF88] animate-pulse" />
-                    {story.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700">
-                    <Clock size={11} />
-                    {story.duration}
-                  </span>
-                </div>
+                <div className="relative z-10">
+                  {/* Top Bar: Category + High-impact Metric Pill */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/5 text-[#00FF88] border border-white/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00FF88]" />
+                      {story.category}
+                    </span>
 
-                {/* Story Title & Play Button Overlay */}
-                <div className="relative z-10 my-auto py-2">
-                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-[#00FF88] transition-colors duration-200 line-clamp-2 leading-snug mb-2">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#00A859]/20 border border-[#00A859]/40 text-[#00FF88] text-xs font-black shadow-xs">
+                      <TrendingUp size={13} className="text-[#00FF88]" />
+                      <span>{story.metric}</span>
+                      <span className="text-[10px] text-slate-300 font-medium">{story.metricLabel}</span>
+                    </div>
+                  </div>
+
+                  {/* 5-Star Rating Row */}
+                  <div className="flex items-center gap-1 text-amber-400 mb-3">
+                    {[...Array(story.rating)].map((_, r) => (
+                      <Star key={r} size={14} className="fill-amber-400 text-amber-400" />
+                    ))}
+                    <span className="text-[11px] font-bold text-slate-400 ml-1.5">৫.০ / ৫.০</span>
+                  </div>
+
+                  {/* Case Study Title */}
+                  <h4 className="text-base sm:text-lg font-black text-white group-hover:text-[#00FF88] transition-colors duration-200 leading-snug mb-3">
                     {story.title}
                   </h4>
-                  <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed italic font-serif">
-                    "{story.quoteSnippet}"
-                  </p>
+
+                  {/* Real Quote Block with Left Accent Border */}
+                  <div className="relative pl-3.5 border-l-2 border-[#00A859]/50 py-1 mb-6">
+                    <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed italic font-serif">
+                      "{story.quoteSnippet}"
+                    </p>
+                  </div>
                 </div>
 
-                {/* Bottom Footer with Speaker & Play Trigger */}
-                <div className="relative z-10 pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                  <div>
-                    <div className="text-xs font-black text-white">{story.speaker}</div>
-                    <div className="text-[10px] text-slate-400 font-medium">{story.role}</div>
+                {/* Bottom Footer: Speaker Identity & Verified Badge */}
+                <div className="relative z-10 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-900/30 border border-emerald-500/30 text-[#00FF88] font-black text-sm flex items-center justify-center shrink-0 shadow-inner">
+                      {story.initials}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs sm:text-sm font-black text-white truncate">{story.speaker}</span>
+                        <CheckCircle2 size={13} className="text-[#00FF88] shrink-0" />
+                      </div>
+                      <div className="text-[11px] text-slate-400 font-medium truncate flex items-center gap-1 mt-0.5">
+                        <MapPin size={11} className="text-[#00A859] shrink-0" />
+                        <span>{story.location}</span>
+                        <span className="text-slate-600">•</span>
+                        <span className="text-slate-400 truncate">{story.role}</span>
+                      </div>
+                    </div>
                   </div>
-                  
-                  {/* Play Action Button */}
-                  <div className="w-9 h-9 rounded-full bg-[#00A859] group-hover:bg-[#00FF88] text-slate-950 flex items-center justify-center shadow-lg shadow-[#00A859]/30 group-hover:scale-110 transition-all duration-300 shrink-0">
-                    <Play size={14} className="fill-slate-950 ml-0.5" />
+
+                  {/* Verified Credential Badge */}
+                  <div className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-700/40 shrink-0">
+                    <ShieldCheck size={12} className="text-[#00FF88]" />
+                    <span className="hidden sm:inline">{story.badge}</span>
                   </div>
                 </div>
               </motion.div>
@@ -556,74 +588,6 @@ export const Testimonials = () => {
           </div>
         </div>
       </div>
-
-      {/* ── 5. INTERACTIVE VIDEO STORY PREVIEW MODAL ── */}
-      <AnimatePresence>
-        {activeStory && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 text-white shadow-2xl overflow-hidden"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveStory(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-
-              {/* Category Pill */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#00A859]/20 text-[#00FF88] border border-[#00A859]/30 mb-4">
-                <Sparkles size={11} />
-                {activeStory.category}
-              </span>
-
-              {/* Title */}
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug">
-                {activeStory.title}
-              </h3>
-
-              {/* Speaker Meta */}
-              <div className="flex items-center gap-2 text-xs text-slate-400 mb-6">
-                <span className="text-white font-bold">{activeStory.speaker}</span>
-                <span>•</span>
-                <span>{activeStory.role}</span>
-                <span>•</span>
-                <span className="text-[#00FF88]">{activeStory.location}</span>
-              </div>
-
-              {/* Simulated Video Player Screen */}
-              <div className="relative aspect-video rounded-2xl bg-slate-950 border border-slate-800 flex flex-col items-center justify-center p-6 text-center overflow-hidden mb-5">
-                <div className="absolute inset-0 bg-grid opacity-15" />
-                <div className="w-14 h-14 rounded-full bg-[#00A859] text-slate-950 flex items-center justify-center shadow-xl shadow-[#00A859]/30 mb-3 animate-pulse cursor-pointer">
-                  <Play size={22} className="fill-slate-950 ml-1" />
-                </div>
-                <div className="text-xs font-bold text-white mb-1">ভিডিও স্টোরি প্রিভিউ</div>
-                <div className="text-[10px] text-slate-400 font-mono">দৈর্ঘ্য: {activeStory.duration} • হাইলাইট: {activeStory.highlight}</div>
-              </div>
-
-              {/* Quote takeaway */}
-              <div className="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60 mb-5">
-                <p className="text-xs text-slate-300 italic font-serif leading-relaxed">
-                  "{activeStory.quoteSnippet}"
-                </p>
-              </div>
-
-              {/* Action Button */}
-              <button
-                onClick={() => setActiveStory(null)}
-                className="w-full py-2.5 rounded-full bg-[#00A859] hover:bg-[#008f4c] text-white font-bold text-xs transition-all duration-200 cursor-pointer text-center"
-              >
-                বন্ধ করুন
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
     </section>
   );
 };

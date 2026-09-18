@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Instagram, Facebook, Twitter, Mail, MapPin } from 'lucide-react';
+import { Zap, Instagram, Facebook, Twitter, Mail, MapPin, Phone } from 'lucide-react';
 import logoImg from '../../assets/images/sports/Layer_1.png';
 
 export const Footer = () => {
@@ -37,7 +37,7 @@ export const Footer = () => {
             <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-4 sm:mb-6">প্ল্যাটফর্ম</h4>
             <ul className="space-y-3 sm:space-y-4 text-slate-600 font-bold uppercase tracking-wider text-xs">
               <li><a href="#how-it-works" className="hover:text-[#00A859] transition-colors">ইকোসিস্টেম</a></li>
-              <li><a href="#management" className="hover:text-[#00A859] transition-colors">ফিচারসমূহ</a></li>
+              <li><a href="#partner" className="hover:text-[#00A859] transition-colors">টার্ফ অনবোর্ডিং</a></li>
               <li><a href="#pricing" className="hover:text-[#00A859] transition-colors">মূল্য তালিকা</a></li>
               <li><a href="#testimonials" className="hover:text-[#00A859] transition-colors">গ্রাহক মতামত</a></li>
               <li><a href="#faq" className="hover:text-[#00A859] transition-colors">প্রশ্নোত্তর</a></li>
@@ -57,6 +57,10 @@ export const Footer = () => {
           <div>
             <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-4 sm:mb-6">ঠিকানা</h4>
             <ul className="space-y-3 sm:space-y-4 text-slate-600 font-medium text-xs">
+              <li className="flex items-center gap-3">
+                <Phone size={16} className="text-[#00A859] shrink-0" />
+                <a href="tel:+8801892979324" className="hover:text-[#00A859] transition-colors">+880 1892-979324</a>
+              </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#00A859] shrink-0" />
                 <span className="break-all">rimon124567@gmail.com</span>
