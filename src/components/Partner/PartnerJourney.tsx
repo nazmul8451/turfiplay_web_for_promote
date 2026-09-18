@@ -12,14 +12,40 @@ import {
   CheckCircle2, 
   ShieldCheck,
   Building2,
-  Check
+  Check,
+  MessageCircle,
+  PhoneCall
 } from 'lucide-react';
+
+export const partnerSteps = [
+  {
+    step: "01",
+    title: "অ্যাপ ডাউনলোড ও সাইন-আপ",
+    description: "TurfPlay অ্যাপটি ডাউনলোড করে আপনার জিমেইল (Gmail) দিয়ে সহজেই অ্যাকাউন্ট খুলে নিন।"
+  },
+  {
+    step: "02",
+    title: "প্রোফাইল থেকে সিলেক্ট করুন",
+    description: "অ্যাপের Profile অপশনে যান এবং 'Register Your Turf'-এ ট্যাপ করুন।"
+  },
+  {
+    step: "03",
+    title: "টার্ফের তথ্য সাবমিট করুন",
+    description: "আপনার মাঠের সাধারণ কিছু তথ্য ও ছবি দিয়ে রিকোয়েস্ট Apply করুন।"
+  },
+  {
+    step: "04",
+    title: "12 ঘণ্টায় ওনার অ্যাক্সেস",
+    description: "12 ঘণ্টার মধ্যে আমাদের ভেরিফিকেশন শেষ হলে একই অ্যাপে টার্ফ ওনার রোল চালু হয়ে যাবে!"
+  }
+];
 
 interface MilestoneItem {
   id: string;
   stepNumber: string;
   title: string;
   desc: string;
+  points: string[];
   icon: React.ComponentType<{ size?: number; className?: string }>;
   tag: string;
   hint: string;
@@ -33,38 +59,54 @@ export const PartnerJourney = () => {
     {
       id: 'step-1',
       stepNumber: '01',
-      title: 'Create Account',
-      desc: 'TurfPlay-এ আপনার একটি Account তৈরি করুন।',
+      title: 'অ্যাপ ডাউনলোড ও সাইন-আপ',
+      desc: 'TurfPlay অ্যাপটি ডাউনলোড করে আপনার জিমেইল (Gmail) দিয়ে সহজেই অ্যাকাউন্ট খুলে নিন।',
+      points: [
+        'গুগল প্লে স্টোর থেকে TurfPlay অ্যাপটি নামিয়ে নিন।',
+        'আপনার Gmail দিয়ে 1 ক্লিকেই সাইন-আপ সম্পন্ন করুন।'
+      ],
       icon: UserPlus,
-      tag: 'Step 01',
-      hint: 'Quick sign-up with Mobile / Email'
+      tag: 'ধাপ 01',
+      hint: 'Google Account দিয়ে 1 ক্লিকে সাইন-আপ'
     },
     {
       id: 'step-2',
       stepNumber: '02',
-      title: 'Complete Profile',
-      desc: 'আপনার প্রয়োজনীয় Profile Information সম্পূর্ণ করুন।',
+      title: 'প্রোফাইল থেকে সিলেক্ট করুন',
+      desc: "অ্যাপের Profile অপশনে যান এবং 'Register Your Turf'-এ ট্যাপ করুন।",
+      points: [
+        'অ্যাপের নিচে থাকা Profile সেকশনে যান।',
+        "মেনু থেকে 'Register Your Turf' অপশনে ট্যাপ করুন।"
+      ],
       icon: UserCheck,
-      tag: 'Step 02',
-      hint: 'Personal & business contact details'
+      tag: 'ধাপ 02',
+      hint: 'Profile ➜ Register Your Turf'
     },
     {
       id: 'step-3',
       stepNumber: '03',
-      title: 'Partner with TurfPlay',
-      desc: 'Profile থেকে “Partner with TurfPlay” অপশনে যান।',
-      icon: Handshake,
-      tag: 'Step 03',
-      hint: 'Instant access to Partner Portal'
+      title: 'টার্ফের তথ্য সাবমিট করুন',
+      desc: 'আপনার মাঠের সাধারণ কিছু তথ্য ও ছবি দিয়ে রিকোয়েস্ট Apply করুন।',
+      points: [
+        'মাঠের নাম, লোকেশন, ছবি ও স্লট বিবরণ দিন।',
+        'তথ্যগুলো দিয়ে আবেদনটি Apply / Submit করে দিন।'
+      ],
+      icon: ClipboardCheck,
+      tag: 'ধাপ 03',
+      hint: 'ছবি, লোকেশন ও স্লট ভাড়া'
     },
     {
       id: 'step-4',
       stepNumber: '04',
-      title: 'Submit Application',
-      desc: 'আপনার Turf-এর প্রয়োজনীয় তথ্য দিয়ে Application Submit করুন।',
-      icon: ClipboardCheck,
-      tag: 'Step 04',
-      hint: 'Turf photos, pricing & slot schedule'
+      title: '12 ঘণ্টায় ওনার অ্যাক্সেস',
+      desc: '12 ঘণ্টার মধ্যে আমাদের ভেরিফিকেশন শেষ হলে একই অ্যাপে টার্ফ ওনার রোল চালু হয়ে যাবে!',
+      points: [
+        '12 ঘণ্টার মধ্যে টিম দ্রুত ভেরিফিকেশন সম্পন্ন করবে।',
+        'একই অ্যাপে সরাসরি Turf Owner Role চালু!'
+      ],
+      icon: Handshake,
+      tag: 'ধাপ 04',
+      hint: '12 ঘণ্টার মধ্যে ওনার মোড অ্যাক্টিভ'
     }
   ];
 
@@ -73,34 +115,31 @@ export const PartnerJourney = () => {
   return (
     <section 
       id="partner" 
-      className="relative py-20 lg:py-28 bg-white text-slate-900 overflow-hidden selection:bg-[#00A859] selection:text-white bg-grid"
+      className="relative py-20 lg:py-28 bg-gradient-to-b from-[#F5FAF7] via-white to-[#F5FAF7] text-slate-900 overflow-hidden selection:bg-[#00A859] selection:text-white"
     >
-      {/* ── AMBIENT BACKGROUND ACCENTS ── */}
+      {/* ── AMBIENT GLASSMORPHISM GLOW ORBS ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Soft emerald glow top-center */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-gradient-to-b from-[#00A859]/10 via-[#00A859]/4 to-transparent blur-[140px] rounded-full" />
+        {/* Top-center emerald aura */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[450px] bg-gradient-to-b from-[#00A859]/15 via-emerald-400/8 to-transparent blur-[140px] rounded-full" />
         
-        {/* Pitch light beam accents */}
-        <div className="absolute top-1/3 -left-40 w-[450px] h-[450px] bg-[#00A859]/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-10 -right-40 w-[500px] h-[500px] bg-[#00A859]/6 blur-[130px] rounded-full" />
-
-        {/* Subtle Pitch Circular Markings */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] border border-[#00A859]/8 rounded-[100%] pointer-events-none" />
+        {/* Soft floating side orbs for glass reflections */}
+        <div className="absolute top-1/3 -left-32 w-[400px] h-[400px] bg-emerald-500/10 blur-[130px] rounded-full" />
+        <div className="absolute bottom-20 -right-32 w-[450px] h-[450px] bg-teal-500/10 blur-[140px] rounded-full" />
       </div>
 
       <div className="relative z-10 container-fluid">
         
         {/* ── HEADER SECTION ── */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/25 text-[#00A859] font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-3 sm:mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#00A859]/25 text-[#00A859] font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.2em] mb-3 sm:mb-4 shadow-xs"
           >
             <Sparkles size={14} className="animate-pulse" />
-            <span>টার্ফ মালিক অনবোর্ডিং</span>
+            <span>সহজ ৪ ধাপের অনবোর্ডিং</span>
           </motion.div>
 
           <motion.h2
@@ -108,9 +147,9 @@ export const PartnerJourney = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase mb-3 leading-snug"
+            className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-3 leading-snug"
           >
-            🤝 হয়ে উঠুন একজন <span className="text-[#00A859] font-serif italic lowercase font-normal">TurfPlay</span> পার্টনার
+            সহজ ৪ ধাপে আপনার টার্ফ যুক্ত করুন
           </motion.h2>
 
           <motion.p
@@ -118,41 +157,15 @@ export const PartnerJourney = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-lg md:text-xl text-slate-600 font-bold tracking-wide"
+            className="text-sm sm:text-lg md:text-xl text-slate-700 font-bold tracking-wide"
           >
-            মাত্র ৪টি সহজ ধাপে আপনার Turf যুক্ত করুন
+            কোনো জটিলতা নেই — আপনার হাতের TurfPlay অ্যাপ থেকেই খুব সহজে টার্ফ ওনার হয়ে যান।
           </motion.p>
         </div>
 
-        {/* ── 4-STEP MILESTONE JOURNEY TIMELINE ── */}
-        <div className="relative mb-14 sm:mb-20">
-          
-          {/* DESKTOP CONNECTING TRACK LINE */}
-          <div className="hidden lg:block absolute top-[82px] left-[8%] right-[8%] h-[3px] bg-slate-200 -z-0 rounded-full overflow-hidden">
-            {/* Animated glowing gradient track */}
-            <motion.div 
-              className="h-full bg-gradient-to-r from-[#00A859] via-[#00C853] to-[#00A859] rounded-full shadow-[0_0_12px_#00A859]"
-              initial={{ width: '0%' }}
-              whileInView={{ width: '100%' }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            />
-          </div>
-
-          {/* DESKTOP DIRECTIONAL PULSE ARROWS */}
-          <div className="hidden lg:flex justify-between absolute top-[72px] left-[23%] right-[23%] -z-0 pointer-events-none">
-            {[1, 2, 3].map((arrowIdx) => (
-              <div 
-                key={arrowIdx}
-                className="w-6 h-6 rounded-full bg-white border border-[#00A859]/40 flex items-center justify-center text-[#00A859] shadow-sm shadow-[#00A859]/15"
-              >
-                <ChevronRight size={13} className="stroke-[3] animate-pulse" />
-              </div>
-            ))}
-          </div>
-
-          {/* MILESTONE CARDS GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10">
+        {/* ── 4-STEP GLASS MILESTONES GRID (NO CIRCLE CARDS) ── */}
+        <div className="relative mb-14 sm:mb-18">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10">
             {milestones.map((m, idx) => {
               const IconComp = m.icon;
               const isSelected = currentActive === idx;
@@ -160,104 +173,96 @@ export const PartnerJourney = () => {
               return (
                 <motion.div
                   key={m.id}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.12 }}
+                  transition={{ duration: 0.45, delay: idx * 0.1 }}
                   onMouseEnter={() => setHoveredStep(idx)}
                   onMouseLeave={() => setHoveredStep(null)}
                   onClick={() => setActiveStep(idx)}
                   className="cursor-pointer group relative flex flex-col"
                 >
-                  {/* Outer Glow Halo on Active/Hovered Card */}
+                  {/* Frosted Glass Card Frame */}
                   <div 
-                    className={`absolute -inset-1 rounded-3xl bg-gradient-to-b from-[#00A859]/20 via-[#00A859]/5 to-transparent blur-lg transition-opacity duration-300 pointer-events-none ${
-                      isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
-                    }`} 
-                  />
-
-                  {/* Top Node Indicator Badge */}
-                  <div className="flex items-center gap-3 sm:gap-4 lg:flex-col lg:items-center mb-4 sm:mb-5">
-                    {/* Glowing Milestone Circle Node */}
-                    <div className="relative shrink-0">
-                      {/* Pulse Ring */}
-                      {isSelected && (
-                        <span className="absolute -inset-2 rounded-full bg-[#00A859]/30 animate-ping" />
-                      )}
-
-                      <div 
-                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 relative z-10 ${
-                          isSelected
-                            ? 'bg-[#00A859] text-white scale-105 sm:scale-110 shadow-lg shadow-[#00A859]/40 border-2 border-white'
-                            : 'bg-white text-[#00A859] border-2 border-slate-200 group-hover:border-[#00A859] group-hover:bg-[#00A859]/10 group-hover:scale-105 shadow-sm'
-                        }`}
-                      >
-                        <IconComp size={20} className="stroke-[2.3]" />
-                      </div>
-                    </div>
-
-                    {/* Step Pill Label */}
-                    <span 
-                      className={`text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.2em] px-3 py-1 rounded-full border transition-colors ${
-                        isSelected 
-                          ? 'bg-[#00A859]/15 text-[#00A859] border-[#00A859]/35 font-extrabold' 
-                          : 'bg-slate-100 text-slate-500 border-slate-200 group-hover:text-[#00A859] group-hover:border-[#00A859]/30'
-                      }`}
-                    >
-                      {m.tag}
-                    </span>
-                  </div>
-
-                  {/* Clean White & Green Milestone Card */}
-                  <div 
-                    className={`flex-1 rounded-2xl p-4 sm:p-6 transition-all duration-300 relative overflow-hidden flex flex-col justify-between border ${
+                    className={`flex-1 rounded-3xl p-6 sm:p-7 transition-all duration-300 relative overflow-hidden flex flex-col justify-between backdrop-blur-xl ${
                       isSelected
-                        ? 'bg-white border-2 border-[#00A859] shadow-xl shadow-[#00A859]/15 -translate-y-1'
-                        : 'bg-white/95 border-slate-200 hover:border-[#00A859]/60 hover:bg-slate-50/90 shadow-md shadow-slate-200/50 hover:shadow-lg hover:-translate-y-0.5'
+                        ? 'bg-white/95 border-2 border-[#00A859] shadow-[0_16px_40px_rgba(0,168,89,0.18)] -translate-y-1.5'
+                        : 'bg-white/75 hover:bg-white/90 border border-white/90 hover:border-[#00A859]/50 shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,168,89,0.12)] hover:-translate-y-1.5'
                     }`}
                   >
-                    {/* Big Background Milestone Number */}
+                    {/* Top glass reflection gradient shimmer */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
+                    {/* Big Stylized Background Step Watermark */}
                     <div 
-                      className={`absolute top-2 right-3 text-4xl sm:text-5xl font-black font-mono select-none pointer-events-none transition-all duration-300 leading-none ${
+                      className={`absolute top-2 right-4 text-5xl sm:text-6xl font-black font-mono select-none pointer-events-none transition-all duration-300 leading-none ${
                         isSelected 
                           ? 'text-[#00A859]/15 scale-105' 
-                          : 'text-slate-100 group-hover:text-[#00A859]/10'
+                          : 'text-slate-200/50 group-hover:text-[#00A859]/10'
                       }`}
                     >
                       {m.stepNumber}
                     </div>
 
-                    {/* Card Content */}
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#00A859]" />
-                        <span className="text-[9px] sm:text-[10px] font-bold text-[#00A859] uppercase tracking-widest">
-                          মাইলস্টোন {m.stepNumber}
-                        </span>
+                    {/* Card Header: Icon + Step Badge */}
+                    <div className="relative z-10 flex items-center justify-between gap-3 mb-4">
+                      {/* Squircle Icon Wrapper (No circles) */}
+                      <div 
+                        className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                          isSelected
+                            ? 'bg-[#00A859] text-white shadow-md shadow-[#00A859]/35 scale-105'
+                            : 'bg-white/90 text-[#00A859] border border-slate-200/80 group-hover:bg-[#00A859] group-hover:text-white group-hover:scale-105 shadow-xs'
+                        }`}
+                      >
+                        <IconComp size={22} className="stroke-[2.2]" />
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight uppercase mb-1.5 group-hover:text-[#00A859] transition-colors">
+                      {/* Glass Step Badge */}
+                      <span 
+                        className={`text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] px-3 py-1 rounded-full border transition-all ${
+                          isSelected 
+                            ? 'bg-[#00A859]/15 text-[#00A859] border-[#00A859]/35 font-extrabold shadow-xs' 
+                            : 'bg-slate-100/80 text-slate-600 border-slate-200/60 group-hover:text-[#00A859] group-hover:border-[#00A859]/30'
+                        }`}
+                      >
+                        {m.tag}
+                      </span>
+                    </div>
+
+                    {/* Card Body Content */}
+                    <div className="relative z-10 mb-4">
+                      <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mb-2 group-hover:text-[#00A859] transition-colors leading-snug">
                         {m.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed mb-3">
                         {m.desc}
                       </p>
+
+                      {/* Sub Bullet Points */}
+                      <ul className="space-y-1.5 pt-2 border-t border-slate-100">
+                        {m.points.map((pt, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-1.5 text-[11px] sm:text-xs text-slate-600 font-medium leading-relaxed">
+                            <span className="text-[#00A859] mt-0.5 font-black shrink-0">✓</span>
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Bottom Status / Hint indicator */}
-                    <div className="relative z-10 pt-3 sm:pt-4 mt-3 border-t border-slate-100 flex items-center justify-between">
+                    {/* Bottom Status / Hint Bar */}
+                    <div className="relative z-10 pt-3.5 border-t border-slate-100/90 flex items-center justify-between">
                       <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 truncate mr-2">
                         {m.hint}
                       </span>
                       <div 
-                        className={`w-5 h-5 sm:w-6 sm:h-6 shrink-0 rounded-full flex items-center justify-center transition-all ${
+                        className={`w-6 h-6 shrink-0 rounded-xl flex items-center justify-center transition-all ${
                           isSelected 
-                            ? 'bg-[#00A859] text-white shadow-sm' 
-                            : 'bg-slate-100 text-slate-400 group-hover:bg-[#00A859]/10 group-hover:text-[#00A859]'
+                            ? 'bg-[#00A859] text-white shadow-xs' 
+                            : 'bg-slate-100/80 text-slate-400 group-hover:bg-[#00A859]/15 group-hover:text-[#00A859]'
                         }`}
                       >
-                        {isSelected ? <Check size={12} className="stroke-[3]" /> : <ChevronRight size={12} />}
+                        {isSelected ? <Check size={13} className="stroke-[3]" /> : <ChevronRight size={13} />}
                       </div>
                     </div>
                   </div>
@@ -267,69 +272,92 @@ export const PartnerJourney = () => {
           </div>
         </div>
 
-        {/* ── SUCCESS / CONFIRMATION STATE CARD ── */}
+        {/* ── SUCCESS / CONFIRMATION STATE CARD (FROSTED GLASS EFFECT) ── */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="relative max-w-4xl mx-auto"
         >
-          {/* Ambient Soft Glow */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-[#00A859]/20 via-[#00A859]/10 to-[#00A859]/20 rounded-3xl blur-xl opacity-60 pointer-events-none" />
+          {/* Ambient Glow behind glass card */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-[#00A859]/20 via-emerald-400/10 to-[#00A859]/20 rounded-3xl blur-2xl opacity-70 pointer-events-none" />
 
-          {/* Clean White Card Frame */}
-          <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#00A859]/8 via-[#00A859]/3 to-white border border-[#00A859]/30 p-6 sm:p-10 md:p-12 shadow-xl shadow-[#00A859]/8 overflow-hidden text-center">
+          {/* Frosted Glass Frame */}
+          <div className="relative rounded-3xl backdrop-blur-2xl bg-white/80 border border-white/90 p-6 sm:p-10 md:p-12 shadow-[0_20px_50px_rgba(0,168,89,0.1)] overflow-hidden text-center">
             
-            {/* Top Celebration Icon */}
+            {/* Top Accent Strip */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-[#00A859] to-teal-400" />
+
+            {/* Top Icon Wrapper (Modern squircle, no circles) */}
             <motion.div 
-              initial={{ scale: 0.85 }}
+              initial={{ scale: 0.9 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="inline-flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-[#00A859]/15 border border-[#00A859]/30 text-[#00A859] shadow-md shadow-[#00A859]/15 mb-4 sm:mb-5 relative group"
+              className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#00A859]/12 border border-[#00A859]/25 text-[#00A859] shadow-md shadow-[#00A859]/15 mb-4 sm:mb-5 relative group"
             >
-              <PartyPopper size={28} className="relative z-10 text-[#00A859] transform group-hover:rotate-12 transition-transform duration-300 sm:w-[34px] sm:h-[34px]" />
+              <PartyPopper size={28} className="relative z-10 text-[#00A859] transform group-hover:rotate-12 transition-transform duration-300 sm:w-[32px] sm:h-[32px]" />
             </motion.div>
 
             {/* Success Heading */}
             <h3 className="text-xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight uppercase mb-2">
-              🎉 সব প্রস্তুত!
+              🎉 সরাসরি সেলফ-রেজিস্ট্রেশন সিস্টেম
             </h3>
 
             {/* Primary Review Text */}
             <p className="text-sm sm:text-lg font-bold text-[#00A859] tracking-wide mb-2 sm:mb-3">
-              আমাদের টিম আপনার আবেদন পর্যালোচনা করবে।
+              টার্ফ লিস্ট করতে TurfPlay-এর সাথে কথা বলতে হবে এমন কিছু না!
             </p>
 
             {/* Secondary Explanation Text */}
             <p className="text-xs sm:text-sm md:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
-              Approval পাওয়ার পর আপনি TurfPlay-এর Professional/Owner features ব্যবহার করে আপনার Turf Business পরিচালনা করতে পারবেন।
+              কোনো কল বা অনুমোদনের অপেক্ষা নেই — তথ্য সাবমিট করামাত্রই আপনার টার্ফ বুকিংয়ের জন্য সম্পূর্ণ প্রস্তুত। তবে যেকোনো প্রশ্ন বা পরামর্শের জন্য সরাসরি TurfPlay টিমের সাথে কথা বলতে পারেন।
             </p>
 
-            {/* Feature Highlights Pills */}
+            {/* Feature Highlights Glass Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6 sm:mb-8">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-bold text-slate-700 shadow-sm">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>স্লট ম্যানেজমেন্ট</span>
+                <span>সরাসরি সেলফ-লিস্টিং</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-bold text-slate-700 shadow-sm">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>তাৎক্ষণিক ডিজিটাল পেমেন্ট</span>
+                <span>৫ সেকেন্ডে অফলাইন স্লট লক</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-bold text-slate-700 shadow-sm">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>মালিকের ড্যাশবোর্ড অ্যানালিটিক্স</span>
+                <span>মোবাইলেই ওনার কন্ট্রোল</span>
               </div>
             </div>
 
-            {/* Premium CTA Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Action Buttons: Self-Register + Talk with TurfPlay (WhatsApp & Call) */}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <a
                 href="#waitlist"
-                className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:shadow-xl hover:shadow-[#00A859]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 bg-[#00A859] hover:bg-[#008f4c] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:shadow-xl hover:shadow-[#00A859]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
-                <span>TurfPlay পার্টনার হোন →</span>
+                <span>অ্যাপে টার্ফ রেজিস্টার করুন →</span>
+              </a>
+
+              {/* Direct WhatsApp talk CTA */}
+              <a
+                href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20TurfPlay%20shomporke%20kotha%20bolte%20chai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#1faa4f] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#25D366]/25 hover:scale-105 active:scale-95"
+              >
+                <MessageCircle size={16} />
+                <span>TurfPlay-এর সাথে কথা বলুন (WhatsApp)</span>
+              </a>
+
+              {/* Direct Phone Call */}
+              <a
+                href="tel:+8801892979324"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-white/90 backdrop-blur-md border-2 border-slate-200 hover:border-[#00A859] text-slate-900 hover:text-[#00A859] font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-xs hover:scale-105 active:scale-95"
+              >
+                <PhoneCall size={14} className="text-[#00A859]" />
+                <span>কল: 01892-979324</span>
               </a>
             </div>
 
