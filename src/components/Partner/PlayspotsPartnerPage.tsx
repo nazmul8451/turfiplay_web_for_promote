@@ -45,6 +45,9 @@ import whyBookingImg from '../../assets/images/why_booking.webp';
 import whyAnalyticsImg from '../../assets/images/why_analytics.webp';
 import whyManageImg from '../../assets/images/why_manage.webp';
 import growManImg from '../../assets/images/grow_man.png';
+import appstoreImg from '../../assets/images/sports/appstore.png';
+import playstoreImg from '../../assets/images/sports/palystore.png';
+import { AppStoreModal } from '../Modals/AppStoreModal';
 
 interface FormData {
   ownerName: string;
@@ -58,6 +61,7 @@ interface FormData {
 }
 
 export const PlayspotsPartnerPage = () => {
+  const [isAppStoreModalOpen, setIsAppStoreModalOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     ownerName: '',
     email: '',
@@ -378,24 +382,68 @@ export const PlayspotsPartnerPage = () => {
                 বাংলাদেশের সবচেয়ে বড় স্পোর্টস ফ্যাসিলিটি নেটওয়ার্কে যুক্ত হয়ে আপনার টার্ফ ব্যবসাকে নিয়ে যান নতুন উচ্চতায়। প্রতিদিন হাজারো নতুন খেলোয়াড় খুঁজুন এবং খালি স্লটের সংখ্যা শূন্যে নামিয়ে আনুন।
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <a
-                  href="#register"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:scale-105 active:scale-95 transition-all"
-                >
-                  <span>টার্ফ রেজিস্টার করুন</span>
-                  <ArrowRight size={15} />
-                </a>
+              <div className="space-y-4 pt-2">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                  <a
+                    href="#register"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:scale-105 active:scale-95 transition-all"
+                  >
+                    <span>টার্ফ রেজিস্টার করুন</span>
+                    <ArrowRight size={15} />
+                  </a>
 
-                <a
-                  href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20business%20growth%20niye%20kotha%20bolte%20chai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-xs uppercase tracking-wider rounded-full transition-all"
-                >
-                  <MessageCircle size={15} />
-                  <span>পরামর্শের জন্য হোয়াটসঅ্যাপ</span>
-                </a>
+                  <a
+                    href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20business%20growth%20niye%20kotha%20bolte%20chai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-xs uppercase tracking-wider rounded-full transition-all"
+                  >
+                    <MessageCircle size={15} />
+                    <span>পরামর্শের জন্য হোয়াটসঅ্যাপ</span>
+                  </a>
+                </div>
+
+                {/* Mobile App Download Links */}
+                <div className="pt-2">
+                  <div className="text-[11px] font-black uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+                    <Smartphone size={13} className="text-[#00A859]" />
+                    <span>অথবা মোবাইল অ্যাপ ডাউনলোড করুন:</span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 px-4 py-2 bg-white border border-slate-200 hover:border-[#00A859]/50 hover:bg-emerald-50/30 hover:scale-[1.02] active:scale-95 transition-all rounded-2xl shadow-xs group"
+                    >
+                      <img 
+                        src={playstoreImg} 
+                        alt="Google Play" 
+                        className="w-5 h-5 object-contain" 
+                      />
+                      <div className="flex flex-col items-start leading-none pr-1">
+                        <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
+                        <span className="text-xs text-slate-900 font-black group-hover:text-[#00A859] transition-colors">Google Play</span>
+                      </div>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsAppStoreModalOpen(true)}
+                      className="flex items-center gap-2.5 px-4 py-2 bg-white border border-slate-200 hover:border-[#00A859]/50 hover:bg-emerald-50/30 hover:scale-[1.02] active:scale-95 transition-all rounded-2xl shadow-xs group cursor-pointer"
+                    >
+                      <img 
+                        src={appstoreImg} 
+                        alt="App Store" 
+                        className="w-5 h-5 object-contain" 
+                      />
+                      <div className="flex flex-col items-start leading-none pr-1">
+                        <span className="text-[8px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
+                        <span className="text-xs text-slate-900 font-black group-hover:text-[#00A859] transition-colors">App Store</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </div>
 
               {/* Stats highlights */}
@@ -746,14 +794,47 @@ export const PlayspotsPartnerPage = () => {
                 </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href="#register"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:scale-105 active:scale-95 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:scale-105 active:scale-95 transition-all"
                 >
-                  <span>টার্ফ রেজিস্টার করতে নিচের ফর্মে যান</span>
-                  <ArrowRight size={15} />
+                  <span>টার্ফ রেজিস্টার করুন</span>
+                  <ArrowRight size={14} />
                 </a>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.turfplay.app&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 px-3.5 py-2 bg-white border border-slate-200 hover:border-[#00A859]/50 hover:bg-emerald-50/30 hover:scale-[1.02] active:scale-95 transition-all rounded-2xl shadow-xs group"
+                >
+                  <img 
+                    src={playstoreImg} 
+                    alt="Google Play" 
+                    className="w-4 h-4 sm:w-5 sm:h-5 object-contain" 
+                  />
+                  <div className="flex flex-col items-start leading-none pr-1">
+                    <span className="text-[7px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
+                    <span className="text-xs text-slate-900 font-black group-hover:text-[#00A859] transition-colors">Google Play</span>
+                  </div>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setIsAppStoreModalOpen(true)}
+                  className="flex items-center gap-2.5 px-3.5 py-2 bg-white border border-slate-200 hover:border-[#00A859]/50 hover:bg-emerald-50/30 hover:scale-[1.02] active:scale-95 transition-all rounded-2xl shadow-xs group cursor-pointer"
+                >
+                  <img 
+                    src={appstoreImg} 
+                    alt="App Store" 
+                    className="w-4 h-4 sm:w-5 sm:h-5 object-contain" 
+                  />
+                  <div className="flex flex-col items-start leading-none pr-1">
+                    <span className="text-[7px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
+                    <span className="text-xs text-slate-900 font-black group-hover:text-[#00A859] transition-colors">App Store</span>
+                  </div>
+                </button>
               </div>
             </motion.div>
 
@@ -1545,6 +1626,11 @@ export const PlayspotsPartnerPage = () => {
           </div>
         </div>
       </section>
+
+      <AppStoreModal
+        isOpen={isAppStoreModalOpen}
+        onClose={() => setIsAppStoreModalOpen(false)}
+      />
 
     </div>
   );
