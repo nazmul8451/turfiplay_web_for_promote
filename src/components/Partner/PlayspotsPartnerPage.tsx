@@ -89,12 +89,12 @@ export const PlayspotsPartnerPage = () => {
     { value: 'other', label: '✨ অন্যান্য খেলা (Other Venue)' }
   ];
 
-  // SECTION 1: Exact Stats as reference (Adapted for TurfPlay network)
+  // SECTION 1: Realistic Stats (Adapted for 1-1.5 month old platform)
   const stats = [
-    { number: '৭,০০,০০০+', label: 'সক্রিয় খেলোয়াড়', sub: 'প্লেয়ার ট্রাফিক ও নিয়মিত ইউজার' },
-    { number: '১,৩০০+', label: 'রেজিস্টার্ড টার্ফ', sub: 'আমাদের নেটওয়ার্কে যুক্ত ভেন্যু' },
-    { number: '১৮৫+', label: 'শহর ও জোন', sub: 'সারা দেশে বিস্তৃত কভারেজ' },
-    { number: '৫০+', label: 'খেলার ক্যাটাগরি', sub: 'বিভিন্ন ধরনের মাঠ ও খেলা' },
+    { number: '২,৫০০+', label: 'সক্রিয় খেলোয়াড়', sub: 'প্লেয়ার ট্রাফিক ও নিয়মিত ইউজার' },
+    { number: '২৫+', label: 'রেজিস্টার্ড টার্ফ', sub: 'আমাদের নেটওয়ার্কে যুক্ত ভেন্যু' },
+    { number: '১০+', label: 'শহর ও জোন', sub: 'কভারেজ ও দ্রুত সম্প্রসারণ' },
+    { number: '৮+', label: 'খেলার ক্যাটাগরি', sub: 'বিভিন্ন ধরনের মাঠ ও খেলা' },
     { number: '২৪/৭', label: 'অন-গ্রাউন্ড সাপোর্ট', sub: '২৪ ঘণ্টা ওনার হেল্পলাইন' }
   ];
 
@@ -266,9 +266,9 @@ export const PlayspotsPartnerPage = () => {
       {/* ═════════════════════════════════════════════════════════════════
           1. STATS BANNER
       ═════════════════════════════════════════════════════════════════ */}
-      <section className="py-12 bg-white border-y border-slate-200/80">
+      <section className="py-10 sm:py-12 bg-white border-y border-slate-200/80">
         <div className="container-fluid">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-center max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 text-center max-w-6xl mx-auto items-start">
             {stats.map((s, idx) => (
               <motion.div
                 key={idx}
@@ -276,9 +276,9 @@ export const PlayspotsPartnerPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className={`${idx === 4 ? 'col-span-2 md:col-span-1' : ''}`}
+                className={`px-1.5 sm:px-2 ${idx === 4 ? 'col-span-2 md:col-span-1' : ''}`}
               >
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-mono">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight font-mono whitespace-nowrap">
                   {s.number}
                 </div>
                 <div className="text-xs sm:text-sm font-black text-[#00A859] tracking-wider mt-1">

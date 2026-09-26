@@ -233,7 +233,7 @@ export const Hero = () => {
               <div className="flex-1 min-w-[125px] sm:flex-initial flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-xs sm:text-sm font-black">⚽</span>
                 <div className="flex flex-col">
-                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">৫০০+</span>
+                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">২৫+</span>
                   <span className="text-[9px] sm:text-[10px] font-bold text-slate-500">টার্ফ এর সাথে</span>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export const Hero = () => {
               <div className="flex-1 min-w-[125px] sm:flex-initial flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-xs sm:text-sm font-black">👥</span>
                 <div className="flex flex-col">
-                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">১,০০,০০০+</span>
+                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">২,৫০০+</span>
                   <span className="text-[9px] sm:text-[10px] font-bold text-slate-500">সন্তুষ্ট ব্যবহারকারী</span>
                 </div>
               </div>

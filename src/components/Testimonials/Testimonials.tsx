@@ -487,7 +487,7 @@ export const Testimonials = () => {
             </div>
             <div>
               <h3 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                <span className="text-[#00A859]">৫০,০০০+</span> সক্রিয় খেলোয়াড় ও ম্যাচ সম্পন্ন
+                <span className="text-[#00A859]">২,৫০০+</span> সক্রিয় খেলোয়াড় ও ম্যাচ সম্পন্ন
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 font-medium">
                 সহজ বুকিং, ইনস্ট্যান্ট ডিজিটাল টিকেট এবং জিরো ডাবল-বুকিংয়ের আনন্দ
