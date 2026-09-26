@@ -405,9 +405,9 @@ export const PlayspotsPartnerPage = () => {
 
                 {/* Mobile App Download Links */}
                 <div className="pt-2">
-                  <div className="text-[11px] font-black uppercase tracking-wider text-slate-500 mb-2 flex items-center gap-1.5">
+                  <div className="text-[11px] font-black uppercase tracking-wider text-slate-600 mb-2 flex items-center gap-1.5">
                     <Smartphone size={13} className="text-[#00A859]" />
-                    <span>অথবা মোবাইল অ্যাপ ডাউনলোড করুন:</span>
+                    <span>মোবাইল অ্যাপ ডাউনলোড করুন:</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-3">
                     <a
