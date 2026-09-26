@@ -1393,69 +1393,152 @@ export const PlayspotsPartnerPage = () => {
       </section>
 
       {/* ═════════════════════════════════════════════════════════════════
-          9. WE'RE HERE FOR YOU (Exact "Let's Talk!" Support in Bengali)
+          9. EXECUTIVE CONTACT & DIRECT OWNER SUPPORT HUB
       ═════════════════════════════════════════════════════════════════ */}
-      <section id="contact" className="py-20 sm:py-28 bg-slate-900 text-white relative overflow-hidden">
+      <section id="contact" className="py-24 sm:py-32 bg-gradient-to-b from-[#0B0F19] via-[#0F172A] to-[#070A10] text-white relative overflow-hidden">
         
-        {/* Glow ambient */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00A859]/15 rounded-full blur-[140px] pointer-events-none" />
+        {/* Multilayer Ambient Glow Effects */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00A859]/15 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-teal-500/10 rounded-full blur-[150px] pointer-events-none" />
+        
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
 
         <div className="container-fluid relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
             
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/15 border border-emerald-400/30 rounded-full mb-4 shadow-xs">
-              <PhoneCall size={14} className="text-emerald-400" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#00FF88]">
-                আমরা আছি আপনার পাশে
-              </span>
+            {/* Header */}
+            <div className="text-center mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/15 border border-emerald-400/30 rounded-full mb-4 shadow-sm backdrop-blur-md">
+                <PhoneCall size={14} className="text-[#00FF88]" />
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#00FF88]">
+                  ২৪/৭ সরাসরি ওনার সাপোর্ট হেল্পলাইন
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white mb-4">
+                টার্ফ নিয়ে কথা বলুন, <br />
+                <span className="bg-gradient-to-r from-[#00FF88] via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                  আমরা সার্বক্ষণিক প্রস্তুত
+                </span>
+              </h2>
+
+              <p className="text-slate-300 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed">
+                টার্ফ রেজিস্ট্রেশন, অনলাইন বুকিং ম্যানেজমেন্ট বা যেকোনো জিজ্ঞাসায় সরাসরি আমাদের এক্সপার্ট টিমের সাথে যোগাযোগ করুন।
+              </p>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
-              সরাসরি কথা বলুন!
-            </h2>
-
-            <p className="text-slate-300 text-sm sm:text-lg font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-              কোনো প্রশ্ন থাকলে বা আপনার টার্ফটি আজই রেজিস্টার করতে চাইলে আমাদের সাথে সরাসরি যোগাযোগ করুন।
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto mb-10 text-left">
+            {/* 2 Luxury Interactive Contact Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7 mb-10">
               
-              {/* Support 1 */}
-              <div className="p-6 rounded-2xl bg-slate-800/90 border border-slate-700">
-                <div className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mb-1">কল অথবা হোয়াটসঅ্যাপ</div>
-                <a href="tel:+8801892979324" className="text-xl font-black text-white hover:text-emerald-400 transition-colors block font-mono">
-                  +880 1892-979324
-                </a>
-                <p className="text-xs text-slate-400 mt-1">২৪/৭ ওনার ও বুকিং সাপোর্ট লাইন</p>
+              {/* Card 1: Phone & WhatsApp Hub */}
+              <div className="p-7 sm:p-8 rounded-3xl bg-slate-900/90 border border-slate-700/80 hover:border-[#00A859] shadow-xl hover:shadow-[0_20px_50px_rgba(0,168,89,0.18)] transition-all duration-300 relative group flex flex-col justify-between backdrop-blur-xl">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00A859]/25 to-emerald-500/10 text-[#00FF88] border border-[#00A859]/30 flex items-center justify-center shadow-inner">
+                      <PhoneCall size={22} />
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 shadow-xs">
+                      <span className="w-2 h-2 rounded-full bg-[#00FF88] animate-pulse" />
+                      ২৪ ঘণ্টা খোলা
+                    </span>
+                  </div>
+
+                  <div className="text-xs font-black text-emerald-400 uppercase tracking-wider">
+                    হটলাইন ও হোয়াটসঅ্যাপ
+                  </div>
+                  <a 
+                    href="tel:+8801892979324" 
+                    className="text-2xl sm:text-3xl font-black text-white hover:text-[#00FF88] transition-colors block font-mono tracking-tight my-2"
+                  >
+                    +880 1892-979324
+                  </a>
+                  <p className="text-xs sm:text-sm text-slate-400 font-medium mb-6 leading-relaxed">
+                    টার্ফ ওনার অনবোর্ডিং বা মাঠ সংক্রান্ত যেকোনো জরুরি প্রয়োজনে সরাসরি ফোন দিন।
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-800">
+                  <a
+                    href="tel:+8801892979324"
+                    className="py-3 px-4 bg-slate-800 hover:bg-slate-700/90 text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <Phone size={14} className="text-[#00FF88]" />
+                    <span>কল করুন</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20shomporke%20kotha%20bolte%20chai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-3 px-4 bg-[#25D366] hover:bg-[#1faa4f] text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  >
+                    <MessageCircle size={15} />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
 
-              {/* Support 2 */}
-              <div className="p-6 rounded-2xl bg-slate-800/90 border border-slate-700">
-                <div className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mb-1">ইমেইল করুন</div>
-                <a href="mailto:rimon124567@gmail.com" className="text-xl font-black text-white hover:text-emerald-400 transition-colors block break-all font-mono">
-                  rimon124567@gmail.com
-                </a>
-                <p className="text-xs text-slate-400 mt-1">টার্ফ পার্টনারশিপ ও বিজনেস তথ্য</p>
+              {/* Card 2: Official Email Support */}
+              <div className="p-7 sm:p-8 rounded-3xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan-500 shadow-xl hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] transition-all duration-300 relative group flex flex-col justify-between backdrop-blur-xl">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center shadow-inner">
+                      <Mail size={22} />
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 shadow-xs">
+                      দ্রুত রেসপন্স
+                    </span>
+                  </div>
+
+                  <div className="text-xs font-black text-cyan-400 uppercase tracking-wider">
+                    অফিশিয়াল বিজনেস ইমেইল
+                  </div>
+                  <a 
+                    href="mailto:rimon124567@gmail.com" 
+                    className="text-xl sm:text-2xl font-black text-white hover:text-cyan-300 transition-colors block font-mono tracking-tight my-2.5 break-all"
+                  >
+                    rimon124567@gmail.com
+                  </a>
+                  <p className="text-xs sm:text-sm text-slate-400 font-medium mb-6 leading-relaxed">
+                    পার্টনারশিপ প্রস্তাব, ফিচার অনুরোধ বা ব্যবসায়িক আলোচনার জন্য ইমেইল পাঠাতে পারেন।
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-800">
+                  <a
+                    href="mailto:rimon124567@gmail.com"
+                    className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700/90 text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <Mail size={15} className="text-cyan-400" />
+                    <span>ইমেইল পাঠান</span>
+                  </a>
+                </div>
               </div>
 
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            {/* Bottom Registration Callout Card */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/70 via-slate-900 to-slate-900 border border-emerald-500/30 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left backdrop-blur-xl">
+              <div>
+                <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-black text-[#00FF88] uppercase tracking-wider mb-1">
+                  <Sparkles size={14} />
+                  <span>বিনামূল্যে আজই শুরু করুন</span>
+                </div>
+                <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight">
+                  আপনার টার্ফ TurfPlay নেটওয়ার্কে যুক্ত করুন
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
+                  কোনো সেটআপ চার্জ নেই • সম্পূর্ণ ডিজিটাল কন্ট্রোল
+                </p>
+              </div>
+
               <a
                 href="#register"
-                className="px-8 py-4 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/30 hover:scale-105 active:scale-95 transition-all"
+                className="px-8 py-3.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/35 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shrink-0 cursor-pointer"
               >
-                রেজিস্ট্রেশন ফরম পূরণ করুন
-              </a>
-
-              <a
-                href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20shomporke%20kotha%20bolte%20chai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#25D366] hover:bg-[#1faa4f] text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-2"
-              >
-                <MessageCircle size={16} />
-                <span>হোয়াটসঅ্যাপে সরাসরি কথা বলুন</span>
+                <span>রেজিস্ট্রেশন ফরম</span>
+                <ArrowRight size={16} />
               </a>
             </div>
 
