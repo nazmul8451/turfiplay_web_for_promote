@@ -59,11 +59,11 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
           <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200 mb-6 text-left space-y-2 text-xs font-medium text-slate-700">
             <div className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-[#00A859] flex-shrink-0" />
-              <span>অ্যান্ড্রয়েড অ্যাপ গুগল প্লে স্টোরে এভেলেবল</span>
+              <span>অ্যান্ড্রয়েড অ্যাপ গুগল প্লে স্টোরে পাওয়া যাচ্ছে</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-[#00A859] flex-shrink-0" />
-              <span>যেকোনো ব্রাউজারে ফুল ওয়েব প্ল্যাটফর্ম ব্যবহার করতে পারবেন</span>
+              <span>যেকোনো ব্রাউজারে সম্পূর্ণ ওয়েব প্ল্যাটফর্ম ব্যবহার করতে পারবেন</span>
             </div>
           </div>
 

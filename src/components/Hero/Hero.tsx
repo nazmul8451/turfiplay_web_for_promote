@@ -92,7 +92,7 @@ export const Hero = () => {
             >
               <span className="text-xs sm:text-sm">⚡</span>
               <span className="text-[11px] sm:text-xs font-black text-[#00A859] tracking-wide">
-                এক প্ল্যাটফর্মে—Book. Play. Connect. Manage.
+                এক প্ল্যাটফর্মে—বুকিং • খেলা • কমিউনিটি • টার্ফ ম্যানেজমেন্ট
               </span>
             </motion.div>
 
@@ -148,7 +148,7 @@ export const Hero = () => {
               </a>
 
               <a
-                href="#how-it-works"
+                href="#register"
                 className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 hover:border-emerald-400 hover:bg-emerald-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#00A859] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-[#00A859]/30">
@@ -156,11 +156,11 @@ export const Hero = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
-                    <span>টার্ফ মালিকদের মোড (মোবাইলেই)</span>
+                    <span>টার্ফ ওনার রোল (একই অ্যাপে)</span>
                     <ArrowRight size={12} className="text-emerald-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                   <div className="text-[11px] text-emerald-700 font-medium leading-snug">
-                    ফোন বুকিং লক ও ক্যাশ অডিট রিপোর্ট
+                    টার্ফ রেজিস্টার ও ভেরিফায়েড ওনার এক্সেস
                   </div>
                 </div>
               </a>
@@ -175,11 +175,11 @@ export const Hero = () => {
             >
               {/* Primary Green Download CTA */}
               <a
-                href="#waitlist"
+                href="#register"
                 className="group relative overflow-hidden px-6 sm:px-7 py-3 sm:py-3.5 bg-[#00A859] text-white font-extrabold rounded-full transition-all duration-300 shadow-lg shadow-[#00A859]/25 hover:bg-[#008746] hover:shadow-xl hover:shadow-[#00A859]/35 hover:scale-[1.03] text-xs sm:text-sm flex items-center gap-2 sm:gap-2.5"
               >
-                <span>এখনই ডাউনলোড করুন</span>
-                <Download size={16} className="transform group-hover:translate-y-0.5 transition-transform" />
+                <span>এখনই টার্ফ রেজিস্টার করুন</span>
+                <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
               </a>
 
               {/* App Store Button */}
@@ -194,7 +194,7 @@ export const Hero = () => {
                   className="w-4 h-4 sm:w-5 sm:h-5 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[7px] sm:text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Download on the</span>
+                  <span className="text-[7px] sm:text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
                   <span className="text-[11px] sm:text-xs text-slate-900 font-black tracking-tight">App Store</span>
                 </div>
               </button>
@@ -212,7 +212,7 @@ export const Hero = () => {
                   className="w-4 h-4 sm:w-5 sm:h-5 object-contain" 
                 />
                 <div className="flex flex-col items-start leading-none pr-1">
-                  <span className="text-[7px] sm:text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">GET IT ON</span>
+                  <span className="text-[7px] sm:text-[8px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">ডাউনলোড করুন</span>
                   <span className="text-[11px] sm:text-xs text-slate-900 font-black tracking-tight">Google Play</span>
                 </div>
               </a>
@@ -241,7 +241,7 @@ export const Hero = () => {
               <div className="flex-1 min-w-[125px] sm:flex-initial flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#00A859]/10 text-[#00A859] flex items-center justify-center text-xs sm:text-sm font-black">👥</span>
                 <div className="flex flex-col">
-                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">১০০K+</span>
+                  <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">১,০০,০০০+</span>
                   <span className="text-[9px] sm:text-[10px] font-bold text-slate-500">সন্তুষ্ট ব্যবহারকারী</span>
                 </div>
               </div>

@@ -36,21 +36,21 @@ export const Footer = () => {
           <div>
             <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-4 sm:mb-6">প্ল্যাটফর্ম</h4>
             <ul className="space-y-3 sm:space-y-4 text-slate-600 font-bold uppercase tracking-wider text-xs">
-              <li><a href="#how-it-works" className="hover:text-[#00A859] transition-colors">ইকোসিস্টেম</a></li>
-              <li><a href="#partner" className="hover:text-[#00A859] transition-colors">টার্ফ অনবোর্ডিং</a></li>
-              <li><a href="#pricing" className="hover:text-[#00A859] transition-colors">মূল্য তালিকা</a></li>
-              <li><a href="#testimonials" className="hover:text-[#00A859] transition-colors">গ্রাহক মতামত</a></li>
-              <li><a href="#faq" className="hover:text-[#00A859] transition-colors">প্রশ্নোত্তর</a></li>
+              <li><a href="#register" className="hover:text-[#00A859] transition-colors">টার্ফ রেজিস্ট্রেশন ফরম</a></li>
+              <li><a href="#why-join" className="hover:text-[#00A859] transition-colors">কেন TurfPlay?</a></li>
+              <li><a href="#problem-solution" className="hover:text-[#00A859] transition-colors">সমস্যা ও সমাধান</a></li>
+              <li><a href="#features" className="hover:text-[#00A859] transition-colors">ম্যানেজমেন্ট ফিচার</a></li>
+              <li><a href="#mobile-dashboard" className="hover:text-[#00A859] transition-colors">মোবাইল অ্যাপ</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-4 sm:mb-6">সাপোর্ট</h4>
+            <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-[0.2em] mb-4 sm:mb-6">সাপোর্ট ও যোগাযোগ</h4>
             <ul className="space-y-3 sm:space-y-4 text-slate-600 font-bold uppercase tracking-wider text-xs">
-              <li><a href="#contact" className="hover:text-[#00A859] transition-colors">যোগাযোগ</a></li>
-              <li><a href="#waitlist" className="hover:text-[#00A859] transition-colors">ওয়েটলিস্ট</a></li>
-              <li><a href="#" className="hover:text-[#00A859] transition-colors">প্রাইভেসি পলিসি</a></li>
-              <li><a href="#" className="hover:text-[#00A859] transition-colors">শর্তাবলী</a></li>
+              <li><a href="#contact" className="hover:text-[#00A859] transition-colors">সরাসরি কথা বলুন</a></li>
+              <li><a href="https://wa.me/8801892979324" target="_blank" rel="noopener noreferrer" className="hover:text-[#00A859] transition-colors">হোয়াটসঅ্যাপ সাপোর্ট</a></li>
+              <li><a href="tel:+8801892979324" className="hover:text-[#00A859] transition-colors">হটলাইন কল</a></li>
+              <li><a href="#" className="hover:text-[#00A859] transition-colors">প্রাইভেসি ও শর্তাবলী</a></li>
             </ul>
           </div>
 

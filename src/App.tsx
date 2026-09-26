@@ -8,14 +8,7 @@ import { ThemeProvider } from './components/Theme/ThemeContext';
 import { SmoothScroll } from './components/Scroll/SmoothScroll';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
-import { HowItWorks } from './components/HowItWorks/HowItWorks';
-import { PartnerJourney } from './components/Partner/PartnerJourney';
-import { Testimonials } from './components/Testimonials/Testimonials';
-import { Pricing } from './components/Pricing/Pricing';
-import { FAQ } from './components/FAQ/FAQ';
-import { StayTuned } from './components/StayTuned/StayTuned';
-import { Contact } from './components/Contact/Contact';
-import { Waitlist } from './components/Waitlist/Waitlist';
+import { PlayspotsPartnerPage } from './components/Partner/PlayspotsPartnerPage';
 import { Footer } from './components/Footer/Footer';
 
 export default function App() {
@@ -26,14 +19,7 @@ export default function App() {
           <Navbar />
           <main>
             <Hero />
-            <HowItWorks />
-            <PartnerJourney />
-            <Testimonials />
-            <Pricing />
-            <FAQ />
-            <StayTuned />
-            <Contact />
-            <Waitlist />
+            <PlayspotsPartnerPage />
           </main>
           <Footer />
         </div>
@@ -41,3 +27,4 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
