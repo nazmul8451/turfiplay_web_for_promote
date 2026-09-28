@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Clock, CheckCircle2 } from 'lucide-react';
+import { X, Clock, CheckCircle2, Sparkles } from 'lucide-react';
 import appstoreImg from '../../assets/images/sports/appstore.png';
+import logoImg from '../../assets/images/sports/Layer_1.png';
 
 interface AppStoreModalProps {
   isOpen: boolean;
@@ -36,27 +37,38 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
             <X size={18} />
           </button>
 
-          {/* App Store Icon Badge */}
-          <div className="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center mx-auto mb-5 shadow-md border border-slate-700">
-            <img src={appstoreImg} alt="App Store" className="w-8 h-8 object-contain" />
+          {/* Brand Logo & App Store Badge */}
+          <div className="flex items-center justify-center gap-3.5 mb-5 mt-1">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 flex items-center justify-center p-2.5 shadow-sm">
+              <img src={logoImg} alt="TurfPlay Logo" className="w-full h-full object-contain drop-shadow-sm" />
+            </div>
+            <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center shadow-md border border-slate-700">
+              <img src={appstoreImg} alt="App Store" className="w-7 h-7 object-contain" />
+            </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 mb-4">
-            <Clock size={14} className="text-[#00A859] animate-pulse" />
-            <span className="text-xs font-bold text-[#00A859] uppercase tracking-wider">
-              পাবলিশিং প্রক্রিয়া চলছে
+          {/* Best Turf Booking Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 mb-3.5">
+            <Sparkles size={14} className="text-[#00A859]" />
+            <span className="text-[11px] sm:text-xs font-bold text-[#00A859] uppercase tracking-wider">
+              Bangladesh Best Turf Booking
             </span>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tight">
-            অ্যাপ স্টোর ভার্সন শীঘ্রই আসছে!
+          <h3 className="text-2xl font-black text-slate-900 mb-2.5 tracking-tight">
+            TurfPlay iOS অ্যাপ শীঘ্রই আসছে!
           </h3>
 
+          <div className="flex items-center justify-center gap-1.5 text-xs text-amber-600 font-semibold mb-4">
+            <Clock size={13} className="animate-pulse" />
+            <span>অ্যাপল রিভিউ ও পাবলিশিং প্রক্রিয়া চলমান</span>
+          </div>
+
           <p className="text-xs text-slate-600 font-medium leading-relaxed mb-6">
-            অ্যাপল অ্যাপ স্টোর রিভিউ এবং পাবলিশিং কাজ চলছে। অতি শীঘ্রই <strong className="text-slate-900">আইওএস (iOS)-এর জন্য TurfPlay</strong> পাওয়া যাবে!
+            খুব শীঘ্রই অ্যাপল অ্যাপ স্টোরে <strong className="text-slate-900">আইওএস (iOS)-এর জন্য TurfPlay</strong> লাইভ হবে। ততক্ষণ পর্যন্ত অ্যান্ড্রয়েড ও সরাসরি ওয়েব প্ল্যাটফর্ম ব্যবহার করতে পারেন।
           </p>
 
-          <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200 mb-6 text-left space-y-2 text-xs font-medium text-slate-700">
+          <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200 mb-6 text-left space-y-2.5 text-xs font-medium text-slate-700">
             <div className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-[#00A859] flex-shrink-0" />
               <span>অ্যান্ড্রয়েড অ্যাপ গুগল প্লে স্টোরে পাওয়া যাচ্ছে</span>
