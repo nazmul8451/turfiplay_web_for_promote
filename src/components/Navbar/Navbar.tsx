@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Smartphone, Building2, HelpCircle, Home, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import logoImg from '../../assets/images/sports/Layer_1.png';
 
 export const Navbar = () => {
@@ -9,12 +9,12 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'হোম', href: 'home', icon: Home, badge: null },
-    { name: 'কেন TurfPlay', href: 'why-join', icon: Sparkles, badge: null },
-    { name: 'সমাধান', href: 'problem-solution', icon: CheckCircle2, badge: null },
-    { name: 'ফিচারসমূহ', href: 'features', icon: Sparkles, badge: null },
-    { name: 'মোবাইল অ্যাপ', href: 'mobile-dashboard', icon: Smartphone, badge: null },
-    { name: 'যোগাযোগ', href: 'contact', icon: HelpCircle, badge: null },
+    { name: 'হোম', href: 'home' },
+    { name: 'কেন TurfPlay', href: 'why-join' },
+    { name: 'সমাধান', href: 'problem-solution' },
+    { name: 'ফিচারসমূহ', href: 'features' },
+    { name: 'মোবাইল অ্যাপ', href: 'mobile-dashboard' },
+    { name: 'যোগাযোগ', href: 'contact' },
   ];
 
   useEffect(() => {
@@ -79,36 +79,24 @@ export const Navbar = () => {
           </span>
         </div>
 
-        {/* Desktop Links (Stable, Calm, No Jittering & No Wrapping) */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
+        {/* Desktop Links (Clean, No Icon Clutter) */}
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2 shrink-0">
           {navItems.map((item) => {
             const isActive = activeSection === item.href;
-            const IconComponent = item.icon;
 
             return (
               <a
                 key={item.href}
                 href={`#${item.href}`}
-                className={`relative px-3 xl:px-4 py-1.5 xl:py-2 text-[11px] xl:text-[12px] font-extrabold tracking-wider rounded-full transition-all duration-200 uppercase select-none flex items-center gap-1.5 xl:gap-2 whitespace-nowrap shrink-0 ${
+                className={`relative px-3.5 xl:px-4 py-1.5 xl:py-2 text-[12px] xl:text-[13px] font-bold tracking-normal rounded-full transition-all duration-200 select-none whitespace-nowrap shrink-0 ${
                   isActive
-                    ? 'text-[#00A859] bg-[#00A859]/10 border border-[#00A859]/30 shadow-xs'
-                    : 'text-slate-700 hover:text-[#00A859] hover:bg-slate-100/60 border border-transparent'
+                    ? 'text-[#00A859] bg-[#00A859]/10 font-black shadow-xs'
+                    : 'text-slate-700 hover:text-[#00A859] hover:bg-slate-100/60'
                 }`}
               >
-                <IconComponent 
-                  size={14} 
-                  className={isActive ? "text-[#00A859] shrink-0" : "text-slate-400 group-hover:text-[#00A859] shrink-0"} 
-                />
-
-                <span className={`whitespace-nowrap ${isActive ? "text-[#00A859] font-black" : ""}`}>
+                <span className="whitespace-nowrap">
                   {item.name}
                 </span>
-
-                {item.badge && (
-                  <span className="text-[9px] px-1.5 py-0.5 rounded-full font-black uppercase tracking-tighter bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
-                    {item.badge}
-                  </span>
-                )}
               </a>
             );
           })}
@@ -118,11 +106,10 @@ export const Navbar = () => {
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
             href="#register"
-            className="group relative overflow-hidden px-4.5 xl:px-5 py-2 bg-[#00A859] hover:bg-[#008f4c] text-white font-black rounded-full transition-all duration-200 shadow-md shadow-[#00A859]/25 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.02] active:scale-[0.98] text-xs flex items-center gap-1.5 uppercase tracking-wider whitespace-nowrap shrink-0"
+            className="group relative overflow-hidden px-5 py-2.5 bg-[#00A859] hover:bg-[#008f4c] text-white font-bold rounded-full transition-all duration-200 shadow-md shadow-[#00A859]/25 hover:shadow-lg hover:shadow-[#00A859]/35 hover:scale-[1.02] active:scale-[0.98] text-xs sm:text-[13px] flex items-center gap-1.5 whitespace-nowrap shrink-0"
           >
-            <Sparkles size={13} className="animate-pulse shrink-0" />
             <span className="whitespace-nowrap">টার্ফ রেজিস্টার করুন</span>
-            <ArrowRight size={13} className="transform group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
+            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
           </a>
         </div>
 
@@ -171,7 +158,6 @@ export const Navbar = () => {
           >
             <div className="px-6 py-5 space-y-3">
               {navItems.map((item) => {
-                const IconComp = item.icon;
                 const isActive = activeSection === item.href;
 
                 return (
@@ -179,23 +165,11 @@ export const Navbar = () => {
                     key={item.href}
                     href={`#${item.href}`}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between py-2 text-sm font-extrabold uppercase tracking-wider transition-colors ${
-                      isActive ? 'text-[#00A859]' : 'text-slate-700 hover:text-[#00A859]'
+                    className={`block py-2.5 text-sm font-bold tracking-wide transition-colors ${
+                      isActive ? 'text-[#00A859] font-black' : 'text-slate-700 hover:text-[#00A859]'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <IconComp size={16} className={isActive ? "text-[#00A859]" : "text-slate-400"} />
-                      <span>{item.name}</span>
-                    </div>
-                    {item.badge && (
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-tighter ${
-                        item.badge === 'Player' 
-                          ? 'bg-blue-100 text-blue-700 border border-blue-200' 
-                          : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                      }`}>
-                        {item.badge}
-                      </span>
-                    )}
+                    <span>{item.name}</span>
                   </a>
                 );
               })}
