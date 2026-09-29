@@ -582,7 +582,7 @@ export const HowItWorks = () => {
                   বাস্তব তুলনা
                 </span>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
-                  সনাতন খাতা-কলম পদ্ধতি <span className="text-slate-400 font-normal">বনাম</span> <span className="text-[#00A859] font-serif italic">TurfPlay স্মার্ট সিস্টেম</span>
+                  সনাতন খাতা-কলম পদ্ধতি <span className="text-slate-400 font-normal">VS</span> <span className="text-[#00A859] font-serif italic">TurfPlay স্মার্ট সিস্টেম</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
                   কেন আধুনিক টার্ফ মালিকরা খাতা ছেড়ে TurfPlay অ্যাপে সুইচ করছেন

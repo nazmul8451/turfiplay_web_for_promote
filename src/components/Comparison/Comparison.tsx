@@ -20,7 +20,7 @@ export const Comparison = () => {
           className="text-center mb-10 sm:mb-16"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase">
-            এক্সেল বনাম <span className="font-serif italic text-[#00A859] lowercase font-normal">TurfPlay</span>
+            এক্সেল VS <span className="font-serif italic text-[#00A859] lowercase font-normal">TurfPlay</span>
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[11px] sm:text-xs max-w-xl mx-auto mb-2">
             ডিজিটাল টার্ফ ম্যানেজমেন্টের নতুন যুগ এখন হাতের মুঠোয়।

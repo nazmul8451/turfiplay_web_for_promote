@@ -586,7 +586,7 @@ export const PartnershipForm = () => {
               THE PROBLEM VS OUR SOLUTION
             </span>
             <h3 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              ম্যানুয়াল খাতার যন্ত্রণা বনাম TurfPlay-এর স্মার্ট সমাধান
+              ম্যানুয়াল খাতার যন্ত্রণা VS TurfPlay-এর স্মার্ট সমাধান
             </h3>
           </div>
 

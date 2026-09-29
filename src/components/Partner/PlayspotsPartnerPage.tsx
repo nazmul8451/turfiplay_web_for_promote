@@ -393,7 +393,7 @@ export const PlayspotsPartnerPage = () => {
                   </a>
 
                   <a
-                    href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20business%20growth%20niye%20kotha%20bolte%20chai"
+                    href="https://wa.me/8801611920991?text=Hello%20TurfPlay%2C%20ami%20turf%20business%20growth%20niye%20kotha%20bolte%20chai"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-xs uppercase tracking-wider rounded-full transition-all"
@@ -505,10 +505,10 @@ export const PlayspotsPartnerPage = () => {
               </span>
             </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              সাধারণ সমস্যা <span className="text-slate-400 font-normal">বনাম</span> <span className="text-[#00A859]">আমাদের স্মার্ট সমাধান</span>
+              সাধারণ সমস্যা <span className="text-slate-400 font-normal">VS</span> <span className="text-[#00A859]">আমাদের স্মার্ট সমাধান</span>
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm font-medium mt-2">
-              পুরোনো পদ্ধতিতে টার্ফ চালানোর ভোগান্তি বনাম আমাদের স্মার্ট TurfPlay
+              পুরোনো পদ্ধতিতে টার্ফ চালানোর ভোগান্তি VS আমাদের স্মার্ট TurfPlay
             </p>
           </div>
 
@@ -609,7 +609,7 @@ export const PlayspotsPartnerPage = () => {
               className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white border-2 border-slate-200/90 items-center justify-center font-black text-sm z-20 select-none group"
             >
               <span className="font-extrabold tracking-wider bg-gradient-to-r from-red-600 via-slate-800 to-[#00A859] bg-clip-text text-transparent">
-                বনাম
+                VS
               </span>
             </motion.div>
 
@@ -621,7 +621,7 @@ export const PlayspotsPartnerPage = () => {
                 className="w-12 h-12 rounded-full bg-white shadow-lg border border-slate-200 flex items-center justify-center font-black text-xs"
               >
                 <span className="bg-gradient-to-r from-red-600 via-slate-800 to-[#00A859] bg-clip-text text-transparent">
-                  বনাম
+                  VS
                 </span>
               </motion.div>
             </div>
@@ -1181,7 +1181,7 @@ export const PlayspotsPartnerPage = () => {
               {/* Direct WhatsApp Reach */}
               <div className="pt-3">
                 <a
-                  href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20register%20korte%20chai"
+                  href="https://wa.me/8801611920991?text=Hello%20TurfPlay%2C%20ami%20turf%20register%20korte%20chai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-[#00A859] hover:underline tracking-wide"
@@ -1435,7 +1435,7 @@ export const PlayspotsPartnerPage = () => {
 
                     <div className="flex flex-wrap items-center justify-center gap-3">
                       <a
-                        href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20form%20submit%20korechi"
+                        href="https://wa.me/8801611920991?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20form%20submit%20korechi"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white font-black text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all"
@@ -1529,10 +1529,10 @@ export const PlayspotsPartnerPage = () => {
                     হটলাইন ও হোয়াটসঅ্যাপ
                   </div>
                   <a 
-                    href="tel:+8801892979324" 
+                    href="tel:+8801611920991" 
                     className="text-2xl sm:text-3xl font-black text-white hover:text-[#00FF88] transition-colors block font-mono tracking-tight my-2"
                   >
-                    +880 1892-979324
+                    +880 1611-920991
                   </a>
                   <p className="text-xs sm:text-sm text-slate-400 font-medium mb-6 leading-relaxed">
                     টার্ফ ওনার অনবোর্ডিং বা মাঠ সংক্রান্ত যেকোনো জরুরি প্রয়োজনে সরাসরি ফোন দিন।
@@ -1541,7 +1541,7 @@ export const PlayspotsPartnerPage = () => {
 
                 <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-800">
                   <a
-                    href="tel:+8801892979324"
+                    href="tel:+8801611920991"
                     className="py-3 px-4 bg-slate-800 hover:bg-slate-700/90 text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Phone size={14} className="text-[#00FF88]" />
@@ -1549,7 +1549,7 @@ export const PlayspotsPartnerPage = () => {
                   </a>
 
                   <a
-                    href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20shomporke%20kotha%20bolte%20chai"
+                    href="https://wa.me/8801611920991?text=Hello%20TurfPlay%2C%20ami%20turf%20registration%20shomporke%20kotha%20bolte%20chai"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-4 bg-[#25D366] hover:bg-[#1faa4f] text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
@@ -1576,10 +1576,10 @@ export const PlayspotsPartnerPage = () => {
                     অফিশিয়াল বিজনেস ইমেইল
                   </div>
                   <a 
-                    href="mailto:rimon124567@gmail.com" 
+                    href="mailto:turfplayofficial@gmail.com" 
                     className="text-xl sm:text-2xl font-black text-white hover:text-cyan-300 transition-colors block font-mono tracking-tight my-2.5 break-all"
                   >
-                    rimon124567@gmail.com
+                    turfplayofficial@gmail.com
                   </a>
                   <p className="text-xs sm:text-sm text-slate-400 font-medium mb-6 leading-relaxed">
                     পার্টনারশিপ প্রস্তাব, ফিচার অনুরোধ বা ব্যবসায়িক আলোচনার জন্য ইমেইল পাঠাতে পারেন।
@@ -1588,7 +1588,7 @@ export const PlayspotsPartnerPage = () => {
 
                 <div className="pt-3 border-t border-slate-800">
                   <a
-                    href="mailto:rimon124567@gmail.com"
+                    href="mailto:turfplayofficial@gmail.com"
                     className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700/90 text-white font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Mail size={15} className="text-cyan-400" />
