@@ -99,7 +99,7 @@ export const Footer = () => {
 
               {/* Description Text */}
               <p className="text-xs sm:text-[13px] leading-relaxed text-slate-300/85 max-w-[390px] font-normal mb-6">
-                TurfPlay is a sports software company dedicated to building reliable, scalable, and human-centered digital solutions engineered for the future.
+                TurfPlay is a sports management platform in Bangladesh designed to help turf owners organize daily bookings, manage slots, and grow their sports venue.
               </p>
 
               {/* Company Deck Download Card */}

@@ -14,29 +14,30 @@ import {
   Building2,
   Check,
   MessageCircle,
-  PhoneCall
+  PhoneCall,
+  Smartphone
 } from 'lucide-react';
 
 export const partnerSteps = [
   {
-    step: "01",
-    title: "অ্যাপ ডাউনলোড ও সাইন-আপ",
-    description: "TurfPlay অ্যাপটি ডাউনলোড করে আপনার জিমেইল (Gmail) দিয়ে সহজেই অ্যাকাউন্ট খুলে নিন।"
+    step: "০১",
+    title: "অ্যাপ নামিয়ে লগইন করুন",
+    description: "প্লে স্টোর থেকে TurfPlay অ্যাপটি ডাউনলোড করে আপনার গুগল (Gmail) দিয়ে সহজেই সাইন-ইন করে নিন।"
   },
   {
-    step: "02",
-    title: "প্রোফাইল থেকে সিলেক্ট করুন",
-    description: "অ্যাপের Profile অপশনে যান এবং 'Register Your Turf'-এ ট্যাপ করুন।"
+    step: "০২",
+    title: "রেজিস্ট্রেশন শুরু করুন",
+    description: "অ্যাপের প্রোফাইল অপশনে গিয়ে 'Register Your Turf'-এ ট্যাপ করে ওনার আবেদন ফরমটি খুলুন।"
   },
   {
-    step: "03",
-    title: "টার্ফের তথ্য সাবমিট করুন",
-    description: "আপনার মাঠের সাধারণ কিছু তথ্য ও ছবি দিয়ে রিকোয়েস্ট Apply করুন।"
+    step: "০৩",
+    title: "মাঠের তথ্য ও ছবি দিন",
+    description: "টার্ফের নাম, ঠিকানা, স্লটের রেট এবং মাঠের কিছু স্পষ্ট ছবি আপলোড করে সাবমিট করুন।"
   },
   {
-    step: "04",
-    title: "12 ঘণ্টায় ওনার অ্যাক্সেস",
-    description: "12 ঘণ্টার মধ্যে আমাদের ভেরিফিকেশন শেষ হলে একই অ্যাপে টার্ফ ওনার রোল চালু হয়ে যাবে!"
+    step: "০৪",
+    title: "১২ ঘণ্টায় ওনার অ্যাক্টিভেশন",
+    description: "আমাদের টিম তথ্য যাচাই করলেই একই অ্যাপে সরাসরি টার্ফ ওনার ড্যাশবোর্ড চালু হয়ে যাবে।"
   }
 ];
 
@@ -58,55 +59,55 @@ export const PartnerJourney = () => {
   const milestones: MilestoneItem[] = [
     {
       id: 'step-1',
-      stepNumber: '01',
-      title: 'অ্যাপ ডাউনলোড ও সাইন-আপ',
-      desc: 'TurfPlay অ্যাপটি ডাউনলোড করে আপনার জিমেইল (Gmail) দিয়ে সহজেই অ্যাকাউন্ট খুলে নিন।',
+      stepNumber: '০১',
+      title: 'অ্যাপ নামিয়ে লগইন করুন',
+      desc: 'প্লে স্টোর থেকে TurfPlay অ্যাপ ডাউনলোড করে জিমেইল দিয়ে এক ক্লিকে সাইন-ইন করে নিন।',
       points: [
-        'গুগল প্লে স্টোর থেকে TurfPlay অ্যাপটি নামিয়ে নিন।',
-        'আপনার Gmail দিয়ে 1 ক্লিকেই সাইন-আপ সম্পন্ন করুন।'
+        'গুগল প্লে স্টোর থেকে TurfPlay অ্যাপটি নামান',
+        'জিমেইল অ্যাকাউন্ট দিয়ে সরাসরি লগইন করুন'
       ],
-      icon: UserPlus,
-      tag: 'ধাপ 01',
-      hint: 'Google Account দিয়ে 1 ক্লিকে সাইন-আপ'
+      icon: Smartphone,
+      tag: 'ধাপ ০১',
+      hint: 'সহজ গুগল সাইন-ইন'
     },
     {
       id: 'step-2',
-      stepNumber: '02',
-      title: 'প্রোফাইল থেকে সিলেক্ট করুন',
-      desc: "অ্যাপের Profile অপশনে যান এবং 'Register Your Turf'-এ ট্যাপ করুন।",
+      stepNumber: '০২',
+      title: 'রেজিস্ট্রেশন শুরু করুন',
+      desc: "অ্যাপের প্রোফাইল সেকশন থেকে 'Register Your Turf' অপশনে ট্যাপ করুন।",
       points: [
-        'অ্যাপের নিচে থাকা Profile সেকশনে যান।',
-        "মেনু থেকে 'Register Your Turf' অপশনে ট্যাপ করুন।"
+        'প্রোফাইল মেনুতে প্রবেশ করুন',
+        "'Register Your Turf' অপশনটি বেছে নিন"
       ],
-      icon: UserCheck,
-      tag: 'ধাপ 02',
-      hint: 'Profile ➜ Register Your Turf'
+      icon: Building2,
+      tag: 'ধাপ ০২',
+      hint: 'প্রোফাইল ➜ Register Your Turf'
     },
     {
       id: 'step-3',
-      stepNumber: '03',
-      title: 'টার্ফের তথ্য সাবমিট করুন',
-      desc: 'আপনার মাঠের সাধারণ কিছু তথ্য ও ছবি দিয়ে রিকোয়েস্ট Apply করুন।',
+      stepNumber: '০৩',
+      title: 'মাঠের তথ্য ও ছবি দিন',
+      desc: 'টার্ফের নাম, লোকেশন, স্লটের রেট এবং মাঠের কিছু সুন্দর ছবি আপলোড করে সাবমিট করুন।',
       points: [
-        'মাঠের নাম, লোকেশন, ছবি ও স্লট বিবরণ দিন।',
-        'তথ্যগুলো দিয়ে আবেদনটি Apply / Submit করে দিন।'
+        'মাঠের নাম, লোকেশন ও স্লটের ভাড়া উল্লেখ করুন',
+        'কয়েকটি ক্লিয়ার ছবি আপলোড করে সাবমিট করুন'
       ],
       icon: ClipboardCheck,
-      tag: 'ধাপ 03',
-      hint: 'ছবি, লোকেশন ও স্লট ভাড়া'
+      tag: 'ধাপ ০৩',
+      hint: 'লোকেশন, স্লট ও ছবি'
     },
     {
       id: 'step-4',
-      stepNumber: '04',
-      title: '12 ঘণ্টায় ওনার অ্যাক্সেস',
-      desc: '12 ঘণ্টার মধ্যে আমাদের ভেরিফিকেশন শেষ হলে একই অ্যাপে টার্ফ ওনার রোল চালু হয়ে যাবে!',
+      stepNumber: '০৪',
+      title: '১২ ঘণ্টায় ওনার অ্যাক্টিভেশন',
+      desc: 'আমাদের টিম তথ্য যাচাই সম্পন্ন করলেই একই অ্যাপে আপনার ওনার মোড চালু হয়ে যাবে।',
       points: [
-        '12 ঘণ্টার মধ্যে টিম দ্রুত ভেরিফিকেশন সম্পন্ন করবে।',
-        'একই অ্যাপে সরাসরি Turf Owner Role চালু!'
+        '১২ ঘণ্টার মধ্যে তথ্য যাচাই সম্পন্ন হবে',
+        'অ্যাপ থেকেই সরাসরি বুকিং ও স্লট ম্যানেজ শুরু করুন'
       ],
-      icon: Handshake,
-      tag: 'ধাপ 04',
-      hint: '12 ঘণ্টার মধ্যে ওনার মোড অ্যাক্টিভ'
+      icon: CheckCircle2,
+      tag: 'ধাপ ০৪',
+      hint: '১২ ঘণ্টায় ফুল ওনার অ্যাক্সেস'
     }
   ];
 
@@ -136,10 +137,10 @@ export const PartnerJourney = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#00A859]/25 text-[#00A859] font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.2em] mb-3 sm:mb-4 shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#00A859]/30 text-[#00A859] font-bold text-xs mb-3 sm:mb-4 shadow-xs"
           >
-            <Sparkles size={14} className="animate-pulse" />
-            <span>সহজ ৪ ধাপের অনবোর্ডিং</span>
+            <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+            <span>সহজ ৪ ধাপে পার্টনার অনবোর্ডিং</span>
           </motion.div>
 
           <motion.h2
@@ -147,9 +148,9 @@ export const PartnerJourney = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-3 leading-snug"
+            className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-normal mb-3 leading-snug"
           >
-            সহজ ৪ ধাপে আপনার টার্ফ যুক্ত করুন
+            মাত্র ৪টি ধাপে টার্ফ পার্টনার হয়ে উঠুন
           </motion.h2>
 
           <motion.p
@@ -157,9 +158,9 @@ export const PartnerJourney = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-lg md:text-xl text-slate-700 font-bold tracking-wide"
+            className="text-sm sm:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed"
           >
-            কোনো জটিলতা নেই — আপনার হাতের TurfPlay অ্যাপ থেকেই খুব সহজে টার্ফ ওনার হয়ে যান।
+            অফিসে আসার বা দীর্ঘ সময় অপেক্ষার প্রয়োজন নেই—স্মার্টফোন থেকেই টার্ফ যুক্ত করুন এবং সরাসরি অনলাইন বুকিং নেওয়া শুরু করুন।
           </motion.p>
         </div>
 
@@ -289,7 +290,7 @@ export const PartnerJourney = () => {
             {/* Top Accent Strip */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-[#00A859] to-teal-400" />
 
-            {/* Top Icon Wrapper (Modern squircle, no circles) */}
+            {/* Top Icon Wrapper */}
             <motion.div 
               initial={{ scale: 0.9 }}
               whileInView={{ scale: 1 }}
@@ -297,74 +298,74 @@ export const PartnerJourney = () => {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#00A859]/12 border border-[#00A859]/25 text-[#00A859] shadow-md shadow-[#00A859]/15 mb-4 sm:mb-5 relative group"
             >
-              <PartyPopper size={28} className="relative z-10 text-[#00A859] transform group-hover:rotate-12 transition-transform duration-300 sm:w-[32px] sm:h-[32px]" />
+              <Building2 size={28} className="relative z-10 text-[#00A859] sm:w-[32px] sm:h-[32px]" />
             </motion.div>
 
-            {/* Success Heading */}
-            <h3 className="text-xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight uppercase mb-2">
-              🎉 সরাসরি সেলফ-রেজিস্ট্রেশন সিস্টেম
+            {/* Heading */}
+            <h3 className="text-xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-normal mb-2">
+              অ্যাপ থেকেই সরাসরি টার্ফ লিস্ট করুন
             </h3>
 
             {/* Primary Review Text */}
-            <p className="text-sm sm:text-lg font-bold text-[#00A859] tracking-wide mb-2 sm:mb-3">
-              টার্ফ লিস্ট করতে TurfPlay-এর সাথে কথা বলতে হবে এমন কিছু না!
+            <p className="text-sm sm:text-base font-bold text-[#00A859] mb-2 sm:mb-3">
+              কোনো জটিল ফর্মালিটি নেই—তথ্য সাবমিট করলেই দ্রুত লাইভ
             </p>
 
             {/* Secondary Explanation Text */}
             <p className="text-xs sm:text-sm md:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
-              কোনো কল বা অনুমোদনের অপেক্ষা নেই — তথ্য সাবমিট করামাত্রই আপনার টার্ফ বুকিংয়ের জন্য সম্পূর্ণ প্রস্তুত। তবে যেকোনো প্রশ্ন বা পরামর্শের জন্য সরাসরি TurfPlay টিমের সাথে কথা বলতে পারেন।
+              টার্ফ ওনারদের সুবিধার কথা মাথায় রেখে পুরো অনবোর্ডিং রাখা হয়েছে একদম সহজ। তথ্য সাবমিট করলেই আমাদের টিম যাচাই করে আপনার ওনার অ্যাকাউন্ট সক্রিয় করে দেবে।
             </p>
 
-            {/* Feature Highlights Glass Pills */}
+            {/* Feature Highlights Pills */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6 sm:mb-8">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>সরাসরি সেলফ-লিস্টিং</span>
+                <span>সহজ সেলফ-লিস্টিং</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>৫ সেকেন্ডে অফলাইন স্লট লক</span>
+                <span>তাত্ক্ষণিক অফলাইন স্লট লক</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-[11px] sm:text-xs font-bold text-slate-700 shadow-xs">
                 <CheckCircle2 size={13} className="text-[#00A859]" />
-                <span>মোবাইলেই ওনার কন্ট্রোল</span>
+                <span>ফোনেই রিয়েল-টাইম কন্ট্রোল</span>
               </div>
             </div>
 
             {/* Action Buttons: Self-Register + Talk with TurfPlay (WhatsApp & Call) */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <a
-                href="#waitlist"
-                className="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 bg-[#00A859] hover:bg-[#008f4c] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-[#00A859]/25 hover:shadow-xl hover:shadow-[#00A859]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                href="#register"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 bg-[#00A859] hover:bg-[#008f4c] text-white font-extrabold text-xs sm:text-sm rounded-full shadow-lg shadow-[#00A859]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
-                <span>অ্যাপে টার্ফ রেজিস্টার করুন →</span>
+                <span>টার্ফ রেজিস্ট্রেশন ফরম →</span>
               </a>
 
               {/* Direct WhatsApp talk CTA */}
               <a
-                href="https://wa.me/8801892979324?text=Hello%20TurfPlay%2C%20ami%20TurfPlay%20shomporke%20kotha%20bolte%20chai"
+                href="https://wa.me/8801611920991?text=Hello%20TurfPlay%2C%20ami%20TurfPlay%20shomporke%20kotha%20bolte%20chai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#1faa4f] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#25D366]/25 hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#1faa4f] text-white font-extrabold text-xs transition-all duration-200 shadow-md shadow-[#25D366]/25 hover:scale-105 active:scale-95"
               >
                 <MessageCircle size={16} />
-                <span>TurfPlay-এর সাথে কথা বলুন (WhatsApp)</span>
+                <span>হোয়াটসঅ্যাপে কথা বলুন</span>
               </a>
 
               {/* Direct Phone Call */}
               <a
-                href="tel:+8801892979324"
-                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-white/90 backdrop-blur-md border-2 border-slate-200 hover:border-[#00A859] text-slate-900 hover:text-[#00A859] font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-xs hover:scale-105 active:scale-95"
+                href="tel:+8801611920991"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full bg-white/90 border border-slate-200 hover:border-[#00A859] text-slate-900 hover:text-[#00A859] font-extrabold text-xs transition-all duration-200 shadow-xs hover:scale-105 active:scale-95"
               >
                 <PhoneCall size={14} className="text-[#00A859]" />
-                <span>কল: 01892-979324</span>
+                <span>কল: 01611-920991</span>
               </a>
             </div>
 
             {/* Trust Footer Note */}
             <div className="mt-6 sm:mt-7 pt-4 sm:pt-5 border-t border-slate-200/70 flex items-center justify-center gap-2 text-[11px] sm:text-xs text-slate-500 font-medium">
               <ShieldCheck size={14} className="text-[#00A859] shrink-0" />
-              <span>যাচাইকৃত স্পোর্টস টার্ফ ইনফ্রাস্ট্রাকচার • ১০০% নিরাপদ ও নির্ভরযোগ্য</span>
+              <span>বাংলাদেশের নির্ভরযোগ্য ডিজিটাল টার্ফ ম্যানেজমেন্ট নেটওয়ার্ক</span>
             </div>
           </div>
         </motion.div>

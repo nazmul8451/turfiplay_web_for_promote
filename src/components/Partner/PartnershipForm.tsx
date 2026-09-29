@@ -192,7 +192,12 @@ export const PartnershipForm = () => {
             className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-4 uppercase leading-tight"
           >
             আপনার স্পোর্টস টার্ফ <br className="hidden sm:inline" />
-            <span className="text-[#00A859]">TurfPlay নেটওয়ার্কে যুক্ত করুন</span>
+            <span className="inline-flex items-baseline flex-wrap gap-x-2">
+              <span className="font-serif tracking-tight text-slate-900">
+                Turf<span className="italic text-[#00A859]">Play</span>
+              </span>
+              <span className="text-[#00A859]">নেটওয়ার্কে যুক্ত করুন</span>
+            </span>
           </motion.h2>
 
           <motion.p

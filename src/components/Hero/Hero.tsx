@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Download, Calendar, ShieldCheck, Bell, BarChart3, Users, Trophy } from 'lucide-react';
+import { ArrowRight, Download, Calendar, ShieldCheck, Bell, BarChart3, Users, Trophy, Building2 } from 'lucide-react';
 import mockupHomeImg from '../../assets/images/iphone17_home.webp';
 import mockupDetailImg from '../../assets/images/iphone17_detail.webp';
 import mockupMapImg from '../../assets/images/iphone17_map.webp';
@@ -88,11 +88,11 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#00A859]/10 border border-[#00A859]/20 rounded-full mb-4 sm:mb-6 shadow-sm"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-4 sm:mb-6 shadow-sm"
             >
-              <span className="text-xs sm:text-sm">⚡</span>
-              <span className="text-[11px] sm:text-xs font-black text-[#00A859] tracking-wide">
-                এক প্ল্যাটফর্মে—বুকিং • খেলা • কমিউনিটি • টার্ফ ম্যানেজমেন্ট
+              <span className="w-2 h-2 rounded-full bg-[#00A859] shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-[#00A859]">
+                টার্ফ বুকিং • ডিজিটাল ম্যানেজমেন্ট • স্পোর্টস নেটওয়ার্ক
               </span>
             </motion.div>
 
@@ -102,12 +102,12 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="tracking-tight leading-[1.08] sm:leading-[1.05] mb-4 sm:mb-6">
+              <h1 className="tracking-tight leading-[1.12] sm:leading-[1.08] mb-4 sm:mb-6">
                 <span className="block text-[clamp(1.85rem,5vw,4.2rem)] font-black text-slate-900">
-                  খেলা হোক আরও স্মার্ট,
+                  টার্ফ বুকিং আর পরিচালনা,
                 </span>
-                <span className="block text-[clamp(2.05rem,5.4vw,4.6rem)] font-serif italic text-[#00A859] font-normal mt-1">
-                  টার্ফ হোক আরও সহজ!
+                <span className="block text-[clamp(2.05rem,5.4vw,4.6rem)] font-black text-[#00A859] mt-1">
+                  এখন আরও সহজ ও স্মার্ট!
                 </span>
               </h1>
             </motion.div>
@@ -119,7 +119,11 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mb-6 sm:mb-8"
             >
-              TurfPlay-এর সাথে খুঁজে নিন আপনার পছন্দের টার্ফ, বুক করুন আপনার স্লট, ম্যানেজ করুন আপনার টার্ফ এবং কানেক্ট করুন আপনার স্পোর্টস কমিউনিটির সাথে।
+              খেলোয়াড়দের জন্য যেকোনো সময় পছন্দের টার্ফে স্লট বুকিং, আর মাঠ মালিকদের জন্য খাতার ঝামেলাহীন স্মার্ট ডিজিটাল ম্যানেজমেন্ট—সবকিছুই এখন{' '}
+              <span className="font-serif tracking-tight text-slate-900 font-bold">
+                Turf<span className="italic text-[#00A859]">Play</span>
+              </span>
+              -তে।
             </motion.p>
 
             {/* Dual Player & Owner Quick Focus Bar */}
@@ -133,16 +137,16 @@ export const Hero = () => {
                 href="#how-it-works"
                 className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200/80 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-blue-500/30">
-                  ⚽
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm shadow-blue-500/30">
+                  <Users size={18} />
                 </div>
                 <div>
                   <div className="text-xs font-black text-blue-950 flex items-center gap-1.5">
-                    <span>খেলোয়াড়দের অ্যাপ</span>
+                    <span>প্লেয়ারদের জন্য</span>
                     <ArrowRight size={12} className="text-blue-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                   <div className="text-[11px] text-blue-700 font-medium leading-snug">
-                    লাইভ ম্যাপে টার্ফ বুকিং ও ইনস্ট্যান্ট লক
+                    লাইভ স্লট চেক ও সরাসরি বুকিং
                   </div>
                 </div>
               </a>
@@ -151,16 +155,16 @@ export const Hero = () => {
                 href="#register"
                 className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 hover:border-emerald-400 hover:bg-emerald-50 transition-all duration-300 flex items-center gap-3 group shadow-sm hover:shadow-md"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#00A859] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-sm shadow-[#00A859]/30">
-                  🏟️
+                <div className="w-10 h-10 rounded-xl bg-[#00A859] text-white flex items-center justify-center shrink-0 shadow-sm shadow-[#00A859]/30">
+                  <Building2 size={18} />
                 </div>
                 <div>
                   <div className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
-                    <span>টার্ফ ওনার রোল (একই অ্যাপে)</span>
+                    <span>টার্ফ ওনারদের জন্য</span>
                     <ArrowRight size={12} className="text-emerald-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                   <div className="text-[11px] text-emerald-700 font-medium leading-snug">
-                    টার্ফ রেজিস্টার ও ভেরিফায়েড ওনার এক্সেস
+                    টার্ফ লিস্টিং ও ওনার ড্যাশবোর্ড
                   </div>
                 </div>
               </a>

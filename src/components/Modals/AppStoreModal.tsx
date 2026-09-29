@@ -47,11 +47,11 @@ export const AppStoreModal: React.FC<AppStoreModalProps> = ({ isOpen, onClose })
             </div>
           </div>
 
-          {/* Best Turf Booking Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/20 mb-3.5">
-            <Sparkles size={14} className="text-[#00A859]" />
-            <span className="text-[11px] sm:text-xs font-bold text-[#00A859] uppercase tracking-wider">
-              Bangladesh Best Turf Booking
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/25 mb-3.5">
+            <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+            <span className="text-[11px] sm:text-xs font-bold text-[#00A859]">
+              iOS অ্যাপ কামিং সুন
             </span>
           </div>
 

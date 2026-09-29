@@ -101,50 +101,50 @@ export const PlayspotsPartnerPage = () => {
   // SECTION 2: WHY JOIN TURFPLAY? (4 Pillars with Mockup Image Design matching Playspots)
   const whyJoinCards = [
     {
-      title: 'অনলাইন উপস্থিতি ও দৃশ্যমানতা',
-      titleBn: 'অনলাইন উপস্থিতি ও দৃশ্যমানতা',
+      title: 'টার্ফের প্রচার ও নতুন খেলোয়াড়',
+      titleBn: 'টার্ফের প্রচার ও নতুন খেলোয়াড়',
       desc: "Increase your venue's visibility and reach thousands of active players searching for sports facilities. Build trust and attract more bookings through the TurfPlay platform.",
-      descBn: 'হাজার হাজার সক্রিয় খেলোয়াড়দের সার্চে আপনার টার্ফ শীর্ষে রাখুন। বিশ্বাসযোগ্যতা বাড়িয়ে প্রতিদিন নতুন নতুন দল ও কাস্টমারদের আকর্ষণ করুন।',
+      descBn: 'হাজারো সক্রিয় খেলোয়াড়দের কাছে আপনার মাঠের পরিচিতি বাড়বে। নিয়মিত নতুন নতুন দল ও কাস্টমার সরাসরি আপনার টার্ফ বুক করবে।',
       image: whyPresenceImg
     },
     {
-      title: 'সহজ বুকিং ও স্লট ম্যানেজমেন্ট',
-      titleBn: 'সহজ বুকিং ও স্লট ম্যানেজমেন্ট',
+      title: 'সহজ স্লট ও বুকিং ম্যানেজমেন্ট',
+      titleBn: 'সহজ স্লট ও বুকিং ম্যানেজমেন্ট',
       desc: 'Manage bookings, schedules, and slot availability effortlessly from a single dashboard. Reduce manual work and keep your venue running smoothly every day.',
-      descBn: 'একটি সেন্ট্রাল স্মার্ট ড্যাশবোর্ড থেকে স্লট, শিডিউল ও বুকিং নিয়ন্ত্রণ করুন। বারবার ফোন রিসিভের ঝামেলা কমিয়ে টার্ফের কাজ শতভাগ সুসংগঠিত রাখুন।',
+      descBn: 'একটি স্মার্ট অ্যাপ ড্যাশবোর্ড থেকেই সব স্লট আর শিডিউল কন্ট্রোল করুন। বারবার ফোন রিসিভের ঝামেলা ছাড়া মাঠের কাজ গুছিয়ে রাখুন।',
       image: whyBookingImg
     },
     {
-      title: 'রিয়েল-টাইম বিজনেস অ্যানালিটিক্স',
-      titleBn: 'রিয়েল-টাইম বিজনেস অ্যানালিটিক্স',
+      title: 'দৈনিক আয় ও বুকিংয়ের হিসাব',
+      titleBn: 'দৈনিক আয় ও বুকিংয়ের হিসাব',
       desc: 'Track bookings, revenue, customer trends, and venue performance with real-time insights. Make informed decisions to improve operations and grow your business.',
-      descBn: 'মোট বুকিং, দৈনিক রেভিনিউ, ক্যাশ ও অনলাইন পেমেন্ট এবং পিক-আওয়ার ট্রেন্ড পর্যবেক্ষণ করুন। সঠিক তথ্যের ভিত্তিতে ব্যবসায়িক সিদ্ধান্ত নিন।',
+      descBn: 'প্রতিদিনের মোট বুকিং, ক্যাশ ও অনলাইন কালেকশন এবং পিক-আওয়ার ট্রেন্ড দেখুন। নির্ভুল রিপোর্টের ভিত্তিতে আপনার ব্যবসা পরিচালনা করুন।',
       image: whyAnalyticsImg
     },
     {
-      title: 'মোবাইল থেকেই সবকিছু নিয়ন্ত্রণ',
-      titleBn: 'মোবাইল থেকেই সবকিছু নিয়ন্ত্রণ',
+      title: 'স্মার্টফোনেই পুরো টার্ফ কন্ট্রোল',
+      titleBn: 'স্মার্টফোনেই পুরো টার্ফ কন্ট্রোল',
       desc: 'Stay connected to your venue anytime, anywhere using the TurfPlay mobile app. Monitor bookings, manage customers, and receive instant updates from your smartphone.',
-      descBn: 'টার্ফে না থেকেও নিজের স্মার্টফোন থেকে TurfPlay ম্যানেজার অ্যাপ দিয়ে বুকিং দেখুন, নতুন স্লট লক করুন এবং ইনস্ট্যান্ট নোটিফিকেশন পান।',
+      descBn: 'মাঠে না থাকলেও নিজের ফোন থেকে TurfPlay অ্যাপ দিয়ে লাইভ স্লট দেখুন, অফলাইন বুকিং যোগ করুন এবং তাৎক্ষণিক নোটিফিকেশন পান।',
       image: whyManageImg
     }
   ];
 
   // SECTION 3: THE PROBLEM vs OUR SOLUTION (Bengali Translation matching Bangladesh context)
   const problemItems = [
-    'খালি স্লট এবং আশানুরূপ বুকিং না পাওয়া',
-    'ফোনে বারবার কল ও অফলাইন বুকিং ফলোআপের ঝামেলা',
-    'একই স্লটে ডাবল বুকিং ও কাস্টমারের অসন্তোষ',
-    'অনলাইনে টার্ফের কোনো শক্তিশালী উপস্থিতি না থাকা',
-    'খাতা-কলমে হিসাব রাখতে গিয়ে গরমিল ও আর্থিক ক্ষতি'
+    'অফ-পিক বা দিনের ফাঁকা সময়ে মাঠ খালি পড়ে থাকা',
+    'অনবরত ফোনে কথা বলে স্লটের হিসাব দেওয়ার ঝামেলা',
+    'ভুলবশত একই স্লটে ডাবল বুকিং ও কাস্টমারের অসন্তোষ',
+    'অনলাইনে টার্ফের খোঁজ না পেয়ে নতুন প্লেয়ার না আসা',
+    'খাতা-কলমে বাকি বা খরচের হিসাব রাখতে গিয়ে গরমিল'
   ];
 
   const solutionItems = [
-    'অনলাইন থেকে সরাসরি প্রচুর নতুন বুকিং নিশ্চিতকরণ',
-    'বুকিং কনফার্মেশনের জন্য স্বয়ংক্রিয় এসএমএস ও নোটিফিকেশন',
-    'রিয়েল-টাইম লাইভ স্লট ও তাৎক্ষণিক স্লট লকিং সুবিধা',
-    'সোশ্যাল মিডিয়া ও অ্যাপে শক্তিশালী ব্র্যান্ড পরিচিতি',
-    'স্মার্ট সেলস রিপোর্ট, দৈনিক আয়-ব্যয় ও পুঙ্খানুপুঙ্খ হিসাব'
+    'খেলোয়াড়দের সরাসরি অনলাইন বুকিং ও অগ্রিম পেমেন্ট',
+    'বুকিং হওয়ামাত্রই ফোনে তাৎক্ষণিক নোটিফিকেশন ও এসএমএস',
+    'লাইভ ক্যালেন্ডারে রিয়েল-টাইম স্লট লকিং—ডাবল বুকিং বন্ধ',
+    'TurfPlay অ্যাপে মাঠের আকর্ষণীয় প্রোফাইল ও পরিচিতি',
+    'প্রতিদিনের ক্যাশ ও অনলাইন আয়ের স্বয়ংক্রিয় ডিজিটাল রিপোর্ট'
   ];
 
   // SECTION 4: POWERFUL FEATURES (8 items with distinct highlights)
@@ -212,20 +212,20 @@ export const PlayspotsPartnerPage = () => {
     {
       step: '০১',
       tag: 'ধাপ ০১',
-      title: 'রেজিস্ট্রেশন ফরম পূরণ করুন',
-      desc: 'আপনার নাম, টার্ফের নাম ও যোগাযোগের সাধারণ তথ্য দিয়ে নিচের সহজ ফরমটি পূরণ করুন।'
+      title: 'টার্ফের তথ্য দিয়ে আবেদন করুন',
+      desc: 'আপনার নাম, মাঠের ঠিকানা ও যোগাযোগের মোবাইল নম্বর দিয়ে নিচের সহজ ফরমটি সাবমিট করুন।'
     },
     {
       step: '০২',
       tag: 'ধাপ ০২',
-      title: 'ম্যানেজার অ্যাপে লগইন করুন',
-      desc: 'আমাদের টিম থেকে আপনার ওনার অ্যাকাউন্টের অ্যাক্সেস বুঝে নিয়ে অ্যাপে লগইন করুন।'
+      title: 'টিমের যাচাই ও ওনার অ্যাক্সেস',
+      desc: 'আমাদের সাপোর্ট টিম দ্রুত তথ্য ভেরিফাই করে আপনার জন্য ওনার ড্যাশবোর্ড প্রস্তুত করে দেবে।'
     },
     {
       step: '০৩',
       tag: 'ধাপ ০৩',
-      title: 'অনলাইন বুকিং ও আয় বৃদ্ধি',
-      desc: 'সরাসরি অনলাইন থেকে বুকিং পেতে শুরু করুন এবং টার্ফের খালি স্লটগুলো কাজে লাগান।'
+      title: 'সরাসরি অনলাইন বুকিং শুরু',
+      desc: 'টার্ফ লাইভ হওয়ামাত্রই খেলোয়াড়রা সরাসরি আপনার মাঠ বুকিং করতে এবং অগ্রিম পে করতে পারবে।'
     }
   ];
 
@@ -300,18 +300,18 @@ export const PlayspotsPartnerPage = () => {
         <div className="container-fluid">
           
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/30 rounded-full mb-4 shadow-xs">
-              <Sparkles size={14} className="text-[#00A859]" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#00A859]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-4 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+              <span className="text-xs font-bold text-[#00A859]">
                 কেন TURFPLAY?
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-              বেশি বুকিং। সহজ পরিচালনা। <br />
-              <span className="text-[#00A859]">দ্বিগুণ আয়ের সুযোগ।</span>
+              টার্ফ পরিচালনা হোক সহজ, <br />
+              <span className="text-[#00A859]">বুকিং বাড়ুক নিশ্চিন্তে</span>
             </h2>
             <p className="text-slate-600 font-medium text-sm sm:text-base mt-3 max-w-xl mx-auto">
-              আমাদের প্ল্যাটফর্মের মাধ্যমে কীভাবে আপনার টার্ফ সহজে পরিচালনা করবেন এবং খালি স্লট দূর করে আয় বাড়াবেন:
+              কাগজের খাতার ডাবল বুকিং আর অনবরত ফোন রিসিভের ঝামেলা ভুলে যান। TurfPlay-এর মাধ্যমে আপনার মাঠকে নিয়ে আসুন স্মার্ট ব্যবস্থাপনায়।
             </p>
           </div>
 
@@ -373,9 +373,14 @@ export const PlayspotsPartnerPage = () => {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
                 আপনার টার্ফ ব্যবসা বাড়ান <br />
-                <span className="text-[#00A859]">TurfPlay-এর সাথে</span>
+                <span className="inline-flex items-baseline gap-1 sm:gap-1.5 mt-1">
+                  <span className="font-serif tracking-tight text-slate-900">
+                    Turf<span className="italic text-[#00A859]">Play</span>
+                  </span>
+                  <span className="text-[#00A859] font-sans font-black">-এর সাথে</span>
+                </span>
               </h2>
 
               <p className="text-slate-600 font-medium text-sm sm:text-base leading-relaxed max-w-lg">
@@ -508,7 +513,10 @@ export const PlayspotsPartnerPage = () => {
               সাধারণ সমস্যা <span className="text-slate-400 font-normal">VS</span> <span className="text-[#00A859]">আমাদের স্মার্ট সমাধান</span>
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm font-medium mt-2">
-              পুরোনো পদ্ধতিতে টার্ফ চালানোর ভোগান্তি VS আমাদের স্মার্ট TurfPlay
+              পুরোনো পদ্ধতিতে টার্ফ চালানোর ভোগান্তি VS আমাদের স্মার্ট{' '}
+              <span className="font-serif tracking-tight text-slate-900 font-bold">
+                Turf<span className="italic text-[#00A859]">Play</span>
+              </span>
             </p>
           </div>
 
@@ -638,18 +646,18 @@ export const PlayspotsPartnerPage = () => {
         <div className="container-fluid">
           
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/30 rounded-full mb-4 shadow-xs">
-              <Sparkles size={14} className="text-[#00A859]" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#00A859]">
-                শক্তিশালী ফিচারসমূহ
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-4 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+              <span className="text-xs font-bold text-[#00A859]">
+                প্রয়োজনীয় ফিচারসমূহ
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-              টার্ফ পরিচালনার জন্য <br />
-              <span className="text-[#00A859]">যা যা প্রয়োজন, তার সবকিছুই</span>
+              টার্ফ পরিচালনার প্রতিটি কাজ <br />
+              <span className="text-[#00A859]">এখন আরও সহজ</span>
             </h2>
             <p className="text-slate-600 font-medium text-sm sm:text-base mt-3 max-w-xl mx-auto">
-              স্লট বুকিং, অনলাইন পেমেন্ট এবং আয়-ব্যয়ের পুঙ্খানুপুঙ্খ ব্যবস্থাপনার প্রতিটি ফিচার আপনার হাতের মুঠোয়।
+              স্লট বুকিং, পেমেন্ট ট্র্যাকিং এবং দৈনিক আয়-ব্যয়ের হিসাব—সবকিছুই পাবেন একটি মাত্র অ্যাপে।
             </p>
           </div>
 
@@ -723,21 +731,18 @@ export const PlayspotsPartnerPage = () => {
               className="lg:col-span-6 space-y-6"
             >
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/30 rounded-full mb-3 shadow-xs">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-3 shadow-xs">
                   <Smartphone size={14} className="text-[#00A859]" />
-                  <span className="text-xs font-black uppercase tracking-wider text-[#00A859]">
-                    মোবাইল অ্যাপ ও লাইভ ড্যাশবোর্ড
+                  <span className="text-xs font-bold text-[#00A859]">
+                    মোবাইল অ্যাপ ও ড্যাশবোর্ড
                   </span>
                 </div>
                 <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                  নিজের মোবাইল থেকেই <br />
-                  <span className="text-[#00A859]">নিয়ন্ত্রণ করুন সবকিছু</span>
+                  মোবাইল থেকেই <br />
+                  <span className="text-[#00A859]">টার্ফের সব কাজ পরিচালনা করুন</span>
                 </h2>
-                <p className="text-base sm:text-lg text-slate-700 font-bold mt-2">
-                  টার্ফের সম্পূর্ণ নিয়ন্ত্রণ এখন আপনার হাতের মুঠোয়
-                </p>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium mt-2 leading-relaxed">
-                  কম্পিউটার বা ভারী সফটওয়্যার লাগবে না। আপনার হাতে থাকা অ্যান্ড্রয়েড বা আইফোন থেকেই পুরো টার্ফের লাইভ বুকিং ক্যালেন্ডার, কাউন্টার ক্যাশ ও অনলাইন রেভিনিউ পরিচালনা করুন।
+                <p className="text-xs sm:text-sm text-slate-600 font-medium mt-3 leading-relaxed">
+                  কম্পিউটার বা ভারী সফটওয়্যার লাগবে না। আপনার হাতে থাকা অ্যান্ড্রয়েড বা আইফোন থেকেই পুরো টার্ফের লাইভ বুকিং ক্যালেন্ডার দেখুন, নতুন স্লট যোগ করুন এবং দৈনিক আয়ের হিসাব রাখুন।
                 </p>
               </div>
 
@@ -1081,18 +1086,18 @@ export const PlayspotsPartnerPage = () => {
         <div className="container-fluid">
           
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/30 rounded-full mb-4 shadow-xs">
-              <Sparkles size={14} className="text-[#00A859]" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#00A859]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00A859]/10 border border-[#00A859]/25 rounded-full mb-4 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+              <span className="text-xs font-bold text-[#00A859]">
                 সহজ অনবোর্ডিং
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-              মাত্র ৩টি সহজ ধাপে <br />
-              <span className="text-[#00A859]">শুরু করুন</span>
+              মাত্র ৩টি পদক্ষেপে <br />
+              <span className="text-[#00A859]">অনলাইন বুকিং শুরু করুন</span>
             </h2>
             <p className="text-slate-600 font-medium text-xs sm:text-sm mt-2">
-              সহজ ৩টি ধাপে আপনার টার্ফ ডিজিটাল করুন ও স্বয়ংক্রিয় অনলাইন বুকিং গ্রহণ শুরু করুন।
+              সহজ কয়েকটি ধাপে আপনার মাঠ যুক্ত করুন এবং খেলোয়াড়দের সরাসরি বুকিং নেওয়া শুরু করুন।
             </p>
           </div>
 
@@ -1144,22 +1149,23 @@ export const PlayspotsPartnerPage = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 space-y-5 sm:space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00A859]/12 border border-[#00A859]/30 text-[#00A859] text-xs font-black uppercase tracking-wider shadow-xs">
-                <Sparkles size={14} className="animate-pulse" />
-                <span>টার্ফ রেজিস্ট্রেশন • ফ্রি ওনার অ্যাপ ও সিস্টেম</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/25 text-[#00A859] text-xs font-bold shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#00A859]" />
+                <span>টার্ফ রেজিস্ট্রেশন • ফ্রি ওনার অ্যাপ</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                আপনার স্পোর্টস টার্ফ রেজিস্টার করুন <br />
-                <span className="text-[#00A859]">TurfPlay-তে</span>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+                আপনার টার্ফ যুক্ত করুন <br />
+                <span className="inline-flex items-baseline gap-1 sm:gap-1.5 mt-1">
+                  <span className="font-serif tracking-tight text-slate-900">
+                    Turf<span className="italic text-[#00A859]">Play</span>
+                  </span>
+                  <span className="text-[#00A859] font-sans font-black">-তে</span>
+                </span>
               </h2>
 
-              <p className="text-base sm:text-xl text-slate-700 font-bold leading-relaxed">
-                বেশি বুকিং পান • ঝামেলামুক্ত পরিচালনা • আয় বৃদ্ধি করুন
-              </p>
-
-              <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                টার্ফ পরিচালনা এখন আরও আধুনিক ও ঝামেলামুক্ত। কোনো মাসিক সাবস্ক্রিপশন চার্জ ছাড়াই আজই আপনার টার্ফ রেজিস্টার করুন এবং হাজার হাজার সক্রিয় খেলোয়াড়ের কাছে আপনার মাঠের স্লট পৌঁছে দিন।
+              <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+                কোনো মাসিক সাবস্ক্রিপশন চার্জ ছাড়াই আজই আপনার টার্ফ রেজিস্টার করুন। সরাসরি অ্যাপ থেকে মাঠের সব বুকিং কন্ট্রোল করুন এবং হাজারো খেলোয়াড়ের কাছে আপনার মাঠ পৌঁছে দিন।
               </p>
 
               {/* Quick Trust Highlights */}
@@ -1209,14 +1215,14 @@ export const PlayspotsPartnerPage = () => {
                 {!isSubmitted ? (
                   <>
                     <div className="mb-6 sm:mb-8">
-                      <span className="text-[11px] font-black uppercase tracking-wider text-[#00A859] bg-[#00A859]/10 px-3 py-1 rounded-full inline-block mb-2">
-                        রেজিস্ট্রেশন ফরম
+                      <span className="text-[11px] font-bold text-[#00A859] bg-[#00A859]/10 px-3 py-1 rounded-full inline-block mb-2">
+                        সহজ আবেদন
                       </span>
                       <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                         টার্ফ রেজিস্ট্রেশন ফরম
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-                        নিচের তথ্যগুলো পূরণ করুন। আমাদের টিম দ্রুত আপনার সাথে যোগাযোগ করে অ্যাকাউন্ট সেটআপ সম্পন্ন করবে।
+                        নিচের তথ্যগুলো পূরণ করে সাবমিট করুন। আমাদের টিম দ্রুত আপনার সাথে যোগাযোগ করে অ্যাকাউন্ট চালু করে দেবে।
                       </p>
                     </div>
 
@@ -1602,12 +1608,16 @@ export const PlayspotsPartnerPage = () => {
             {/* Bottom Registration Callout Card */}
             <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/70 via-slate-900 to-slate-900 border border-emerald-500/30 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left backdrop-blur-xl">
               <div>
-                <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-black text-[#00FF88] uppercase tracking-wider mb-1">
-                  <Sparkles size={14} />
+                <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-bold text-[#00FF88] mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#00FF88]" />
                   <span>বিনামূল্যে আজই শুরু করুন</span>
                 </div>
                 <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight">
-                  আপনার টার্ফ TurfPlay নেটওয়ার্কে যুক্ত করুন
+                  আপনার টার্ফ{' '}
+                  <span className="font-serif tracking-tight text-white">
+                    Turf<span className="italic text-[#00FF88]">Play</span>
+                  </span>{' '}
+                  নেটওয়ার্কে যুক্ত করুন
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
                   কোনো সেটআপ চার্জ নেই • সম্পূর্ণ ডিজিটাল কন্ট্রোল
