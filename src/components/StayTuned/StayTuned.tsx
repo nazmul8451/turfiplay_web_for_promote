@@ -29,12 +29,24 @@ export const StayTuned = () => {
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 lg:gap-8 max-w-2xl mx-auto">
             {[
-              { name: "Facebook", icon: Facebook, sub: "কমিউনিটিতে যুক্ত হন" },
-              { name: "Instagram", icon: Instagram, sub: "আপডেটসমূহ দেখুন" }
+              { 
+                name: "Facebook", 
+                href: "https://www.facebook.com/profile.php?id=61589001530606",
+                icon: Facebook, 
+                sub: "কমিউনিটিতে যুক্ত হন" 
+              },
+              { 
+                name: "Instagram", 
+                href: "https://www.instagram.com/turfplaybangladesh",
+                icon: Instagram, 
+                sub: "আপডেটসমূহ দেখুন" 
+              }
             ].map((social, i) => (
               <motion.a
                 key={i}
-                href="#"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -6 }}
                 className="glass-card flex items-center gap-4 sm:gap-6 !p-5 sm:!p-7 group w-full sm:flex-1 max-w-sm bg-white border border-slate-200 shadow-sm"
               >
